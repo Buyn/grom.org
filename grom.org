@@ -2812,6 +2812,10 @@ npx shadow-cljs watch app
 [[file:~/Dropbox/orgs/org-Brain/ClojureScript Idioms.org::*link to turials][link to turials]]
 * TODO
 ** запустить приложение
+
+cd grom.org
+npm install
+npx shadow-cljs watch app
 ** понять
 довай сделаем лендинг пейдж на кложур скрипт
 довай начнём с
@@ -2822,7 +2826,7 @@ new project templat shadow-cljs с реагентом и хикапом
 lein new shadow-cljs ueava +reagent
 UEAVA
 
-cd ueava
+cd grom.org
 npm install
 npx shadow-cljs watch app
 
