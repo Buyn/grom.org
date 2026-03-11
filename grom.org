@@ -2,11 +2,52 @@
 :header-args: :tangle no :mkdirp yes :results output silent :no-expand t
 :END:
 * src grom.org
-** src project
+** file
+(find-file-other-frame "./.gitignore")
+(find-file-other-frame "./package.json")
+(find-file-other-frame "./grom.org")
+(find-file-other-frame "./public/css/style.css")
+(find-file-other-frame "./public/css/index.html")
+(find-file-other-frame "./shadow-cljs.edn")
+(find-file-other-frame "./src/ueava/core.cljs")
+** tree
+*** I
+#+begin_src eshell :tangle no :dir /home/buyn/Dev/ClojureScript/grom.org
+tree -I "node_modules|.venv|__pycache__|public/js"
+
+ #+end_src
+
+ #+RESULTS:
+ #+begin_example
+ .
+ ├── grom.org
+ ├── package.json
+ ├── package-lock.json
+ ├── public
+ │   ├── css
+ │   │   └── style.css
+ │   └── index.html
+ ├── README.md
+ ├── README.md~1
+ ├── resources
+ │   └── public
+ ├── shadow-cljs.edn
+ └── src
+     └── ueava
+         └── core.cljs
+
+ 7 directories, 9 files
+ #+end_example
+
+
+
+* CANCELED old grom.org
+** CANCELED src project
 *** shadow-cljs.edn
 :PROPERTIES:
-:header-args: :tangle ./shadow-cljs.edn
+:header-args: :tangle no
 :END:
+:header-args: :tangle ./shadow-cljs.edn
 **** file shadow-cljs.edn
 (find-file-other-frame "./shadow-cljs.edn")
 **** src shadow-cljs.edn
@@ -85,11 +126,12 @@
 (find-file-other-frame "./.gitignore")
 (find-file-other-frame "./package.json")
 (find-file-other-frame "./grom.org.org")
-** src core
+** CANCELED src core
 *** core.cljs
 :PROPERTIES:
-:header-args: :tangle ./src/giggin/core.cljs
+:header-args: :tangle no
 :END:
+:header-args: :tangle ./src/giggin/core.cljs
 **** file core.cljs
 (find-file-other-frame "./src/giggin/core.cljs")
 **** src core.cljs
@@ -504,11 +546,12 @@ normal-gigs
 ;;        (into {})))
 
 
-** src components
+** CANCELED src components
 *** header.cljs
 :PROPERTIES:
-:header-args: :tangle ./src/giggin/components/header.cljs
+:header-args: :tangle no
 :END:
+:header-args: :tangle ./src/giggin/components/header.cljs
 **** file header.cljs
 (find-file-other-frame "./src/giggin/components/header.cljs")
 **** src header.cljs
@@ -958,11 +1001,12 @@ normal-gigs
      :on-click #(db-save! ["gigs"] (clj->js @state/gigs))}
 
 ** src other
-*** firebase
+*** CANCELED firebase
 **** fb/init.cljs
 :PROPERTIES:
-:header-args: :tangle ./src/giggin/fb/init.cljs
+:header-args: :tangle no
 :END:
+:header-args: :tangle ./src/giggin/fb/init.cljs
 ***** file
 (find-file-other-frame "./src/giggin/fb/init.cljs")
 ***** src fb/init.cljs
@@ -984,7 +1028,7 @@ normal-gigs
 
 
 #+end_src
-***** archiv
+***** CANCELED archiv
 
 (ns giggin.fb.init
   (:require ["firebase/app" :as firebase]
@@ -1001,8 +1045,9 @@ normal-gigs
 
 **** fb/db.cljs
 :PROPERTIES:
-:header-args: :tangle ./src/giggin/fb/db.cljs
+:header-args: :tangle no
 :END:
+:header-args: :tangle ./src/giggin/fb/db.cljs
 ***** file
 (find-file-other-frame "./src/giggin/fb/db.cljs")
 ***** src fb/db.cljs
@@ -1022,11 +1067,12 @@ normal-gigs
 
 #+end_src
 
-** src resources
+** CANCELED src resources
 *** index.html
 :PROPERTIES:
-:header-args: :tangle ./public/index.html
+:header-args: :tangle no
 :END:
+:header-args: :tangle ./public/index.html
 **** file
 (find-file-other-frame "./public/index.html")
 **** src
@@ -1054,14 +1100,15 @@ normal-gigs
   </body>
 </html>
 #+end_src
-**** exampl
+**** CANCELED exampl
 (find-file-other-frame "/home/buyn/Dev/ClojureScript/tutorials/my-cljs-project/group-chat/resources/public/index.html")
 (find-file-other-frame "~/Dev/ClojureScript/tutorials/my-cljs-project/example-todomvc/resources/public/index.html")
 
 *** style.css
 :PROPERTIES:
-:header-args: :tangle ./public/css/style.css
+:header-args: :tangle no
 :END:
+:header-args: :tangle ./public/css/style.css
 **** file style.css
 (find-file-other-frame "./public/css/style.css")
 **** src style.css
@@ -2511,6 +2558,8 @@ node out/node-tests.js
 konsole -e bash -c "npm run dev"
 (buyn-shell-start "konsole -e /bin/bash --rcfile <(npm run dev)")
 
+
+npx shadow-cljs watch app
 ** repl
 #+begin_src elisp :results output silent 
 (evil-previous-line)
@@ -2561,6 +2610,8 @@ shadow-cljs cljs-repl app
 :cljs/restart
 
 lein figwheel
+
+npx shadow-cljs watch app
 ** connect to nREPL
 (cider-connect-cljs '(:host "localhost" :port 3333 :cljs-repl-type shadow))
 
@@ -2811,11 +2862,58 @@ npx shadow-cljs watch app
 [[file:~/Dropbox/orgs/org-Brain/ClojureScript Idioms.org]]
 [[file:~/Dropbox/orgs/org-Brain/ClojureScript Idioms.org::*link to turials][link to turials]]
 * TODO
+** как указать tree
+чтоб проигнорировать папку
+скажем сделать трии начиная с текушей папку но проигнорировать .git
+tree -a -I ".git|node_modules|.venv|__pycache__"
+tree -I "node_modules|.venv|__pycache__"
+
+tree -I "node_modules|.venv|__pycache__"
+tree -I "node_modules|.venv|__pycache__"
+
+
 ** запустить приложение
 
 cd grom.org
 npm install
 npx shadow-cljs watch app
+** примеры
+довай сделаем лендинг пейдж в стиле
+https://arav.org/
+разделив всё на 3 капонента хедер середину и футер
+Header
+ ├ logo
+ ├ navigation
+ └ CTA button
+
+Main
+ ├ hero
+ └ membership cards
+
+Footer
+ ├ contacts
+ ├ links
+ └ subscribe
+
+src/
+ └ grom/
+     core.cljs
+     header.cljs
+     main.cljs
+     footer.cljs
+
+
+tailwind стили как у arav
+да довай сделаем стиль в tailwind как у arav
+как это сделать как его подключить?
+
+подобрав стиль через ксс
+
+/home/buyn/Desktop/worck/grom/footer-arav.org-2026-03-10_01-42.png
+/home/buyn/Desktop/worck/grom/header-arav.org2026-03-10_01-42.png
+/home/buyn/Desktop/worck/grom/midl-arav.org-2026-03-10_01-45.png
+без ксс это работать не будет
+
 ** понять
 довай сделаем лендинг пейдж на кложур скрипт
 довай начнём с
@@ -3246,6 +3344,37 @@ clojure -m cljs.main --compile my-cljs-project.core --repl
 ** desktop
 (desktop-save "~/.emacs.d/emaks-sesions/grom.org/")
 (desktop-read "~/.emacs.d/emaks-sesions/grom.org/")
+
+** tree
+*** I
+#+begin_src eshell :tangle no :dir /home/buyn/Dev/ClojureScript/grom.org
+tree -I "node_modules|.venv|__pycache__|public/js"
+
+ #+end_src
+
+ #+RESULTS:
+ #+begin_example
+ .
+ ├── grom.org
+ ├── package.json
+ ├── package-lock.json
+ ├── public
+ │   ├── css
+ │   │   └── style.css
+ │   └── index.html
+ ├── README.md
+ ├── README.md~1
+ ├── resources
+ │   └── public
+ ├── shadow-cljs.edn
+ └── src
+     └── ueava
+         └── core.cljs
+
+ 7 directories, 9 files
+ #+end_example
+
+
 * files grom.org
 ** files root
 (find-file-other-frame "./.gitignore")
