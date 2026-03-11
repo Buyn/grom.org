@@ -5,11 +5,14 @@
 ** file
 (find-file-other-frame "./.gitignore")
 (find-file-other-frame "./package.json")
+(find-file-other-frame "./shadow-cljs.edn")
 (find-file-other-frame "./grom.org")
 (find-file-other-frame "./public/css/style.css")
-(find-file-other-frame "./public/css/index.html")
-(find-file-other-frame "./shadow-cljs.edn")
+(find-file-other-frame "./public/index.html")
 (find-file-other-frame "./src/ueava/core.cljs")
+(find-file-other-frame "./src/ueava/header.cljs")
+(find-file-other-frame "./src/ueava/main.cljs")
+(find-file-other-frame "./src/ueava/footer.cljs")
 ** tree
 *** I
 #+begin_src eshell :tangle no :dir /home/buyn/Dev/ClojureScript/grom.org
@@ -2547,6 +2550,8 @@ node out/node-tests.js
     :else hiccup))
 
 * run grom.org
+** dir
+cd /home/buyn/Dev/ClojureScript/grom.org
 ** run server and reple
 #+begin_src elisp :results output silent
 (buyn-shell-start "konsole -e bash -c \"npm run dev\"")
@@ -2600,6 +2605,8 @@ npm run dev
 http://localhost:3000/
 
 shadow-cljs - nREPL server started on port 3333
+dev server on http://localhost:9630/build/npm 
+defalt port 9630
 
 shadow-cljs restart
 shadow-cljs cljs-repl app
@@ -2862,7 +2869,7 @@ npx shadow-cljs watch app
 [[file:~/Dropbox/orgs/org-Brain/ClojureScript Idioms.org]]
 [[file:~/Dropbox/orgs/org-Brain/ClojureScript Idioms.org::*link to turials][link to turials]]
 * TODO
-** как указать tree
+** DONE как указать tree
 чтоб проигнорировать папку
 скажем сделать трии начиная с текушей папку но проигнорировать .git
 tree -a -I ".git|node_modules|.venv|__pycache__"
@@ -2870,7 +2877,6 @@ tree -I "node_modules|.venv|__pycache__"
 
 tree -I "node_modules|.venv|__pycache__"
 tree -I "node_modules|.venv|__pycache__"
-
 
 ** запустить приложение
 

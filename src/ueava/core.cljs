@@ -1,5 +1,21 @@
 (ns ueava.core
-  (:require [reagent.core :as reagent :refer [atom]]))
+  (:require [reagent.core :as reagent :refer [atom]]
+            ;; [reagent.dom :as rdom]
+            [ueava.header :refer [header]]
+            [ueava.main :refer [main]]
+            [ueava.footer :refer [footer]]
+            ))
+
+
+(defn page []
+  [:div
+   [header]
+   [main]
+   [footer]])
+
+;; (defn init []
+;;   (rdom/render [page]
+;;                (.getElementById js/document "app")))
 
 ;; define your app data so that it doesn't get over-written on reload
 
@@ -11,8 +27,10 @@
    [:h3 "Edit this and watch it change!"]])
 
 (defn start []
-  (reagent/render-component [hello-world]
-                            (. js/document (getElementById "app"))))
+  (reagent/render-component
+    [page]
+    ;; [hello-world]
+    (. js/document (getElementById "app"))))
 
 (defn ^:export init []
   ;; init is called ONCE when the page loads

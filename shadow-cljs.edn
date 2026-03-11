@@ -6,7 +6,7 @@
                 [reagent "0.8.0-alpha2"]]
 
  ;; set an nrepl port for connection to a REPL.
- :nrepl        {:port 8777}
+ :nrepl        {:port 3333}
 
  :builds
  {:app {:target :browser
@@ -25,6 +25,6 @@
          :after-load ueava.core/start
          ;; serve the public directory over http at port 8700
          :http-root    "public"
-         :http-port    8700
+         :http-port    3000
          :preloads     [devtools.preload]}
         }}}
