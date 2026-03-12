@@ -9,7 +9,7 @@
 
     ;; logo + about
     [:div
-     [:img {:src "/img/ueava-logo.svg"
+     [:img {:src "img/ueava-logo.svg"
             :class "h-12 mb-4"}]
 
      [:p {:class "text-sm leading-relaxed"}
