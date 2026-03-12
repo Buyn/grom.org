@@ -1,26 +1,49 @@
-(ns ueava.header)
+(ns ueava.header
+  (:require
+   [reagent.core :as r]))
 
-;; (defn header []
-;;   [:header.header
-;;    [:div.container
-;;     [:div.logo "UEAVA"]
-;;     [:nav.menu
-;;      [:a {:href "#"} "Home"]
-;;      [:a {:href "#"} "About"]
-;;      [:a {:href "#"} "Resources"]
-;;      [:a {:href "#"} "Membership"]
-;;      [:a {:href "#"} "Conferences"]]
-;;     [:button.cta "Find A Vet"]]])
+
+(defonce scrolled? (r/atom false))
+
+(defn on-scroll []
+  (reset! scrolled? (> (.-scrollY js/window) 50)))
 
 (defn header []
-  [:header {:class "flex items-center justify-between px-10 py-4 bg-white shadow"}
-   [:div {:class "text-2xl font-bold text-green-700"} "UEAVA"]
+  (r/create-class
+   {:component-did-mount
+    (fn []
+      (.addEventListener js/window "scroll" on-scroll))
 
-   [:nav {:class "space-x-6 font-medium"}
-    [:a {:class "hover:text-green-600"} "Home"]
-    [:a {:class "hover:text-green-600"} "About"]
-    [:a {:class "hover:text-green-600"} "Resources"]
-    [:a {:class "hover:text-green-600"} "Membership"]]
+    :component-will-unmount
+    (fn []
+      (.removeEventListener js/window "scroll" on-scroll))
 
-   [:button {:class "bg-orange-500 text-white px-4 py-2 rounded"}
-    "Find A Vet"]])
+    :reagent-render
+    (fn []
+      [:header
+       {:class
+        (str
+         "fixed top-0 left-0 w-full z-50 transition-all duration-300 "
+         (if @scrolled?
+           "bg-white shadow text-gray-900"
+           "bg-transparent text-white"))}
+
+       [:div {:class "flex items-center justify-between px-8 py-4"}
+
+        ;; logo
+        [:a {:href "/" :class "shrink-0"}
+         [:img {:src "/img/ueava-logo.svg"
+                :class "h-12"}]]
+
+        ;; navigation
+        [:nav {:class "hidden md:flex space-x-8 font-medium"}
+         [:a {:href "#" :class "hover:text-green-500"} "Home"]
+         [:a {:href "#" :class "hover:text-green-500"} "About"]
+         [:a {:href "#" :class "hover:text-green-500"} "Resources"]
+         [:a {:href "#" :class "hover:text-green-500"} "Membership"]
+         [:a {:href "#" :class "hover:text-green-500"} "Conferences"]]
+
+        ;; CTA
+        [:button
+         {:class "bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition"}
+         "Find A Vet"]]])}))

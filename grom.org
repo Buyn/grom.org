@@ -2881,27 +2881,8 @@ npx shadow-cljs watch app
 ** brain
 [[file:~/Dropbox/orgs/org-Brain/ClojureScript Idioms.org]]
 [[file:~/Dropbox/orgs/org-Brain/ClojureScript Idioms.org::*link to turials][link to turials]]
-* TODO
-** DONE как указать tree
-чтоб проигнорировать папку
-скажем сделать трии начиная с текушей папку но проигнорировать .git
-tree -a -I ".git|node_modules|.venv|__pycache__"
-tree -I "node_modules|.venv|__pycache__"
-
-tree -I "node_modules|.venv|__pycache__"
-tree -I "node_modules|.venv|__pycache__"
-
-** запустить приложение
-
-cd grom.org
-npm install
-npx shadow-cljs watch app
-** sticky navbar
-** hero background image
-** benefits cards
-** CTA banner
-** footer grid
-** примеры
+** referens
+*** arav.org
 довай сделаем лендинг пейдж в стиле
 https://arav.org/
 разделив всё на 3 капонента хедер середину и футер
@@ -2938,13 +2919,549 @@ tailwind стили как у arav
 /home/buyn/Desktop/worck/grom/midl-arav.org-2026-03-10_01-45.png
 без ксс это работать не будет
 
-** понять
+* TODO
+** DONE как указать tree
+чтоб проигнорировать папку
+скажем сделать трии начиная с текушей папку но проигнорировать .git
+tree -a -I ".git|node_modules|.venv|__pycache__"
+tree -I "node_modules|.venv|__pycache__"
+
+tree -I "node_modules|.venv|__pycache__"
+tree -I "node_modules|.venv|__pycache__"
+
+** DONE запустить приложение
+
+cd grom.org
+npm install
+npx shadow-cljs watch app
+** DONE hero background image
+довай добавим
+поскольку текст белый и его не видно
+ARAV_Hero_Slide_2-1.webp
+http://localhost:3000/img/Hero_Slide_2-1.webp
+
+(defn hero []
+  [:section {:class "relative h-screen bg-cover bg-center flex items-center justify-center text-white"
+             :style {:background-image "url('/images/hero.jpg')"}} ; путь к вашему изображению
+   ;; overlay чтобы текст был читаем
+   [:div {:class "absolute inset-0 bg-black bg-opacity-50"}] 
+   
+   ;; контент поверх overlay
+   [:div {:class "relative text-center max-w-3xl z-10"}
+    [:h1 {:class "text-5xl font-bold mb-6"} 
+     "Why Do You Need A Reptile Veterinarian?"]
+    [:p {:class "text-xl mb-8"} 
+     "Global community improving reptile and amphibian medicine"]
+    [:button {:class "bg-green-600 px-6 py-3 rounded text-white hover:bg-green-700"} 
+     "Learn More"]]])
+
+https://arav.org/wp-content/uploads/2024/02/ARAV_Hero_Slide_2-1.webp
+/home/buyn/Dev/ClojureScript/grom.org/resources/
+** DONE arhiv
+
+;; (defn hero []
+;;   [:section.hero
+;;    [:div.hero-content
+;;     [:h1 "Why Do You Need A Reptile And Amphibian Veterinarian?"]
+;;     [:p "A global community dedicated to improving reptile and amphibian care."]
+;;     [:button "Learn More"]]])
+
+;; (defn hero []
+;;   [:section {:class "relative h-screen bg-cover bg-center flex items-center justify-center text-white"
+;;              ;; :style {:background-image "url('https://arav.org/wp-content/uploads/2024/02/ARAV_Hero_Slide_2-1.webp')"}} 
+;;              :style {:background-image "url('img/Hero_Slide_2-1.webp')"}} 
+;;    ;; overlay чтобы текст был читаем
+;;    [:div {:class "absolute inset-0 bg-black bg-opacity-50"}] 
+   
+;;    ;; контент поверх overlay
+;;    [:div {:class "relative text-center max-w-3xl z-10"}
+;;     [:h1 {:class "text-5xl font-bold mb-6"} 
+;;      "Why Do You Need A Reptile Veterinarian?"]
+;;     [:p {:class "text-xl mb-8"} 
+;;      "Global community improving reptile and amphibian medicine"]
+;;     [:button {:class "bg-green-600 px-6 py-3 rounded text-white hover:bg-green-700"} 
+;;      "Learn More"]]])
+
+
+;; (defn hero []
+;;   [:section {:class "h-screen bg-cover bg-center flex items-center justify-center text-white"}
+;;    [:div {:class "text-center max-w-3xl"}
+;;     [:h1 {:class "text-5xl font-bold mb-6"}
+;;      "Why Do You Need A Reptile Veterinarian?"]
+
+;;     [:p {:class "text-xl mb-8"}
+;;      "Global community improving reptile and amphibian medicine"]
+
+;;     [:button {:class "bg-green-600 px-6 py-3 rounded text-white hover:bg-green-700"}
+;;      "Learn More"]]])
+
+** DONE добавить лого
+*** 
+/public/img/ueava-logo.svg
+довай по аналогии в хеадер добавим лого
+логотип вместо слова Гром
+в логотипе уже содежится название
+и в дольнейшем вместо grom используем ueava
+
+
+(defn header []
+  [:header {:class "flex items-center justify-between px-8 py-4 bg-white shadow"}
+
+   ;; logo
+   [:div {:class "flex items-center gap-3"}
+    [:img {:src "/img/ueava-logo.svg"
+       :class "h-12"}]]
+
+   ;; navigation
+   [:nav {:class "hidden md:flex space-x-6 font-medium"}
+    [:a {:href "#" :class "hover:text-green-600"} "Home"]
+    [:a {:href "#" :class "hover:text-green-600"} "About"]
+    [:a {:href "#" :class "hover:text-green-600"} "Resources"]
+    [:a {:href "#" :class "hover:text-green-600"} "Membership"]
+    [:a {:href "#" :class "hover:text-green-600"} "Conferences"]]
+
+   ;; CTA
+   [:button {:class "bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"}
+    "Find A Vet"]])
+
+   но так логотип не отображается 
+
+   ;; logo
+   [:div {:class "flex items-center gap-3"}
+    [:img {:src "/img/ueava-logo.svg"
+           :alt "UEAVA"
+           :class "h-10 w-auto"}]
+    [:span {:class "text-xl font-semibold text-green-700"}
+     "UEAVA"]]
+
+     а так отображалось!
+*** 
+  [:header {:class "flex items-center justify-between px-8 py-4 bg-white shadow"}
+
+   ;; logo
+    [:img {:src "/img/ueava-logo.svg"
+          :class "h-12 w-auto"}]
+
+   ;; navigation
+   [:nav {:class "hidden md:flex space-x-6 font-medium"}
+    [:a {:href "#" :class "hover:text-green-600"} "Home"]
+    [:a {:href "#" :class "hover:text-green-600"} "About"]
+    [:a {:href "#" :class "hover:text-green-600"} "Resources"]
+    [:a {:href "#" :class "hover:text-green-600"} "Membership"]
+    [:a {:href "#" :class "hover:text-green-600"} "Conferences"]]
+
+   ;; CTA
+   [:button {:class "bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"}
+    "Find A Vet"]])
+при таком варианат логотип отображается но заполяет весь хедер на всю ширину
+*** довай!
+звучит замечательно!
+*** arhiv
+
+
+;; (defn header []
+;;   [:header.header
+;;    [:div.container
+;;     [:div.logo "UEAVA"]
+;;     [:nav.menu
+;;      [:a {:href "#"} "Home"]
+;;      [:a {:href "#"} "About"]
+;;      [:a {:href "#"} "Resources"]
+;;      [:a {:href "#"} "Membership"]
+;;      [:a {:href "#"} "Conferences"]]
+;;     [:button.cta "Find A Vet"]]])
+
+;; (defn header []
+;;   [:header {:class "flex items-center justify-between px-10 py-4 bg-white shadow"}
+;;    [:div {:class "text-2xl font-bold text-green-700"} "UEAVA"]
+
+;;    [:nav {:class "space-x-6 font-medium"}
+;;     [:a {:class "hover:text-green-600"} "Home"]
+;;     [:a {:class "hover:text-green-600"} "About"]
+;;     [:a {:class "hover:text-green-600"} "Resources"]
+;;     [:a {:class "hover:text-green-600"} "Membership"]]
+
+;;    [:button {:class "bg-orange-500 text-white px-4 py-2 rounded"}
+;;     "Find A Vet"]])
+
+** DONE sticky navbar
+** DONE довай улучшвать
+*** 
+(ns ueava.main)
+
+(defn hero []
+  ;; [:section {:class "relative h-screen flex items-center justify-center text-white"}
+  [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
+
+   ;; background image
+   [:div {:class "absolute inset-0 bg-cover bg-center"
+          :style {:background-image "url('img/Hero_Slide_2-1.webp')"}}]
+
+   ;; gradient overlay 
+   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
+
+   ;; content
+   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
+
+    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6 leading-tight"}
+     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
+
+    [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
+     "A global community dedicated to improving the quality of medicine, conservation, and care of reptiles and amphibians."]
+
+    [:button
+     {:class "bg-green-600 hover:bg-green-700 transition px-8 py-3 rounded font-semibold"}
+     "Learn More"]]])
+
+
+(defn membership []
+  [:section.membership
+   [:h2 "Become A Member"]
+   [:p "Join a unique community dedicated to reptile and amphibian medicine."]
+   [:div.cards
+    [:div.card
+     [:h3 "Journal"]
+     [:p "Scientific research in herpetological medicine"]]
+
+    [:div.card
+     [:h3 "Find-A-Vet"]
+     [:p "Be listed in the veterinarian directory"]]
+
+    [:div.card
+     [:h3 "Herp Blerp"]
+     [:p "Monthly newsletter and announcements"]]]])
+
+(defn main []
+  [:main
+   [hero]
+   [membership]])
+
+сейчас меин выгладит так
+довай улучшать!
+*** 
+**** Отлично
+Отлично — у тебя уже хороший фундамент. Давай превратим `main` в **настоящий landing-layout**:
+
+```
+Hero
+↓
+Benefits (3 карточки)
+↓
+CTA block
+↓
+Membership
+```
+
+Так делают почти все лендинги — в том числе сайт
+Association of Reptile and Amphibian Veterinarians.
+
+Я покажу **аккуратный Tailwind-вариант**, который хорошо ложится на **Reagent**.
+
+---
+**** # 1. улучшенный HERO
+
+Добавим **две кнопки и scroll indicator**.
+
+```clojure
+(defn hero []
+  [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
+
+   [:div {:class "absolute inset-0 bg-cover bg-center"
+          :style {:background-image "url('/img/Hero_Slide_2-1.webp')"}}]
+
+   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
+
+   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
+
+    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6 leading-tight"}
+     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
+
+    [:p {:class "text-lg md:text-xl mb-10 text-gray-200"}
+     "A global community dedicated to improving the quality of medicine,
+      conservation, and care of reptiles and amphibians."]
+
+    [:div {:class "flex justify-center gap-4"}
+     [:button {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
+      "Become a Member"]
+
+     [:button {:class "border border-white px-8 py-3 rounded hover:bg-white hover:text-black transition"}
+      "Find a Vet"]]]
+
+   ;; scroll indicator
+   [:div {:class "absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"}
+    [:span {:class "text-white text-2xl"} "↓"]]])
+```
+
+---
+**** # 2. benefits (3 карточки)
+
+Добавим **визуальный блок как на landing pages**.
+
+```clojure
+(defn benefits []
+  [:section {:class "py-20 bg-gray-50"}
+
+   [:div {:class "max-w-6xl mx-auto px-6"}
+
+    [:h2 {:class "text-3xl font-bold text-center mb-12"}
+     "Why Join UEAVA"]
+
+    [:div {:class "grid md:grid-cols-3 gap-8"}
+
+     [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
+      [:h3 {:class "text-xl font-semibold mb-3"} "Scientific Journal"]
+      [:p "Access research and publications in reptile and amphibian medicine."]]
+
+     [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
+      [:h3 {:class "text-xl font-semibold mb-3"} "Find-A-Vet Directory"]
+      [:p "Be listed in an international directory of specialists."]]
+
+     [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
+      [:h3 {:class "text-xl font-semibold mb-3"} "Professional Community"]
+      [:p "Connect with veterinarians and researchers worldwide."]]]]])
+```
+
+---
+**** # 3. CTA section
+
+Очень важный элемент лендинга.
+
+```clojure
+(defn cta []
+  [:section {:class "py-20 bg-green-700 text-white"}
+
+   [:div {:class "max-w-4xl mx-auto text-center px-6"}
+
+    [:h2 {:class "text-3xl font-bold mb-6"}
+     "Become Part of the Global Herpetological Veterinary Community"]
+
+    [:p {:class "mb-8 text-lg"}
+     "Join UEAVA and help improve reptile and amphibian medicine worldwide."]
+
+    [:button {:class "bg-white text-green-700 px-8 py-3 rounded font-semibold hover:bg-gray-100"}
+     "Join Now"]]])
+```
+
+---
+**** # 4. membership (улучшенная)
+
+```clojure
+(defn membership []
+  [:section {:class "py-20"}
+
+   [:div {:class "max-w-6xl mx-auto px-6"}
+
+    [:h2 {:class "text-3xl font-bold text-center mb-12"}
+     "Membership Benefits"]
+
+    [:div {:class "grid md:grid-cols-3 gap-8"}
+
+     [:div {:class "p-6 border rounded-lg"}
+      [:h3 {:class "font-semibold mb-2"} "Journal Access"]
+      [:p "Read the latest research publications."]]
+
+     [:div {:class "p-6 border rounded-lg"}
+      [:h3 {:class "font-semibold mb-2"} "Professional Listing"]
+      [:p "Get listed in the Find-A-Vet database."]]
+
+     [:div {:class "p-6 border rounded-lg"}
+      [:h3 {:class "font-semibold mb-2"} "Networking"]
+      [:p "Join a global community of specialists."]]]]])
+```
+
+---
+**** # 5. новый main
+
+```clojure
+(defn main []
+  [:main
+   [hero]
+   [benefits]
+   [cta]
+   [membership]])
+```
+
+---
+**** # 6. итоговая структура страницы
+
+```
+HEADER
+│
+HERO (image + overlay + buttons)
+│
+BENEFITS (3 cards)
+│
+CTA (green section)
+│
+MEMBERSHIP
+│
+FOOTER
+```
+
+Это **классическая структура SaaS / association landing page**.
+
+---
+
+💡 Следующий шаг сделает сайт **в 3 раза круче визуально**:
+
+добавить
+
+- **иконки в карточки**
+- **smooth scroll**
+- **mobile burger menu**
+- **footer grid как у ARAV**
+
+И самое интересное — можно сделать **очень красивый reusable DSL для секций в hiccup**, чтобы верстка выглядела почти как **markdown-layout**.
+*** CANCELED arhiv
+
+;; (defn header []
+;;   [:header {:class "flex items-center justify-between px-8 py-4 bg-white shadow"}
+
+;;     ;; logo
+;;     [:div {:class "flex items-center shrink-0"}
+;;       [:a {:href "/" :class "shrink-0"}
+;;         [:img {:src "/img/ueava-logo.svg"
+;;                :class "h-12 hover:opacity-80 transition"}]]]
+
+;;     ;; navigation
+;;     [:nav {:class "hidden md:flex space-x-6 font-medium"}
+;;       [:a {:href "#" :class "hover:text-green-600"} "Home"]
+;;       [:a {:href "#" :class "hover:text-green-600"} "About"]
+;;       [:a {:href "#" :class "hover:text-green-600"} "Resources"]
+;;       [:a {:href "#" :class "hover:text-green-600"} "Membership"]
+;;       [:a {:href "#" :class "hover:text-green-600"} "Conferences"]]
+
+;;     ;; CTA
+;;     [:button {:class "bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"}
+;;       "Find A Vet"]])
+
+;; (defn main []
+;;   [:main
+;;    [hero]
+;;    [membership]])
+
+
+;; (defn hero []
+;;   ;; [:section {:class "relative h-screen flex items-center justify-center text-white"}
+;;   [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
+
+;;    ;; background image
+;;    [:div {:class "absolute inset-0 bg-cover bg-center"
+;;           :style {:background-image "url('img/Hero_Slide_2-1.webp')"}}]
+
+;;    ;; gradient overlay 
+;;    [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
+
+;;    ;; content
+;;    [:div {:class "relative z-10 text-center max-w-4xl px-6"}
+
+;;     [:h1 {:class "text-4xl md:text-6xl font-bold mb-6 leading-tight"}
+;;      "Why Do You Need A Reptile And Amphibian Veterinarian?"]
+
+;;     [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
+;;      "A global community dedicated to improving the quality of medicine, conservation, and care of reptiles and amphibians."]
+
+;;     [:button
+;;      {:class "bg-green-600 hover:bg-green-700 transition px-8 py-3 rounded font-semibold"}
+;;      "Learn More"]]])
+
+
+;; (defn membership []
+;;   [:section.membership
+;;    [:h2 "Become A Member"]
+;;    [:p "Join a unique community dedicated to reptile and amphibian medicine."]
+;;    [:div.cards
+;;     [:div.card
+;;      [:h3 "Journal"]
+;;      [:p "Scientific research in herpetological medicine"]]
+
+;;     [:div.card
+;;      [:h3 "Find-A-Vet"]
+;;      [:p "Be listed in the veterinarian directory"]]
+
+;;     [:div.card
+;;      [:h3 "Herp Blerp"]
+;;      [:p "Monthly newsletter and announcements"]]]])
+
+
+** DONE benefits cards
+** DONE CTA banner
+** DONE footer grid
+Красота!!!!
+Красотища!!!!
+довай сделаем и footer grid красивым
+*** CANCELED архив
+(ns ueava.footer)
+
+(defn footer []
+  [:footer {:class "bg-gray-900 text-gray-300"}
+
+   ;; grid
+   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
+
+    ;; logo + about
+    [:div
+     [:img {:src "/img/ueava-logo.svg"
+            :class "h-12 mb-4"}]
+
+     [:p {:class "text-sm leading-relaxed"}
+      "UEAVA is a global community dedicated to improving reptile
+       and amphibian veterinary medicine, conservation and welfare."]]
+
+    ;; navigation
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
+
+    ;; resources
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
+
+    ;; newsletter
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
+
+     [:p {:class "text-sm mb-4"}
+      "Subscribe to receive updates and news."]
+
+     [:div {:class "flex"}
+      [:input {:type "email"
+               :placeholder "Email"
+               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
+
+      [:button
+       {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
+       "Join"]]]]
+
+   ;; bottom line
+   [:div {:class "border-t border-gray-800"}
+
+    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
+
+     [:span "© 2026 UEAVA"]
+
+     [:div {:class "flex gap-6 mt-3 md:mt-0"}
+      [:a {:href "#" :class "hover:text-white"} "Privacy"]
+      [:a {:href "#" :class "hover:text-white"} "Terms"]
+      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
+** DONE понять
 довай сделаем лендинг пейдж на кложур скрипт
 довай начнём с
 new project templat shadow-cljs с реагентом и хикапом
 есть команда чтоб сделать темплат? например через ленингтон?
 название сайта будет grom.org
-** проверить
+** DONE проверить
 lein new shadow-cljs ueava +reagent
 UEAVA
 
@@ -2953,7 +3470,7 @@ npm install
 npx shadow-cljs watch app
 
 http://localhost:8080
-** 
+** DONE 
 *** 
 <!DOCTYPE html>
 <html>
@@ -3017,7 +3534,8 @@ shadow-cljs - watching build :app
 [:app] Build completed. (165 files, 164 compiled, 0 warnings, 12.82s)
 
 не появился промт для команд
-** перенести всё из тудейорга
+** DONE перенести всё из тудейорга
+
 * backlog
 * project comands
 :PROPERTIES:
