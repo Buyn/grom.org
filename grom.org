@@ -2706,6 +2706,11 @@ https://buyn.github.io/
 https://<username>.github.io/<repo-name>/.
 https://buyn.github.io/grom.org.git
 https://buyn.github.io/grom.org.git/.
+*** build-gh
+
+npm run build-gh
+
+
 *** orign
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
 name: Deploy Jekyll with GitHub Pages dependencies preinstalled
@@ -3535,6 +3540,60 @@ shadow-cljs - watching build :app
 
 не появился промт для команд
 ** DONE перенести всё из тудейорга
+** опубликовать
+*** я сделал сайт на кложур скрипте
+через shadow-cljs
+
+;; shadow-cljs configuration
+{:source-paths
+ ["src"]
+
+ :dependencies [[binaryage/devtools "0.9.7"]
+                [reagent "0.8.0-alpha2"]]
+
+ ;; set an nrepl port for connection to a REPL.
+ :nrepl        {:port 3333}
+
+ :builds
+ {:app {:target :browser
+        :output-dir "public/js/compiled"
+        :asset-path "/js/compiled"
+
+        :modules
+        {:main
+         {:entries [ueava.core]}}
+
+        :devtools
+        ;; before live-reloading any code call this function
+        {:before-load ueava.core/stop
+         :watch-dir "resources/public"
+         ;; after live-reloading finishes call this function
+         :after-load ueava.core/start
+         ;; serve the public directory over http at port 8700
+         :http-root    "public"
+         :http-port    3000
+         :preloads     [devtools.preload]}
+        }}}
+мой ./shadow-cljs.edn выглядит так
+пологаю нужно сделать новую раздел для билда
+он находится в репозитории
+https://github.com/Buyn/grom.org/tree/main
+хочу его опубликовать нагитхаб
+полагаю проже всего выбрать папку docs и забилдить в неё после чего закомитеть то что получилось?
+и выбрать публиковать из папки docs?
+как будет выглядить ./shadow-cljs.edn с новой опцией для билда в папку докс?
+*** 
+тоесть вместо того чтобы менять shadow-cljs.edn
+лучше сделать скрипт фаил который будет запускать
+npx shadow-cljs release app
+а потом копировать результат из паблика
+тоесть папку js
+и остальные файлы в папку докс?
+это более рациональный путь?
+*** 
+"build-gh": "rm -rf docs && npx shadow-cljs release app && mkdir -p docs && cp -r public/* docs && touch docs/.nojekyll"
+
+npm run build-gh
 
 * backlog
 * project comands

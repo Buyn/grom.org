@@ -1,7 +1,6 @@
 
 (ns ueava.main)
 
-
 (defn hero []
   [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
 
