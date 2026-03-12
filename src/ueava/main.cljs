@@ -5,7 +5,7 @@
   [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
 
    [:div {:class "absolute inset-0 bg-cover bg-center"
-          :style {:background-image "url('/img/Hero_Slide_2-1.webp')"}}]
+          :style {:background-image "url('img/Hero_Slide_2-1.webp')"}}]
 
    [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
 

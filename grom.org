@@ -2565,7 +2565,7 @@ node out/node-tests.js
 cd /home/buyn/Dev/ClojureScript/grom.org
 ** run server and reple
 #+begin_src elisp :results output silent
-(buyn-shell-start "konsole -e bash -c \"npm run dev\"")
+(buyn-shell-start "konsole -e bash -c \"npm run watch\"")
 (evil-previous-line)
 (org-cycle)
 (delete-other-windows)
@@ -2709,7 +2709,7 @@ https://buyn.github.io/grom.org.git/.
 *** build-gh
 
 npm run build-gh
-https://buyn.github.io/grom.org.git
+https://buyn.github.io/grom.org
 
 
 *** orign

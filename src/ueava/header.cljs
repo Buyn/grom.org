@@ -32,7 +32,7 @@
 
         ;; logo
         [:a {:href "/" :class "shrink-0"}
-         [:img {:src "/img/ueava-logo.svg"
+         [:img {:src "img/ueava-logo.svg"
                 :class "h-12"}]]
 
         ;; navigation
