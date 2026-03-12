@@ -3,16 +3,27 @@
 :END:
 * src grom.org
 ** file
+*** root
 (find-file-other-frame "./.gitignore")
 (find-file-other-frame "./package.json")
 (find-file-other-frame "./shadow-cljs.edn")
 (find-file-other-frame "./grom.org")
+(find-file-other-frame "postcss.config.js")
+(find-file-other-frame "tailwind.config.js")
+*** public
 (find-file-other-frame "./public/css/style.css")
 (find-file-other-frame "./public/index.html")
+*** src
+**** core
+
 (find-file-other-frame "./src/ueava/core.cljs")
 (find-file-other-frame "./src/ueava/header.cljs")
 (find-file-other-frame "./src/ueava/main.cljs")
 (find-file-other-frame "./src/ueava/footer.cljs")
+**** css
+
+(find-file-other-frame "./src/css/main.css")
+**** components
 ** tree
 *** I
 #+begin_src eshell :tangle no :dir /home/buyn/Dev/ClojureScript/grom.org
@@ -2565,6 +2576,8 @@ konsole -e bash -c "npm run dev"
 
 
 npx shadow-cljs watch app
+** run Tailwind CSS
+npm run css
 ** repl
 #+begin_src elisp :results output silent 
 (evil-previous-line)
@@ -2883,6 +2896,11 @@ tree -I "node_modules|.venv|__pycache__"
 cd grom.org
 npm install
 npx shadow-cljs watch app
+** sticky navbar
+** hero background image
+** benefits cards
+** CTA banner
+** footer grid
 ** примеры
 довай сделаем лендинг пейдж в стиле
 https://arav.org/
