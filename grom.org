@@ -24,6 +24,11 @@
 
 (find-file-other-frame "./src/css/main.css")
 **** components
+(find-file-other-frame "./src/ueava/components/hero.cljs")
+(find-file-other-frame "./src/ueava/components/benefits.cljs")
+(find-file-other-frame "./src/ueava/components/cta.cljs")
+(find-file-other-frame "./src/ueava/components/membership.cljs")
+
 ** tree
 *** I
 #+begin_src eshell :tangle no :dir /home/buyn/Dev/ClojureScript/grom.org
@@ -2565,6 +2570,7 @@ cd /home/buyn/Dev/ClojureScript/grom.org
 ** run server and reple
 #+begin_src elisp :results output silent
 (buyn-shell-start "konsole -e bash -c \"npm run watch\"")
+(buyn-shell-start "konsole -e bash -c \"npm run css\"")
 (evil-previous-line)
 (org-cycle)
 (delete-other-windows)
@@ -2707,6 +2713,7 @@ https://buyn.github.io/grom.org.git
 https://buyn.github.io/grom.org.git/.
 *** build-gh
 
+cd /home/buyn/Dev/ClojureScript/grom.org
 npm run build-gh
 https://buyn.github.io/grom.org
 
@@ -2933,6 +2940,7 @@ tailwind стили как у arav
 
 /home/buyn/Dev/ClojureScript/grom.org/public/img/ueava-logo.svg
 *** 
+**** цвета логотипа
 Очень хороший вопрос. И хорошая новость — **ничего переделывать с нуля не нужно**. В Tailwind CSS как раз предусмотрен **правильный способ смены цветовой темы** через `tailwind.config`.
 
 Посмотрим на цвета логотипа.
@@ -2947,8 +2955,7 @@ tailwind стили как у arav
 Это идеально ложится на **brand palette**.
 
 ---
-
-# 1. Добавляем бренд-цвета в Tailwind
+**** # 1. Добавляем бренд-цвета в Tailwind
 
 Открой:
 
@@ -2990,8 +2997,7 @@ bg-ueava-cream
 ```
 
 ---
-
-# 2. Меняем hero
+**** # 2. Меняем hero
 
 Было:
 
@@ -3014,8 +3020,7 @@ bg-green-600
 ```
 
 ---
-
-# 3. Меняем CTA секцию
+**** # 3. Меняем CTA секцию
 
 Было:
 
@@ -3030,8 +3035,7 @@ bg-green-700
 ```
 
 ---
-
-# 4. Меняем footer
+**** # 4. Меняем footer
 
 Было:
 
@@ -3052,8 +3056,7 @@ bg-gray-900
 ```
 
 ---
-
-# 5. Меняем карточки
+**** CANCELED # 5. Меняем карточки
 
 ```clojure
 [:div {:class
@@ -3061,16 +3064,14 @@ bg-gray-900
 ```
 
 ---
-
-# 6. красивый hover стиль ссылок
+**** # 6. красивый hover стиль ссылок
 
 ```clojure
 :hover:text-ueava-sand
 ```
 
 ---
-
-# 7. результат
+**** # 7. результат
 
 Цветовая схема станет:
 
@@ -3084,8 +3085,7 @@ text      → brown
 Это **идеально соответствует логотипу**.
 
 ---
-
-# 8. профессиональный трюк (очень полезный)
+**** # 8. профессиональный трюк (очень полезный)
 
 Можно создать **semantic colors**, чтобы менять тему одной строкой.
 
@@ -3119,6 +3119,103 @@ bg-surface
 Получится стиль почти как у крупных научных ассоциаций.
 
 Если хочешь — покажу очень простой способ сделать **SVG pattern background**, который будет выглядеть **дороже чем половина сайтов на Webflow**.
+*** DONE error
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{cljs,cljc,clj}",
+    "./public/index.html"],
+  theme: {
+    extend: {
+      colors: {
+
+        ueava: {
+          brown: "#4a2512",
+          sand: "#c6ab8b",
+          cream: "#f2ede7",
+          light: "#e5d7c5"
+        }
+
+      }
+    },},
+    plugins: [],}
+использую таилвинг tailwind.config.js выглядит так
+в кложурскрипт коде было так
+[:div {:class "flex justify-center gap-4"}
+     [:button
+      {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
+      "Become a Member"]
+
+     [:button {:class "border border-white px-8 py-3 rounded hover:bg-white hover:text-black transition"}
+      "Find a Vet"]]
+стало так
+[:div {:class "flex justify-center gap-4"}
+     [:button
+      {:class "bg-ueava-brown hover:bg-ueava-sand text-white px-8 py-3 rounded"}
+      "Become a Member"]
+
+     [:button {:class "border border-white px-8 py-3 rounded hover:bg-white hover:text-black transition"}
+      "Find a Vet"]]
+
+ожидал что цвет сменится но он просто исчез. Что значит что таил вин компилится но не так как я ожидаю.
+что я делаю не так?
+*** DONE почему
+раньше я мог указывать 600 или 700 для указания интенсивности
+{:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
+но с созданым каласом
+{:class "bg-ueava-brown-600 hover:bg-ueava-brown-700 text-white px-8 py-3 rounded"}
+так не рабтотает
+а могу только
+{:class "bg-ueava-brown hover:bg-ueava-sand text-white px-8 py-3 rounded"}
+как сделать чтоб я мог указывать интенсивность а нетолько описвать цвета?
+что я с делал не так?
+как нужно описать чтоб была возможность менять интенсивность диномичтно?
+
+
+@theme {
+  --color-slate-50: #fcf1ee;
+  --color-slate-100: #fae3dd;
+  --color-slate-200: #f5c4b5;
+  --color-slate-300: #f2a78c;
+  --color-slate-400: #ee844e;
+  --color-slate-500: #d07343;
+  --color-slate-600: #af5f37;
+  --color-slate-700: #924f2c;
+  --color-slate-800: #733d21;
+  --color-slate-900: #592e17;
+  --color-slate-950: #4a2512;
+}
+@theme {
+  --color-brown-50:  #fcf1ee;
+  --color-brown-100: #fae3dd;
+  --color-brown-200: #f5c4b5;
+  --color-brown-300: #f2a78c;
+  --color-brown-400: #ee844e;
+  --color-brown-500: #d07343;
+  --color-brown-600: #af5f37;
+  --color-brown-700: #924f2c;
+  --color-brown-800: #733d21;
+  --color-brown-900: #592e17;
+  --color-brown-950: #4a2512;
+}
+
+
+@theme {
+  --color-sand-50:  #fdfcfb;
+  --color-sand-100: #faf6f2;
+  --color-sand-200: #f4ede5;
+  --color-sand-300: #efe3d7;
+  --color-sand-400: #ebdac9;
+  --color-sand-500: #e6d1ba;
+  --color-sand-600: #e2c8aa;
+  --color-sand-700: #ddbf9b;
+  --color-sand-800: #d4b795;
+  --color-sand-900: #caaf8e;
+  --color-sand-950: #c6ab8b;
+}
+*** CANCELED arhiv
+      ;; {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
+
 *** 
 Сейчас покажу **очень красивый и при этом простой трюк**, который часто используют в hero-секциях современных сайтов.
 
@@ -4008,8 +4105,7 @@ backdrop-blur-md bg-white/90
 
 Это примерно **30 строк кода**, но сайт начинает выглядеть **как Stripe / Linear / Vercel**.
 Если хочешь — покажу, это идеально ложится в твой текущий код.
-
-
+** поправить разметку футера
 ** DONE как указать tree
 чтоб проигнорировать папку
 скажем сделать трии начиная с текушей папку но проигнорировать .git

@@ -25,7 +25,7 @@
         (str
          "fixed top-0 left-0 w-full z-50 transition-all duration-300 "
          (if @scrolled?
-           "bg-white shadow text-gray-900"
+           "bg-ueava-cream shadow text-gray-900"
            "bg-transparent text-white"))}
 
        [:div {:class "flex items-center justify-between px-8 py-4"}
@@ -36,12 +36,18 @@
                 :class "h-12"}]]
 
         ;; navigation
+        ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}
+        ;;  [:a {:href "#" :class "hover:text-green-500"} "Home"]
+        ;;  [:a {:href "#" :class "hover:text-green-500"} "About"]
+        ;;  [:a {:href "#" :class "hover:text-green-500"} "Resources"]
+        ;;  [:a {:href "#" :class "hover:text-green-500"} "Membership"]
+        ;;  [:a {:href "#" :class "hover:text-green-500"} "Conferences"]]
         [:nav {:class "hidden md:flex space-x-8 font-medium"}
-         [:a {:href "#" :class "hover:text-green-500"} "Home"]
-         [:a {:href "#" :class "hover:text-green-500"} "About"]
-         [:a {:href "#" :class "hover:text-green-500"} "Resources"]
-         [:a {:href "#" :class "hover:text-green-500"} "Membership"]
-         [:a {:href "#" :class "hover:text-green-500"} "Conferences"]]
+         [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+         [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+         [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+         [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+         [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
 
         ;; CTA
         [:button

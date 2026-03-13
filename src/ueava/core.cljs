@@ -1,6 +1,5 @@
 (ns ueava.core
   (:require [reagent.core :as reagent :refer [atom]]
-            ;; [reagent.dom :as rdom]
             [ueava.header :refer [header]]
             [ueava.main :refer [main]]
             [ueava.footer :refer [footer]]

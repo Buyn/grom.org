@@ -2,19 +2,28 @@
 
 
 (defn footer []
-  [:footer {:class "bg-gray-900 text-gray-300"}
+  ;; [:footer {:class "bg-gray-900 text-gray-300"}
+  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
+  ;; [:footer {:class ":bg-gradient-to-r from-ueava-brown to-ueava-sand"}
 
    ;; grid
    [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
 
     ;; logo + about
     [:div
-     [:img {:src "img/ueava-logo.svg"
-            :class "h-12 mb-4"}]
+     ;; [:img {:src "img/ueava-logo.svg"
+     [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+     ;; [:img {:src "img/ueava-logo-nobg-wt.png"
+     ;; [:img {:src "img/ueava-logo-hor-brbg-wt.png"
+     ;; [:img {:src "img/ueava-logo-batom-wob-text.jpg"
+            ;; :class "h-22 mb-4"
+            ;; :class "h-15"
+            }]
 
      [:p {:class "text-sm leading-relaxed"}
       "UEAVA is a global community dedicated to improving reptile
-       and amphibian veterinary medicine, conservation and welfare."]]
+       and amphibian veterinary medicine, conservation and welfare."]
+     ]
 
     ;; navigation
     [:div
@@ -49,7 +58,8 @@
                :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
 
       [:button
-       {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
+       ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
+       {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
        "Join"]]]]
 
    ;; bottom line
