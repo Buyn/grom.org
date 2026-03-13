@@ -4,6 +4,8 @@
 
 
 (defonce scrolled? (r/atom false))
+(defonce menu-open? (r/atom false))
+
 
 (defn on-scroll []
   (reset! scrolled? (> (.-scrollY js/window) 50)))
@@ -51,5 +53,35 @@
 
         ;; CTA
         [:button
-         {:class "bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition"}
-         "Find A Vet"]]])}))
+         {:class "bg-orange-500 text-white px-4 py-2 rounded
+                  hover:bg-orange-600 transition 
+                  hidden md:flex space-x-8 font-medium"}
+         "Find A Vet"]
+
+       [:button
+        {:class "md:hidden text-3xl"
+          :on-click #(swap! menu-open? not)}
+        "☰"]
+
+        (when @menu-open?
+          [:div
+            {:class "absolute top-full left-0 w-full bg-white shadow-md md:hidden text-ueava-brown"}
+
+            [:div {:class "flex flex-col p-6 space-y-4"}
+            [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+            [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+            [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+            [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+            [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
+
+            [:button
+              {:class "bg-orange-500 text-white px-4 py-2 rounded
+                        hover:bg-orange-600 
+                        space-x-8 font-medium"}
+              "Find A Vet"]
+           ]
+
+          )
+        ]])}))
+
+;; ])

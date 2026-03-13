@@ -35,8 +35,19 @@ module.exports = {
           cream: "#f2ede7",
           light: "#e5d7c5"
         }
+      },
 
-      }
+      // animation: {
+      //   floatSlow: "floatSlow 18s ease-in-out infinite",
+      //   floatSlow2: "floatSlow2 22s ease-in-out infinite"},
+
+      // keyframes: {
+      //   floatSlow: {
+      //     "0%,100%": { transform: "translateY(0) translateX(0)" },
+      //     "50%": { transform: "translateY(-30px) translateX(20px)" }},
+      //   floatSlow2: {
+      //     "0%,100%": { transform: "translateY(0) translateX(0)" },
+      //     "50%": { transform: "translateY(20px) translateX(-30px)" }}}
     },},
     plugins: [],};
 

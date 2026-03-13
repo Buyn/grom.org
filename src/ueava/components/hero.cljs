@@ -1,5 +1,17 @@
 (ns ueava.components.hero)
 
+;; (defn floating-puzzles []
+;;   [:<>
+   
+;;    [:img {:src "/img/ueava-logo.svg"
+;;           :class "absolute top-20 left-20 w-64 opacity-[0.04] animate-floatSlow"}]
+
+;;    [:img {:src "/img/ueava-logo.svg"
+;;           :class "absolute bottom-20 right-20 w-72 opacity-[0.03] animate-floatSlow2"}]
+
+;;    [:img {:src "/img/ueava-logo.svg"
+;;           :class "absolute top-1/2 left-1/3 w-56 opacity-[0.04] animate-floatSlow"}]])
+
 (defn hero []
   [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
 
@@ -14,6 +26,9 @@
    ;;         bg-repeat
    ;;         bg-[length:300px]
    ;;         opacity-[0.1]"}]
+
+   ;; floating puzzles
+   ;; [floating-puzzles]
 
    ;; gradient overlay
    [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
