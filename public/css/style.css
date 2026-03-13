@@ -651,22 +651,6 @@ video {
   height: 100vh;
 }
 
-.h-20 {
-  height: 5rem;
-}
-
-.h-11 {
-  height: 2.75rem;
-}
-
-.h-16 {
-  height: 4rem;
-}
-
-.h-2 {
-  height: 0.5rem;
-}
-
 .w-full {
   width: 100%;
 }
@@ -793,11 +777,6 @@ video {
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 
-.border-ueava-light {
-  --tw-border-opacity: 1;
-  border-color: rgb(229 215 197 / var(--tw-border-opacity, 1));
-}
-
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
@@ -842,6 +821,16 @@ video {
   background-color: rgb(175 95 55 / var(--tw-bg-opacity, 1));
 }
 
+.bg-ueava-brown-950 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 37 18 / var(--tw-bg-opacity, 1));
+}
+
+.bg-ueava-cream {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 237 231 / var(--tw-bg-opacity, 1));
+}
+
 .bg-ueava-sand {
   --tw-bg-opacity: 1;
   background-color: rgb(198 171 139 / var(--tw-bg-opacity, 1));
@@ -852,19 +841,8 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
-.bg-ueava-brown-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(89 46 23 / var(--tw-bg-opacity, 1));
-}
-
-.bg-ueava-brown-950 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(74 37 18 / var(--tw-bg-opacity, 1));
-}
-
-.bg-ueava-cream {
-  --tw-bg-opacity: 1;
-  background-color: rgb(242 237 231 / var(--tw-bg-opacity, 1));
+.bg-\[url\(\'\/img\/ueava-logo\.svg\'\)\] {
+  background-image: url('/img/ueava-logo.svg');
 }
 
 .bg-gradient-to-r {
@@ -896,12 +874,20 @@ video {
   --tw-gradient-to: #c6ab8b var(--tw-gradient-to-position);
 }
 
+.bg-\[length\:300px\] {
+  background-size: 300px;
+}
+
 .bg-cover {
   background-size: cover;
 }
 
 .bg-center {
   background-position: center;
+}
+
+.bg-repeat {
+  background-repeat: repeat;
 }
 
 .p-6 {
@@ -1041,19 +1027,18 @@ video {
   color: rgb(74 37 18 / var(--tw-text-opacity, 1));
 }
 
+.text-ueava-brown-100 {
+  --tw-text-opacity: 1;
+  color: rgb(250 227 221 / var(--tw-text-opacity, 1));
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.text-ueava-brown-300 {
-  --tw-text-opacity: 1;
-  color: rgb(242 167 140 / var(--tw-text-opacity, 1));
-}
-
-.text-ueava-brown-100 {
-  --tw-text-opacity: 1;
-  color: rgb(250 227 221 / var(--tw-text-opacity, 1));
+.opacity-\[0\.1\] {
+  opacity: 0.1;
 }
 
 .shadow {
@@ -1098,6 +1083,11 @@ video {
   background-color: rgb(74 37 18 / var(--tw-bg-opacity, 1));
 }
 
+.hover\:bg-ueava-brown-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 227 221 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:bg-ueava-brown-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(146 79 44 / var(--tw-bg-opacity, 1));
@@ -1111,11 +1101,6 @@ video {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-ueava-brown-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 227 221 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-black:hover {
