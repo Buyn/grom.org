@@ -28,4 +28,6 @@
          :http-root    "public"
          :http-port    3000
          :preloads     [devtools.preload]}
-        }}}
+        }
+  :test {:target :node-test
+        :output-to "out/node-tests.js"}}}

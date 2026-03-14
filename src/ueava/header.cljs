@@ -1,6 +1,9 @@
 (ns ueava.header
   (:require
-   [reagent.core :as r]))
+    [reagent.core :as r]
+    ;; [ueava.components.navigation-menu :refer [navigation-menu]]
+    ;; [ueava.components.hamburger-menu :refer [hamburger-menu]]
+    [ueava.components.navigation-cta :refer [navigation-cta]]))
 
 
 (defonce scrolled? (r/atom false))
@@ -59,20 +62,24 @@
          [:img {:src "img/ueava-logo.svg"
                 :class "h-12"}]]
 
+        ;; [navigation-menu]
+
         ;; navigation
         [:nav {:class "hidden md:flex space-x-8 font-medium"}
          [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
          [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
          [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
          [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-         [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
+         [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
+         ]
 
-        ;; CTA
-        [:button
-         {:class "bg-orange-500 text-white px-4 py-2 rounded
-                  hover:bg-orange-600 transition 
-                  hidden md:flex space-x-8 font-medium"}
-         "Find A Vet"]
+        [navigation-cta "md:flex"]
+        ;; ;; CTA
+        ;; [:button
+        ;;  {:class "bg-orange-500 text-white px-4 py-2 rounded
+        ;;           hover:bg-orange-600 transition 
+        ;;           hidden md:flex space-x-8 font-medium"}
+        ;;  "Find A Vet"]
 
        [:button
         {:class "md:hidden text-3xl text-ueava-sand"
@@ -101,4 +108,6 @@
                           hover:bg-orange-600 
                           space-x-8 font-medium"}
                 "Find A Vet"]]
+
+        ;; [hamburger-menu]
         ]])}))

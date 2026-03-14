@@ -24,10 +24,17 @@
 
 (find-file-other-frame "./src/css/main.css")
 **** components
+***** main
 (find-file-other-frame "./src/ueava/components/hero.cljs")
 (find-file-other-frame "./src/ueava/components/benefits.cljs")
 (find-file-other-frame "./src/ueava/components/cta.cljs")
 (find-file-other-frame "./src/ueava/components/membership.cljs")
+***** header
+(find-file-other-frame "./src/ueava/components/navigation_menu.cljs")
+(find-file-other-frame "./src/ueava/components/navigation_menu_list.cljs")
+(find-file-other-frame "./src/ueava/components/navigation_cta.cljs")
+(find-file-other-frame "./src/ueava/components/hamburger_menu.cljs")
+
 
 ** tree
 *** I
@@ -2213,10 +2220,15 @@ figure {
 (find-file-other-frame "./public/img/paypal.svg")
 (find-file-other-frame "./public/img/stripe.svg")
 * tests grom.org
+** test files
+(find-file-other-frame "./src/tests/components_navigation_cta_test.cljs")
+(find-file-other-frame "./src/tests/components_navigation_menu_test.cljs")
+* CANCELED old tests grom.org
 *** core_test.cljs
 :PROPERTIES:
-:header-args: :tangle ./src/tests/core_test.cljs
+:header-args: :tangle no
 :END:
+./src/tests/core_test.cljs
 **** file core_test
 (find-file-other-frame "./src/tests/core_test")
 **** src core_test
@@ -2239,8 +2251,9 @@ node out/node-tests.js
 
 *** gig_editor_test.cljs
 :PROPERTIES:
-:header-args: :tangle ./src/tests/gig_editor_test.cljs
+:header-args: :tangle no
 :END:
+./src/tests/gig_editor_test.cljs
 **** file gig_editor_test
 (find-file-other-frame "./src/tests/gig_editor_test.cljs")
 **** src gig_editor_test
@@ -2296,8 +2309,9 @@ node out/node-tests.js
 #+end_src
 *** orders_test.cljs
 :PROPERTIES:
-:header-args: :tangle ./src/tests/orders_test.cljs
+:header-args: :tangle no
 :END:
+./src/tests/orders_test.cljs
 **** file orders_test
 (find-file-other-frame "./src/tests/orders_test.cljs")
 
@@ -2454,8 +2468,9 @@ node out/node-tests.js
 #+end_src
 *** testhelper.cljs
 :PROPERTIES:
-:header-args: :tangle ./src/tests/testhelper.cljs
+:header-args: :tangle no
 :END:
+./src/tests/testhelper.cljs
 **** file orders_test
 (find-file-other-frame "./src/tests/testhelper.cljs")
 
@@ -4108,6 +4123,200 @@ PUZZLE (быстро)
 ** лого хедера меняется при скроле
 возможно будет лучше  промониторить варианты
 ** хиро 4 изображения из логотипа
+** подскажи как сделать
+*** я тут решил немного зарефакторить нашь прекрасный код
+и столкнулся с непониманием как сделать
+      [:nav {:class "hidden md:flex space-x-8 font-medium"}
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
+код сейчас выглядит так
+я хочу выенести эти векторы в отдельный фаил 
+        [:nav {:class "hidden md:flex space-x-8 font-medium"}
+          (navigation-menu-list)]
+ чтоб это вызвалось так (чтоб избежать дублирования)
+(defn navigation-menu-list[]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"])
+ но получа что всё обеденяется в единый выктор или список при такой записи и вызове
+ как мне это вызвать так чтоб он разложилось на 5 векторов а не один?
+*** 
+into
+
+(def navigation-items
+  [{:title "Home"        :href "#"}
+   {:title "About"       :href "#"}
+   {:title "Resources"   :href "#"}
+   {:title "Membership"  :href "#"}
+   {:title "Conferences" :href "#"}])
+
+(defn navigation-menu-list []
+  [[:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]])
+*** 
+
+[:nav {...}]
++
+[child1 child2 child3]
+↓
+[:nav {...} child1 child2 child3]
+
+(into
+ [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+ (navigation-menu-list))
+
+(defn navigation-menu-list []
+  [[:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]])
+*** 
+
+(into
+ [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+ (navigation-menu-list))
+
+(defn navigation-menu-list []
+  (for [{:keys [title href]} navigation-items]
+    [:a {:href href
+         :class "hover:text-ueava-sand"}
+     title]))
+
+(def navigation-items
+  [{:title "Home"        :href "#"}
+   {:title "About"       :href "#"}
+   {:title "Resources"   :href "#"}
+   {:title "Membership"  :href "#"}
+   {:title "Conferences" :href "#"}])
+*** 
+(defn navigation-menu-list []
+  (mapv
+   (fn [{:keys [title href]}]
+     [:a {:href href
+          :class "hover:text-ueava-sand"}
+      title])
+   navigation-items))
+*** неодназначненько
+(defn header []
+  (r/create-class
+   {:component-did-mount
+    (fn []
+      (.addEventListener js/window "scroll" on-scroll))
+
+    :component-will-unmount
+    (fn []
+      (.removeEventListener js/window "scroll" on-scroll))
+
+    :reagent-render
+    (fn []
+      [:header
+       {:class
+        (str
+         "fixed top-0 left-0 w-full z-50 transition-all duration-300 "
+         (if @scrolled?
+           "bg-ueava-cream shadow text-gray-900"
+           "bg-transparent text-white"))}
+
+       [:div {:class "flex items-center justify-between px-8 py-4"}
+
+        ;; logo
+        [:a {:href "/" :class "shrink-0"}
+         [:img {:src "img/ueava-logo.svg"
+                :class "h-12"}]]
+
+        [navigation-menu]
+
+
+        [navigation-cta "md:flex"]
+
+        [hamburger-menu]
+        ]])}))
+А если я хочу более глобально разбить на элементы.
+я всеровно упираюсь в тужу самую проблему
+
+(defn hamburger-menu[]
+  [:button
+  {:class "md:hidden text-3xl text-ueava-sand"
+    :on-click #(swap! menu-open? not)}
+  ;; (if @menu-open?
+  ;;   "✕" "☰")]
+  (if @menu-open?
+    [icon-close]
+    [icon-menu])]
+
+  [:div {:class (str
+            "absolute top-full left-0 w-full bg-ueava-cream shadow-md md:hidden
+              text-ueava-brown
+              transform transition-all duration-500 ease-out "
+            (if @menu-open?
+              "opacity-100 translate-y-0"
+              "opacity-0 -translate-y-4 pointer-events-none"))}
+        [:div {:class "flex flex-col p-6 space-y-4"}
+          ;; navigation
+          ;; [navigation-menu-list]
+          (navigation-menu-list)
+          ;; (into
+          ;;   [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+          ;;   (navigation-menu-list))
+
+          ;; CTA
+          [navigation-cta]]])
+
+ я получу вектор а не хикап элементы для структуры!
+ каккое тут решение? так чтою не обеденять их все в единый вектор и излишне всё усложнять?
+*** :<> я ненашол документации описываюшую данный символ
+Ты уверен?
+можешь направить меня на документацию?
+
+[:<>
+
+[:f> react/Fragment
+ [child-a]
+ [child-b]]
+*** 
+
+(ns ueava.header
+  (:require 
+      [reagent.core :as r]
+      [ueava.components.navigation-menu :refer [navigation-menu]]
+      [ueava.components.navigation-menu-list :refer [navigation-menu-list]]
+      [ueava.components.navigation-cta :refer [navigation-cta]]
+      [ueava.components.hamburger-menu :refer [hamburger-menu]]))
+
+navigation-menu-icon
+*** всё ещё не убедила!
+(defn navigation-menu-list[]
+  [:<>
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
+   ]
+  )
+
+(defn navigation-menu[]
+        ;; navigation
+   [:nav {:class "hidden md:flex space-x-8 font-medium"}
+          [navigation-menu-list]])
+
+  (is (= (navigation-menu)
+           [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]]))
+  )
+
+FAIL in (navigation-menu-test) (tests/components_navigation_menu_test.cljs:11:7)
+expected: (= (navigation-menu) [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]])
+  actual: (not (= [:nav {:class "hidden md:flex space-x-8 font-medium"} [#object[ueava$components$navigation_menu_list$navigation_menu_list]]] [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]]))
+*** ладно покожи что Ты предлогаешь!
 ** DONE как указать tree
 чтоб проигнорировать папку
 скажем сделать трии начиная с текушей папку но проигнорировать .git
@@ -4570,7 +4779,6 @@ FOOTER
 ;;     [:div.card
 ;;      [:h3 "Herp Blerp"]
 ;;      [:p "Monthly newsletter and announcements"]]]])
-
 
 ** DONE benefits cards
 ** DONE CTA banner
