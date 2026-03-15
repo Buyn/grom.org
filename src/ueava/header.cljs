@@ -98,12 +98,26 @@
                   (if @menu-open?
                     "opacity-100 translate-y-0"
                     "opacity-0 -translate-y-4 pointer-events-none"))}
-              [:div {:class "flex flex-col p-6 space-y-4"}
-            [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-            [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-            [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-            [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-            [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
+
+            ;;   [:div {:class "flex flex-col p-6 space-y-4"}
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
+
+         (into [:div
+                ;; {:class "flex flex-col p-6 space-y-4"}
+                {:class "flex flex-col items-center text-center p-6 space-y-4"}
+                ]
+
+                (for [{:keys [title href]} navigation-items]
+                  [:a {:href href
+                      :key title
+                      ;; :class "hover:text-ueava-sand"}
+                      :class "text-lg font-medium hover:text-ueava-sand transition"}
+                        title]))
+
               [:button
                 {:class "bg-orange-500 text-white px-4 py-2 rounded
                           hover:bg-orange-600 

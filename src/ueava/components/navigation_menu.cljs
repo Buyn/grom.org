@@ -11,9 +11,16 @@
   ;;  [:nav {:class "hidden md:flex space-x-8 font-medium"}]
   ;;         [navigation-menu-list]))
 
+  ;; (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+  ;;   (navigation-menu-list)))
   (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
-    (navigation-menu-list)))
+    (for [{:keys [title href]} navigation-items]
+      [:a {:href href
+          :key title
+          :class "hover:text-ueava-sand"}
+            title])))
 
+  
         ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}
         ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
         ;; [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
