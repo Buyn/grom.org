@@ -2948,7 +2948,273 @@ tailwind стили как у arav
 
 * TODO
 ** поправить разметку футера
-я заменил логотип
+*** (ns ueava.footer)
+
+(defn footer []
+  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
+
+   ;; grid
+   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
+
+    ;; logo + about
+    [:div
+     [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+            }]
+
+     [:p {:class "text-sm leading-relaxed"}
+      "UEAVA is a global community dedicated to improving reptile
+       and amphibian veterinary medicine, conservation and welfare."]
+     ]
+
+    ;; navigation
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
+
+    ;; resources
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
+
+    ;; newsletter
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
+
+     [:p {:class "text-sm mb-4"}
+      "Subscribe to receive updates and news."]
+
+     [:div {:class "flex"}
+      [:input {:type "email"
+               :placeholder "Email"
+               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
+
+      [:button
+       ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
+       {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
+       "Join"]]]]
+
+   ;; bottom line
+   [:div {:class "border-t border-gray-800"}
+
+    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
+
+     [:span "© 2026 UEAVA"]
+
+     [:div {:class "flex gap-6 mt-3 md:mt-0"}
+      [:a {:href "#" :class "hover:text-white"} "Privacy"]
+      [:a {:href "#" :class "hover:text-white"} "Terms"]
+      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
+*** я заменил логотип в футере
+и разметка поплыла.
+блок логотипа и текста подним выпал из раметки.
+логотип занял всё пространство, которое занимал вместе с текстом
+а текст под ним ушол далеко вниз, начиная от обшей текстовой лини текстовых блоко.
+есть идеи как это поправить?
+*** 
+
+[:div {:class "flex flex-col gap-4"}
+
+ [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+        :class "max-w-[220px] h-auto"}]
+
+ [:p {:class "text-sm leading-relaxed"}
+  "UEAVA is a global community dedicated to improving reptile
+   and amphibian veterinary medicine, conservation and welfare."]]
+
+
+[:img {:src "img/ueava-logo-hor-nobg-wt.png"
+       :class "max-w-[220px] h-auto mb-4"}]
+*** 
+
+/home/buyn/Dev/ClojureScript/grom.org/public/img/ueava-logo-hor-nobg-wt.png
+*** (ns ueava.footer)
+
+(defn footer []
+  ;; [:footer {:class "bg-gray-900 text-gray-300"}
+  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
+  ;; [:footer {:class ":bg-gradient-to-r from-ueava-brown to-ueava-sand"}
+
+   ;; grid
+   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
+    [:div {:class "flex flex-col gap-4"}
+
+      [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+              :class "max-w-[220px] h-auto"}]
+
+      [:p {:class "text-sm leading-relaxed"}
+        "UEAVA is a global community dedicated to improving reptile
+        and amphibian veterinary medicine, conservation and welfare."]]
+
+    ;; navigation
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
+
+    ;; resources
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
+
+    ;; newsletter
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
+
+     [:p {:class "text-sm mb-4"}
+      "Subscribe to receive updates and news."]
+
+     [:div {:class "flex"}
+      [:input {:type "email"
+               :placeholder "Email"
+               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
+
+      [:button
+       ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
+       {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
+       "Join"]]]]
+
+   ;; bottom line
+   [:div {:class "border-t border-gray-800"}
+
+    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
+
+     [:span "© 2026 UEAVA"]
+
+     [:div {:class "flex gap-6 mt-3 md:mt-0"}
+      [:a {:href "#" :class "hover:text-white"} "Privacy"]
+      [:a {:href "#" :class "hover:text-white"} "Terms"]
+      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
+*** я заменил логотип в футере
+и разметка поплыла.
+вот как это выглядит и вот отдельно новый логотип
+блок логотипа и текста подним выпал из разметки.
+логотип занял всё пространство, которое занимал вместе с текстом
+а текст под ним ушол далеко вниз, начиная от обшей текстовой лини текстовых блоко.
+есть идеи как это поправить?
+*** (defn footer []
+  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
+
+   ;; grid
+   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
+
+    ;; logo + about
+
+    [:div {:class "flex flex-col gap-4 items-start"}
+
+      [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+              :class "w-[220px] h-auto"}]
+
+      [:p {:class "text-sm leading-relaxed max-w-[260px]"}
+        "UEAVA is a global community dedicated to improving reptile
+        and amphibian veterinary medicine, conservation and welfare."]]
+
+    ;; navigation
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
+
+    ;; resources
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
+
+    ;; newsletter
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
+
+     [:p {:class "text-sm mb-4"}
+      "Subscribe to receive updates and news."]
+
+     [:div {:class "flex"}
+      [:input {:type "email"
+               :placeholder "Email"
+               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
+
+      [:button
+       ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
+       {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
+       "Join"]]]]
+
+   ;; bottom line
+   [:div {:class "border-t border-gray-800"}
+
+    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
+
+     [:span "© 2026 UEAVA"]
+
+     [:div {:class "flex gap-6 mt-3 md:mt-0"}
+      [:a {:href "#" :class "hover:text-white"} "Privacy"]
+      [:a {:href "#" :class "hover:text-white"} "Terms"]
+      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
+*** нето
+логотип немного двигается, но не один из приведёных вариантов, не делает нормальной форматирование.
+собстно как видешь результат почти не измеился.
+уточню навсякий случай если это не очивидн.
+я использую кложурскрипт с тайлвингом и реагентом.
+и нет прошлый логотип не был квадратным но был свг.
+ueava-logo.svg
+ещё варианты что пошло не так?
+и как это исправить?
+*** 
+
+:grid gap-10 md:grid-cols-4 items-start
+:grid gap-10 md:grid-cols-4 items-start
+
+:grid
+{:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4 items-start"}
+*** ладно предложи свой вариант
+*** всё также сломано!
+видемо ты не правельно понимаешь причину.
+я попробыл посмотреть и в другом браузере, но нет это независит от браузера.
+ещё идеи?
+
+:class "w-[220px] h-[60px] object-contain"
+[:div {:class "h-[60px] overflow-hidden"}
+ [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+        :class "w-[220px]"}]]
+outline: 1px solid red;
+*** да пнг реально кривой.
+неодна из указаных команд не исправляет форматирование
+да это всё пустое пространство это прозрачная зона.
+понял что можно отредактировать и обрезать в ручную.
+но можно програмно сказать использовать не всё исзображение а обрезать его сверху и снизу?
+или только руками обрезать пнг?
+*** 
+      [:div {:class "h-[100px] overflow-hidden"}
+        [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+                :class "w-[220px]"}]]
+да это работает и обрезает изображение, но отрезает низ изображения.
+а нужная нам часть в середини изображения. тоесть нужно нетолько отрезать, но начать отображать с отступом от верхней краници изображения.
+тоесть нам ненужен верх и низ. Нужна узкая полоза по середине!
 ** DONE в гамбургер меню сделать центрование
 тоесть сейчас в гамбургер меню всё прижато к левому краю
 было бы логичней чтоб оно было посреди экрана а не слева
