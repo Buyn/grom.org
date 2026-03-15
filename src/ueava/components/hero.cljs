@@ -1,34 +1,11 @@
 (ns ueava.components.hero)
 
-;; (defn floating-puzzles []
-;;   [:<>
-   
-;;    [:img {:src "/img/ueava-logo.svg"
-;;           :class "absolute top-20 left-20 w-64 opacity-[0.04] animate-floatSlow"}]
-
-;;    [:img {:src "/img/ueava-logo.svg"
-;;           :class "absolute bottom-20 right-20 w-72 opacity-[0.03] animate-floatSlow2"}]
-
-;;    [:img {:src "/img/ueava-logo.svg"
-;;           :class "absolute top-1/2 left-1/3 w-56 opacity-[0.04] animate-floatSlow"}]])
-
 (defn hero []
   [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
 
    ;; background image
    [:div {:class "absolute inset-0 bg-cover bg-center"
           :style {:background-image "url('img/Hero_Slide_2-1.webp')"}}]
-
-   ;; pattern overlay
-   ;; [:div {:class
-   ;;        "absolute inset-0
-   ;;         bg-[url('/img/ueava-logo.svg')]
-   ;;         bg-repeat
-   ;;         bg-[length:300px]
-   ;;         opacity-[0.1]"}]
-
-   ;; floating puzzles
-   ;; [floating-puzzles]
 
    ;; gradient overlay
    [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
@@ -45,12 +22,7 @@
 
     [:div {:class "flex justify-center gap-4"}
      [:button
-      ;; {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
-      ;; {:class "bg-ueava-brown hover:bg-ueava-sand text-white px-8 py-3 rounded"}
       {:class "bg-ueava-brown-600 hover:bg-ueava-brown-700 text-white px-8 py-3 rounded"}
-      ;; {:class "bg-ueava-sand text-ueava-brown
-      ;;         hover:bg-ueava-brown hover:text-ueava-sand
-      ;;         text-white px-8 py-3 rounded"}
       "Become a Member"]
 
      [:button {:class "border border-white px-8 py-3 rounded hover:bg-white hover:text-black transition"}
