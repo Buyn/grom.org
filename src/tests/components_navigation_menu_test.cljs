@@ -9,5 +9,5 @@
   ;;         [:button {:class "bg-orange-500 text-white px-4 py-2 rounded\n            hover:bg-orange-600 transition \n            hidden space-x-8 font-medium "} "Find A Vet"]))
 
   (is (= (navigation-menu)
-           [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]]))
+           [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :key "Home", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :key "About", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :key "Resources", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :key "Membership", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :key "Conferences", :class "hover:text-ueava-sand"} "Conferences"]]))
   )

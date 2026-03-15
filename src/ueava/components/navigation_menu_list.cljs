@@ -22,6 +22,7 @@
 (defn navigation-menu-list []
   (for [{:keys [title href]} navigation-items]
     [:a {:href href
+         :key title
          :class "hover:text-ueava-sand"}
           title]))
 

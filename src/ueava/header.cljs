@@ -1,7 +1,8 @@
 (ns ueava.header
   (:require
     [reagent.core :as r]
-    ;; [ueava.components.navigation-menu :refer [navigation-menu]]
+    [ueava.components.navigation-menu :refer [navigation-menu]]
+    [ueava.components.navigation-menu-list :refer [navigation-items]]
     ;; [ueava.components.hamburger-menu :refer [hamburger-menu]]
     [ueava.components.navigation-cta :refer [navigation-cta]]))
 
@@ -62,16 +63,16 @@
          [:img {:src "img/ueava-logo.svg"
                 :class "h-12"}]]
 
-        ;; [navigation-menu]
+        [navigation-menu]
 
         ;; navigation
-        [:nav {:class "hidden md:flex space-x-8 font-medium"}
-         [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-         [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-         [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-         [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-         [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
-         ]
+        ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
+        ;;  ]
 
         [navigation-cta "md:flex"]
         ;; ;; CTA
