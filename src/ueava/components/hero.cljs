@@ -62,14 +62,28 @@
 (defn random-delay []
   (+ 7000 (rand-int 13000)))
 
-;; velocity-based duration
+(defn clamp [x min max]
+  (-> x (max min) (min max)))
+
+(defn lerp [a b t]
+  (+ a (* (- b a) t)))
+
+(defn ease-out [t]
+  (- 1 (* (- 1 t) (- 1 t))))
+
 (defn compute-duration [last-ts]
-  (let [dt (- (now) last-ts)]
-    ;; faster interaction → shorter animation
-    (cond
-      (< dt 1000) 100
-      (< dt 2000) 500
-      :else 700)))
+  (let [dt (- (now) last-ts)
+        min-dt 1000
+        max-dt 3000
+        min-duration 100
+        max-duration 700
+        ;; normalize dt to 0..1
+        t (-> (/ (- dt min-dt)
+                 (- max-dt min-dt))
+              (clamp 0 1))]
+    (js/Math.round
+     ;; (lerp min-duration max-duration t))))
+      (lerp min-duration max-duration (ease-out t)))))
 
 ;; ----------------------------
 ;; transition
