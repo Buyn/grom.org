@@ -182,7 +182,11 @@
     [:div {:class "relative z-40 text-white text-center max-w-2xl"}
      [:h1 {:class "text-5xl font-bold mb-4"} title]
      [:p {:class "text-xl mb-6"} text]
-     [:button {:class "bg-white text-black px-6 py-3 rounded-lg"} btn]]))
+     [:button {:class "bg-white text-ueava-brown px-6 py-3 rounded-lg hover:bg-ueava-brown-100"} btn]]))
+     ;; [:button {:class "bg-ueava-brown-600 hover:bg-ueava-brown-700 text-white px-8 py-3 rounded"} btn]]))
+     ;; [:button {:class "bg-white text-ueava-brown
+     ;;                    px-4 rounded-r
+     ;;                    hover:bg-ueava-brown-100"} btn]]))
 
 ;; ----------------------------
 ;; navigation

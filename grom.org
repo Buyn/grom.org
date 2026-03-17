@@ -3704,7 +3704,7 @@ auto rotate
 user hover
 ↓
 manual override
-*** arhiv
+*** CANCELED arhiv
 
         ;; [:div {:class "absolute left-1/2 -translate-x-1/2 animate-bounce"}
 
@@ -3741,6 +3741,7 @@ manual override
 ;;    ;; scroll indicator
 ;;    [:div {:class "absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"}
 ;;     [:span {:class "text-white text-2xl"} "↓"]]])
+*** CANCELED arhiv
 ** DONE подсветка текушего
 *** (ns ueava.components.hero
   (:require
