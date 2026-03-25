@@ -7,7 +7,7 @@ if((typeof ueava !== 'undefined') && (typeof ueava.components !== 'undefined') &
 } else {
 ueava.components.hero.timer_id = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(null);
 }
-ueava.components.hero.slides = new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"chameleon","chameleon",-2096197987),new cljs.core.Keyword(null,"img","img",1442687358),"img/Hero_Slide_1_chameleon.jpg",new cljs.core.Keyword(null,"title","title",636505583),"Explore the world of reptile and amphibian medicine.",new cljs.core.Keyword(null,"text","text",-1790561697),"Specialized care for exotic animals.",new cljs.core.Keyword(null,"btn","btn",1978294651),"Become Member"], null),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"owl","owl",-23233972),new cljs.core.Keyword(null,"img","img",1442687358),"img/Hero_Slide_2_owl.jpg",new cljs.core.Keyword(null,"title","title",636505583),"Making avian medicine accessible, clear, and practical.",new cljs.core.Keyword(null,"text","text",-1790561697),"Support for bird specialists worldwide.",new cljs.core.Keyword(null,"btn","btn",1978294651),"Learn More"], null),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"rabbit","rabbit",-447894503),new cljs.core.Keyword(null,"img","img",1442687358),"img/Hero_Slide_3_rabbit.jpg",new cljs.core.Keyword(null,"title","title",636505583),"Advance your expertise in small mammal medicine.",new cljs.core.Keyword(null,"text","text",-1790561697),"Advanced treatment for rabbits and rodents.",new cljs.core.Keyword(null,"btn","btn",1978294651),"Join UEAVA"], null),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"bear","bear",-413943675),new cljs.core.Keyword(null,"img","img",1442687358),"img/Hero_Slide_4_bear.jpg",new cljs.core.Keyword(null,"title","title",636505583),"Make an impact in wildlife and exotic animal medicine.",new cljs.core.Keyword(null,"text","text",-1790561697),"Supporting vets working with wildlife.",new cljs.core.Keyword(null,"btn","btn",1978294651),"Discover"], null)], null);
+ueava.components.hero.slides = new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"chameleon","chameleon",-2096197987),new cljs.core.Keyword(null,"img","img",1442687358),"img/Hero_Slide_1_chameleon.jpg",new cljs.core.Keyword(null,"title","title",636505583),"Explore the world of reptile and amphibian medicine.",new cljs.core.Keyword(null,"text","text",-1790561697)," ",new cljs.core.Keyword(null,"btn","btn",1978294651),"Become Member"], null),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"owl","owl",-23233972),new cljs.core.Keyword(null,"img","img",1442687358),"img/Hero_Slide_2_owl.jpg",new cljs.core.Keyword(null,"title","title",636505583),"Making avian medicine accessible, clear, and practical.",new cljs.core.Keyword(null,"text","text",-1790561697)," ",new cljs.core.Keyword(null,"btn","btn",1978294651),"Learn More"], null),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"rabbit","rabbit",-447894503),new cljs.core.Keyword(null,"img","img",1442687358),"img/Hero_Slide_3_rabbit.jpg",new cljs.core.Keyword(null,"title","title",636505583),"Advance your expertise in small mammal medicine.",new cljs.core.Keyword(null,"text","text",-1790561697)," ",new cljs.core.Keyword(null,"btn","btn",1978294651),"Join UEAVA"], null),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"bear","bear",-413943675),new cljs.core.Keyword(null,"img","img",1442687358),"img/Hero_Slide_4_bear.jpg",new cljs.core.Keyword(null,"title","title",636505583),"Make an impact in wildlife and exotic animal medicine.",new cljs.core.Keyword(null,"text","text",-1790561697)," ",new cljs.core.Keyword(null,"btn","btn",1978294651),"Discover"], null)], null);
 ueava.components.hero.slide_count = cljs.core.count(ueava.components.hero.slides);
 ueava.components.hero.now = (function ueava$components$hero$now(){
 return Date.now();
@@ -37,11 +37,11 @@ return (700);
 }
 });
 ueava.components.hero.go_BANG_ = (function ueava$components$hero$go_BANG_(idx,dir){
-var map__12549 = cljs.core.deref(ueava.components.hero.state);
-var map__12549__$1 = cljs.core.__destructure_map(map__12549);
-var current = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12549__$1,new cljs.core.Keyword(null,"current","current",-1088038603));
-var anim = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12549__$1,new cljs.core.Keyword(null,"anim","anim",-1276068045));
-var last_ts = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12549__$1,new cljs.core.Keyword(null,"last-ts","last-ts",-1610675580));
+var map__12593 = cljs.core.deref(ueava.components.hero.state);
+var map__12593__$1 = cljs.core.__destructure_map(map__12593);
+var current = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12593__$1,new cljs.core.Keyword(null,"current","current",-1088038603));
+var anim = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12593__$1,new cljs.core.Keyword(null,"anim","anim",-1276068045));
+var last_ts = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12593__$1,new cljs.core.Keyword(null,"last-ts","last-ts",-1610675580));
 if(((cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(idx,current)) && (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(anim,new cljs.core.Keyword(null,"idle","idle",-2007156861))))){
 var duration = ueava.components.hero.compute_duration(last_ts);
 cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$variadic(ueava.components.hero.state,cljs.core.assoc,new cljs.core.Keyword(null,"prev","prev",-1597069226),current,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"current","current",-1088038603),idx,new cljs.core.Keyword(null,"dir","dir",1734754661),dir,new cljs.core.Keyword(null,"anim","anim",-1276068045),new cljs.core.Keyword(null,"prepare","prepare",-1449654665),new cljs.core.Keyword(null,"duration","duration",1444101068),duration,new cljs.core.Keyword(null,"last-ts","last-ts",-1610675580),ueava.components.hero.now()], 0));
@@ -64,12 +64,12 @@ clearTimeout(cljs.core.deref(ueava.components.hero.timer_id));
 }
 
 return cljs.core.reset_BANG_(ueava.components.hero.timer_id,setTimeout((function (){
-var map__12550_12557 = cljs.core.deref(ueava.components.hero.state);
-var map__12550_12558__$1 = cljs.core.__destructure_map(map__12550_12557);
-var current_12559 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12550_12558__$1,new cljs.core.Keyword(null,"current","current",-1088038603));
-var anim_12560 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12550_12558__$1,new cljs.core.Keyword(null,"anim","anim",-1276068045));
-if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(anim_12560,new cljs.core.Keyword(null,"idle","idle",-2007156861))){
-ueava.components.hero.go_BANG_(ueava.components.hero.next_random(current_12559),new cljs.core.Keyword(null,"right","right",-452581833));
+var map__12594_12601 = cljs.core.deref(ueava.components.hero.state);
+var map__12594_12602__$1 = cljs.core.__destructure_map(map__12594_12601);
+var current_12603 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12594_12602__$1,new cljs.core.Keyword(null,"current","current",-1088038603));
+var anim_12604 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12594_12602__$1,new cljs.core.Keyword(null,"anim","anim",-1276068045));
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(anim_12604,new cljs.core.Keyword(null,"idle","idle",-2007156861))){
+ueava.components.hero.go_BANG_(ueava.components.hero.next_random(current_12603),new cljs.core.Keyword(null,"right","right",-452581833));
 } else {
 }
 
@@ -94,36 +94,36 @@ return "translateX(100%)";
 }
 });
 ueava.components.hero.background = (function ueava$components$hero$background(){
-var map__12551 = cljs.core.deref(ueava.components.hero.state);
-var map__12551__$1 = cljs.core.__destructure_map(map__12551);
-var current = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12551__$1,new cljs.core.Keyword(null,"current","current",-1088038603));
-var prev = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12551__$1,new cljs.core.Keyword(null,"prev","prev",-1597069226));
-var dir = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12551__$1,new cljs.core.Keyword(null,"dir","dir",1734754661));
-var anim = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12551__$1,new cljs.core.Keyword(null,"anim","anim",-1276068045));
-var duration = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12551__$1,new cljs.core.Keyword(null,"duration","duration",1444101068));
+var map__12595 = cljs.core.deref(ueava.components.hero.state);
+var map__12595__$1 = cljs.core.__destructure_map(map__12595);
+var current = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12595__$1,new cljs.core.Keyword(null,"current","current",-1088038603));
+var prev = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12595__$1,new cljs.core.Keyword(null,"prev","prev",-1597069226));
+var dir = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12595__$1,new cljs.core.Keyword(null,"dir","dir",1734754661));
+var anim = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12595__$1,new cljs.core.Keyword(null,"anim","anim",-1276068045));
+var duration = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12595__$1,new cljs.core.Keyword(null,"duration","duration",1444101068));
 var curr = cljs.core.nth.cljs$core$IFn$_invoke$arity$2(ueava.components.hero.slides,current);
 var prev_slide = (cljs.core.truth_(prev)?cljs.core.nth.cljs$core$IFn$_invoke$arity$2(ueava.components.hero.slides,prev):null);
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"absolute inset-0 overflow-hidden"], null),(cljs.core.truth_(prev_slide)?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"key","key",-1516042587),["prev-",cljs.core.str.cljs$core$IFn$_invoke$arity$1(prev)].join(''),new cljs.core.Keyword(null,"class","class",-2030961996),"absolute inset-0 bg-cover bg-center z-10",new cljs.core.Keyword(null,"style","style",-496642736),ueava.components.hero.bg_style(new cljs.core.Keyword(null,"img","img",1442687358).cljs$core$IFn$_invoke$arity$1(prev_slide),((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(anim,new cljs.core.Keyword(null,"run","run",-1821166653)))?ueava.components.hero.leave_transform(dir):"translateX(0%)"),duration)], null)], null):null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"key","key",-1516042587),["curr-",cljs.core.str.cljs$core$IFn$_invoke$arity$1(current)].join(''),new cljs.core.Keyword(null,"class","class",-2030961996),"absolute inset-0 bg-cover bg-center z-20",new cljs.core.Keyword(null,"style","style",-496642736),ueava.components.hero.bg_style(new cljs.core.Keyword(null,"img","img",1442687358).cljs$core$IFn$_invoke$arity$1(curr),((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(anim,new cljs.core.Keyword(null,"prepare","prepare",-1449654665)))?ueava.components.hero.enter_transform(dir):((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(anim,new cljs.core.Keyword(null,"run","run",-1821166653)))?"translateX(0%)":"translateX(0%)"
 )),duration)], null)], null)], null);
 });
 ueava.components.hero.content = (function ueava$components$hero$content(){
-var map__12552 = cljs.core.deref(ueava.components.hero.state);
-var map__12552__$1 = cljs.core.__destructure_map(map__12552);
-var current = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12552__$1,new cljs.core.Keyword(null,"current","current",-1088038603));
-var map__12553 = cljs.core.nth.cljs$core$IFn$_invoke$arity$2(ueava.components.hero.slides,current);
-var map__12553__$1 = cljs.core.__destructure_map(map__12553);
-var title = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12553__$1,new cljs.core.Keyword(null,"title","title",636505583));
-var text = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12553__$1,new cljs.core.Keyword(null,"text","text",-1790561697));
-var btn = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12553__$1,new cljs.core.Keyword(null,"btn","btn",1978294651));
+var map__12596 = cljs.core.deref(ueava.components.hero.state);
+var map__12596__$1 = cljs.core.__destructure_map(map__12596);
+var current = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12596__$1,new cljs.core.Keyword(null,"current","current",-1088038603));
+var map__12597 = cljs.core.nth.cljs$core$IFn$_invoke$arity$2(ueava.components.hero.slides,current);
+var map__12597__$1 = cljs.core.__destructure_map(map__12597);
+var title = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12597__$1,new cljs.core.Keyword(null,"title","title",636505583));
+var text = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12597__$1,new cljs.core.Keyword(null,"text","text",-1790561697));
+var btn = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12597__$1,new cljs.core.Keyword(null,"btn","btn",1978294651));
 return new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"relative z-40 text-white text-center max-w-2xl"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h1","h1",-1896887462),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"text-5xl font-bold mb-4"], null),title], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"text-xl mb-6"], null),text], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button","button",1456579943),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"bg-white text-ueava-brown px-6 py-3 rounded-lg hover:bg-ueava-brown-100"], null),btn], null)], null);
 });
-ueava.components.hero.nav_item = (function ueava$components$hero$nav_item(idx,p__12554){
-var map__12555 = p__12554;
-var map__12555__$1 = cljs.core.__destructure_map(map__12555);
-var img = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12555__$1,new cljs.core.Keyword(null,"img","img",1442687358));
-var map__12556 = cljs.core.deref(ueava.components.hero.state);
-var map__12556__$1 = cljs.core.__destructure_map(map__12556);
-var current = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12556__$1,new cljs.core.Keyword(null,"current","current",-1088038603));
+ueava.components.hero.nav_item = (function ueava$components$hero$nav_item(idx,p__12598){
+var map__12599 = p__12598;
+var map__12599__$1 = cljs.core.__destructure_map(map__12599);
+var img = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12599__$1,new cljs.core.Keyword(null,"img","img",1442687358));
+var map__12600 = cljs.core.deref(ueava.components.hero.state);
+var map__12600__$1 = cljs.core.__destructure_map(map__12600);
+var current = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12600__$1,new cljs.core.Keyword(null,"current","current",-1088038603));
 var trigger_BANG_ = (function (){
 ueava.components.hero.go_BANG_(idx,new cljs.core.Keyword(null,"right","right",-452581833));
 
