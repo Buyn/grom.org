@@ -9,7 +9,8 @@
      "Join the Professional Community Advancing Exotic Animal Medicine"]
 
     [:p {:class "mb-8 text-lg"}
-     " Become part of UEAVA — a veterinary association uniting professionals in exotic animal."]
+     ;; " Become part of UEAVA — a veterinary association uniting professionals in exotic animal."]
+     " Become part of Ukrainian Exotic Animal Veterinary Association — a veterinary association uniting professionals in exotic animal."]
 
     [:button {:class "bg-white text-ueava-brown px-8 py-3 rounded font-semibold hover:bg-gray-100"}
      "Join UEAVA"]]])

@@ -24,29 +24,29 @@
   [{:key :chameleon
     :img "img/Hero_Slide_1_chameleon.jpg"
     :title "Explore the world of reptile and amphibian medicine."
-    ;; :text "Specialized care for exotic animals."
-    :text " "
+    :text "Specialized care for exotic animals."
+    ;; :text " "
     :btn "Become Member"}
 
    {:key :owl
     :img "img/Hero_Slide_2_owl.jpg"
     :title "Making avian medicine accessible, clear, and practical."
-    ;; :text "Support for bird specialists worldwide."
-    :text " "
+    :text "Support for bird specialists worldwide."
+    ;; :text " "
     :btn "Learn More"}
 
    {:key :rabbit
     :img "img/Hero_Slide_3_rabbit.jpg"
     :title "Advance your expertise in small mammal medicine."
-    ;; :text "Advanced treatment for rabbits and rodents."
-    :text " "
+    :text "Advanced treatment for rabbits and rodents."
+    ;; :text " "
     :btn "Join UEAVA"}
 
    {:key :bear
     :img "img/Hero_Slide_4_bear.jpg"
     :title "Make an impact in wildlife and exotic animal medicine."
-    ;; :text "Supporting vets working with wildlife."
-    :text " "
+    :text "Supporting vets working with wildlife."
+    ;; :text " "
     :btn "Discover"}])
 
 (def slide-count (count slides))
