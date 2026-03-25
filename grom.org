@@ -2947,7 +2947,7 @@ tailwind стили как у arav
 без ксс это работать не будет
 
 * TODO
-** заменить тексты на английском
+** DONE заменить тексты на английском
 *** 
 Darina Haos, [24.03.2026 13:25]
 Привіт)
@@ -2974,6 +2974,17 @@ Darina Haos, [24.03.2026 13:38]
 
 Darina Haos, [24.03.2026 13:39]
 І питання чи зможемо ми зробити і українською також, я перекладу якщо треба буде, щоб було "вирізав, вставив"?
+*** ответ
+заменил текст на английско.
+проверь, пожалусто, что я всё правельно понял.
+** поменять кта
+Headline: Join the Professional Community Advancing Exotic Animal Medicine
+
+Subheadline:
+Become part of UEAVA — a veterinary association uniting professionals in exotic animal.
+
+Button:
+Join UEAVA
 ** как лучше сделать смену языка
 *** как отдельную страницу?
 *** или сдать меняя одну единственную
