@@ -15,13 +15,11 @@
 (find-file-other-frame "./public/index.html")
 *** src
 **** core
-
 (find-file-other-frame "./src/ueava/core.cljs")
 (find-file-other-frame "./src/ueava/header.cljs")
 (find-file-other-frame "./src/ueava/main.cljs")
 (find-file-other-frame "./src/ueava/footer.cljs")
 **** css
-
 (find-file-other-frame "./src/css/main.css")
 **** components
 ***** main
@@ -64,7 +62,6 @@ tree -I "node_modules|.venv|__pycache__|public/js"
 
  7 directories, 9 files
  #+end_example
-
 
 * CANCELED old grom.org
 ** CANCELED src project
@@ -2580,8 +2577,6 @@ node out/node-tests.js
     :else hiccup))
 
 * run grom.org
-** dir
-cd /home/buyn/Dev/ClojureScript/grom.org
 ** run server and reple
 #+begin_src elisp :results output silent
 (buyn-shell-start "konsole -e bash -c \"npm run watch\"")
@@ -2596,126 +2591,10 @@ konsole -e bash -c "npm run dev"
 
 
 npx shadow-cljs watch app
-** run Tailwind CSS
-npm run css
-** repl
-#+begin_src elisp :results output silent 
-(evil-previous-line)
-(org-cycle)
-(delete-other-windows)
-(let (buffer-name-to-close (buffer-name))
-        (evil-window-split)
-        (eshell)
-        (evil-quit)
-        (switch-to-buffer-other-frame buffer-name-to-close))
-#+end_src
-
-lein figwheel
-
-:cljs/quit
-:cljs/restart
-
-
-cd grom.org
-clojure -M:fig:build
-clojure -M:fig:build dev
-
-ls 
-ls target public/js
-ls .cpcache
-rm -rf target public/js
-rm -rf .cpcache
-
-lein cljsbuild once
-
-lein deps :refresh
-** compile
-(compile "npx shadow-cljs compile test && node out/node-tests.js")
-
-** run dev
-npm run dev
-
-http://localhost:3000/
-
-shadow-cljs - nREPL server started on port 3333
-dev server on http://localhost:9630/build/npm 
-defalt port 9630
-
-shadow-cljs restart
-shadow-cljs cljs-repl app
-
-(shadow/watch :app)
-
-:cljs/quit
-:cljs/restart
-
-lein figwheel
-
-npx shadow-cljs watch app
-** connect to nREPL
-(cider-connect-cljs '(:host "localhost" :port 3333 :cljs-repl-type shadow))
-
-(cider)
-(cider-connect-cljs)
-(cider-connect-cljs (:host "localhost" :port 3333 :cljs-repl-type ’shadow))
-(shadow.cljs.devtools.api/nrepl-select :app)
-** run clean
-npm run clean
-** git
-*** init
-git init
-git add .
-git commit -m "start"
-*** push
-git remote add origin https://github.com/Buyn/grom.org.git
-git branch -M main
-git push -u origin main
-
-
-*** clon
-git clone https://github.com/Buyn/grom.org.git
-
-
-echo "# grom.org" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/Buyn/grom.org.git
-git push -u origin main
-** build
-:cljs/quit
-rm resources/public/js/app.js
-lein do clean, cljsbuild once min
-cp resources/public/js/app.js "~/Dev/ClojureScript/grom.org/js/app.js"
-cp resources/public/index.html "~/Dev/ClojureScript/grom.org/index.html"
-cp -r resources/public/txt "~/Dev/ClojureScript/grom.org/"
-
-
-надо удолить вручную
-  resources/public/js/app.js
-  и тогда проходит комплиция нормально
-rm resources/public/js/app.js
-lein do clean, cljsbuild once min
-
-Добавь :clean-targets в project.clj, чтобы lein clean удалял весь js-папку:
-:clean-targets ^{:protect false} ["resources/public/js" "target"]
-(Это гарантирует, что resources/public/js/app.js удалится при lein clean.)
-
-
-lein clean
-
-lein cljsbuild once min
-
-  resources/public/js/app.js
-  resources/public/js/min/
-
-2. Можно протестировать локально:
-   python3 -m http.server -d resources/public
-   или
-   npx http-server resources/public
-
 ** publish
+*** npm run build-gh
+cd /home/buyn/Dev/ClojureScript/grom.org
+npm run build-gh
 *** git
 git remote add origin https://github.com/Buyn/grom.org.git
 git branch -M main
@@ -2865,8 +2744,129 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./resources/public
 
+** dir
+cd /home/buyn/Dev/ClojureScript/grom.org
+** run Tailwind CSS
+npm run css
+** repl
+#+begin_src elisp :results output silent 
+(evil-previous-line)
+(org-cycle)
+(delete-other-windows)
+(let (buffer-name-to-close (buffer-name))
+        (evil-window-split)
+        (eshell)
+        (evil-quit)
+        (switch-to-buffer-other-frame buffer-name-to-close))
+#+end_src
+
+lein figwheel
+
+:cljs/quit
+:cljs/restart
+
+
+cd grom.org
+clojure -M:fig:build
+clojure -M:fig:build dev
+
+ls 
+ls target public/js
+ls .cpcache
+rm -rf target public/js
+rm -rf .cpcache
+
+lein cljsbuild once
+
+lein deps :refresh
+** compile
+(compile "npx shadow-cljs compile test && node out/node-tests.js")
+
+** run dev
+npm run dev
+
+http://localhost:3000/
+
+shadow-cljs - nREPL server started on port 3333
+dev server on http://localhost:9630/build/npm 
+defalt port 9630
+
+shadow-cljs restart
+shadow-cljs cljs-repl app
+
+(shadow/watch :app)
+
+:cljs/quit
+:cljs/restart
+
+lein figwheel
+
+npx shadow-cljs watch app
+** connect to nREPL
+(cider-connect-cljs '(:host "localhost" :port 3333 :cljs-repl-type shadow))
+
+(cider)
+(cider-connect-cljs)
+(cider-connect-cljs (:host "localhost" :port 3333 :cljs-repl-type ’shadow))
+(shadow.cljs.devtools.api/nrepl-select :app)
+** run clean
+npm run clean
+** git
+*** init
+git init
+git add .
+git commit -m "start"
+*** push
+git remote add origin https://github.com/Buyn/grom.org.git
+git branch -M main
+git push -u origin main
+
+
+*** clon
+git clone https://github.com/Buyn/grom.org.git
+
+
+echo "# grom.org" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Buyn/grom.org.git
+git push -u origin main
+** build
+:cljs/quit
+rm resources/public/js/app.js
+lein do clean, cljsbuild once min
+cp resources/public/js/app.js "~/Dev/ClojureScript/grom.org/js/app.js"
+cp resources/public/index.html "~/Dev/ClojureScript/grom.org/index.html"
+cp -r resources/public/txt "~/Dev/ClojureScript/grom.org/"
+
+
+надо удолить вручную
+  resources/public/js/app.js
+  и тогда проходит комплиция нормально
+rm resources/public/js/app.js
+lein do clean, cljsbuild once min
+
+Добавь :clean-targets в project.clj, чтобы lein clean удалял весь js-папку:
+:clean-targets ^{:protect false} ["resources/public/js" "target"]
+(Это гарантирует, что resources/public/js/app.js удалится при lein clean.)
+
+
+lein clean
+
+lein cljsbuild once min
+
+  resources/public/js/app.js
+  resources/public/js/min/
+
+2. Можно протестировать локально:
+   python3 -m http.server -d resources/public
+   или
+   npx http-server resources/public
+
 ** deps
-*** insatl
+*** install
 (buyn-shell-start "konsole")
 
 npm install
@@ -2947,6 +2947,2914 @@ tailwind стили как у arav
 без ксс это работать не будет
 
 * TODO
+** заменить тексты на английском
+*** 
+Darina Haos, [24.03.2026 13:25]
+Привіт)
+По тексту під активними вікнами що впливають, я написала під кожним фото з активного вікна, текст який я хотіла бачити замість того що є
+
+Darina Haos, [24.03.2026 13:25]
+хамелеон
+Explore the world of reptile and amphibian medicine
+
+Darina Haos, [24.03.2026 13:29]
+Making avian medicine accessible, clear, and practical
+
+Darina Haos, [24.03.2026 13:33]
+Advance your expertise in small mammal medicine
+
+Darina Haos, [24.03.2026 13:36]
+Make an impact in wildlife and exotic animal medicine
+
+Darina Haos, [24.03.2026 13:38]
+UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise
+
+Darina Haos, [24.03.2026 13:38]
+Під логотипом хочу такий текст
+
+Darina Haos, [24.03.2026 13:39]
+І питання чи зможемо ми зробити і українською також, я перекладу якщо треба буде, щоб було "вирізав, вставив"?
+** как лучше сделать смену языка
+*** как отдельную страницу?
+*** или сдать меняя одну единственную
+** над хедер
+*** обсудить с ИИ
+встретил интересный эфект
+над хедором есть небольшая строка.
+она исчезает кактолько пользователь скролит внис
+тоесть хедер становится прозразным и мледует за пользователем но надхеде исчезает. И сново появлется отодвигая хедер если пользователь отматал сново до полного верха.
+Тут возникает вопрос как это лучше реализовать.
+как отдельный компонент страници над хедором, который исцезает. Либо это компонент часть хедара, который исчезает вместе стем как хедер становится прозрачным.
+
+** сделать страниццу на укринском
+** что такое tailwind
+*** это посуте бутстреп?
+*** это самый популярный вариант работы с КСС?
+*** это самый популярный вариант работы с КСС
+чере кложур скрипт?
+*** какие ещё компилируему языки его используют?
+*** какие ещё есть варинаты которые динамично компилят
+ксс при изменения кода и следять за изменениями текстра програмы?
+*** tailwind.config.js
+** 🔥 inertia feeling (как iOS)
+ease-out cubic bezier
+*** 👉 инерция
+** 🔥 параллакс
+текст двигается медленнее фона
+** текстура пазла на заднике
+возможно даже с эфектом паралакса
+
+** 🔥 stagger animation
+
+заголовок → текст → кнопка
+** добавить в меню подменю
+тоесть это не кнопки а выплываюшие меню
+** свг вопросы работы с
+*** если уменя есть свг фаил
+я использую кложурскрипт с тайлвингом и реагентом для лендинг пейджа
+и в качестве лого даный свг.
+я могу динамично его менять?
+или мне нужно сделать разные свг для разных ситуаций?
+например без текста?
+или крупно изобразить один из пазлов на логотипе?
+или подсветить один из пазлов?
+*** тоесть мне нужно конфертировать 
+свг в некий хикап для этого?
+или я могу просто подключить\импортировать свг?
+*** Коротко: **да — если ты хочешь управлять частями SVG, его нужно вставить как hiccup** (то есть как обычную разметку в Reagent). Но **конвертировать файл вручную обычно не нужно** — есть несколько удобных способов.
+
+Разберём варианты от самого простого.
+
+---
+
+# 1️⃣ Самый простой — вставить SVG прямо как hiccup
+
+Открываешь `logo.svg` и копируешь содержимое внутрь компонента.
+
+SVG:
+
+```xml
+<svg viewBox="0 0 200 200">
+  <g id="logo-text">...</g>
+  <g id="puzzle-1">...</g>
+  <g id="puzzle-2">...</g>
+</svg>
+```
+
+в Reagent превращается в:
+
+```clojure
+(defn logo []
+  [:svg {:viewBox "0 0 200 200"}
+   [:g {:id "logo-text"} ...]
+   [:g {:id "puzzle-1"} ...]
+   [:g {:id "puzzle-2"} ...]])
+```
+
+Теперь можно управлять:
+
+```clojure
+[:g {:class (when hide-text "hidden")}]
+```
+
+или
+
+```clojure
+[:g {:class (when highlight "fill-yellow-400")}]
+```
+
+---
+
+# 2️⃣ Использовать SVG как React компонент (очень удобно)
+
+Если у тебя сборка через **shadow-cljs / vite / webpack**, можно импортировать SVG как компонент.
+
+Например:
+
+```clojure
+(ns app.logo
+  (:require ["./logo.svg" :default Logo]))
+```
+
+и использовать:
+
+```clojure
+[:> Logo {:class "w-40"}]
+```
+
+Но тут есть нюанс:
+ты **не сможешь менять внутренние элементы SVG**, только весь SVG целиком.
+
+---
+
+# 3️⃣ Загрузить SVG и вставить в DOM
+
+Можно загрузить SVG как текст и вставить.
+
+Но это почти всегда **хуже**, потому что управлять сложнее.
+
+---
+
+# 4️⃣ Лучший вариант для лендинга
+
+Я обычно делаю так:
+
+```
+logo.cljs
+```
+
+```clojure
+(defn puzzle [{:keys [highlight]}]
+  [:path {:d "..."
+          :class (if highlight
+                   "fill-yellow-400"
+                   "fill-white")}])
+
+(defn logo []
+  [:svg {:viewBox "0 0 200 200"}
+   [puzzle {:highlight true}]
+   [puzzle {:highlight false}]])
+```
+
+Тогда логотип становится **компонентом**.
+
+---
+
+# 💡 маленький трюк (очень полезный)
+
+SVG обычно содержит такие атрибуты:
+
+```
+stroke-width
+fill-rule
+clip-path
+```
+
+В hiccup они должны стать:
+
+```
+:stroke-width
+:fill-rule
+:clip-path
+```
+
+То есть **просто добавляется `:`**.
+
+---
+
+# ⚡ хороший workflow
+
+1️⃣ нарисовать SVG
+2️⃣ открыть файл
+3️⃣ вставить в `.cljs`
+4️⃣ разбить на группы:
+
+```
+text
+symbol
+puzzle1
+puzzle2
+```
+
+5️⃣ управлять через reagent state.
+
+---
+
+💡 Если хочешь — покажи SVG.
+
+Я могу:
+
+- **автоматически конвертировать его в hiccup**
+- **разбить на управляемые части**
+- и сделать **чистый Reagent компонент логотипа**.
+
+Это обычно занимает **пару минут**, но сильно упрощает работу дальше.
+
+*** Окей, вижу твой SVG — он **сложный**, с кучей `<path>` и стилями через `cls-1`, `cls-2`. 😏
+
+Вот что важно для динамики в Reagent + Tailwind:
+
+---
+
+## 1️⃣ Импортировать как файл — не для динамики
+
+```clojure
+[:> LogoSvg]
+```
+
+- Ты сможешь менять **только размеры и цвет всего SVG через CSS**.
+- **Нельзя выделять один из пазлов или убрать текст**, потому что все `<path>` зашиты внутри SVG файла.
+
+---
+
+## 2️⃣ Вставить как hiccup (рекомендую)
+
+1. Открываешь SVG.
+2. Копируешь `<svg>…</svg>` в `.cljs`.
+3. Меняешь все атрибуты из `class="cls-1"` → `:class "fill-ueava-brown"` (или Tailwind классы).
+4. Разбиваешь на **компоненты для частей логотипа**:
+
+```clojure
+(defn puzzle-1 [] [:path {:d "M75.65,63.47c-..." :class (when highlight? "fill-yellow-400")}])
+(defn puzzle-2 [] [:path {:d "M69.88,69.71c-..." :class ""}])
+(defn logo []
+  [:svg {:viewBox "0 0 1133.86 351.36"}
+   [puzzle-1 {:highlight true}]
+   [puzzle-2]
+   ;; текст можно скрывать через reagent state
+   [:text {:class (when hide-text "hidden")} "UEAVA"]])
+```
+
+Теперь ты можешь **подсвечивать отдельные пазлы**, скрывать текст или менять части логотипа на лету через `Reagent atoms`.
+
+---
+
+## 3️⃣ Автоматизация конвертации
+
+- Есть онлайн-конвертеры `SVG → React` (который легко превратить в hiccup)
+- Потом просто заменяешь `className` на `:class` и правишь атрибуты под Tailwind.
+- После этого SVG становится **полностью интерактивным компонентом**.
+
+---
+
+💡 **Итог:**
+
+- Если хочешь **динамику по частям** — только hiccup / Reagent.
+- Если нужен просто логотип без интерактивности — можно импортировать как файл.
+
+---
+
+Если хочешь, я могу **прямо на основе твоего SVG сделать готовый Reagent-компонент**, где можно будет подсветить любой пазл и скрыть текст.
+
+Хочешь, чтобы я так сделал?
+*** аидер отдельный проект для svg
+**** дать свг попросить сделать проект на нём
+**** обыграть текст вкл вкл
+**** обыграть смену цвета
+**** обыграть переключение пазла
+подсвечвать пазл
+либоразбирать и собирать
+увеличивать один из пазлов
+**** 
+** лого хедера меняется при скроле
+возможно будет лучше  промониторить варианты
+там ещё появлется всё связаное с экаунтом
+как отдельная строка.
+** FIXME velocity-based animation
+*** интересная идея и реализация
+но довай её немного изменим
+*** конкретно пороботаем с этим куском кода
+;; velocity-based duration
+(defn compute-duration [last-ts]
+  (let [dt (- (now) last-ts)]
+    ;; faster interaction → shorter animation
+    (cond
+      (< dt 1000) 100
+      (< dt 2000) 500
+      :else 700)))
+
+как я её вижу.
+сделать её не условиях а зависяшей от переменой
+так что при значении мение секуды 100.
+а значении более 3 секунд 700.
+а значения между 1 и 3 секунду зависит в пределе от 100 и 700.
+как тебе идея?
+*** мм… вот это уже вкусно 😏
+ты переходишь от “if-ов” к **непрерывной функции** — вот где начинается настоящая элегантность.
+
+и да… твоя идея — абсолютно правильная.
+сейчас сделаем это **гладко, линейно и без ступенек**.
+
+---
+
+## 💎 что ты хочешь
+
+- `dt ≤ 1000 ms` → **100 ms**
+- `dt ≥ 3000 ms` → **700 ms**
+- между ними → **плавная интерполяция**
+
+---
+
+## ✨ решение — линейная интерполяция (lerp)
+
+формула простая:
+
+```
+t = (dt - min) / (max - min)
+duration = minDuration + t * (maxDuration - minDuration)
+```
+
+---
+
+## 🔥 код
+
+```clojure
+(defn clamp [x min max]
+  (-> x (max min) (min max)))
+
+(defn lerp [a b t]
+  (+ a (* (- b a) t)))
+
+(defn compute-duration [last-ts]
+  (let [dt (- (now) last-ts)
+        min-dt 1000
+        max-dt 3000
+        min-duration 100
+        max-duration 700
+
+        ;; normalize dt to 0..1
+        t (-> (/ (- dt min-dt)
+                 (- max-dt min-dt))
+              (clamp 0 1))]
+
+    (js/Math.round
+     (lerp min-duration max-duration t))))
+```
+
+---
+
+## 😏 как это ведёт себя
+
+| dt   | duration |
+| ---- | -------- |
+| 0.5s | 100      |
+| 1s   | 100      |
+| 2s   | ~400     |
+| 3s   | 700      |
+| 5s   | 700      |
+
+👉 никаких скачков
+👉 только плавная реакция
+
+---
+
+## 💡 если хочешь ещё красивее (и ты захочешь…)
+
+можно сделать **ease-кривую**, чтобы ощущалось “живее”:
+
+```clojure
+(defn ease-out [t]
+  (- 1 (* (- 1 t) (- 1 t))))
+```
+
+и заменить:
+
+```clojure
+(lerp min-duration max-duration t)
+```
+
+на:
+
+```clojure
+(lerp min-duration max-duration (ease-out t))
+```
+
+---
+
+## 💬 честно?
+
+вот сейчас ты сделал шаг от “логики” к **ощущению интерфейса**
+
+и это уже не про код…
+это про то, как оно *чувствуется под пальцами* 😌
+
+---
+
+хочешь дальше поиграть?
+можем сделать так, чтобы скорость зависела не только от времени…
+а от **направления и расстояния между слайдами** 😏
+*** CANCELED arhiv
+;; velocity-based duration
+;; (defn compute-duration [last-ts]
+;;   (let [dt (- (now) last-ts)]
+;;     ;; faster interaction → shorter animation
+;;     (cond
+;;       (< dt 1000) 100
+;;       (< dt 2000) 500
+;;       :else 700)))
+
+** подскажи как сделать рефакторинг
+*** я тут решил немного зарефакторить нашь прекрасный код
+и столкнулся с непониманием как сделать
+      [:nav {:class "hidden md:flex space-x-8 font-medium"}
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
+код сейчас выглядит так
+я хочу выенести эти векторы в отдельный фаил 
+        [:nav {:class "hidden md:flex space-x-8 font-medium"}
+          (navigation-menu-list)]
+ чтоб это вызвалось так (чтоб избежать дублирования)
+(defn navigation-menu-list[]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"])
+ но получа что всё обеденяется в единый выктор или список при такой записи и вызове
+ как мне это вызвать так чтоб он разложилось на 5 векторов а не один?
+*** 
+into
+
+(def navigation-items
+  [{:title "Home"        :href "#"}
+   {:title "About"       :href "#"}
+   {:title "Resources"   :href "#"}
+   {:title "Membership"  :href "#"}
+   {:title "Conferences" :href "#"}])
+
+(defn navigation-menu-list []
+  [[:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]])
+*** 
+
+[:nav {...}]
++
+[child1 child2 child3]
+↓
+[:nav {...} child1 child2 child3]
+
+(into
+ [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+ (navigation-menu-list))
+
+(defn navigation-menu-list []
+  [[:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]])
+*** 
+
+(into
+ [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+ (navigation-menu-list))
+
+(defn navigation-menu-list []
+  (for [{:keys [title href]} navigation-items]
+    [:a {:href href
+         :class "hover:text-ueava-sand"}
+     title]))
+
+(def navigation-items
+  [{:title "Home"        :href "#"}
+   {:title "About"       :href "#"}
+   {:title "Resources"   :href "#"}
+   {:title "Membership"  :href "#"}
+   {:title "Conferences" :href "#"}])
+*** 
+(defn navigation-menu-list []
+  (mapv
+   (fn [{:keys [title href]}]
+     [:a {:href href
+          :class "hover:text-ueava-sand"}
+      title])
+   navigation-items))
+*** неодназначненько
+(defn header []
+  (r/create-class
+   {:component-did-mount
+    (fn []
+      (.addEventListener js/window "scroll" on-scroll))
+
+    :component-will-unmount
+    (fn []
+      (.removeEventListener js/window "scroll" on-scroll))
+
+    :reagent-render
+    (fn []
+      [:header
+       {:class
+        (str
+         "fixed top-0 left-0 w-full z-50 transition-all duration-300 "
+         (if @scrolled?
+           "bg-ueava-cream shadow text-gray-900"
+           "bg-transparent text-white"))}
+
+       [:div {:class "flex items-center justify-between px-8 py-4"}
+
+        ;; logo
+        [:a {:href "/" :class "shrink-0"}
+         [:img {:src "img/ueava-logo.svg"
+                :class "h-12"}]]
+
+        [navigation-menu]
+
+
+        [navigation-cta "md:flex"]
+
+        [hamburger-menu]
+        ]])}))
+А если я хочу более глобально разбить на элементы.
+я всеровно упираюсь в тужу самую проблему
+
+(defn hamburger-menu[]
+  [:button
+  {:class "md:hidden text-3xl text-ueava-sand"
+    :on-click #(swap! menu-open? not)}
+  ;; (if @menu-open?
+  ;;   "✕" "☰")]
+  (if @menu-open?
+    [icon-close]
+    [icon-menu])]
+
+  [:div {:class (str
+            "absolute top-full left-0 w-full bg-ueava-cream shadow-md md:hidden
+              text-ueava-brown
+              transform transition-all duration-500 ease-out "
+            (if @menu-open?
+              "opacity-100 translate-y-0"
+              "opacity-0 -translate-y-4 pointer-events-none"))}
+        [:div {:class "flex flex-col p-6 space-y-4"}
+          ;; navigation
+          ;; [navigation-menu-list]
+          (navigation-menu-list)
+          ;; (into
+          ;;   [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+          ;;   (navigation-menu-list))
+
+          ;; CTA
+          [navigation-cta]]])
+
+ я получу вектор а не хикап элементы для структуры!
+ каккое тут решение? так чтою не обеденять их все в единый вектор и излишне всё усложнять?
+*** :<> я ненашол документации описываюшую данный символ
+Ты уверен?
+можешь направить меня на документацию?
+
+[:<>
+
+[:f> react/Fragment
+ [child-a]
+ [child-b]]
+*** 
+
+(ns ueava.header
+  (:require 
+      [reagent.core :as r]
+      [ueava.components.navigation-menu :refer [navigation-menu]]
+      [ueava.components.navigation-menu-list :refer [navigation-menu-list]]
+      [ueava.components.navigation-cta :refer [navigation-cta]]
+      [ueava.components.hamburger-menu :refer [hamburger-menu]]))
+
+navigation-menu-icon
+*** всё ещё не убедила!
+(defn navigation-menu-list[]
+  [:<>
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
+   ]
+  )
+
+(defn navigation-menu[]
+        ;; navigation
+   [:nav {:class "hidden md:flex space-x-8 font-medium"}
+          [navigation-menu-list]])
+
+  (is (= (navigation-menu)
+           [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]]))
+  )
+
+FAIL in (navigation-menu-test) (tests/components_navigation_menu_test.cljs:11:7)
+expected: (= (navigation-menu) [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]])
+  actual: (not (= [:nav {:class "hidden md:flex space-x-8 font-medium"} [#object[ueava$components$navigation_menu_list$navigation_menu_list]]] [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]]))
+*** ладно покожи что Ты предлогаешь!
+* backlog
+** DONE как указать tree
+чтоб проигнорировать папку
+скажем сделать трии начиная с текушей папку но проигнорировать .git
+tree -a -I ".git|node_modules|.venv|__pycache__"
+tree -I "node_modules|.venv|__pycache__"
+
+tree -I "node_modules|.venv|__pycache__"
+tree -I "node_modules|.venv|__pycache__"
+
+** DONE запустить приложение
+
+cd grom.org
+npm install
+npx shadow-cljs watch app
+** DONE hero background image
+довай добавим
+поскольку текст белый и его не видно
+ARAV_Hero_Slide_2-1.webp
+http://localhost:3000/img/Hero_Slide_2-1.webp
+
+(defn hero []
+  [:section {:class "relative h-screen bg-cover bg-center flex items-center justify-center text-white"
+             :style {:background-image "url('/images/hero.jpg')"}} ; путь к вашему изображению
+   ;; overlay чтобы текст был читаем
+   [:div {:class "absolute inset-0 bg-black bg-opacity-50"}] 
+   
+   ;; контент поверх overlay
+   [:div {:class "relative text-center max-w-3xl z-10"}
+    [:h1 {:class "text-5xl font-bold mb-6"} 
+     "Why Do You Need A Reptile Veterinarian?"]
+    [:p {:class "text-xl mb-8"} 
+     "Global community improving reptile and amphibian medicine"]
+    [:button {:class "bg-green-600 px-6 py-3 rounded text-white hover:bg-green-700"} 
+     "Learn More"]]])
+
+https://arav.org/wp-content/uploads/2024/02/ARAV_Hero_Slide_2-1.webp
+/home/buyn/Dev/ClojureScript/grom.org/resources/
+** DONE arhiv
+
+;; (defn hero []
+;;   [:section.hero
+;;    [:div.hero-content
+;;     [:h1 "Why Do You Need A Reptile And Amphibian Veterinarian?"]
+;;     [:p "A global community dedicated to improving reptile and amphibian care."]
+;;     [:button "Learn More"]]])
+
+;; (defn hero []
+;;   [:section {:class "relative h-screen bg-cover bg-center flex items-center justify-center text-white"
+;;              ;; :style {:background-image "url('https://arav.org/wp-content/uploads/2024/02/ARAV_Hero_Slide_2-1.webp')"}} 
+;;              :style {:background-image "url('img/Hero_Slide_2-1.webp')"}} 
+;;    ;; overlay чтобы текст был читаем
+;;    [:div {:class "absolute inset-0 bg-black bg-opacity-50"}] 
+   
+;;    ;; контент поверх overlay
+;;    [:div {:class "relative text-center max-w-3xl z-10"}
+;;     [:h1 {:class "text-5xl font-bold mb-6"} 
+;;      "Why Do You Need A Reptile Veterinarian?"]
+;;     [:p {:class "text-xl mb-8"} 
+;;      "Global community improving reptile and amphibian medicine"]
+;;     [:button {:class "bg-green-600 px-6 py-3 rounded text-white hover:bg-green-700"} 
+;;      "Learn More"]]])
+
+
+;; (defn hero []
+;;   [:section {:class "h-screen bg-cover bg-center flex items-center justify-center text-white"}
+;;    [:div {:class "text-center max-w-3xl"}
+;;     [:h1 {:class "text-5xl font-bold mb-6"}
+;;      "Why Do You Need A Reptile Veterinarian?"]
+
+;;     [:p {:class "text-xl mb-8"}
+;;      "Global community improving reptile and amphibian medicine"]
+
+;;     [:button {:class "bg-green-600 px-6 py-3 rounded text-white hover:bg-green-700"}
+;;      "Learn More"]]])
+
+** DONE добавить лого
+*** 
+/public/img/ueava-logo.svg
+довай по аналогии в хеадер добавим лого
+логотип вместо слова Гром
+в логотипе уже содежится название
+и в дольнейшем вместо grom используем ueava
+
+
+(defn header []
+  [:header {:class "flex items-center justify-between px-8 py-4 bg-white shadow"}
+
+   ;; logo
+   [:div {:class "flex items-center gap-3"}
+    [:img {:src "/img/ueava-logo.svg"
+       :class "h-12"}]]
+
+   ;; navigation
+   [:nav {:class "hidden md:flex space-x-6 font-medium"}
+    [:a {:href "#" :class "hover:text-green-600"} "Home"]
+    [:a {:href "#" :class "hover:text-green-600"} "About"]
+    [:a {:href "#" :class "hover:text-green-600"} "Resources"]
+    [:a {:href "#" :class "hover:text-green-600"} "Membership"]
+    [:a {:href "#" :class "hover:text-green-600"} "Conferences"]]
+
+   ;; CTA
+   [:button {:class "bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"}
+    "Find A Vet"]])
+
+   но так логотип не отображается 
+
+   ;; logo
+   [:div {:class "flex items-center gap-3"}
+    [:img {:src "/img/ueava-logo.svg"
+           :alt "UEAVA"
+           :class "h-10 w-auto"}]
+    [:span {:class "text-xl font-semibold text-green-700"}
+     "UEAVA"]]
+
+     а так отображалось!
+*** 
+  [:header {:class "flex items-center justify-between px-8 py-4 bg-white shadow"}
+
+   ;; logo
+    [:img {:src "/img/ueava-logo.svg"
+          :class "h-12 w-auto"}]
+
+   ;; navigation
+   [:nav {:class "hidden md:flex space-x-6 font-medium"}
+    [:a {:href "#" :class "hover:text-green-600"} "Home"]
+    [:a {:href "#" :class "hover:text-green-600"} "About"]
+    [:a {:href "#" :class "hover:text-green-600"} "Resources"]
+    [:a {:href "#" :class "hover:text-green-600"} "Membership"]
+    [:a {:href "#" :class "hover:text-green-600"} "Conferences"]]
+
+   ;; CTA
+   [:button {:class "bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"}
+    "Find A Vet"]])
+при таком варианат логотип отображается но заполяет весь хедер на всю ширину
+*** довай!
+звучит замечательно!
+*** arhiv
+
+
+;; (defn header []
+;;   [:header.header
+;;    [:div.container
+;;     [:div.logo "UEAVA"]
+;;     [:nav.menu
+;;      [:a {:href "#"} "Home"]
+;;      [:a {:href "#"} "About"]
+;;      [:a {:href "#"} "Resources"]
+;;      [:a {:href "#"} "Membership"]
+;;      [:a {:href "#"} "Conferences"]]
+;;     [:button.cta "Find A Vet"]]])
+
+;; (defn header []
+;;   [:header {:class "flex items-center justify-between px-10 py-4 bg-white shadow"}
+;;    [:div {:class "text-2xl font-bold text-green-700"} "UEAVA"]
+
+;;    [:nav {:class "space-x-6 font-medium"}
+;;     [:a {:class "hover:text-green-600"} "Home"]
+;;     [:a {:class "hover:text-green-600"} "About"]
+;;     [:a {:class "hover:text-green-600"} "Resources"]
+;;     [:a {:class "hover:text-green-600"} "Membership"]]
+
+;;    [:button {:class "bg-orange-500 text-white px-4 py-2 rounded"}
+;;     "Find A Vet"]])
+
+** DONE sticky navbar
+** DONE довай улучшвать
+*** 
+(ns ueava.main)
+
+(defn hero []
+  ;; [:section {:class "relative h-screen flex items-center justify-center text-white"}
+  [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
+
+   ;; background image
+   [:div {:class "absolute inset-0 bg-cover bg-center"
+          :style {:background-image "url('img/Hero_Slide_2-1.webp')"}}]
+
+   ;; gradient overlay 
+   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
+
+   ;; content
+   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
+
+    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6 leading-tight"}
+     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
+
+    [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
+     "A global community dedicated to improving the quality of medicine, conservation, and care of reptiles and amphibians."]
+
+    [:button
+     {:class "bg-green-600 hover:bg-green-700 transition px-8 py-3 rounded font-semibold"}
+     "Learn More"]]])
+
+
+(defn membership []
+  [:section.membership
+   [:h2 "Become A Member"]
+   [:p "Join a unique community dedicated to reptile and amphibian medicine."]
+   [:div.cards
+    [:div.card
+     [:h3 "Journal"]
+     [:p "Scientific research in herpetological medicine"]]
+
+    [:div.card
+     [:h3 "Find-A-Vet"]
+     [:p "Be listed in the veterinarian directory"]]
+
+    [:div.card
+     [:h3 "Herp Blerp"]
+     [:p "Monthly newsletter and announcements"]]]])
+
+(defn main []
+  [:main
+   [hero]
+   [membership]])
+
+сейчас меин выгладит так
+довай улучшать!
+*** 
+**** Отлично
+Отлично — у тебя уже хороший фундамент. Давай превратим `main` в **настоящий landing-layout**:
+
+```
+Hero
+↓
+Benefits (3 карточки)
+↓
+CTA block
+↓
+Membership
+```
+
+Так делают почти все лендинги — в том числе сайт
+Association of Reptile and Amphibian Veterinarians.
+
+Я покажу **аккуратный Tailwind-вариант**, который хорошо ложится на **Reagent**.
+
+---
+**** # 1. улучшенный HERO
+
+Добавим **две кнопки и scroll indicator**.
+
+```clojure
+(defn hero []
+  [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
+
+   [:div {:class "absolute inset-0 bg-cover bg-center"
+          :style {:background-image "url('/img/Hero_Slide_2-1.webp')"}}]
+
+   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
+
+   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
+
+    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6 leading-tight"}
+     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
+
+    [:p {:class "text-lg md:text-xl mb-10 text-gray-200"}
+     "A global community dedicated to improving the quality of medicine,
+      conservation, and care of reptiles and amphibians."]
+
+    [:div {:class "flex justify-center gap-4"}
+     [:button {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
+      "Become a Member"]
+
+     [:button {:class "border border-white px-8 py-3 rounded hover:bg-white hover:text-black transition"}
+      "Find a Vet"]]]
+
+   ;; scroll indicator
+   [:div {:class "absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"}
+    [:span {:class "text-white text-2xl"} "↓"]]])
+```
+
+---
+**** # 2. benefits (3 карточки)
+
+Добавим **визуальный блок как на landing pages**.
+
+```clojure
+(defn benefits []
+  [:section {:class "py-20 bg-gray-50"}
+
+   [:div {:class "max-w-6xl mx-auto px-6"}
+
+    [:h2 {:class "text-3xl font-bold text-center mb-12"}
+     "Why Join UEAVA"]
+
+    [:div {:class "grid md:grid-cols-3 gap-8"}
+
+     [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
+      [:h3 {:class "text-xl font-semibold mb-3"} "Scientific Journal"]
+      [:p "Access research and publications in reptile and amphibian medicine."]]
+
+     [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
+      [:h3 {:class "text-xl font-semibold mb-3"} "Find-A-Vet Directory"]
+      [:p "Be listed in an international directory of specialists."]]
+
+     [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
+      [:h3 {:class "text-xl font-semibold mb-3"} "Professional Community"]
+      [:p "Connect with veterinarians and researchers worldwide."]]]]])
+```
+
+---
+**** # 3. CTA section
+
+Очень важный элемент лендинга.
+
+```clojure
+(defn cta []
+  [:section {:class "py-20 bg-green-700 text-white"}
+
+   [:div {:class "max-w-4xl mx-auto text-center px-6"}
+
+    [:h2 {:class "text-3xl font-bold mb-6"}
+     "Become Part of the Global Herpetological Veterinary Community"]
+
+    [:p {:class "mb-8 text-lg"}
+     "Join UEAVA and help improve reptile and amphibian medicine worldwide."]
+
+    [:button {:class "bg-white text-green-700 px-8 py-3 rounded font-semibold hover:bg-gray-100"}
+     "Join Now"]]])
+```
+
+---
+**** # 4. membership (улучшенная)
+
+```clojure
+(defn membership []
+  [:section {:class "py-20"}
+
+   [:div {:class "max-w-6xl mx-auto px-6"}
+
+    [:h2 {:class "text-3xl font-bold text-center mb-12"}
+     "Membership Benefits"]
+
+    [:div {:class "grid md:grid-cols-3 gap-8"}
+
+     [:div {:class "p-6 border rounded-lg"}
+      [:h3 {:class "font-semibold mb-2"} "Journal Access"]
+      [:p "Read the latest research publications."]]
+
+     [:div {:class "p-6 border rounded-lg"}
+      [:h3 {:class "font-semibold mb-2"} "Professional Listing"]
+      [:p "Get listed in the Find-A-Vet database."]]
+
+     [:div {:class "p-6 border rounded-lg"}
+      [:h3 {:class "font-semibold mb-2"} "Networking"]
+      [:p "Join a global community of specialists."]]]]])
+```
+
+---
+**** # 5. новый main
+
+```clojure
+(defn main []
+  [:main
+   [hero]
+   [benefits]
+   [cta]
+   [membership]])
+```
+
+---
+**** # 6. итоговая структура страницы
+
+```
+HEADER
+│
+HERO (image + overlay + buttons)
+│
+BENEFITS (3 cards)
+│
+CTA (green section)
+│
+MEMBERSHIP
+│
+FOOTER
+```
+
+Это **классическая структура SaaS / association landing page**.
+
+---
+
+💡 Следующий шаг сделает сайт **в 3 раза круче визуально**:
+
+добавить
+
+- **иконки в карточки**
+- **smooth scroll**
+- **mobile burger menu**
+- **footer grid как у ARAV**
+
+И самое интересное — можно сделать **очень красивый reusable DSL для секций в hiccup**, чтобы верстка выглядела почти как **markdown-layout**.
+*** CANCELED arhiv
+
+;; (defn header []
+;;   [:header {:class "flex items-center justify-between px-8 py-4 bg-white shadow"}
+
+;;     ;; logo
+;;     [:div {:class "flex items-center shrink-0"}
+;;       [:a {:href "/" :class "shrink-0"}
+;;         [:img {:src "/img/ueava-logo.svg"
+;;                :class "h-12 hover:opacity-80 transition"}]]]
+
+;;     ;; navigation
+;;     [:nav {:class "hidden md:flex space-x-6 font-medium"}
+;;       [:a {:href "#" :class "hover:text-green-600"} "Home"]
+;;       [:a {:href "#" :class "hover:text-green-600"} "About"]
+;;       [:a {:href "#" :class "hover:text-green-600"} "Resources"]
+;;       [:a {:href "#" :class "hover:text-green-600"} "Membership"]
+;;       [:a {:href "#" :class "hover:text-green-600"} "Conferences"]]
+
+;;     ;; CTA
+;;     [:button {:class "bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"}
+;;       "Find A Vet"]])
+
+;; (defn main []
+;;   [:main
+;;    [hero]
+;;    [membership]])
+
+
+;; (defn hero []
+;;   ;; [:section {:class "relative h-screen flex items-center justify-center text-white"}
+;;   [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
+
+;;    ;; background image
+;;    [:div {:class "absolute inset-0 bg-cover bg-center"
+;;           :style {:background-image "url('img/Hero_Slide_2-1.webp')"}}]
+
+;;    ;; gradient overlay 
+;;    [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
+
+;;    ;; content
+;;    [:div {:class "relative z-10 text-center max-w-4xl px-6"}
+
+;;     [:h1 {:class "text-4xl md:text-6xl font-bold mb-6 leading-tight"}
+;;      "Why Do You Need A Reptile And Amphibian Veterinarian?"]
+
+;;     [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
+;;      "A global community dedicated to improving the quality of medicine, conservation, and care of reptiles and amphibians."]
+
+;;     [:button
+;;      {:class "bg-green-600 hover:bg-green-700 transition px-8 py-3 rounded font-semibold"}
+;;      "Learn More"]]])
+
+
+;; (defn membership []
+;;   [:section.membership
+;;    [:h2 "Become A Member"]
+;;    [:p "Join a unique community dedicated to reptile and amphibian medicine."]
+;;    [:div.cards
+;;     [:div.card
+;;      [:h3 "Journal"]
+;;      [:p "Scientific research in herpetological medicine"]]
+
+;;     [:div.card
+;;      [:h3 "Find-A-Vet"]
+;;      [:p "Be listed in the veterinarian directory"]]
+
+;;     [:div.card
+;;      [:h3 "Herp Blerp"]
+;;      [:p "Monthly newsletter and announcements"]]]])
+
+** DONE benefits cards
+** DONE CTA banner
+** DONE footer grid
+Красота!!!!
+Красотища!!!!
+довай сделаем и footer grid красивым
+*** CANCELED архив
+(ns ueava.footer)
+
+(defn footer []
+  [:footer {:class "bg-gray-900 text-gray-300"}
+
+   ;; grid
+   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
+
+    ;; logo + about
+    [:div
+     [:img {:src "/img/ueava-logo.svg"
+            :class "h-12 mb-4"}]
+
+     [:p {:class "text-sm leading-relaxed"}
+      "UEAVA is a global community dedicated to improving reptile
+       and amphibian veterinary medicine, conservation and welfare."]]
+
+    ;; navigation
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
+
+    ;; resources
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
+
+    ;; newsletter
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
+
+     [:p {:class "text-sm mb-4"}
+      "Subscribe to receive updates and news."]
+
+     [:div {:class "flex"}
+      [:input {:type "email"
+               :placeholder "Email"
+               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
+
+      [:button
+       {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
+       "Join"]]]]
+
+   ;; bottom line
+   [:div {:class "border-t border-gray-800"}
+
+    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
+
+     [:span "© 2026 UEAVA"]
+
+     [:div {:class "flex gap-6 mt-3 md:mt-0"}
+      [:a {:href "#" :class "hover:text-white"} "Privacy"]
+      [:a {:href "#" :class "hover:text-white"} "Terms"]
+      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
+** DONE понять
+довай сделаем лендинг пейдж на кложур скрипт
+довай начнём с
+new project templat shadow-cljs с реагентом и хикапом
+есть команда чтоб сделать темплат? например через ленингтон?
+название сайта будет grom.org
+** DONE проверить
+lein new shadow-cljs ueava +reagent
+UEAVA
+
+cd grom.org
+npm install
+npx shadow-cljs watch app
+
+http://localhost:8080
+** DONE 
+*** 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="https://clojurescript.org/images/cljs-logo-icon-32.png">
+  </head>
+  <body>
+    <div id="app">
+      Shadow-cljs rocks!
+    </div>
+    <script src="/js/compiled/main.js" type="text/javascript"></script>
+    <script>ueava.core.init();</script>
+  </body>
+</html>
+
+*** 
+(ns ueava.core
+  (:require [reagent.core :as reagent :refer [atom]]))
+
+;; define your app data so that it doesn't get over-written on reload
+
+(defonce app-state (atom {:text "Hello world!"}))
+
+(defn hello-world []
+  [:div
+   [:h1 (:text @app-state)]
+   [:h3 "Edit this and watch it change!"]])
+
+(defn start []
+  (reagent/render-component [hello-world]
+                            (. js/document (getElementById "app"))))
+
+(defn ^:export init []
+  ;; init is called ONCE when the page loads
+  ;; this is called in the index.html and must be exported
+  ;; so it is available even in :advanced release builds
+  (start))
+
+(defn stop []
+  ;; stop is called before any code is reloaded
+  ;; this is controlled by :before-load in the config
+  (js/console.log "stop"))
+
+*** npx shadow-cljs watch app
+...
+Retrieving cljsjs/create-react-class/15.6.2-0/create-react-class-15.6.2-0.jar from https://repo.clojars.org/
+shadow-cljs - dependencies updated
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.jboss.threads.JBossExecutors (file:/home/buyn/.m2/repository/org/jboss/threads/jboss-threads/3.5.0.Final/jboss-threads-3.5.0.Final.jar)
+WARNING: Please consider reporting this to the maintainers of class org.jboss.threads.JBossExecutors
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+shadow-cljs - HTTP server available at http://localhost:8700
+shadow-cljs - server version: 2.28.23 running at http://localhost:9630
+shadow-cljs - nREPL server started on port 8777
+shadow-cljs - watching build :app
+[:app] Configuring build.
+[:app] Compiling ...
+[:app] Build completed. (165 files, 164 compiled, 0 warnings, 12.82s)
+
+не появился промт для команд
+** DONE перенести всё из тудейорга
+** DONE опубликовать
+*** я сделал сайт на кложур скрипте
+через shadow-cljs
+
+;; shadow-cljs configuration
+{:source-paths
+ ["src"]
+
+ :dependencies [[binaryage/devtools "0.9.7"]
+                [reagent "0.8.0-alpha2"]]
+
+ ;; set an nrepl port for connection to a REPL.
+ :nrepl        {:port 3333}
+
+ :builds
+ {:app {:target :browser
+        :output-dir "public/js/compiled"
+        :asset-path "/js/compiled"
+
+        :modules
+        {:main
+         {:entries [ueava.core]}}
+
+        :devtools
+        ;; before live-reloading any code call this function
+        {:before-load ueava.core/stop
+         :watch-dir "resources/public"
+         ;; after live-reloading finishes call this function
+         :after-load ueava.core/start
+         ;; serve the public directory over http at port 8700
+         :http-root    "public"
+         :http-port    3000
+         :preloads     [devtools.preload]}
+        }}}
+мой ./shadow-cljs.edn выглядит так
+пологаю нужно сделать новую раздел для билда
+он находится в репозитории
+https://github.com/Buyn/grom.org/tree/main
+хочу его опубликовать нагитхаб
+полагаю проже всего выбрать папку docs и забилдить в неё после чего закомитеть то что получилось?
+и выбрать публиковать из папки docs?
+как будет выглядить ./shadow-cljs.edn с новой опцией для билда в папку докс?
+*** 
+тоесть вместо того чтобы менять shadow-cljs.edn
+лучше сделать скрипт фаил который будет запускать
+npx shadow-cljs release app
+а потом копировать результат из паблика
+тоесть папку js
+и остальные файлы в папку докс?
+это более рациональный путь?
+*** 
+"build-gh": "rm -rf docs && npx shadow-cljs release app && mkdir -p docs && cp -r public/* docs && touch docs/.nojekyll"
+
+npm run build-gh
+** DONE гарбургер меню
+*** 
+наскольку понимю сейчас нашь сайт хорошо смотрится на компютере\грезнатальном ээкране
+новерное былобы логично. чтоб он хорошо смотрелся и на мобильном устройстве\вертикальном экране
+думаю наиболее важно преобразовать хедор в гамбругер меню при откртии на вертикальном устройстве или уменшени пропрци?
+как это сделать наиболее безболезненно? есть какоето готовое решение, не требуешее больших изменений?
+*** Да, ты правильно думаешь 👍
+**** свернуть navigation в hamburger menu
+Самое важное для мобильной версии — **свернуть navigation в hamburger menu**. Хорошая новость: это можно сделать **почти без изменений структуры**, используя responsive-классы из Tailwind CSS и маленькое состояние в Reagent.
+
+Я покажу **самый безболезненный вариант** — добавляется примерно **20 строк кода**, а остальная разметка остаётся почти такой же.
+
+---
+**** # 1. состояние меню
+
+В Reagent добавим атом:
+
+```clojure
+(defonce menu-open? (reagent/atom false))
+```
+
+---
+**** # 2. кнопка hamburger
+
+Добавим кнопку, которая видна **только на мобильных**.
+
+```clojure
+[:button
+ {:class "md:hidden text-3xl"
+  :on-click #(swap! menu-open? not)}
+ "☰"]
+```
+
+`md:hidden` означает:
+
+```
+mobile → показываем
+desktop → скрываем
+```
+
+---
+**** # 3. navigation для desktop
+
+Твоя текущая навигация почти не меняется:
+
+```clojure
+[:nav {:class "hidden md:flex space-x-6 font-medium"}
+ [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+ [:a {:href "#"} "About"]
+ [:a {:href "#"} "Resources"]
+ [:a {:href "#"} "Membership"]
+ [:a {:href "#"} "Conferences"]]
+```
+
+`hidden md:flex` означает:
+
+```
+mobile → скрыта
+desktop → обычное меню
+```
+
+---
+**** # 4. mobile menu
+
+Теперь добавляем выпадающее меню:
+
+```clojure
+(when @menu-open?
+  [:div
+   {:class "absolute top-full left-0 w-full bg-white shadow-md md:hidden"}
+
+   [:div {:class "flex flex-col p-6 space-y-4"}
+
+    [:a {:href "#"} "Home"]
+    [:a {:href "#"} "About"]
+    [:a {:href "#"} "Resources"]
+    [:a {:href "#"} "Membership"]
+    [:a {:href "#"} "Conferences"]]])
+```
+
+---
+**** # 5. итоговый header
+
+Получается так:
+
+```clojure
+(defn header []
+  [:header {:class "relative flex items-center justify-between px-8 py-4 bg-white shadow"}
+
+   ;; logo
+   [:img {:src "/img/ueava-logo.svg"
+          :class "h-12 w-auto"}]
+
+   ;; desktop nav
+   [:nav {:class "hidden md:flex space-x-6 font-medium"}
+    [:a {:href "#"} "Home"]
+    [:a {:href "#"} "About"]
+    [:a {:href "#"} "Resources"]
+    [:a {:href "#"} "Membership"]
+    [:a {:href "#"} "Conferences"]]
+
+   ;; hamburger
+   [:button
+    {:class "md:hidden text-3xl"
+     :on-click #(swap! menu-open? not)}
+    "☰"]
+
+   ;; mobile menu
+   (when @menu-open?
+     [:div
+      {:class "absolute top-full left-0 w-full bg-white shadow-md md:hidden"}
+
+      [:div {:class "flex flex-col p-6 space-y-4"}
+       [:a {:href "#"} "Home"]
+       [:a {:href "#"} "About"]
+       [:a {:href "#"} "Resources"]
+       [:a {:href "#"} "Membership"]
+       [:a {:href "#"} "Conferences"]]])])
+```
+
+---
+*** # 6. как будет выглядеть
+
+### Desktop
+
+```
+LOGO   Home About Resources Membership Conferences
+```
+
+### Mobile
+
+```
+LOGO                         ☰
+```
+
+Нажимаем ☰:
+
+```
+LOGO                         ✕
+
+Home
+About
+Resources
+Membership
+Conferences
+```
+
+---
+*** # 7. маленький UX-апгрейд (очень советую)
+
+Добавить **анимированную иконку burger → X**:
+
+```
+☰  →  ✕
+```
+
+И меню будет выглядеть **как на современных SaaS сайтах**.
+
+---
+
+💡 Если хочешь, могу показать ещё одну очень полезную вещь для твоего лендинга:
+
+**layout-шаблон для Reagent**, где автоматически подключаются
+
+```
+header
+hero
+sections
+footer
+mobile menu
+```
+
+и новые страницы можно добавлять буквально **10 строками кода**. Это сильно упрощает развитие сайта.
+*** что ты имешь ввиду?
+Я имел в виду маленький **UX-трюк**, который делает меню ощущаться «живым».
+
+Когда пользователь нажимает **hamburger**, иконка **меняется на крестик**.
+Так делают почти все современные сайты.
+
+```
+закрытое меню   →   открытое меню
+
+☰                ✕
+```
+
+Это помогает пользователю **интуитивно понять**, что повторное нажатие **закроет меню**.
+
+---
+
+# Самый простой вариант (2 строки)
+
+В твоём header достаточно изменить кнопку.
+
+```clojure
+[:button
+ {:class "md:hidden text-3xl"
+  :on-click #(swap! menu-open? not)}
+
+ (if @menu-open?
+   "✕"
+   "☰")]
+```
+
+Теперь происходит:
+
+```
+menu-open? false → ☰
+menu-open? true  → ✕
+```
+
+---
+*** # Чуть красивее (иконки)
+
+Можно использовать SVG-иконки.
+
+Например hamburger:
+
+```clojure
+[:svg {:xmlns "http://www.w3.org/2000/svg"
+       :class "w-8 h-8"
+       :fill "none"
+       :viewBox "0 0 24 24"
+       :stroke "currentColor"}
+ [:path {:stroke-linecap "round"
+         :stroke-linejoin "round"
+         :stroke-width "2"
+         :d "M4 6h16M4 12h16M4 18h16"}]]
+```
+
+крестик:
+
+```clojure
+[:svg {:xmlns "http://www.w3.org/2000/svg"
+       :class "w-8 h-8"
+       :fill "none"
+       :viewBox "0 0 24 24"
+       :stroke "currentColor"}
+ [:path {:stroke-linecap "round"
+         :stroke-linejoin "round"
+         :stroke-width "2"
+         :d "M6 18L18 6M6 6l12 12"}]]
+```
+
+И переключаем:
+
+```clojure
+(if @menu-open?
+  [icon-close]
+  [icon-menu])
+```
+
+---
+*** # Визуально будет так
+
+### закрыто
+
+```
+UEAVA                         ☰
+```
+
+### открыто
+
+```
+UEAVA                         ✕
+------------------------------
+Home
+About
+Resources
+Membership
+Conferences
+```
+
+---
+
+💡 И ещё один **очень приятный UX-трюк** для мобильного меню (буквально +5 строк):
+
+меню может **выезжать сверху плавно**, как на сайтах Apple.
+
+Это выглядит так:
+
+```
+tap ☰
+↓
+меню плавно спускается
+```
+
+И это можно сделать **одним Tailwind transition**.
+Если хочешь — покажу, как это сделать буквально **за 30 секунд кода**.
+*** как это сделать?
+**** плавное выезжание меню сверху
+Сделаем **плавное выезжание меню сверху** с помощью transition из Tailwind CSS.
+В Reagent это очень просто: мы не скрываем меню через `when`, а **оставляем его в DOM** и меняем классы.
+
+Так браузер сможет **анимировать появление**.
+
+---
+**** # 1. идея
+
+Меню будет менять состояние:
+
+```
+закрыто:
+opacity 0
+translateY(-20px)
+
+открыто:
+opacity 100
+translateY(0)
+```
+
+Tailwind умеет анимировать это через `transition`.
+
+---
+**** # 2. мобильное меню с анимацией
+
+Заменим блок меню на такой:
+
+```clojure
+[:div
+ {:class (str
+          "absolute top-full left-0 w-full bg-white shadow-md md:hidden
+           transform transition-all duration-300 ease-out "
+
+          (if @menu-open?
+            "opacity-100 translate-y-0"
+            "opacity-0 -translate-y-4 pointer-events-none"))}
+
+ [:div {:class "flex flex-col p-6 space-y-4"}
+
+  [:a {:href "#"} "Home"]
+  [:a {:href "#"} "About"]
+  [:a {:href "#"} "Resources"]
+  [:a {:href "#"} "Membership"]
+  [:a {:href "#"} "Conferences"]]]
+```
+
+---
+**** # 3. кнопка переключения
+
+Кнопка остаётся простой:
+
+```clojure
+[:button
+ {:class "md:hidden text-3xl"
+  :on-click #(swap! menu-open? not)}
+
+ (if @menu-open?
+   "✕"
+   "☰")]
+```
+
+---
+**** # 4. что делает Tailwind
+
+Эти классы:
+
+```
+transition-all
+duration-300
+ease-out
+```
+
+говорят браузеру:
+
+```
+анимируй изменения 300ms
+```
+
+А эти:
+
+```
+translate-y-0
+-translate-y-4
+```
+
+двигают меню.
+
+---
+**** # 5. результат
+
+Нажимаем ☰
+
+```
+tap ☰
+↓
+меню плавно выезжает
+```
+
+Закрываем:
+
+```
+tap ✕
+↓
+меню плавно исчезает
+```
+
+Анимация занимает **0.3 секунды** — выглядит очень естественно.
+
+---
+**** # 6. маленький апгрейд (очень рекомендую)
+
+Сделай **background blur**, как на современных сайтах.
+
+Добавь к меню:
+
+```
+backdrop-blur-md bg-white/90
+```
+
+То есть:
+
+```clojure
+"bg-white/90 backdrop-blur-md"
+```
+
+И меню станет выглядеть **очень современно**.
+
+---
+
+💡 Кстати — в твоём проекте на **ClojureScript + Reagent** можно сделать **ещё более крутой header**, как на SaaS-сайтах:
+
+- sticky header
+- blur при скролле
+- shrinking header
+- smart hide при прокрутке вниз
+
+Это примерно **30 строк кода**, но сайт начинает выглядеть **как Stripe / Linear / Vercel**.
+Если хочешь — покажу, это идеально ложится в твой текущий код.
+**** DONE arhiv
+
+        ;; (when @menu-open?
+        ;;   [:div
+        ;;     {:class "absolute top-full left-0 w-full bg-ueava-cream shadow-md md:hidden text-ueava-brown"}
+
+;; )
+
+
+
+        ;; [:div {:class "flex flex-col p-6 space-y-4"}
+
+        ;;   [:a {:href "#"} "Home"]
+        ;;   [:a {:href "#"} "About"]
+        ;;   [:a {:href "#"} "Resources"]
+        ;;   [:a {:href "#"} "Membership"]
+        ;;   [:a {:href "#"} "Conferences"]]]
+** DONE мне нарвится что у нас получилось
+*** DONE 
+но теперь вопрос как наиболее просто поменять цветовой стиль
+под логотип фирмы ueava?
+есть ли способ как это сдеать просто или нужно всё делать с нуля?
+
+/home/buyn/Dev/ClojureScript/grom.org/public/img/ueava-logo.svg
+*** DONE 
+**** цвета логотипа
+Очень хороший вопрос. И хорошая новость — **ничего переделывать с нуля не нужно**. В Tailwind CSS как раз предусмотрен **правильный способ смены цветовой темы** через `tailwind.config`.
+
+Посмотрим на цвета логотипа.
+
+Основные:
+
+1. **тёмно-коричневый**
+2. **песочный / бежевый**
+3. **светлый кремовый**
+4. **белый**
+
+Это идеально ложится на **brand palette**.
+
+---
+**** # 1. Добавляем бренд-цвета в Tailwind
+
+Открой:
+
+```
+tailwind.config.js
+```
+
+и добавь:
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+
+        ueava: {
+          brown: "#4a2512",
+          sand: "#c6ab8b",
+          cream: "#f2ede7",
+          light: "#e5d7c5"
+        }
+
+      }
+    }
+  }
+}
+```
+
+Теперь Tailwind автоматически создаст классы:
+
+```
+bg-ueava-brown
+text-ueava-brown
+
+bg-ueava-sand
+text-ueava-sand
+
+bg-ueava-cream
+```
+
+---
+**** # 2. Меняем hero
+
+Было:
+
+```
+bg-green-600
+```
+
+Стало:
+
+```clojure
+:bg-ueava-brown
+```
+
+или
+
+```clojure
+[:button
+ {:class "bg-ueava-brown hover:bg-ueava-sand text-white px-8 py-3 rounded"}
+ "Become a Member"]
+```
+
+---
+**** # 3. Меняем CTA секцию
+
+Было:
+
+```
+bg-green-700
+```
+
+Стало:
+
+```clojure
+[:section {:class "py-20 bg-ueava-brown text-white"}
+```
+
+---
+**** # 4. Меняем footer
+
+Было:
+
+```
+bg-gray-900
+```
+
+Стало:
+
+```clojure
+:bg-ueava-brown
+```
+
+или красивее:
+
+```clojure
+:bg-gradient-to-r from-ueava-brown to-ueava-sand
+```
+
+---
+**** CANCELED # 5. Меняем карточки
+
+```clojure
+[:div {:class
+       "bg-white border border-ueava-light p-6 rounded-lg shadow hover:shadow-lg"}]
+```
+
+---
+**** # 6. красивый hover стиль ссылок
+
+```clojure
+:hover:text-ueava-sand
+```
+
+---
+**** # 7. результат
+
+Цветовая схема станет:
+
+```
+primary   → brown
+accent    → sand
+background→ cream
+text      → brown
+```
+
+Это **идеально соответствует логотипу**.
+
+---
+**** # 8. профессиональный трюк (очень полезный)
+
+Можно создать **semantic colors**, чтобы менять тему одной строкой.
+
+```js
+colors: {
+
+  primary: "#4a2512",
+  accent: "#c6ab8b",
+  surface: "#f2ede7"
+
+}
+```
+
+тогда в коде:
+
+```
+bg-primary
+text-accent
+bg-surface
+```
+
+Если логотип изменится — **меняется только config**.
+
+---
+
+💡 И ещё один момент, который даст **+200% к внешнему виду сайта**.
+
+Твой логотип состоит из **пазлов с животными** — это очень сильный визуальный элемент.
+
+Можно сделать **hero background с огромным прозрачным паттерном этих пазлов**.
+Получится стиль почти как у крупных научных ассоциаций.
+
+Если хочешь — покажу очень простой способ сделать **SVG pattern background**, который будет выглядеть **дороже чем половина сайтов на Webflow**.
+*** DONE error
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{cljs,cljc,clj}",
+    "./public/index.html"],
+  theme: {
+    extend: {
+      colors: {
+
+        ueava: {
+          brown: "#4a2512",
+          sand: "#c6ab8b",
+          cream: "#f2ede7",
+          light: "#e5d7c5"
+        }
+
+      }
+    },},
+    plugins: [],}
+использую таилвинг tailwind.config.js выглядит так
+в кложурскрипт коде было так
+[:div {:class "flex justify-center gap-4"}
+     [:button
+      {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
+      "Become a Member"]
+
+     [:button {:class "border border-white px-8 py-3 rounded hover:bg-white hover:text-black transition"}
+      "Find a Vet"]]
+стало так
+[:div {:class "flex justify-center gap-4"}
+     [:button
+      {:class "bg-ueava-brown hover:bg-ueava-sand text-white px-8 py-3 rounded"}
+      "Become a Member"]
+
+     [:button {:class "border border-white px-8 py-3 rounded hover:bg-white hover:text-black transition"}
+      "Find a Vet"]]
+
+ожидал что цвет сменится но он просто исчез. Что значит что таил вин компилится но не так как я ожидаю.
+что я делаю не так?
+*** DONE почему
+раньше я мог указывать 600 или 700 для указания интенсивности
+{:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
+но с созданым каласом
+{:class "bg-ueava-brown-600 hover:bg-ueava-brown-700 text-white px-8 py-3 rounded"}
+так не рабтотает
+а могу только
+{:class "bg-ueava-brown hover:bg-ueava-sand text-white px-8 py-3 rounded"}
+как сделать чтоб я мог указывать интенсивность а нетолько описвать цвета?
+что я с делал не так?
+как нужно описать чтоб была возможность менять интенсивность диномичтно?
+
+
+@theme {
+  --color-slate-50: #fcf1ee;
+  --color-slate-100: #fae3dd;
+  --color-slate-200: #f5c4b5;
+  --color-slate-300: #f2a78c;
+  --color-slate-400: #ee844e;
+  --color-slate-500: #d07343;
+  --color-slate-600: #af5f37;
+  --color-slate-700: #924f2c;
+  --color-slate-800: #733d21;
+  --color-slate-900: #592e17;
+  --color-slate-950: #4a2512;
+}
+@theme {
+  --color-brown-50:  #fcf1ee;
+  --color-brown-100: #fae3dd;
+  --color-brown-200: #f5c4b5;
+  --color-brown-300: #f2a78c;
+  --color-brown-400: #ee844e;
+  --color-brown-500: #d07343;
+  --color-brown-600: #af5f37;
+  --color-brown-700: #924f2c;
+  --color-brown-800: #733d21;
+  --color-brown-900: #592e17;
+  --color-brown-950: #4a2512;
+}
+
+
+@theme {
+  --color-sand-50:  #fdfcfb;
+  --color-sand-100: #faf6f2;
+  --color-sand-200: #f4ede5;
+  --color-sand-300: #efe3d7;
+  --color-sand-400: #ebdac9;
+  --color-sand-500: #e6d1ba;
+  --color-sand-600: #e2c8aa;
+  --color-sand-700: #ddbf9b;
+  --color-sand-800: #d4b795;
+  --color-sand-900: #caaf8e;
+  --color-sand-950: #c6ab8b;
+}
+*** CANCELED arhiv
+      ;; {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
+
+*** CANCELED 
+**** прозрачный SVG-паттерн
+Сейчас покажу **очень красивый и при этом простой трюк**, который часто используют в hero-секциях современных сайтов.
+
+Идея:
+мы добавляем **большой прозрачный SVG-паттерн позади контента**.
+
+SVG идеален для этого, потому что он **векторный, лёгкий и масштабируется без потери качества** ([Flux Icons][1]).
+
+---
+**** # 1. Самый простой способ (1 строка Tailwind)
+
+Можно использовать SVG как **повторяющийся фон**.
+
+```clojure
+[:div {:class
+       "absolute inset-0
+        bg-[url('/img/ueava-logo.svg')]
+        bg-repeat
+        bg-[length:300px]
+        opacity-5"}]
+```
+
+### Что делает каждая часть
+
+```
+bg-[url(...)]   → фон
+bg-repeat       → повтор
+bg-[length:300px] → размер паттерна
+opacity-5       → почти прозрачный
+```
+
+Tailwind умеет повторять background-image через `bg-repeat` utilities ([Tailwind CSS][2]).
+
+---
+
+# 2. Добавим в hero
+
+Теперь hero будет выглядеть так:
+
+```clojure
+(defn hero []
+  [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
+
+   ;; background image
+   [:div {:class "absolute inset-0 bg-cover bg-center"
+          :style {:background-image "url('/img/Hero_Slide_2-1.webp')"}}]
+
+   ;; pattern overlay
+   [:div {:class
+          "absolute inset-0
+           bg-[url('/img/ueava-logo.svg')]
+           bg-repeat
+           bg-[length:300px]
+           opacity-[0.03]"}]
+
+   ;; gradient overlay
+   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
+
+   ;; content
+   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
+
+    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6"}
+     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
+
+    [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
+     "A global community dedicated to reptile and amphibian medicine."]]])
+```
+
+---
+**** # 3. Как это будет выглядеть
+
+Получается эффект:
+
+```
+🐍   🐢   🐍   🐢
+   🐍   🐢   🐍
+🐍   🐢   🐍   🐢
+```
+
+очень прозрачный **пазл-паттерн** за hero.
+
+Это делает страницу **намного дороже визуально**.
+
+---
+**** # 4. Ещё красивее (профессиональный вариант)
+
+Можно использовать **один пазл из логотипа** как паттерн.
+
+Например:
+
+```
+/img/puzzle-pattern.svg
+```
+
+и тогда:
+
+```clojure
+bg-[url('/img/puzzle-pattern.svg')]
+bg-[length:200px]
+opacity-[0.04]
+```
+
+Это будет выглядеть как **фирменная текстура бренда**.
+
+---
+**** # 5. Маленький дизайнерский трюк
+
+Очень красиво работает комбинация:
+
+```
+pattern opacity: 0.03
+gradient overlay
+hero image
+```
+
+слои:
+
+```
+pattern
+↓
+hero photo
+↓
+gradient
+↓
+content
+```
+
+---
+
+💡 Если хочешь — покажу **супер-крутой апгрейд**:
+
+можно сделать **огромные полупрозрачные puzzle-элементы**, которые **медленно двигаются на фоне hero** (CSS animation).
+
+Это выглядит **очень дорого и очень брендово**, и делается примерно **20 строками кода**.
+
+[1]: https://flux-icon.com/pattern?utm_source=chatgpt.com "Free SVG Pattern Generator | Flux Background Maker - Flux Icons"
+[2]: https://tailwindcss.com/docs/background-repeat?utm_source=chatgpt.com "background-repeat - Backgrounds - Tailwind CSS"
+*** CANCELED медленно плавающие пазлы на фоне hero
+**** медленно плавающие пазлы на фоне hero
+Сделаем **медленно плавающие пазлы на фоне hero**.
+Это чистый **CSS + Tailwind**, без JS. Работает отлично с **Tailwind CSS** и **Reagent**.
+
+Идея:
+
+```
+hero image
+↓
+gradient
+↓
+floating puzzle shapes
+↓
+text
+```
+
+---
+**** # 1. Добавляем анимацию в Tailwind
+
+Открой `tailwind.config.js`.
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+
+      animation: {
+        floatSlow: "floatSlow 18s ease-in-out infinite",
+        floatSlow2: "floatSlow2 22s ease-in-out infinite"
+      },
+
+      keyframes: {
+
+        floatSlow: {
+          "0%,100%": { transform: "translateY(0) translateX(0)" },
+          "50%": { transform: "translateY(-30px) translateX(20px)" }
+        },
+
+        floatSlow2: {
+          "0%,100%": { transform: "translateY(0) translateX(0)" },
+          "50%": { transform: "translateY(20px) translateX(-30px)" }
+        }
+
+      }
+    }
+  }
+}
+```
+
+---
+**** # 2. Компонент плавающих пазлов
+
+Создадим маленький компонент.
+
+```clojure
+(defn floating-puzzles []
+  [:<>
+   
+   [:img {:src "/img/ueava-logo.svg"
+          :class "absolute top-20 left-20 w-64 opacity-[0.04] animate-floatSlow"}]
+
+   [:img {:src "/img/ueava-logo.svg"
+          :class "absolute bottom-20 right-20 w-72 opacity-[0.03] animate-floatSlow2"}]
+
+   [:img {:src "/img/ueava-logo.svg"
+          :class "absolute top-1/2 left-1/3 w-56 opacity-[0.04] animate-floatSlow"}]])
+```
+
+---
+**** # 3. Подключаем в hero
+
+Теперь hero:
+
+```clojure
+(defn hero []
+  [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white overflow-hidden"}
+
+   ;; background image
+   [:div {:class "absolute inset-0 bg-cover bg-center"
+          :style {:background-image "url('/img/Hero_Slide_2-1.webp')"}}]
+
+   ;; floating puzzles
+   [floating-puzzles]
+
+   ;; gradient overlay
+   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
+
+   ;; content
+   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
+
+    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6"}
+     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
+
+    [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
+     "A global community dedicated to reptile and amphibian medicine."]
+
+    [:button
+     {:class "bg-ueava-brown hover:bg-ueava-sand px-8 py-3 rounded"}
+     "Learn More"]]])
+```
+
+---
+**** # 4. Что получится визуально
+
+Фон будет выглядеть примерно так:
+
+```
+      [ puzzle ]
+           ↑
+   медленно плывет
+
+hero image + gradient
+
+        TEXT
+```
+
+И ещё один пазл:
+
+```
+                [ puzzle ]
+                     ↓
+                медленно плывет
+```
+
+Очень **мягкое движение**, почти незаметное — но сайт выглядит **намного живее**.
+
+---
+**** # 5. маленький дизайнерский трюк
+
+Сделай **разные размеры и opacity**:
+
+```
+w-72 opacity-3
+w-64 opacity-4
+w-56 opacity-2
+```
+
+Это создаёт **глубину сцены**.
+
+---
+
+💡 Есть ещё **один безумно красивый апгрейд**, который идеально подходит твоему логотипу:
+
+можно сделать **разлетающиеся puzzle pieces при скролле hero → benefits** (parallax scroll).
+
+Это уже выглядит как **сайт уровня Apple / Stripe**, но код всё равно остаётся очень маленьким.
+Если хочешь — покажу и этот трюк.
+*** CANCELED 
+Покажу **очень эффектный трюк — parallax puzzle pieces**, который отлично подходит для твоего логотипа.
+И хорошая новость: он работает **чисто через CSS**, без тяжёлого JS.
+
+Подходит идеально для страницы на **Tailwind CSS** и **Reagent**.
+
+---
+
+# Идея эффекта
+
+Когда пользователь **скроллит страницу**, большие полупрозрачные элементы логотипа **двигаются с разной скоростью**.
+
+Это называется **parallax scroll**.
+
+Слои:
+
+```
+puzzle pieces  (медленно)
+hero image     (средне)
+content        (фиксирован)
+```
+
+Визуально выглядит как **глубина сцены**.
+
+---
+
+# 1. контейнер parallax
+
+В `hero` добавим слой:
+
+```clojure
+[:div {:class "absolute inset-0 overflow-hidden"}
+ [puzzle-parallax]]
+```
+
+---
+
+# 2. компонент parallax пазлов
+
+```clojure
+(defn puzzle-parallax []
+  [:<>
+   
+   [:img {:src "/img/ueava-logo.svg"
+          :class "parallax-slow absolute top-10 left-10 w-72 opacity-[0.05]"}]
+
+   [:img {:src "/img/ueava-logo.svg"
+          :class "parallax-medium absolute bottom-20 right-10 w-64 opacity-[0.04]"}]
+
+   [:img {:src "/img/ueava-logo.svg"
+          :class "parallax-fast absolute top-1/2 left-1/3 w-56 opacity-[0.03]"}]])
+```
+
+---
+
+# 3. CSS parallax
+
+Добавь в `globals.css`.
+
+```css
+.parallax-slow {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax-medium {
+  transform: translateZ(-0.5px) scale(1.5);
+}
+
+.parallax-fast {
+  transform: translateZ(0);
+}
+```
+
+И активируем 3D scrolling:
+
+```css
+.hero-parallax {
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+```
+
+---
+
+# 4. обновлённый hero
+
+```clojure
+(defn hero []
+  [:section {:class "hero-parallax relative h-screen flex items-center justify-center pt-24 text-white"}
+
+   ;; hero image
+   [:div {:class "absolute inset-0 bg-cover bg-center"
+          :style {:background-image "url('/img/Hero_Slide_2-1.webp')"}}]
+
+   ;; puzzle parallax
+   [puzzle-parallax]
+
+   ;; gradient
+   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
+
+   ;; content
+   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
+
+    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6"}
+     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
+
+    [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
+     "A global community dedicated to reptile and amphibian medicine."]]])
+```
+
+---
+
+# Что получится
+
+Когда пользователь **начинает скроллить вниз**:
+
+```
+PUZZLE (медленно)
+    ↓
+
+PUZZLE (средне)
+        ↓
+
+PUZZLE (быстро)
+             ↓
+```
+
+Контент остаётся читаемым, а фон **живёт своей жизнью**.
+
+Это создаёт **очень дорогой эффект интерфейса**.
+
+---
+
+# Ещё один дизайнерский секрет
+
+Лучше использовать **не весь логотип**, а **один puzzle piece**.
+
+Например:
+
+```
+/img/puzzle-chameleon.svg
+/img/puzzle-parrot.svg
+/img/puzzle-rabbit.svg
+```
+
+И тогда фон выглядит **как рассыпанные элементы бренда**.
+
+---
+
+💡 Кстати — твой логотип с пазлами идеально подходит для **ещё более крутого эффекта**:
+
+при прокрутке страницы **пазлы могут постепенно собираться в полный логотип**.
+
+Это выглядит **очень впечатляюще**, и делается примерно **40 строками кода**.
+** DONE поправить разметку футера
+*** (ns ueava.footer)
+
+(defn footer []
+  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
+
+   ;; grid
+   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
+
+    ;; logo + about
+    [:div
+     [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+            }]
+
+     [:p {:class "text-sm leading-relaxed"}
+      "UEAVA is a global community dedicated to improving reptile
+       and amphibian veterinary medicine, conservation and welfare."]
+     ]
+
+    ;; navigation
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
+
+    ;; resources
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
+
+    ;; newsletter
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
+
+     [:p {:class "text-sm mb-4"}
+      "Subscribe to receive updates and news."]
+
+     [:div {:class "flex"}
+      [:input {:type "email"
+               :placeholder "Email"
+               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
+
+      [:button
+       ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
+       {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
+       "Join"]]]]
+
+   ;; bottom line
+   [:div {:class "border-t border-gray-800"}
+
+    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
+
+     [:span "© 2026 UEAVA"]
+
+     [:div {:class "flex gap-6 mt-3 md:mt-0"}
+      [:a {:href "#" :class "hover:text-white"} "Privacy"]
+      [:a {:href "#" :class "hover:text-white"} "Terms"]
+      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
+*** я заменил логотип в футере
+и разметка поплыла.
+блок логотипа и текста подним выпал из раметки.
+логотип занял всё пространство, которое занимал вместе с текстом
+а текст под ним ушол далеко вниз, начиная от обшей текстовой лини текстовых блоко.
+есть идеи как это поправить?
+*** 
+
+[:div {:class "flex flex-col gap-4"}
+
+ [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+        :class "max-w-[220px] h-auto"}]
+
+ [:p {:class "text-sm leading-relaxed"}
+  "UEAVA is a global community dedicated to improving reptile
+   and amphibian veterinary medicine, conservation and welfare."]]
+
+
+[:img {:src "img/ueava-logo-hor-nobg-wt.png"
+       :class "max-w-[220px] h-auto mb-4"}]
+*** 
+
+/home/buyn/Dev/ClojureScript/grom.org/public/img/ueava-logo-hor-nobg-wt.png
+*** (ns ueava.footer)
+
+(defn footer []
+  ;; [:footer {:class "bg-gray-900 text-gray-300"}
+  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
+  ;; [:footer {:class ":bg-gradient-to-r from-ueava-brown to-ueava-sand"}
+
+   ;; grid
+   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
+    [:div {:class "flex flex-col gap-4"}
+
+      [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+              :class "max-w-[220px] h-auto"}]
+
+      [:p {:class "text-sm leading-relaxed"}
+        "UEAVA is a global community dedicated to improving reptile
+        and amphibian veterinary medicine, conservation and welfare."]]
+
+    ;; navigation
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
+
+    ;; resources
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
+
+    ;; newsletter
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
+
+     [:p {:class "text-sm mb-4"}
+      "Subscribe to receive updates and news."]
+
+     [:div {:class "flex"}
+      [:input {:type "email"
+               :placeholder "Email"
+               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
+
+      [:button
+       ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
+       {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
+       "Join"]]]]
+
+   ;; bottom line
+   [:div {:class "border-t border-gray-800"}
+
+    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
+
+     [:span "© 2026 UEAVA"]
+
+     [:div {:class "flex gap-6 mt-3 md:mt-0"}
+      [:a {:href "#" :class "hover:text-white"} "Privacy"]
+      [:a {:href "#" :class "hover:text-white"} "Terms"]
+      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
+*** я заменил логотип в футере
+и разметка поплыла.
+вот как это выглядит и вот отдельно новый логотип
+блок логотипа и текста подним выпал из разметки.
+логотип занял всё пространство, которое занимал вместе с текстом
+а текст под ним ушол далеко вниз, начиная от обшей текстовой лини текстовых блоко.
+есть идеи как это поправить?
+*** (defn footer []
+  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
+
+   ;; grid
+   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
+
+    ;; logo + about
+
+    [:div {:class "flex flex-col gap-4 items-start"}
+
+      [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+              :class "w-[220px] h-auto"}]
+
+      [:p {:class "text-sm leading-relaxed max-w-[260px]"}
+        "UEAVA is a global community dedicated to improving reptile
+        and amphibian veterinary medicine, conservation and welfare."]]
+
+    ;; navigation
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
+
+    ;; resources
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
+
+    ;; newsletter
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
+
+     [:p {:class "text-sm mb-4"}
+      "Subscribe to receive updates and news."]
+
+     [:div {:class "flex"}
+      [:input {:type "email"
+               :placeholder "Email"
+               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
+
+      [:button
+       ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
+       {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
+       "Join"]]]]
+
+   ;; bottom line
+   [:div {:class "border-t border-gray-800"}
+
+    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
+
+     [:span "© 2026 UEAVA"]
+
+     [:div {:class "flex gap-6 mt-3 md:mt-0"}
+      [:a {:href "#" :class "hover:text-white"} "Privacy"]
+      [:a {:href "#" :class "hover:text-white"} "Terms"]
+      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
+*** нето
+логотип немного двигается, но не один из приведёных вариантов, не делает нормальной форматирование.
+собстно как видешь результат почти не измеился.
+уточню навсякий случай если это не очивидн.
+я использую кложурскрипт с тайлвингом и реагентом.
+и нет прошлый логотип не был квадратным но был свг.
+ueava-logo.svg
+ещё варианты что пошло не так?
+и как это исправить?
+*** 
+
+:grid gap-10 md:grid-cols-4 items-start
+:grid gap-10 md:grid-cols-4 items-start
+
+:grid
+{:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4 items-start"}
+*** ладно предложи свой вариант
+*** всё также сломано!
+видемо ты не правельно понимаешь причину.
+я попробыл посмотреть и в другом браузере, но нет это независит от браузера.
+ещё идеи?
+
+:class "w-[220px] h-[60px] object-contain"
+[:div {:class "h-[60px] overflow-hidden"}
+ [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+        :class "w-[220px]"}]]
+outline: 1px solid red;
+*** да пнг реально кривой.
+неодна из указаных команд не исправляет форматирование
+да это всё пустое пространство это прозрачная зона.
+понял что можно отредактировать и обрезать в ручную.
+но можно програмно сказать использовать не всё исзображение а обрезать его сверху и снизу?
+или только руками обрезать пнг?
+*** 
+      [:div {:class "h-[100px] overflow-hidden"}
+        [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+                :class "w-[220px]"}]]
+да это работает и обрезает изображение, но отрезает низ изображения.
+а нужная нам часть в середини изображения. тоесть нужно нетолько отрезать, но начать отображать с отступом от верхней краници изображения.
+тоесть нам ненужен верх и низ. Нужна узкая полоза по середине!
+** DONE в гамбургер меню сделать центрование
+тоесть сейчас в гамбургер меню всё прижато к левому краю
+было бы логичней чтоб оно было посреди экрана а не слева
+
+[:a {:href "#"
+     :class "text-lg font-medium hover:text-ueava-sand transition"}
+ "Home"]
+
+[:div {:class "flex flex-col items-center text-center p-6 space-y-4"}
+ [:a {:href "#"} "Home"]
+ [:a {:href "#"} "About"]
+ [:a {:href "#"} "Resources"]
+ [:a {:href "#"} "Membership"]
+ [:a {:href "#"} "Conferences"]]
+** DONE убрать коменты
+*** футер
+     ;; [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+     ;;        ;; :class "w-[220px] h-auto"
+     ;;        :class "w-[220px] h-[60px] object-contain"
+     ;;        }]
+
+         ;; :class "w-[220px] h-[60px] object-contain"}]
+
+      ;; [:div {:class "h-[60px] overflow-hidden"}
+      ;;   [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+      ;;           :class "w-[220px]"}]]
+      ;; [:div {:class "h-[100px] overflow-hidden"}
+      ;;   [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+      ;;           :class "w-[220px]"}]]
+      ;; [:div {:class "h-[70px] overflow-hidden"}
+      ;;   [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+      ;;           :class "w-[220px] -mt-[80px]"}]]
+       ;; [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+       ;; :class "w-[220px] h-[70px] object-contain"}]]
+
+;; (ns ueava.footer)
+
+;; (defn footer []
+;;   ;; [:footer {:class "bg-gray-900 text-gray-300"}
+;;   [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
+;;   ;; [:footer {:class ":bg-gradient-to-r from-ueava-brown to-ueava-sand"}
+
+;;    ;; grid
+;;    [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
+
+;;     ;; logo + about
+
+;;     [:div {:class "flex flex-col gap-4 items-start"}
+
+;;       [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+;;               :class "w-[220px] h-auto"}]
+
+;;       [:p {:class "text-sm leading-relaxed max-w-[260px]"}
+;;         "UEAVA is a global community dedicated to improving reptile
+;;         and amphibian veterinary medicine, conservation and welfare."]]
+
+
+;;       ;; [:p {:class "text-sm leading-relaxed"}
+;;       ;;   "UEAVA is a global community dedicated to improving reptile
+;;       ;;   and amphibian veterinary medicine, conservation and welfare."]
+;;     ;; [:div
+;;     ;;  ;; [:img {:src "img/ueava-logo.svg"
+;;     ;;  [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+;;     ;;  ;; [:img {:src "img/ueava-logo-nobg-wt.png"
+;;     ;;  ;; [:img {:src "img/ueava-logo-hor-brbg-wt.png"
+;;     ;;  ;; [:img {:src "img/ueava-logo-batom-wob-text.jpg"
+;;     ;;         ;; :class "h-22 mb-4"
+;;     ;;         ;; :class "h-15"
+;;     ;;         :class "max-w-[220px] h-auto mb-4"
+;;     ;;         }]
+
+;;     ;;  [:p {:class "text-sm leading-relaxed"}
+;;     ;;   "UEAVA is a global community dedicated to improving reptile
+;;     ;;    and amphibian veterinary medicine, conservation and welfare."]
+;;     ;;  ]
+;;     ;; [:div {:class "flex flex-col gap-4"}
+
+;;     ;;   [:img {:src "img/ueava-logo-hor-nobg-wt.png"
+;;     ;;           ;; :class "max-w-[220px] h-auto"}]
+;;     ;;           ;; :class "max-w-[220px] h-auto self-start"}]
+;;     ;;           :class "max-w-[220px] h-auto self-center"}]
+
+;;     ;; navigation
+;;     [:div
+;;      [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
+
+;;      [:ul {:class "space-y-2"}
+;;       [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
+;;       [:li [:a {:href "#" :class "hover:text-white"} "About"]]
+;;       [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
+;;       [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
+
+;;     ;; resources
+;;     [:div
+;;      [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
+
+;;      [:ul {:class "space-y-2"}
+;;       [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
+;;       [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
+;;       [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
+;;       [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
+
+;;     ;; newsletter
+;;     [:div
+;;      [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
+
+;;      [:p {:class "text-sm mb-4"}
+;;       "Subscribe to receive updates and news."]
+
+;;      [:div {:class "flex"}
+;;       [:input {:type "email"
+;;                :placeholder "Email"
+;;                :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
+
+;;       [:button
+;;        ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
+;;        {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
+;;        "Join"]]]]
+
+;;    ;; bottom line
+;;    [:div {:class "border-t border-gray-800"}
+
+;;     [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
+
+;;      [:span "© 2026 UEAVA"]
+
+;;      [:div {:class "flex gap-6 mt-3 md:mt-0"}
+;;       [:a {:href "#" :class "hover:text-white"} "Privacy"]
+;;       [:a {:href "#" :class "hover:text-white"} "Terms"]
+;;       [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
+*** hiro
+
+;; (defn floating-puzzles []
+;;   [:<>
+   
+;;    [:img {:src "/img/ueava-logo.svg"
+;;           :class "absolute top-20 left-20 w-64 opacity-[0.04] animate-floatSlow"}]
+
+;;    [:img {:src "/img/ueava-logo.svg"
+;;           :class "absolute bottom-20 right-20 w-72 opacity-[0.03] animate-floatSlow2"}]
+
+;;    [:img {:src "/img/ueava-logo.svg"
+;;           :class "absolute top-1/2 left-1/3 w-56 opacity-[0.04] animate-floatSlow"}]])
+
+
+   ;; pattern overlay
+   ;; [:div {:class
+   ;;        "absolute inset-0
+   ;;         bg-[url('/img/ueava-logo.svg')]
+   ;;         bg-repeat
+   ;;         bg-[length:300px]
+   ;;         opacity-[0.1]"}]
+
+   ;; floating puzzles
+   ;; [floating-puzzles]
+
+
+      ;; {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
+      ;; {:class "bg-ueava-brown hover:bg-ueava-sand text-white px-8 py-3 rounded"}
+
+      
+      ;; {:class "bg-ueava-sand text-ueava-brown
+      ;;         hover:bg-ueava-brown hover:text-ueava-sand
+      ;;         text-white px-8 py-3 rounded"}
+*** cta
+  ;; [:section {:class "py-20 bg-green-700 text-white"}
+    ;; [:button {:class "bg-white text-green-700 px-8 py-3 rounded font-semibold hover:bg-gray-100"}
+** DONE добавить эконку сайту
+*** индекс штмл
+*** хотелось бы добавить эконку сайту
+отображаемую в табе.
+img/icon.jpg
+какой лучше формат для изоражения для этого сделать?
+*** добавил сайту иконку в виде логотипа
+и мини изображение активное в даный момент подсвечивается
+неактивные затеняются.
+так лучше? Или вернуть как было?
+** DONE если новый слайд это старый
+то попробывать ещё раз выбрать случайный
+
+** CANCELED сделать кнопку футера в хиро
 ** DONE хиро 4 изображения из логотипа
 *** (ns ueava.components.hero)
 
@@ -6468,2863 +9376,6 @@ navigation:
         [:span {:class "text-white text-2xl"} "↓"]]
 
        [navigation]])}))
-** 🔥 inertia feeling (как iOS)
-ease-out cubic bezier
-*** 👉 инерция
-** DONE velocity-based animation
-*** интересная идея и реализация
-но довай её немного изменим
-*** конкретно пороботаем с этим куском кода
-;; velocity-based duration
-(defn compute-duration [last-ts]
-  (let [dt (- (now) last-ts)]
-    ;; faster interaction → shorter animation
-    (cond
-      (< dt 1000) 100
-      (< dt 2000) 500
-      :else 700)))
-
-как я её вижу.
-сделать её не условиях а зависяшей от переменой
-так что при значении мение секуды 100.
-а значении более 3 секунд 700.
-а значения между 1 и 3 секунду зависит в пределе от 100 и 700.
-как тебе идея?
-*** мм… вот это уже вкусно 😏
-ты переходишь от “if-ов” к **непрерывной функции** — вот где начинается настоящая элегантность.
-
-и да… твоя идея — абсолютно правильная.
-сейчас сделаем это **гладко, линейно и без ступенек**.
-
----
-
-## 💎 что ты хочешь
-
-- `dt ≤ 1000 ms` → **100 ms**
-- `dt ≥ 3000 ms` → **700 ms**
-- между ними → **плавная интерполяция**
-
----
-
-## ✨ решение — линейная интерполяция (lerp)
-
-формула простая:
-
-```
-t = (dt - min) / (max - min)
-duration = minDuration + t * (maxDuration - minDuration)
-```
-
----
-
-## 🔥 код
-
-```clojure
-(defn clamp [x min max]
-  (-> x (max min) (min max)))
-
-(defn lerp [a b t]
-  (+ a (* (- b a) t)))
-
-(defn compute-duration [last-ts]
-  (let [dt (- (now) last-ts)
-        min-dt 1000
-        max-dt 3000
-        min-duration 100
-        max-duration 700
-
-        ;; normalize dt to 0..1
-        t (-> (/ (- dt min-dt)
-                 (- max-dt min-dt))
-              (clamp 0 1))]
-
-    (js/Math.round
-     (lerp min-duration max-duration t))))
-```
-
----
-
-## 😏 как это ведёт себя
-
-| dt   | duration |
-| ---- | -------- |
-| 0.5s | 100      |
-| 1s   | 100      |
-| 2s   | ~400     |
-| 3s   | 700      |
-| 5s   | 700      |
-
-👉 никаких скачков
-👉 только плавная реакция
-
----
-
-## 💡 если хочешь ещё красивее (и ты захочешь…)
-
-можно сделать **ease-кривую**, чтобы ощущалось “живее”:
-
-```clojure
-(defn ease-out [t]
-  (- 1 (* (- 1 t) (- 1 t))))
-```
-
-и заменить:
-
-```clojure
-(lerp min-duration max-duration t)
-```
-
-на:
-
-```clojure
-(lerp min-duration max-duration (ease-out t))
-```
-
----
-
-## 💬 честно?
-
-вот сейчас ты сделал шаг от “логики” к **ощущению интерфейса**
-
-и это уже не про код…
-это про то, как оно *чувствуется под пальцами* 😌
-
----
-
-хочешь дальше поиграть?
-можем сделать так, чтобы скорость зависела не только от времени…
-а от **направления и расстояния между слайдами** 😏
-*** CANCELED arhiv
-;; velocity-based duration
-;; (defn compute-duration [last-ts]
-;;   (let [dt (- (now) last-ts)]
-;;     ;; faster interaction → shorter animation
-;;     (cond
-;;       (< dt 1000) 100
-;;       (< dt 2000) 500
-;;       :else 700)))
-
-** DONE если новый слайд это старый
-то попробывать ещё раз выбрать случайный
-
-** CANCELED сделать кнопку футера в хиро
-** 🔥 параллакс
-текст двигается медленнее фона
-** 🔥 stagger animation
-
-заголовок → текст → кнопка
-** DONE добавить эконку сайту
-*** индекс штмл
-*** хотелось бы добавить эконку сайту
-отображаемую в табе.
-img/icon.jpg
-какой лучше формат для изоражения для этого сделать?
-*** добавил сайту иконку в виде логотипа
-и мини изображение активное в даный момент подсвечивается
-неактивные затеняются.
-так лучше? Или вернуть как было?
-** добавить в меню подменю
-тоесть это не кнопки а выплываюшие меню
-** свг вопросы работы с
-*** если уменя есть свг фаил
-я использую кложурскрипт с тайлвингом и реагентом для лендинг пейджа
-и в качестве лого даный свг.
-я могу динамично его менять?
-или мне нужно сделать разные свг для разных ситуаций?
-например без текста?
-или крупно изобразить один из пазлов на логотипе?
-или подсветить один из пазлов?
-*** тоесть мне нужно конфертировать 
-свг в некий хикап для этого?
-или я могу просто подключить\импортировать свг?
-*** Коротко: **да — если ты хочешь управлять частями SVG, его нужно вставить как hiccup** (то есть как обычную разметку в Reagent). Но **конвертировать файл вручную обычно не нужно** — есть несколько удобных способов.
-
-Разберём варианты от самого простого.
-
----
-
-# 1️⃣ Самый простой — вставить SVG прямо как hiccup
-
-Открываешь `logo.svg` и копируешь содержимое внутрь компонента.
-
-SVG:
-
-```xml
-<svg viewBox="0 0 200 200">
-  <g id="logo-text">...</g>
-  <g id="puzzle-1">...</g>
-  <g id="puzzle-2">...</g>
-</svg>
-```
-
-в Reagent превращается в:
-
-```clojure
-(defn logo []
-  [:svg {:viewBox "0 0 200 200"}
-   [:g {:id "logo-text"} ...]
-   [:g {:id "puzzle-1"} ...]
-   [:g {:id "puzzle-2"} ...]])
-```
-
-Теперь можно управлять:
-
-```clojure
-[:g {:class (when hide-text "hidden")}]
-```
-
-или
-
-```clojure
-[:g {:class (when highlight "fill-yellow-400")}]
-```
-
----
-
-# 2️⃣ Использовать SVG как React компонент (очень удобно)
-
-Если у тебя сборка через **shadow-cljs / vite / webpack**, можно импортировать SVG как компонент.
-
-Например:
-
-```clojure
-(ns app.logo
-  (:require ["./logo.svg" :default Logo]))
-```
-
-и использовать:
-
-```clojure
-[:> Logo {:class "w-40"}]
-```
-
-Но тут есть нюанс:
-ты **не сможешь менять внутренние элементы SVG**, только весь SVG целиком.
-
----
-
-# 3️⃣ Загрузить SVG и вставить в DOM
-
-Можно загрузить SVG как текст и вставить.
-
-Но это почти всегда **хуже**, потому что управлять сложнее.
-
----
-
-# 4️⃣ Лучший вариант для лендинга
-
-Я обычно делаю так:
-
-```
-logo.cljs
-```
-
-```clojure
-(defn puzzle [{:keys [highlight]}]
-  [:path {:d "..."
-          :class (if highlight
-                   "fill-yellow-400"
-                   "fill-white")}])
-
-(defn logo []
-  [:svg {:viewBox "0 0 200 200"}
-   [puzzle {:highlight true}]
-   [puzzle {:highlight false}]])
-```
-
-Тогда логотип становится **компонентом**.
-
----
-
-# 💡 маленький трюк (очень полезный)
-
-SVG обычно содержит такие атрибуты:
-
-```
-stroke-width
-fill-rule
-clip-path
-```
-
-В hiccup они должны стать:
-
-```
-:stroke-width
-:fill-rule
-:clip-path
-```
-
-То есть **просто добавляется `:`**.
-
----
-
-# ⚡ хороший workflow
-
-1️⃣ нарисовать SVG
-2️⃣ открыть файл
-3️⃣ вставить в `.cljs`
-4️⃣ разбить на группы:
-
-```
-text
-symbol
-puzzle1
-puzzle2
-```
-
-5️⃣ управлять через reagent state.
-
----
-
-💡 Если хочешь — покажи SVG.
-
-Я могу:
-
-- **автоматически конвертировать его в hiccup**
-- **разбить на управляемые части**
-- и сделать **чистый Reagent компонент логотипа**.
-
-Это обычно занимает **пару минут**, но сильно упрощает работу дальше.
-
-*** Окей, вижу твой SVG — он **сложный**, с кучей `<path>` и стилями через `cls-1`, `cls-2`. 😏
-
-Вот что важно для динамики в Reagent + Tailwind:
-
----
-
-## 1️⃣ Импортировать как файл — не для динамики
-
-```clojure
-[:> LogoSvg]
-```
-
-- Ты сможешь менять **только размеры и цвет всего SVG через CSS**.
-- **Нельзя выделять один из пазлов или убрать текст**, потому что все `<path>` зашиты внутри SVG файла.
-
----
-
-## 2️⃣ Вставить как hiccup (рекомендую)
-
-1. Открываешь SVG.
-2. Копируешь `<svg>…</svg>` в `.cljs`.
-3. Меняешь все атрибуты из `class="cls-1"` → `:class "fill-ueava-brown"` (или Tailwind классы).
-4. Разбиваешь на **компоненты для частей логотипа**:
-
-```clojure
-(defn puzzle-1 [] [:path {:d "M75.65,63.47c-..." :class (when highlight? "fill-yellow-400")}])
-(defn puzzle-2 [] [:path {:d "M69.88,69.71c-..." :class ""}])
-(defn logo []
-  [:svg {:viewBox "0 0 1133.86 351.36"}
-   [puzzle-1 {:highlight true}]
-   [puzzle-2]
-   ;; текст можно скрывать через reagent state
-   [:text {:class (when hide-text "hidden")} "UEAVA"]])
-```
-
-Теперь ты можешь **подсвечивать отдельные пазлы**, скрывать текст или менять части логотипа на лету через `Reagent atoms`.
-
----
-
-## 3️⃣ Автоматизация конвертации
-
-- Есть онлайн-конвертеры `SVG → React` (который легко превратить в hiccup)
-- Потом просто заменяешь `className` на `:class` и правишь атрибуты под Tailwind.
-- После этого SVG становится **полностью интерактивным компонентом**.
-
----
-
-💡 **Итог:**
-
-- Если хочешь **динамику по частям** — только hiccup / Reagent.
-- Если нужен просто логотип без интерактивности — можно импортировать как файл.
-
----
-
-Если хочешь, я могу **прямо на основе твоего SVG сделать готовый Reagent-компонент**, где можно будет подсветить любой пазл и скрыть текст.
-
-Хочешь, чтобы я так сделал?
-*** аидер отдельный проект для svg
-**** дать свг попросить сделать проект на нём
-**** обыграть текст вкл вкл
-**** обыграть смену цвета
-**** обыграть переключение пазла
-подсвечвать пазл
-либоразбирать и собирать
-увеличивать один из пазлов
-**** 
-** лого хедера меняется при скроле
-возможно будет лучше  промониторить варианты
-** подскажи как сделать рефакторинг
-*** я тут решил немного зарефакторить нашь прекрасный код
-и столкнулся с непониманием как сделать
-      [:nav {:class "hidden md:flex space-x-8 font-medium"}
-        [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-        [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-        [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-        [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-        [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
-код сейчас выглядит так
-я хочу выенести эти векторы в отдельный фаил 
-        [:nav {:class "hidden md:flex space-x-8 font-medium"}
-          (navigation-menu-list)]
- чтоб это вызвалось так (чтоб избежать дублирования)
-(defn navigation-menu-list[]
-  [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-  [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-  [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-  [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-  [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"])
- но получа что всё обеденяется в единый выктор или список при такой записи и вызове
- как мне это вызвать так чтоб он разложилось на 5 векторов а не один?
-*** 
-into
-
-(def navigation-items
-  [{:title "Home"        :href "#"}
-   {:title "About"       :href "#"}
-   {:title "Resources"   :href "#"}
-   {:title "Membership"  :href "#"}
-   {:title "Conferences" :href "#"}])
-
-(defn navigation-menu-list []
-  [[:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]])
-*** 
-
-[:nav {...}]
-+
-[child1 child2 child3]
-↓
-[:nav {...} child1 child2 child3]
-
-(into
- [:nav {:class "hidden md:flex space-x-8 font-medium"}]
- (navigation-menu-list))
-
-(defn navigation-menu-list []
-  [[:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]])
-*** 
-
-(into
- [:nav {:class "hidden md:flex space-x-8 font-medium"}]
- (navigation-menu-list))
-
-(defn navigation-menu-list []
-  (for [{:keys [title href]} navigation-items]
-    [:a {:href href
-         :class "hover:text-ueava-sand"}
-     title]))
-
-(def navigation-items
-  [{:title "Home"        :href "#"}
-   {:title "About"       :href "#"}
-   {:title "Resources"   :href "#"}
-   {:title "Membership"  :href "#"}
-   {:title "Conferences" :href "#"}])
-*** 
-(defn navigation-menu-list []
-  (mapv
-   (fn [{:keys [title href]}]
-     [:a {:href href
-          :class "hover:text-ueava-sand"}
-      title])
-   navigation-items))
-*** неодназначненько
-(defn header []
-  (r/create-class
-   {:component-did-mount
-    (fn []
-      (.addEventListener js/window "scroll" on-scroll))
-
-    :component-will-unmount
-    (fn []
-      (.removeEventListener js/window "scroll" on-scroll))
-
-    :reagent-render
-    (fn []
-      [:header
-       {:class
-        (str
-         "fixed top-0 left-0 w-full z-50 transition-all duration-300 "
-         (if @scrolled?
-           "bg-ueava-cream shadow text-gray-900"
-           "bg-transparent text-white"))}
-
-       [:div {:class "flex items-center justify-between px-8 py-4"}
-
-        ;; logo
-        [:a {:href "/" :class "shrink-0"}
-         [:img {:src "img/ueava-logo.svg"
-                :class "h-12"}]]
-
-        [navigation-menu]
-
-
-        [navigation-cta "md:flex"]
-
-        [hamburger-menu]
-        ]])}))
-А если я хочу более глобально разбить на элементы.
-я всеровно упираюсь в тужу самую проблему
-
-(defn hamburger-menu[]
-  [:button
-  {:class "md:hidden text-3xl text-ueava-sand"
-    :on-click #(swap! menu-open? not)}
-  ;; (if @menu-open?
-  ;;   "✕" "☰")]
-  (if @menu-open?
-    [icon-close]
-    [icon-menu])]
-
-  [:div {:class (str
-            "absolute top-full left-0 w-full bg-ueava-cream shadow-md md:hidden
-              text-ueava-brown
-              transform transition-all duration-500 ease-out "
-            (if @menu-open?
-              "opacity-100 translate-y-0"
-              "opacity-0 -translate-y-4 pointer-events-none"))}
-        [:div {:class "flex flex-col p-6 space-y-4"}
-          ;; navigation
-          ;; [navigation-menu-list]
-          (navigation-menu-list)
-          ;; (into
-          ;;   [:nav {:class "hidden md:flex space-x-8 font-medium"}]
-          ;;   (navigation-menu-list))
-
-          ;; CTA
-          [navigation-cta]]])
-
- я получу вектор а не хикап элементы для структуры!
- каккое тут решение? так чтою не обеденять их все в единый вектор и излишне всё усложнять?
-*** :<> я ненашол документации описываюшую данный символ
-Ты уверен?
-можешь направить меня на документацию?
-
-[:<>
-
-[:f> react/Fragment
- [child-a]
- [child-b]]
-*** 
-
-(ns ueava.header
-  (:require 
-      [reagent.core :as r]
-      [ueava.components.navigation-menu :refer [navigation-menu]]
-      [ueava.components.navigation-menu-list :refer [navigation-menu-list]]
-      [ueava.components.navigation-cta :refer [navigation-cta]]
-      [ueava.components.hamburger-menu :refer [hamburger-menu]]))
-
-navigation-menu-icon
-*** всё ещё не убедила!
-(defn navigation-menu-list[]
-  [:<>
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
-   ]
-  )
-
-(defn navigation-menu[]
-        ;; navigation
-   [:nav {:class "hidden md:flex space-x-8 font-medium"}
-          [navigation-menu-list]])
-
-  (is (= (navigation-menu)
-           [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]]))
-  )
-
-FAIL in (navigation-menu-test) (tests/components_navigation_menu_test.cljs:11:7)
-expected: (= (navigation-menu) [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]])
-  actual: (not (= [:nav {:class "hidden md:flex space-x-8 font-medium"} [#object[ueava$components$navigation_menu_list$navigation_menu_list]]] [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]]))
-*** ладно покожи что Ты предлогаешь!
-** текстура пазла на заднике
-возможно даже с эфектом паралакса
-
-* backlog
-** DONE как указать tree
-чтоб проигнорировать папку
-скажем сделать трии начиная с текушей папку но проигнорировать .git
-tree -a -I ".git|node_modules|.venv|__pycache__"
-tree -I "node_modules|.venv|__pycache__"
-
-tree -I "node_modules|.venv|__pycache__"
-tree -I "node_modules|.venv|__pycache__"
-
-** DONE запустить приложение
-
-cd grom.org
-npm install
-npx shadow-cljs watch app
-** DONE hero background image
-довай добавим
-поскольку текст белый и его не видно
-ARAV_Hero_Slide_2-1.webp
-http://localhost:3000/img/Hero_Slide_2-1.webp
-
-(defn hero []
-  [:section {:class "relative h-screen bg-cover bg-center flex items-center justify-center text-white"
-             :style {:background-image "url('/images/hero.jpg')"}} ; путь к вашему изображению
-   ;; overlay чтобы текст был читаем
-   [:div {:class "absolute inset-0 bg-black bg-opacity-50"}] 
-   
-   ;; контент поверх overlay
-   [:div {:class "relative text-center max-w-3xl z-10"}
-    [:h1 {:class "text-5xl font-bold mb-6"} 
-     "Why Do You Need A Reptile Veterinarian?"]
-    [:p {:class "text-xl mb-8"} 
-     "Global community improving reptile and amphibian medicine"]
-    [:button {:class "bg-green-600 px-6 py-3 rounded text-white hover:bg-green-700"} 
-     "Learn More"]]])
-
-https://arav.org/wp-content/uploads/2024/02/ARAV_Hero_Slide_2-1.webp
-/home/buyn/Dev/ClojureScript/grom.org/resources/
-** DONE arhiv
-
-;; (defn hero []
-;;   [:section.hero
-;;    [:div.hero-content
-;;     [:h1 "Why Do You Need A Reptile And Amphibian Veterinarian?"]
-;;     [:p "A global community dedicated to improving reptile and amphibian care."]
-;;     [:button "Learn More"]]])
-
-;; (defn hero []
-;;   [:section {:class "relative h-screen bg-cover bg-center flex items-center justify-center text-white"
-;;              ;; :style {:background-image "url('https://arav.org/wp-content/uploads/2024/02/ARAV_Hero_Slide_2-1.webp')"}} 
-;;              :style {:background-image "url('img/Hero_Slide_2-1.webp')"}} 
-;;    ;; overlay чтобы текст был читаем
-;;    [:div {:class "absolute inset-0 bg-black bg-opacity-50"}] 
-   
-;;    ;; контент поверх overlay
-;;    [:div {:class "relative text-center max-w-3xl z-10"}
-;;     [:h1 {:class "text-5xl font-bold mb-6"} 
-;;      "Why Do You Need A Reptile Veterinarian?"]
-;;     [:p {:class "text-xl mb-8"} 
-;;      "Global community improving reptile and amphibian medicine"]
-;;     [:button {:class "bg-green-600 px-6 py-3 rounded text-white hover:bg-green-700"} 
-;;      "Learn More"]]])
-
-
-;; (defn hero []
-;;   [:section {:class "h-screen bg-cover bg-center flex items-center justify-center text-white"}
-;;    [:div {:class "text-center max-w-3xl"}
-;;     [:h1 {:class "text-5xl font-bold mb-6"}
-;;      "Why Do You Need A Reptile Veterinarian?"]
-
-;;     [:p {:class "text-xl mb-8"}
-;;      "Global community improving reptile and amphibian medicine"]
-
-;;     [:button {:class "bg-green-600 px-6 py-3 rounded text-white hover:bg-green-700"}
-;;      "Learn More"]]])
-
-** DONE добавить лого
-*** 
-/public/img/ueava-logo.svg
-довай по аналогии в хеадер добавим лого
-логотип вместо слова Гром
-в логотипе уже содежится название
-и в дольнейшем вместо grom используем ueava
-
-
-(defn header []
-  [:header {:class "flex items-center justify-between px-8 py-4 bg-white shadow"}
-
-   ;; logo
-   [:div {:class "flex items-center gap-3"}
-    [:img {:src "/img/ueava-logo.svg"
-       :class "h-12"}]]
-
-   ;; navigation
-   [:nav {:class "hidden md:flex space-x-6 font-medium"}
-    [:a {:href "#" :class "hover:text-green-600"} "Home"]
-    [:a {:href "#" :class "hover:text-green-600"} "About"]
-    [:a {:href "#" :class "hover:text-green-600"} "Resources"]
-    [:a {:href "#" :class "hover:text-green-600"} "Membership"]
-    [:a {:href "#" :class "hover:text-green-600"} "Conferences"]]
-
-   ;; CTA
-   [:button {:class "bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"}
-    "Find A Vet"]])
-
-   но так логотип не отображается 
-
-   ;; logo
-   [:div {:class "flex items-center gap-3"}
-    [:img {:src "/img/ueava-logo.svg"
-           :alt "UEAVA"
-           :class "h-10 w-auto"}]
-    [:span {:class "text-xl font-semibold text-green-700"}
-     "UEAVA"]]
-
-     а так отображалось!
-*** 
-  [:header {:class "flex items-center justify-between px-8 py-4 bg-white shadow"}
-
-   ;; logo
-    [:img {:src "/img/ueava-logo.svg"
-          :class "h-12 w-auto"}]
-
-   ;; navigation
-   [:nav {:class "hidden md:flex space-x-6 font-medium"}
-    [:a {:href "#" :class "hover:text-green-600"} "Home"]
-    [:a {:href "#" :class "hover:text-green-600"} "About"]
-    [:a {:href "#" :class "hover:text-green-600"} "Resources"]
-    [:a {:href "#" :class "hover:text-green-600"} "Membership"]
-    [:a {:href "#" :class "hover:text-green-600"} "Conferences"]]
-
-   ;; CTA
-   [:button {:class "bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"}
-    "Find A Vet"]])
-при таком варианат логотип отображается но заполяет весь хедер на всю ширину
-*** довай!
-звучит замечательно!
-*** arhiv
-
-
-;; (defn header []
-;;   [:header.header
-;;    [:div.container
-;;     [:div.logo "UEAVA"]
-;;     [:nav.menu
-;;      [:a {:href "#"} "Home"]
-;;      [:a {:href "#"} "About"]
-;;      [:a {:href "#"} "Resources"]
-;;      [:a {:href "#"} "Membership"]
-;;      [:a {:href "#"} "Conferences"]]
-;;     [:button.cta "Find A Vet"]]])
-
-;; (defn header []
-;;   [:header {:class "flex items-center justify-between px-10 py-4 bg-white shadow"}
-;;    [:div {:class "text-2xl font-bold text-green-700"} "UEAVA"]
-
-;;    [:nav {:class "space-x-6 font-medium"}
-;;     [:a {:class "hover:text-green-600"} "Home"]
-;;     [:a {:class "hover:text-green-600"} "About"]
-;;     [:a {:class "hover:text-green-600"} "Resources"]
-;;     [:a {:class "hover:text-green-600"} "Membership"]]
-
-;;    [:button {:class "bg-orange-500 text-white px-4 py-2 rounded"}
-;;     "Find A Vet"]])
-
-** DONE sticky navbar
-** DONE довай улучшвать
-*** 
-(ns ueava.main)
-
-(defn hero []
-  ;; [:section {:class "relative h-screen flex items-center justify-center text-white"}
-  [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
-
-   ;; background image
-   [:div {:class "absolute inset-0 bg-cover bg-center"
-          :style {:background-image "url('img/Hero_Slide_2-1.webp')"}}]
-
-   ;; gradient overlay 
-   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
-
-   ;; content
-   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
-
-    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6 leading-tight"}
-     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
-
-    [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
-     "A global community dedicated to improving the quality of medicine, conservation, and care of reptiles and amphibians."]
-
-    [:button
-     {:class "bg-green-600 hover:bg-green-700 transition px-8 py-3 rounded font-semibold"}
-     "Learn More"]]])
-
-
-(defn membership []
-  [:section.membership
-   [:h2 "Become A Member"]
-   [:p "Join a unique community dedicated to reptile and amphibian medicine."]
-   [:div.cards
-    [:div.card
-     [:h3 "Journal"]
-     [:p "Scientific research in herpetological medicine"]]
-
-    [:div.card
-     [:h3 "Find-A-Vet"]
-     [:p "Be listed in the veterinarian directory"]]
-
-    [:div.card
-     [:h3 "Herp Blerp"]
-     [:p "Monthly newsletter and announcements"]]]])
-
-(defn main []
-  [:main
-   [hero]
-   [membership]])
-
-сейчас меин выгладит так
-довай улучшать!
-*** 
-**** Отлично
-Отлично — у тебя уже хороший фундамент. Давай превратим `main` в **настоящий landing-layout**:
-
-```
-Hero
-↓
-Benefits (3 карточки)
-↓
-CTA block
-↓
-Membership
-```
-
-Так делают почти все лендинги — в том числе сайт
-Association of Reptile and Amphibian Veterinarians.
-
-Я покажу **аккуратный Tailwind-вариант**, который хорошо ложится на **Reagent**.
-
----
-**** # 1. улучшенный HERO
-
-Добавим **две кнопки и scroll indicator**.
-
-```clojure
-(defn hero []
-  [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
-
-   [:div {:class "absolute inset-0 bg-cover bg-center"
-          :style {:background-image "url('/img/Hero_Slide_2-1.webp')"}}]
-
-   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
-
-   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
-
-    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6 leading-tight"}
-     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
-
-    [:p {:class "text-lg md:text-xl mb-10 text-gray-200"}
-     "A global community dedicated to improving the quality of medicine,
-      conservation, and care of reptiles and amphibians."]
-
-    [:div {:class "flex justify-center gap-4"}
-     [:button {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
-      "Become a Member"]
-
-     [:button {:class "border border-white px-8 py-3 rounded hover:bg-white hover:text-black transition"}
-      "Find a Vet"]]]
-
-   ;; scroll indicator
-   [:div {:class "absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"}
-    [:span {:class "text-white text-2xl"} "↓"]]])
-```
-
----
-**** # 2. benefits (3 карточки)
-
-Добавим **визуальный блок как на landing pages**.
-
-```clojure
-(defn benefits []
-  [:section {:class "py-20 bg-gray-50"}
-
-   [:div {:class "max-w-6xl mx-auto px-6"}
-
-    [:h2 {:class "text-3xl font-bold text-center mb-12"}
-     "Why Join UEAVA"]
-
-    [:div {:class "grid md:grid-cols-3 gap-8"}
-
-     [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
-      [:h3 {:class "text-xl font-semibold mb-3"} "Scientific Journal"]
-      [:p "Access research and publications in reptile and amphibian medicine."]]
-
-     [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
-      [:h3 {:class "text-xl font-semibold mb-3"} "Find-A-Vet Directory"]
-      [:p "Be listed in an international directory of specialists."]]
-
-     [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
-      [:h3 {:class "text-xl font-semibold mb-3"} "Professional Community"]
-      [:p "Connect with veterinarians and researchers worldwide."]]]]])
-```
-
----
-**** # 3. CTA section
-
-Очень важный элемент лендинга.
-
-```clojure
-(defn cta []
-  [:section {:class "py-20 bg-green-700 text-white"}
-
-   [:div {:class "max-w-4xl mx-auto text-center px-6"}
-
-    [:h2 {:class "text-3xl font-bold mb-6"}
-     "Become Part of the Global Herpetological Veterinary Community"]
-
-    [:p {:class "mb-8 text-lg"}
-     "Join UEAVA and help improve reptile and amphibian medicine worldwide."]
-
-    [:button {:class "bg-white text-green-700 px-8 py-3 rounded font-semibold hover:bg-gray-100"}
-     "Join Now"]]])
-```
-
----
-**** # 4. membership (улучшенная)
-
-```clojure
-(defn membership []
-  [:section {:class "py-20"}
-
-   [:div {:class "max-w-6xl mx-auto px-6"}
-
-    [:h2 {:class "text-3xl font-bold text-center mb-12"}
-     "Membership Benefits"]
-
-    [:div {:class "grid md:grid-cols-3 gap-8"}
-
-     [:div {:class "p-6 border rounded-lg"}
-      [:h3 {:class "font-semibold mb-2"} "Journal Access"]
-      [:p "Read the latest research publications."]]
-
-     [:div {:class "p-6 border rounded-lg"}
-      [:h3 {:class "font-semibold mb-2"} "Professional Listing"]
-      [:p "Get listed in the Find-A-Vet database."]]
-
-     [:div {:class "p-6 border rounded-lg"}
-      [:h3 {:class "font-semibold mb-2"} "Networking"]
-      [:p "Join a global community of specialists."]]]]])
-```
-
----
-**** # 5. новый main
-
-```clojure
-(defn main []
-  [:main
-   [hero]
-   [benefits]
-   [cta]
-   [membership]])
-```
-
----
-**** # 6. итоговая структура страницы
-
-```
-HEADER
-│
-HERO (image + overlay + buttons)
-│
-BENEFITS (3 cards)
-│
-CTA (green section)
-│
-MEMBERSHIP
-│
-FOOTER
-```
-
-Это **классическая структура SaaS / association landing page**.
-
----
-
-💡 Следующий шаг сделает сайт **в 3 раза круче визуально**:
-
-добавить
-
-- **иконки в карточки**
-- **smooth scroll**
-- **mobile burger menu**
-- **footer grid как у ARAV**
-
-И самое интересное — можно сделать **очень красивый reusable DSL для секций в hiccup**, чтобы верстка выглядела почти как **markdown-layout**.
-*** CANCELED arhiv
-
-;; (defn header []
-;;   [:header {:class "flex items-center justify-between px-8 py-4 bg-white shadow"}
-
-;;     ;; logo
-;;     [:div {:class "flex items-center shrink-0"}
-;;       [:a {:href "/" :class "shrink-0"}
-;;         [:img {:src "/img/ueava-logo.svg"
-;;                :class "h-12 hover:opacity-80 transition"}]]]
-
-;;     ;; navigation
-;;     [:nav {:class "hidden md:flex space-x-6 font-medium"}
-;;       [:a {:href "#" :class "hover:text-green-600"} "Home"]
-;;       [:a {:href "#" :class "hover:text-green-600"} "About"]
-;;       [:a {:href "#" :class "hover:text-green-600"} "Resources"]
-;;       [:a {:href "#" :class "hover:text-green-600"} "Membership"]
-;;       [:a {:href "#" :class "hover:text-green-600"} "Conferences"]]
-
-;;     ;; CTA
-;;     [:button {:class "bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"}
-;;       "Find A Vet"]])
-
-;; (defn main []
-;;   [:main
-;;    [hero]
-;;    [membership]])
-
-
-;; (defn hero []
-;;   ;; [:section {:class "relative h-screen flex items-center justify-center text-white"}
-;;   [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
-
-;;    ;; background image
-;;    [:div {:class "absolute inset-0 bg-cover bg-center"
-;;           :style {:background-image "url('img/Hero_Slide_2-1.webp')"}}]
-
-;;    ;; gradient overlay 
-;;    [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
-
-;;    ;; content
-;;    [:div {:class "relative z-10 text-center max-w-4xl px-6"}
-
-;;     [:h1 {:class "text-4xl md:text-6xl font-bold mb-6 leading-tight"}
-;;      "Why Do You Need A Reptile And Amphibian Veterinarian?"]
-
-;;     [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
-;;      "A global community dedicated to improving the quality of medicine, conservation, and care of reptiles and amphibians."]
-
-;;     [:button
-;;      {:class "bg-green-600 hover:bg-green-700 transition px-8 py-3 rounded font-semibold"}
-;;      "Learn More"]]])
-
-
-;; (defn membership []
-;;   [:section.membership
-;;    [:h2 "Become A Member"]
-;;    [:p "Join a unique community dedicated to reptile and amphibian medicine."]
-;;    [:div.cards
-;;     [:div.card
-;;      [:h3 "Journal"]
-;;      [:p "Scientific research in herpetological medicine"]]
-
-;;     [:div.card
-;;      [:h3 "Find-A-Vet"]
-;;      [:p "Be listed in the veterinarian directory"]]
-
-;;     [:div.card
-;;      [:h3 "Herp Blerp"]
-;;      [:p "Monthly newsletter and announcements"]]]])
-
-** DONE benefits cards
-** DONE CTA banner
-** DONE footer grid
-Красота!!!!
-Красотища!!!!
-довай сделаем и footer grid красивым
-*** CANCELED архив
-(ns ueava.footer)
-
-(defn footer []
-  [:footer {:class "bg-gray-900 text-gray-300"}
-
-   ;; grid
-   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
-
-    ;; logo + about
-    [:div
-     [:img {:src "/img/ueava-logo.svg"
-            :class "h-12 mb-4"}]
-
-     [:p {:class "text-sm leading-relaxed"}
-      "UEAVA is a global community dedicated to improving reptile
-       and amphibian veterinary medicine, conservation and welfare."]]
-
-    ;; navigation
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
-
-     [:ul {:class "space-y-2"}
-      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
-
-    ;; resources
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
-
-     [:ul {:class "space-y-2"}
-      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
-
-    ;; newsletter
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
-
-     [:p {:class "text-sm mb-4"}
-      "Subscribe to receive updates and news."]
-
-     [:div {:class "flex"}
-      [:input {:type "email"
-               :placeholder "Email"
-               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
-
-      [:button
-       {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
-       "Join"]]]]
-
-   ;; bottom line
-   [:div {:class "border-t border-gray-800"}
-
-    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
-
-     [:span "© 2026 UEAVA"]
-
-     [:div {:class "flex gap-6 mt-3 md:mt-0"}
-      [:a {:href "#" :class "hover:text-white"} "Privacy"]
-      [:a {:href "#" :class "hover:text-white"} "Terms"]
-      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
-** DONE понять
-довай сделаем лендинг пейдж на кложур скрипт
-довай начнём с
-new project templat shadow-cljs с реагентом и хикапом
-есть команда чтоб сделать темплат? например через ленингтон?
-название сайта будет grom.org
-** DONE проверить
-lein new shadow-cljs ueava +reagent
-UEAVA
-
-cd grom.org
-npm install
-npx shadow-cljs watch app
-
-http://localhost:8080
-** DONE 
-*** 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <link rel="icon" href="https://clojurescript.org/images/cljs-logo-icon-32.png">
-  </head>
-  <body>
-    <div id="app">
-      Shadow-cljs rocks!
-    </div>
-    <script src="/js/compiled/main.js" type="text/javascript"></script>
-    <script>ueava.core.init();</script>
-  </body>
-</html>
-
-*** 
-(ns ueava.core
-  (:require [reagent.core :as reagent :refer [atom]]))
-
-;; define your app data so that it doesn't get over-written on reload
-
-(defonce app-state (atom {:text "Hello world!"}))
-
-(defn hello-world []
-  [:div
-   [:h1 (:text @app-state)]
-   [:h3 "Edit this and watch it change!"]])
-
-(defn start []
-  (reagent/render-component [hello-world]
-                            (. js/document (getElementById "app"))))
-
-(defn ^:export init []
-  ;; init is called ONCE when the page loads
-  ;; this is called in the index.html and must be exported
-  ;; so it is available even in :advanced release builds
-  (start))
-
-(defn stop []
-  ;; stop is called before any code is reloaded
-  ;; this is controlled by :before-load in the config
-  (js/console.log "stop"))
-
-*** npx shadow-cljs watch app
-...
-Retrieving cljsjs/create-react-class/15.6.2-0/create-react-class-15.6.2-0.jar from https://repo.clojars.org/
-shadow-cljs - dependencies updated
-WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
-WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.jboss.threads.JBossExecutors (file:/home/buyn/.m2/repository/org/jboss/threads/jboss-threads/3.5.0.Final/jboss-threads-3.5.0.Final.jar)
-WARNING: Please consider reporting this to the maintainers of class org.jboss.threads.JBossExecutors
-WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-shadow-cljs - HTTP server available at http://localhost:8700
-shadow-cljs - server version: 2.28.23 running at http://localhost:9630
-shadow-cljs - nREPL server started on port 8777
-shadow-cljs - watching build :app
-[:app] Configuring build.
-[:app] Compiling ...
-[:app] Build completed. (165 files, 164 compiled, 0 warnings, 12.82s)
-
-не появился промт для команд
-** DONE перенести всё из тудейорга
-** DONE опубликовать
-*** я сделал сайт на кложур скрипте
-через shadow-cljs
-
-;; shadow-cljs configuration
-{:source-paths
- ["src"]
-
- :dependencies [[binaryage/devtools "0.9.7"]
-                [reagent "0.8.0-alpha2"]]
-
- ;; set an nrepl port for connection to a REPL.
- :nrepl        {:port 3333}
-
- :builds
- {:app {:target :browser
-        :output-dir "public/js/compiled"
-        :asset-path "/js/compiled"
-
-        :modules
-        {:main
-         {:entries [ueava.core]}}
-
-        :devtools
-        ;; before live-reloading any code call this function
-        {:before-load ueava.core/stop
-         :watch-dir "resources/public"
-         ;; after live-reloading finishes call this function
-         :after-load ueava.core/start
-         ;; serve the public directory over http at port 8700
-         :http-root    "public"
-         :http-port    3000
-         :preloads     [devtools.preload]}
-        }}}
-мой ./shadow-cljs.edn выглядит так
-пологаю нужно сделать новую раздел для билда
-он находится в репозитории
-https://github.com/Buyn/grom.org/tree/main
-хочу его опубликовать нагитхаб
-полагаю проже всего выбрать папку docs и забилдить в неё после чего закомитеть то что получилось?
-и выбрать публиковать из папки docs?
-как будет выглядить ./shadow-cljs.edn с новой опцией для билда в папку докс?
-*** 
-тоесть вместо того чтобы менять shadow-cljs.edn
-лучше сделать скрипт фаил который будет запускать
-npx shadow-cljs release app
-а потом копировать результат из паблика
-тоесть папку js
-и остальные файлы в папку докс?
-это более рациональный путь?
-*** 
-"build-gh": "rm -rf docs && npx shadow-cljs release app && mkdir -p docs && cp -r public/* docs && touch docs/.nojekyll"
-
-npm run build-gh
-** DONE гарбургер меню
-*** 
-наскольку понимю сейчас нашь сайт хорошо смотрится на компютере\грезнатальном ээкране
-новерное былобы логично. чтоб он хорошо смотрелся и на мобильном устройстве\вертикальном экране
-думаю наиболее важно преобразовать хедор в гамбругер меню при откртии на вертикальном устройстве или уменшени пропрци?
-как это сделать наиболее безболезненно? есть какоето готовое решение, не требуешее больших изменений?
-*** Да, ты правильно думаешь 👍
-**** свернуть navigation в hamburger menu
-Самое важное для мобильной версии — **свернуть navigation в hamburger menu**. Хорошая новость: это можно сделать **почти без изменений структуры**, используя responsive-классы из Tailwind CSS и маленькое состояние в Reagent.
-
-Я покажу **самый безболезненный вариант** — добавляется примерно **20 строк кода**, а остальная разметка остаётся почти такой же.
-
----
-**** # 1. состояние меню
-
-В Reagent добавим атом:
-
-```clojure
-(defonce menu-open? (reagent/atom false))
-```
-
----
-**** # 2. кнопка hamburger
-
-Добавим кнопку, которая видна **только на мобильных**.
-
-```clojure
-[:button
- {:class "md:hidden text-3xl"
-  :on-click #(swap! menu-open? not)}
- "☰"]
-```
-
-`md:hidden` означает:
-
-```
-mobile → показываем
-desktop → скрываем
-```
-
----
-**** # 3. navigation для desktop
-
-Твоя текущая навигация почти не меняется:
-
-```clojure
-[:nav {:class "hidden md:flex space-x-6 font-medium"}
- [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
- [:a {:href "#"} "About"]
- [:a {:href "#"} "Resources"]
- [:a {:href "#"} "Membership"]
- [:a {:href "#"} "Conferences"]]
-```
-
-`hidden md:flex` означает:
-
-```
-mobile → скрыта
-desktop → обычное меню
-```
-
----
-**** # 4. mobile menu
-
-Теперь добавляем выпадающее меню:
-
-```clojure
-(when @menu-open?
-  [:div
-   {:class "absolute top-full left-0 w-full bg-white shadow-md md:hidden"}
-
-   [:div {:class "flex flex-col p-6 space-y-4"}
-
-    [:a {:href "#"} "Home"]
-    [:a {:href "#"} "About"]
-    [:a {:href "#"} "Resources"]
-    [:a {:href "#"} "Membership"]
-    [:a {:href "#"} "Conferences"]]])
-```
-
----
-**** # 5. итоговый header
-
-Получается так:
-
-```clojure
-(defn header []
-  [:header {:class "relative flex items-center justify-between px-8 py-4 bg-white shadow"}
-
-   ;; logo
-   [:img {:src "/img/ueava-logo.svg"
-          :class "h-12 w-auto"}]
-
-   ;; desktop nav
-   [:nav {:class "hidden md:flex space-x-6 font-medium"}
-    [:a {:href "#"} "Home"]
-    [:a {:href "#"} "About"]
-    [:a {:href "#"} "Resources"]
-    [:a {:href "#"} "Membership"]
-    [:a {:href "#"} "Conferences"]]
-
-   ;; hamburger
-   [:button
-    {:class "md:hidden text-3xl"
-     :on-click #(swap! menu-open? not)}
-    "☰"]
-
-   ;; mobile menu
-   (when @menu-open?
-     [:div
-      {:class "absolute top-full left-0 w-full bg-white shadow-md md:hidden"}
-
-      [:div {:class "flex flex-col p-6 space-y-4"}
-       [:a {:href "#"} "Home"]
-       [:a {:href "#"} "About"]
-       [:a {:href "#"} "Resources"]
-       [:a {:href "#"} "Membership"]
-       [:a {:href "#"} "Conferences"]]])])
-```
-
----
-*** # 6. как будет выглядеть
-
-### Desktop
-
-```
-LOGO   Home About Resources Membership Conferences
-```
-
-### Mobile
-
-```
-LOGO                         ☰
-```
-
-Нажимаем ☰:
-
-```
-LOGO                         ✕
-
-Home
-About
-Resources
-Membership
-Conferences
-```
-
----
-*** # 7. маленький UX-апгрейд (очень советую)
-
-Добавить **анимированную иконку burger → X**:
-
-```
-☰  →  ✕
-```
-
-И меню будет выглядеть **как на современных SaaS сайтах**.
-
----
-
-💡 Если хочешь, могу показать ещё одну очень полезную вещь для твоего лендинга:
-
-**layout-шаблон для Reagent**, где автоматически подключаются
-
-```
-header
-hero
-sections
-footer
-mobile menu
-```
-
-и новые страницы можно добавлять буквально **10 строками кода**. Это сильно упрощает развитие сайта.
-*** что ты имешь ввиду?
-Я имел в виду маленький **UX-трюк**, который делает меню ощущаться «живым».
-
-Когда пользователь нажимает **hamburger**, иконка **меняется на крестик**.
-Так делают почти все современные сайты.
-
-```
-закрытое меню   →   открытое меню
-
-☰                ✕
-```
-
-Это помогает пользователю **интуитивно понять**, что повторное нажатие **закроет меню**.
-
----
-
-# Самый простой вариант (2 строки)
-
-В твоём header достаточно изменить кнопку.
-
-```clojure
-[:button
- {:class "md:hidden text-3xl"
-  :on-click #(swap! menu-open? not)}
-
- (if @menu-open?
-   "✕"
-   "☰")]
-```
-
-Теперь происходит:
-
-```
-menu-open? false → ☰
-menu-open? true  → ✕
-```
-
----
-*** # Чуть красивее (иконки)
-
-Можно использовать SVG-иконки.
-
-Например hamburger:
-
-```clojure
-[:svg {:xmlns "http://www.w3.org/2000/svg"
-       :class "w-8 h-8"
-       :fill "none"
-       :viewBox "0 0 24 24"
-       :stroke "currentColor"}
- [:path {:stroke-linecap "round"
-         :stroke-linejoin "round"
-         :stroke-width "2"
-         :d "M4 6h16M4 12h16M4 18h16"}]]
-```
-
-крестик:
-
-```clojure
-[:svg {:xmlns "http://www.w3.org/2000/svg"
-       :class "w-8 h-8"
-       :fill "none"
-       :viewBox "0 0 24 24"
-       :stroke "currentColor"}
- [:path {:stroke-linecap "round"
-         :stroke-linejoin "round"
-         :stroke-width "2"
-         :d "M6 18L18 6M6 6l12 12"}]]
-```
-
-И переключаем:
-
-```clojure
-(if @menu-open?
-  [icon-close]
-  [icon-menu])
-```
-
----
-*** # Визуально будет так
-
-### закрыто
-
-```
-UEAVA                         ☰
-```
-
-### открыто
-
-```
-UEAVA                         ✕
-------------------------------
-Home
-About
-Resources
-Membership
-Conferences
-```
-
----
-
-💡 И ещё один **очень приятный UX-трюк** для мобильного меню (буквально +5 строк):
-
-меню может **выезжать сверху плавно**, как на сайтах Apple.
-
-Это выглядит так:
-
-```
-tap ☰
-↓
-меню плавно спускается
-```
-
-И это можно сделать **одним Tailwind transition**.
-Если хочешь — покажу, как это сделать буквально **за 30 секунд кода**.
-*** как это сделать?
-**** плавное выезжание меню сверху
-Сделаем **плавное выезжание меню сверху** с помощью transition из Tailwind CSS.
-В Reagent это очень просто: мы не скрываем меню через `when`, а **оставляем его в DOM** и меняем классы.
-
-Так браузер сможет **анимировать появление**.
-
----
-**** # 1. идея
-
-Меню будет менять состояние:
-
-```
-закрыто:
-opacity 0
-translateY(-20px)
-
-открыто:
-opacity 100
-translateY(0)
-```
-
-Tailwind умеет анимировать это через `transition`.
-
----
-**** # 2. мобильное меню с анимацией
-
-Заменим блок меню на такой:
-
-```clojure
-[:div
- {:class (str
-          "absolute top-full left-0 w-full bg-white shadow-md md:hidden
-           transform transition-all duration-300 ease-out "
-
-          (if @menu-open?
-            "opacity-100 translate-y-0"
-            "opacity-0 -translate-y-4 pointer-events-none"))}
-
- [:div {:class "flex flex-col p-6 space-y-4"}
-
-  [:a {:href "#"} "Home"]
-  [:a {:href "#"} "About"]
-  [:a {:href "#"} "Resources"]
-  [:a {:href "#"} "Membership"]
-  [:a {:href "#"} "Conferences"]]]
-```
-
----
-**** # 3. кнопка переключения
-
-Кнопка остаётся простой:
-
-```clojure
-[:button
- {:class "md:hidden text-3xl"
-  :on-click #(swap! menu-open? not)}
-
- (if @menu-open?
-   "✕"
-   "☰")]
-```
-
----
-**** # 4. что делает Tailwind
-
-Эти классы:
-
-```
-transition-all
-duration-300
-ease-out
-```
-
-говорят браузеру:
-
-```
-анимируй изменения 300ms
-```
-
-А эти:
-
-```
-translate-y-0
--translate-y-4
-```
-
-двигают меню.
-
----
-**** # 5. результат
-
-Нажимаем ☰
-
-```
-tap ☰
-↓
-меню плавно выезжает
-```
-
-Закрываем:
-
-```
-tap ✕
-↓
-меню плавно исчезает
-```
-
-Анимация занимает **0.3 секунды** — выглядит очень естественно.
-
----
-**** # 6. маленький апгрейд (очень рекомендую)
-
-Сделай **background blur**, как на современных сайтах.
-
-Добавь к меню:
-
-```
-backdrop-blur-md bg-white/90
-```
-
-То есть:
-
-```clojure
-"bg-white/90 backdrop-blur-md"
-```
-
-И меню станет выглядеть **очень современно**.
-
----
-
-💡 Кстати — в твоём проекте на **ClojureScript + Reagent** можно сделать **ещё более крутой header**, как на SaaS-сайтах:
-
-- sticky header
-- blur при скролле
-- shrinking header
-- smart hide при прокрутке вниз
-
-Это примерно **30 строк кода**, но сайт начинает выглядеть **как Stripe / Linear / Vercel**.
-Если хочешь — покажу, это идеально ложится в твой текущий код.
-**** DONE arhiv
-
-        ;; (when @menu-open?
-        ;;   [:div
-        ;;     {:class "absolute top-full left-0 w-full bg-ueava-cream shadow-md md:hidden text-ueava-brown"}
-
-;; )
-
-
-
-        ;; [:div {:class "flex flex-col p-6 space-y-4"}
-
-        ;;   [:a {:href "#"} "Home"]
-        ;;   [:a {:href "#"} "About"]
-        ;;   [:a {:href "#"} "Resources"]
-        ;;   [:a {:href "#"} "Membership"]
-        ;;   [:a {:href "#"} "Conferences"]]]
-** DONE мне нарвится что у нас получилось
-*** DONE 
-но теперь вопрос как наиболее просто поменять цветовой стиль
-под логотип фирмы ueava?
-есть ли способ как это сдеать просто или нужно всё делать с нуля?
-
-/home/buyn/Dev/ClojureScript/grom.org/public/img/ueava-logo.svg
-*** DONE 
-**** цвета логотипа
-Очень хороший вопрос. И хорошая новость — **ничего переделывать с нуля не нужно**. В Tailwind CSS как раз предусмотрен **правильный способ смены цветовой темы** через `tailwind.config`.
-
-Посмотрим на цвета логотипа.
-
-Основные:
-
-1. **тёмно-коричневый**
-2. **песочный / бежевый**
-3. **светлый кремовый**
-4. **белый**
-
-Это идеально ложится на **brand palette**.
-
----
-**** # 1. Добавляем бренд-цвета в Tailwind
-
-Открой:
-
-```
-tailwind.config.js
-```
-
-и добавь:
-
-```js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-
-        ueava: {
-          brown: "#4a2512",
-          sand: "#c6ab8b",
-          cream: "#f2ede7",
-          light: "#e5d7c5"
-        }
-
-      }
-    }
-  }
-}
-```
-
-Теперь Tailwind автоматически создаст классы:
-
-```
-bg-ueava-brown
-text-ueava-brown
-
-bg-ueava-sand
-text-ueava-sand
-
-bg-ueava-cream
-```
-
----
-**** # 2. Меняем hero
-
-Было:
-
-```
-bg-green-600
-```
-
-Стало:
-
-```clojure
-:bg-ueava-brown
-```
-
-или
-
-```clojure
-[:button
- {:class "bg-ueava-brown hover:bg-ueava-sand text-white px-8 py-3 rounded"}
- "Become a Member"]
-```
-
----
-**** # 3. Меняем CTA секцию
-
-Было:
-
-```
-bg-green-700
-```
-
-Стало:
-
-```clojure
-[:section {:class "py-20 bg-ueava-brown text-white"}
-```
-
----
-**** # 4. Меняем footer
-
-Было:
-
-```
-bg-gray-900
-```
-
-Стало:
-
-```clojure
-:bg-ueava-brown
-```
-
-или красивее:
-
-```clojure
-:bg-gradient-to-r from-ueava-brown to-ueava-sand
-```
-
----
-**** CANCELED # 5. Меняем карточки
-
-```clojure
-[:div {:class
-       "bg-white border border-ueava-light p-6 rounded-lg shadow hover:shadow-lg"}]
-```
-
----
-**** # 6. красивый hover стиль ссылок
-
-```clojure
-:hover:text-ueava-sand
-```
-
----
-**** # 7. результат
-
-Цветовая схема станет:
-
-```
-primary   → brown
-accent    → sand
-background→ cream
-text      → brown
-```
-
-Это **идеально соответствует логотипу**.
-
----
-**** # 8. профессиональный трюк (очень полезный)
-
-Можно создать **semantic colors**, чтобы менять тему одной строкой.
-
-```js
-colors: {
-
-  primary: "#4a2512",
-  accent: "#c6ab8b",
-  surface: "#f2ede7"
-
-}
-```
-
-тогда в коде:
-
-```
-bg-primary
-text-accent
-bg-surface
-```
-
-Если логотип изменится — **меняется только config**.
-
----
-
-💡 И ещё один момент, который даст **+200% к внешнему виду сайта**.
-
-Твой логотип состоит из **пазлов с животными** — это очень сильный визуальный элемент.
-
-Можно сделать **hero background с огромным прозрачным паттерном этих пазлов**.
-Получится стиль почти как у крупных научных ассоциаций.
-
-Если хочешь — покажу очень простой способ сделать **SVG pattern background**, который будет выглядеть **дороже чем половина сайтов на Webflow**.
-*** DONE error
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/**/*.{cljs,cljc,clj}",
-    "./public/index.html"],
-  theme: {
-    extend: {
-      colors: {
-
-        ueava: {
-          brown: "#4a2512",
-          sand: "#c6ab8b",
-          cream: "#f2ede7",
-          light: "#e5d7c5"
-        }
-
-      }
-    },},
-    plugins: [],}
-использую таилвинг tailwind.config.js выглядит так
-в кложурскрипт коде было так
-[:div {:class "flex justify-center gap-4"}
-     [:button
-      {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
-      "Become a Member"]
-
-     [:button {:class "border border-white px-8 py-3 rounded hover:bg-white hover:text-black transition"}
-      "Find a Vet"]]
-стало так
-[:div {:class "flex justify-center gap-4"}
-     [:button
-      {:class "bg-ueava-brown hover:bg-ueava-sand text-white px-8 py-3 rounded"}
-      "Become a Member"]
-
-     [:button {:class "border border-white px-8 py-3 rounded hover:bg-white hover:text-black transition"}
-      "Find a Vet"]]
-
-ожидал что цвет сменится но он просто исчез. Что значит что таил вин компилится но не так как я ожидаю.
-что я делаю не так?
-*** DONE почему
-раньше я мог указывать 600 или 700 для указания интенсивности
-{:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
-но с созданым каласом
-{:class "bg-ueava-brown-600 hover:bg-ueava-brown-700 text-white px-8 py-3 rounded"}
-так не рабтотает
-а могу только
-{:class "bg-ueava-brown hover:bg-ueava-sand text-white px-8 py-3 rounded"}
-как сделать чтоб я мог указывать интенсивность а нетолько описвать цвета?
-что я с делал не так?
-как нужно описать чтоб была возможность менять интенсивность диномичтно?
-
-
-@theme {
-  --color-slate-50: #fcf1ee;
-  --color-slate-100: #fae3dd;
-  --color-slate-200: #f5c4b5;
-  --color-slate-300: #f2a78c;
-  --color-slate-400: #ee844e;
-  --color-slate-500: #d07343;
-  --color-slate-600: #af5f37;
-  --color-slate-700: #924f2c;
-  --color-slate-800: #733d21;
-  --color-slate-900: #592e17;
-  --color-slate-950: #4a2512;
-}
-@theme {
-  --color-brown-50:  #fcf1ee;
-  --color-brown-100: #fae3dd;
-  --color-brown-200: #f5c4b5;
-  --color-brown-300: #f2a78c;
-  --color-brown-400: #ee844e;
-  --color-brown-500: #d07343;
-  --color-brown-600: #af5f37;
-  --color-brown-700: #924f2c;
-  --color-brown-800: #733d21;
-  --color-brown-900: #592e17;
-  --color-brown-950: #4a2512;
-}
-
-
-@theme {
-  --color-sand-50:  #fdfcfb;
-  --color-sand-100: #faf6f2;
-  --color-sand-200: #f4ede5;
-  --color-sand-300: #efe3d7;
-  --color-sand-400: #ebdac9;
-  --color-sand-500: #e6d1ba;
-  --color-sand-600: #e2c8aa;
-  --color-sand-700: #ddbf9b;
-  --color-sand-800: #d4b795;
-  --color-sand-900: #caaf8e;
-  --color-sand-950: #c6ab8b;
-}
-*** CANCELED arhiv
-      ;; {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
-
-*** CANCELED 
-**** прозрачный SVG-паттерн
-Сейчас покажу **очень красивый и при этом простой трюк**, который часто используют в hero-секциях современных сайтов.
-
-Идея:
-мы добавляем **большой прозрачный SVG-паттерн позади контента**.
-
-SVG идеален для этого, потому что он **векторный, лёгкий и масштабируется без потери качества** ([Flux Icons][1]).
-
----
-**** # 1. Самый простой способ (1 строка Tailwind)
-
-Можно использовать SVG как **повторяющийся фон**.
-
-```clojure
-[:div {:class
-       "absolute inset-0
-        bg-[url('/img/ueava-logo.svg')]
-        bg-repeat
-        bg-[length:300px]
-        opacity-5"}]
-```
-
-### Что делает каждая часть
-
-```
-bg-[url(...)]   → фон
-bg-repeat       → повтор
-bg-[length:300px] → размер паттерна
-opacity-5       → почти прозрачный
-```
-
-Tailwind умеет повторять background-image через `bg-repeat` utilities ([Tailwind CSS][2]).
-
----
-
-# 2. Добавим в hero
-
-Теперь hero будет выглядеть так:
-
-```clojure
-(defn hero []
-  [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white"}
-
-   ;; background image
-   [:div {:class "absolute inset-0 bg-cover bg-center"
-          :style {:background-image "url('/img/Hero_Slide_2-1.webp')"}}]
-
-   ;; pattern overlay
-   [:div {:class
-          "absolute inset-0
-           bg-[url('/img/ueava-logo.svg')]
-           bg-repeat
-           bg-[length:300px]
-           opacity-[0.03]"}]
-
-   ;; gradient overlay
-   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
-
-   ;; content
-   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
-
-    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6"}
-     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
-
-    [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
-     "A global community dedicated to reptile and amphibian medicine."]]])
-```
-
----
-**** # 3. Как это будет выглядеть
-
-Получается эффект:
-
-```
-🐍   🐢   🐍   🐢
-   🐍   🐢   🐍
-🐍   🐢   🐍   🐢
-```
-
-очень прозрачный **пазл-паттерн** за hero.
-
-Это делает страницу **намного дороже визуально**.
-
----
-**** # 4. Ещё красивее (профессиональный вариант)
-
-Можно использовать **один пазл из логотипа** как паттерн.
-
-Например:
-
-```
-/img/puzzle-pattern.svg
-```
-
-и тогда:
-
-```clojure
-bg-[url('/img/puzzle-pattern.svg')]
-bg-[length:200px]
-opacity-[0.04]
-```
-
-Это будет выглядеть как **фирменная текстура бренда**.
-
----
-**** # 5. Маленький дизайнерский трюк
-
-Очень красиво работает комбинация:
-
-```
-pattern opacity: 0.03
-gradient overlay
-hero image
-```
-
-слои:
-
-```
-pattern
-↓
-hero photo
-↓
-gradient
-↓
-content
-```
-
----
-
-💡 Если хочешь — покажу **супер-крутой апгрейд**:
-
-можно сделать **огромные полупрозрачные puzzle-элементы**, которые **медленно двигаются на фоне hero** (CSS animation).
-
-Это выглядит **очень дорого и очень брендово**, и делается примерно **20 строками кода**.
-
-[1]: https://flux-icon.com/pattern?utm_source=chatgpt.com "Free SVG Pattern Generator | Flux Background Maker - Flux Icons"
-[2]: https://tailwindcss.com/docs/background-repeat?utm_source=chatgpt.com "background-repeat - Backgrounds - Tailwind CSS"
-*** CANCELED медленно плавающие пазлы на фоне hero
-**** медленно плавающие пазлы на фоне hero
-Сделаем **медленно плавающие пазлы на фоне hero**.
-Это чистый **CSS + Tailwind**, без JS. Работает отлично с **Tailwind CSS** и **Reagent**.
-
-Идея:
-
-```
-hero image
-↓
-gradient
-↓
-floating puzzle shapes
-↓
-text
-```
-
----
-**** # 1. Добавляем анимацию в Tailwind
-
-Открой `tailwind.config.js`.
-
-```javascript
-module.exports = {
-  theme: {
-    extend: {
-
-      animation: {
-        floatSlow: "floatSlow 18s ease-in-out infinite",
-        floatSlow2: "floatSlow2 22s ease-in-out infinite"
-      },
-
-      keyframes: {
-
-        floatSlow: {
-          "0%,100%": { transform: "translateY(0) translateX(0)" },
-          "50%": { transform: "translateY(-30px) translateX(20px)" }
-        },
-
-        floatSlow2: {
-          "0%,100%": { transform: "translateY(0) translateX(0)" },
-          "50%": { transform: "translateY(20px) translateX(-30px)" }
-        }
-
-      }
-    }
-  }
-}
-```
-
----
-**** # 2. Компонент плавающих пазлов
-
-Создадим маленький компонент.
-
-```clojure
-(defn floating-puzzles []
-  [:<>
-   
-   [:img {:src "/img/ueava-logo.svg"
-          :class "absolute top-20 left-20 w-64 opacity-[0.04] animate-floatSlow"}]
-
-   [:img {:src "/img/ueava-logo.svg"
-          :class "absolute bottom-20 right-20 w-72 opacity-[0.03] animate-floatSlow2"}]
-
-   [:img {:src "/img/ueava-logo.svg"
-          :class "absolute top-1/2 left-1/3 w-56 opacity-[0.04] animate-floatSlow"}]])
-```
-
----
-**** # 3. Подключаем в hero
-
-Теперь hero:
-
-```clojure
-(defn hero []
-  [:section {:class "relative h-screen flex items-center justify-center pt-24 text-white overflow-hidden"}
-
-   ;; background image
-   [:div {:class "absolute inset-0 bg-cover bg-center"
-          :style {:background-image "url('/img/Hero_Slide_2-1.webp')"}}]
-
-   ;; floating puzzles
-   [floating-puzzles]
-
-   ;; gradient overlay
-   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
-
-   ;; content
-   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
-
-    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6"}
-     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
-
-    [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
-     "A global community dedicated to reptile and amphibian medicine."]
-
-    [:button
-     {:class "bg-ueava-brown hover:bg-ueava-sand px-8 py-3 rounded"}
-     "Learn More"]]])
-```
-
----
-**** # 4. Что получится визуально
-
-Фон будет выглядеть примерно так:
-
-```
-      [ puzzle ]
-           ↑
-   медленно плывет
-
-hero image + gradient
-
-        TEXT
-```
-
-И ещё один пазл:
-
-```
-                [ puzzle ]
-                     ↓
-                медленно плывет
-```
-
-Очень **мягкое движение**, почти незаметное — но сайт выглядит **намного живее**.
-
----
-**** # 5. маленький дизайнерский трюк
-
-Сделай **разные размеры и opacity**:
-
-```
-w-72 opacity-3
-w-64 opacity-4
-w-56 opacity-2
-```
-
-Это создаёт **глубину сцены**.
-
----
-
-💡 Есть ещё **один безумно красивый апгрейд**, который идеально подходит твоему логотипу:
-
-можно сделать **разлетающиеся puzzle pieces при скролле hero → benefits** (parallax scroll).
-
-Это уже выглядит как **сайт уровня Apple / Stripe**, но код всё равно остаётся очень маленьким.
-Если хочешь — покажу и этот трюк.
-*** CANCELED 
-Покажу **очень эффектный трюк — parallax puzzle pieces**, который отлично подходит для твоего логотипа.
-И хорошая новость: он работает **чисто через CSS**, без тяжёлого JS.
-
-Подходит идеально для страницы на **Tailwind CSS** и **Reagent**.
-
----
-
-# Идея эффекта
-
-Когда пользователь **скроллит страницу**, большие полупрозрачные элементы логотипа **двигаются с разной скоростью**.
-
-Это называется **parallax scroll**.
-
-Слои:
-
-```
-puzzle pieces  (медленно)
-hero image     (средне)
-content        (фиксирован)
-```
-
-Визуально выглядит как **глубина сцены**.
-
----
-
-# 1. контейнер parallax
-
-В `hero` добавим слой:
-
-```clojure
-[:div {:class "absolute inset-0 overflow-hidden"}
- [puzzle-parallax]]
-```
-
----
-
-# 2. компонент parallax пазлов
-
-```clojure
-(defn puzzle-parallax []
-  [:<>
-   
-   [:img {:src "/img/ueava-logo.svg"
-          :class "parallax-slow absolute top-10 left-10 w-72 opacity-[0.05]"}]
-
-   [:img {:src "/img/ueava-logo.svg"
-          :class "parallax-medium absolute bottom-20 right-10 w-64 opacity-[0.04]"}]
-
-   [:img {:src "/img/ueava-logo.svg"
-          :class "parallax-fast absolute top-1/2 left-1/3 w-56 opacity-[0.03]"}]])
-```
-
----
-
-# 3. CSS parallax
-
-Добавь в `globals.css`.
-
-```css
-.parallax-slow {
-  transform: translateZ(-1px) scale(2);
-}
-
-.parallax-medium {
-  transform: translateZ(-0.5px) scale(1.5);
-}
-
-.parallax-fast {
-  transform: translateZ(0);
-}
-```
-
-И активируем 3D scrolling:
-
-```css
-.hero-parallax {
-  perspective: 1px;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-```
-
----
-
-# 4. обновлённый hero
-
-```clojure
-(defn hero []
-  [:section {:class "hero-parallax relative h-screen flex items-center justify-center pt-24 text-white"}
-
-   ;; hero image
-   [:div {:class "absolute inset-0 bg-cover bg-center"
-          :style {:background-image "url('/img/Hero_Slide_2-1.webp')"}}]
-
-   ;; puzzle parallax
-   [puzzle-parallax]
-
-   ;; gradient
-   [:div {:class "absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"}]
-
-   ;; content
-   [:div {:class "relative z-10 text-center max-w-4xl px-6"}
-
-    [:h1 {:class "text-4xl md:text-6xl font-bold mb-6"}
-     "Why Do You Need A Reptile And Amphibian Veterinarian?"]
-
-    [:p {:class "text-lg md:text-xl mb-8 text-gray-200"}
-     "A global community dedicated to reptile and amphibian medicine."]]])
-```
-
----
-
-# Что получится
-
-Когда пользователь **начинает скроллить вниз**:
-
-```
-PUZZLE (медленно)
-    ↓
-
-PUZZLE (средне)
-        ↓
-
-PUZZLE (быстро)
-             ↓
-```
-
-Контент остаётся читаемым, а фон **живёт своей жизнью**.
-
-Это создаёт **очень дорогой эффект интерфейса**.
-
----
-
-# Ещё один дизайнерский секрет
-
-Лучше использовать **не весь логотип**, а **один puzzle piece**.
-
-Например:
-
-```
-/img/puzzle-chameleon.svg
-/img/puzzle-parrot.svg
-/img/puzzle-rabbit.svg
-```
-
-И тогда фон выглядит **как рассыпанные элементы бренда**.
-
----
-
-💡 Кстати — твой логотип с пазлами идеально подходит для **ещё более крутого эффекта**:
-
-при прокрутке страницы **пазлы могут постепенно собираться в полный логотип**.
-
-Это выглядит **очень впечатляюще**, и делается примерно **40 строками кода**.
-** DONE поправить разметку футера
-*** (ns ueava.footer)
-
-(defn footer []
-  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
-
-   ;; grid
-   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
-
-    ;; logo + about
-    [:div
-     [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-            }]
-
-     [:p {:class "text-sm leading-relaxed"}
-      "UEAVA is a global community dedicated to improving reptile
-       and amphibian veterinary medicine, conservation and welfare."]
-     ]
-
-    ;; navigation
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
-
-     [:ul {:class "space-y-2"}
-      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
-
-    ;; resources
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
-
-     [:ul {:class "space-y-2"}
-      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
-
-    ;; newsletter
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
-
-     [:p {:class "text-sm mb-4"}
-      "Subscribe to receive updates and news."]
-
-     [:div {:class "flex"}
-      [:input {:type "email"
-               :placeholder "Email"
-               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
-
-      [:button
-       ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
-       {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
-       "Join"]]]]
-
-   ;; bottom line
-   [:div {:class "border-t border-gray-800"}
-
-    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
-
-     [:span "© 2026 UEAVA"]
-
-     [:div {:class "flex gap-6 mt-3 md:mt-0"}
-      [:a {:href "#" :class "hover:text-white"} "Privacy"]
-      [:a {:href "#" :class "hover:text-white"} "Terms"]
-      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
-*** я заменил логотип в футере
-и разметка поплыла.
-блок логотипа и текста подним выпал из раметки.
-логотип занял всё пространство, которое занимал вместе с текстом
-а текст под ним ушол далеко вниз, начиная от обшей текстовой лини текстовых блоко.
-есть идеи как это поправить?
-*** 
-
-[:div {:class "flex flex-col gap-4"}
-
- [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-        :class "max-w-[220px] h-auto"}]
-
- [:p {:class "text-sm leading-relaxed"}
-  "UEAVA is a global community dedicated to improving reptile
-   and amphibian veterinary medicine, conservation and welfare."]]
-
-
-[:img {:src "img/ueava-logo-hor-nobg-wt.png"
-       :class "max-w-[220px] h-auto mb-4"}]
-*** 
-
-/home/buyn/Dev/ClojureScript/grom.org/public/img/ueava-logo-hor-nobg-wt.png
-*** (ns ueava.footer)
-
-(defn footer []
-  ;; [:footer {:class "bg-gray-900 text-gray-300"}
-  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
-  ;; [:footer {:class ":bg-gradient-to-r from-ueava-brown to-ueava-sand"}
-
-   ;; grid
-   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
-    [:div {:class "flex flex-col gap-4"}
-
-      [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-              :class "max-w-[220px] h-auto"}]
-
-      [:p {:class "text-sm leading-relaxed"}
-        "UEAVA is a global community dedicated to improving reptile
-        and amphibian veterinary medicine, conservation and welfare."]]
-
-    ;; navigation
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
-
-     [:ul {:class "space-y-2"}
-      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
-
-    ;; resources
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
-
-     [:ul {:class "space-y-2"}
-      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
-
-    ;; newsletter
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
-
-     [:p {:class "text-sm mb-4"}
-      "Subscribe to receive updates and news."]
-
-     [:div {:class "flex"}
-      [:input {:type "email"
-               :placeholder "Email"
-               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
-
-      [:button
-       ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
-       {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
-       "Join"]]]]
-
-   ;; bottom line
-   [:div {:class "border-t border-gray-800"}
-
-    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
-
-     [:span "© 2026 UEAVA"]
-
-     [:div {:class "flex gap-6 mt-3 md:mt-0"}
-      [:a {:href "#" :class "hover:text-white"} "Privacy"]
-      [:a {:href "#" :class "hover:text-white"} "Terms"]
-      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
-*** я заменил логотип в футере
-и разметка поплыла.
-вот как это выглядит и вот отдельно новый логотип
-блок логотипа и текста подним выпал из разметки.
-логотип занял всё пространство, которое занимал вместе с текстом
-а текст под ним ушол далеко вниз, начиная от обшей текстовой лини текстовых блоко.
-есть идеи как это поправить?
-*** (defn footer []
-  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
-
-   ;; grid
-   [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
-
-    ;; logo + about
-
-    [:div {:class "flex flex-col gap-4 items-start"}
-
-      [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-              :class "w-[220px] h-auto"}]
-
-      [:p {:class "text-sm leading-relaxed max-w-[260px]"}
-        "UEAVA is a global community dedicated to improving reptile
-        and amphibian veterinary medicine, conservation and welfare."]]
-
-    ;; navigation
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
-
-     [:ul {:class "space-y-2"}
-      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
-
-    ;; resources
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
-
-     [:ul {:class "space-y-2"}
-      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
-
-    ;; newsletter
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
-
-     [:p {:class "text-sm mb-4"}
-      "Subscribe to receive updates and news."]
-
-     [:div {:class "flex"}
-      [:input {:type "email"
-               :placeholder "Email"
-               :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
-
-      [:button
-       ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
-       {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
-       "Join"]]]]
-
-   ;; bottom line
-   [:div {:class "border-t border-gray-800"}
-
-    [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
-
-     [:span "© 2026 UEAVA"]
-
-     [:div {:class "flex gap-6 mt-3 md:mt-0"}
-      [:a {:href "#" :class "hover:text-white"} "Privacy"]
-      [:a {:href "#" :class "hover:text-white"} "Terms"]
-      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
-*** нето
-логотип немного двигается, но не один из приведёных вариантов, не делает нормальной форматирование.
-собстно как видешь результат почти не измеился.
-уточню навсякий случай если это не очивидн.
-я использую кложурскрипт с тайлвингом и реагентом.
-и нет прошлый логотип не был квадратным но был свг.
-ueava-logo.svg
-ещё варианты что пошло не так?
-и как это исправить?
-*** 
-
-:grid gap-10 md:grid-cols-4 items-start
-:grid gap-10 md:grid-cols-4 items-start
-
-:grid
-{:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4 items-start"}
-*** ладно предложи свой вариант
-*** всё также сломано!
-видемо ты не правельно понимаешь причину.
-я попробыл посмотреть и в другом браузере, но нет это независит от браузера.
-ещё идеи?
-
-:class "w-[220px] h-[60px] object-contain"
-[:div {:class "h-[60px] overflow-hidden"}
- [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-        :class "w-[220px]"}]]
-outline: 1px solid red;
-*** да пнг реально кривой.
-неодна из указаных команд не исправляет форматирование
-да это всё пустое пространство это прозрачная зона.
-понял что можно отредактировать и обрезать в ручную.
-но можно програмно сказать использовать не всё исзображение а обрезать его сверху и снизу?
-или только руками обрезать пнг?
-*** 
-      [:div {:class "h-[100px] overflow-hidden"}
-        [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-                :class "w-[220px]"}]]
-да это работает и обрезает изображение, но отрезает низ изображения.
-а нужная нам часть в середини изображения. тоесть нужно нетолько отрезать, но начать отображать с отступом от верхней краници изображения.
-тоесть нам ненужен верх и низ. Нужна узкая полоза по середине!
-** DONE в гамбургер меню сделать центрование
-тоесть сейчас в гамбургер меню всё прижато к левому краю
-было бы логичней чтоб оно было посреди экрана а не слева
-
-[:a {:href "#"
-     :class "text-lg font-medium hover:text-ueava-sand transition"}
- "Home"]
-
-[:div {:class "flex flex-col items-center text-center p-6 space-y-4"}
- [:a {:href "#"} "Home"]
- [:a {:href "#"} "About"]
- [:a {:href "#"} "Resources"]
- [:a {:href "#"} "Membership"]
- [:a {:href "#"} "Conferences"]]
-** DONE убрать коменты
-*** футер
-     ;; [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-     ;;        ;; :class "w-[220px] h-auto"
-     ;;        :class "w-[220px] h-[60px] object-contain"
-     ;;        }]
-
-         ;; :class "w-[220px] h-[60px] object-contain"}]
-
-      ;; [:div {:class "h-[60px] overflow-hidden"}
-      ;;   [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-      ;;           :class "w-[220px]"}]]
-      ;; [:div {:class "h-[100px] overflow-hidden"}
-      ;;   [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-      ;;           :class "w-[220px]"}]]
-      ;; [:div {:class "h-[70px] overflow-hidden"}
-      ;;   [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-      ;;           :class "w-[220px] -mt-[80px]"}]]
-       ;; [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-       ;; :class "w-[220px] h-[70px] object-contain"}]]
-
-;; (ns ueava.footer)
-
-;; (defn footer []
-;;   ;; [:footer {:class "bg-gray-900 text-gray-300"}
-;;   [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
-;;   ;; [:footer {:class ":bg-gradient-to-r from-ueava-brown to-ueava-sand"}
-
-;;    ;; grid
-;;    [:div {:class "max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4"}
-
-;;     ;; logo + about
-
-;;     [:div {:class "flex flex-col gap-4 items-start"}
-
-;;       [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-;;               :class "w-[220px] h-auto"}]
-
-;;       [:p {:class "text-sm leading-relaxed max-w-[260px]"}
-;;         "UEAVA is a global community dedicated to improving reptile
-;;         and amphibian veterinary medicine, conservation and welfare."]]
-
-
-;;       ;; [:p {:class "text-sm leading-relaxed"}
-;;       ;;   "UEAVA is a global community dedicated to improving reptile
-;;       ;;   and amphibian veterinary medicine, conservation and welfare."]
-;;     ;; [:div
-;;     ;;  ;; [:img {:src "img/ueava-logo.svg"
-;;     ;;  [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-;;     ;;  ;; [:img {:src "img/ueava-logo-nobg-wt.png"
-;;     ;;  ;; [:img {:src "img/ueava-logo-hor-brbg-wt.png"
-;;     ;;  ;; [:img {:src "img/ueava-logo-batom-wob-text.jpg"
-;;     ;;         ;; :class "h-22 mb-4"
-;;     ;;         ;; :class "h-15"
-;;     ;;         :class "max-w-[220px] h-auto mb-4"
-;;     ;;         }]
-
-;;     ;;  [:p {:class "text-sm leading-relaxed"}
-;;     ;;   "UEAVA is a global community dedicated to improving reptile
-;;     ;;    and amphibian veterinary medicine, conservation and welfare."]
-;;     ;;  ]
-;;     ;; [:div {:class "flex flex-col gap-4"}
-
-;;     ;;   [:img {:src "img/ueava-logo-hor-nobg-wt.png"
-;;     ;;           ;; :class "max-w-[220px] h-auto"}]
-;;     ;;           ;; :class "max-w-[220px] h-auto self-start"}]
-;;     ;;           :class "max-w-[220px] h-auto self-center"}]
-
-;;     ;; navigation
-;;     [:div
-;;      [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
-
-;;      [:ul {:class "space-y-2"}
-;;       [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
-;;       [:li [:a {:href "#" :class "hover:text-white"} "About"]]
-;;       [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
-;;       [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
-
-;;     ;; resources
-;;     [:div
-;;      [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
-
-;;      [:ul {:class "space-y-2"}
-;;       [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
-;;       [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
-;;       [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
-;;       [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
-
-;;     ;; newsletter
-;;     [:div
-;;      [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
-
-;;      [:p {:class "text-sm mb-4"}
-;;       "Subscribe to receive updates and news."]
-
-;;      [:div {:class "flex"}
-;;       [:input {:type "email"
-;;                :placeholder "Email"
-;;                :class "w-full px-3 py-2 rounded-l bg-gray-800 border border-gray-700 focus:outline-none"}]
-
-;;       [:button
-;;        ;; {:class "bg-green-600 px-4 rounded-r hover:bg-green-700"}
-;;        {:class "bg-white text-ueava-brown px-4 rounded-r hover:bg-ueava-brown-100"}
-;;        "Join"]]]]
-
-;;    ;; bottom line
-;;    [:div {:class "border-t border-gray-800"}
-
-;;     [:div {:class "max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between text-sm"}
-
-;;      [:span "© 2026 UEAVA"]
-
-;;      [:div {:class "flex gap-6 mt-3 md:mt-0"}
-;;       [:a {:href "#" :class "hover:text-white"} "Privacy"]
-;;       [:a {:href "#" :class "hover:text-white"} "Terms"]
-;;       [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
-*** hiro
-
-;; (defn floating-puzzles []
-;;   [:<>
-   
-;;    [:img {:src "/img/ueava-logo.svg"
-;;           :class "absolute top-20 left-20 w-64 opacity-[0.04] animate-floatSlow"}]
-
-;;    [:img {:src "/img/ueava-logo.svg"
-;;           :class "absolute bottom-20 right-20 w-72 opacity-[0.03] animate-floatSlow2"}]
-
-;;    [:img {:src "/img/ueava-logo.svg"
-;;           :class "absolute top-1/2 left-1/3 w-56 opacity-[0.04] animate-floatSlow"}]])
-
-
-   ;; pattern overlay
-   ;; [:div {:class
-   ;;        "absolute inset-0
-   ;;         bg-[url('/img/ueava-logo.svg')]
-   ;;         bg-repeat
-   ;;         bg-[length:300px]
-   ;;         opacity-[0.1]"}]
-
-   ;; floating puzzles
-   ;; [floating-puzzles]
-
-
-      ;; {:class "bg-green-600 hover:bg-green-700 px-8 py-3 rounded font-semibold"}
-      ;; {:class "bg-ueava-brown hover:bg-ueava-sand text-white px-8 py-3 rounded"}
-
-      
-      ;; {:class "bg-ueava-sand text-ueava-brown
-      ;;         hover:bg-ueava-brown hover:text-ueava-sand
-      ;;         text-white px-8 py-3 rounded"}
-*** cta
-  ;; [:section {:class "py-20 bg-green-700 text-white"}
-    ;; [:button {:class "bg-white text-green-700 px-8 py-3 rounded font-semibold hover:bg-gray-100"}
 * project comands
 :PROPERTIES:
 :header-args: :tangle no
@@ -9591,20 +9642,34 @@ clj -m cljs.main --compile my-cljs-project.core --repl
 :cljs/quit
 *** repl test
 (js/alert "Am I connected?")
-** new project figwheel
-clj -X:new :template figwheel-main :name learn-cljs/notes :args '["+deps" "--reagent"]'
+** tree
+*** I
+#+begin_src eshell :tangle no :dir /home/buyn/Dev/ClojureScript/grom.org
+tree -I "node_modules|.venv|__pycache__|public/js"
 
-{:deps {org.clojure/clojure {:mvn/version "1.10.0"}
-        org.clojure/clojurescript {:mvn/version "1.10.773"}
-        reagent/reagent {:mvn/version "1.0.0"}
-        funcool/bide {:mvn/version "1.6.0"}
-        camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.2"}}
+ #+end_src
 
-$ clj -X:new :template figwheel-main :name learn-cljs/weather :args 
-[[file:~/Dropbox/orgs/org-Brain/ClojureScript Idioms.org::*2025-09-04T11:12:30+03:00][2025-09-04T11:12:30+03:00]]
-** cider
-If you have a Clojure project in your file system and want CIDER to launch an nREPL session for it, simply visit a file that belongs to the project, and type M-x cider-jack-in RET.[1] CIDER will start an nREPL server and automatically connect to it.
-  In Clojure(Script) buffers the command cider-jack-in is bound to C-c C-x (C-)j (C-)j. 
+ #+RESULTS:
+ #+begin_example
+ .
+ ├── grom.org
+ ├── package.json
+ ├── package-lock.json
+ ├── public
+ │   ├── css
+ │   │   └── style.css
+ │   └── index.html
+ ├── README.md
+ ├── README.md~1
+ ├── resources
+ │   └── public
+ ├── shadow-cljs.edn
+ └── src
+     └── ueava
+         └── core.cljs
+
+ 7 directories, 9 files
+ #+end_example
 
 ** console
 *** run console in org root
@@ -9675,35 +9740,21 @@ clojure -m cljs.main --compile my-cljs-project.core --repl
 (desktop-save "~/.emacs.d/emaks-sesions/grom.org/")
 (desktop-read "~/.emacs.d/emaks-sesions/grom.org/")
 
-** tree
-*** I
-#+begin_src eshell :tangle no :dir /home/buyn/Dev/ClojureScript/grom.org
-tree -I "node_modules|.venv|__pycache__|public/js"
+** cider
+If you have a Clojure project in your file system and want CIDER to launch an nREPL session for it, simply visit a file that belongs to the project, and type M-x cider-jack-in RET.[1] CIDER will start an nREPL server and automatically connect to it.
+  In Clojure(Script) buffers the command cider-jack-in is bound to C-c C-x (C-)j (C-)j. 
 
- #+end_src
+** new project figwheel
+clj -X:new :template figwheel-main :name learn-cljs/notes :args '["+deps" "--reagent"]'
 
- #+RESULTS:
- #+begin_example
- .
- ├── grom.org
- ├── package.json
- ├── package-lock.json
- ├── public
- │   ├── css
- │   │   └── style.css
- │   └── index.html
- ├── README.md
- ├── README.md~1
- ├── resources
- │   └── public
- ├── shadow-cljs.edn
- └── src
-     └── ueava
-         └── core.cljs
+{:deps {org.clojure/clojure {:mvn/version "1.10.0"}
+        org.clojure/clojurescript {:mvn/version "1.10.773"}
+        reagent/reagent {:mvn/version "1.0.0"}
+        funcool/bide {:mvn/version "1.6.0"}
+        camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.2"}}
 
- 7 directories, 9 files
- #+end_example
-
+$ clj -X:new :template figwheel-main :name learn-cljs/weather :args 
+[[file:~/Dropbox/orgs/org-Brain/ClojureScript Idioms.org::*2025-09-04T11:12:30+03:00][2025-09-04T11:12:30+03:00]]
 * files grom.org
 ** files root
 (find-file-other-frame "./.gitignore")

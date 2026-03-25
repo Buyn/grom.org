@@ -1,4 +1,3 @@
-
 (ns ueava.footer)
 
 (defn footer []
@@ -17,8 +16,7 @@
 
 
      [:p {:class "text-sm leading-relaxed text-ueava-brown-200"}
-      "UEAVA is a global community dedicated to improving reptile
-       and amphibian veterinary medicine, conservation and welfare."]]
+      "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."]]
 
     ;; NAV
     [:div

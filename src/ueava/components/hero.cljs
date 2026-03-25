@@ -23,25 +23,25 @@
 (def slides
   [{:key :chameleon
     :img "img/Hero_Slide_1_chameleon.jpg"
-    :title "Why Do You Need A Reptile Vet?"
+    :title "Explore the world of reptile and amphibian medicine."
     :text "Specialized care for exotic animals."
     :btn "Become Member"}
 
    {:key :owl
     :img "img/Hero_Slide_2_owl.jpg"
-    :title "Avian Veterinary Excellence"
+    :title "Making avian medicine accessible, clear, and practical."
     :text "Support for bird specialists worldwide."
     :btn "Learn More"}
 
    {:key :rabbit
     :img "img/Hero_Slide_3_rabbit.jpg"
-    :title "Small Mammal Medicine"
+    :title "Advance your expertise in small mammal medicine."
     :text "Advanced treatment for rabbits and rodents."
     :btn "Join UEAVA"}
 
    {:key :bear
     :img "img/Hero_Slide_4_bear.jpg"
-    :title "Wildlife Veterinary Science"
+    :title "Make an impact in wildlife and exotic animal medicine."
     :text "Supporting vets working with wildlife."
     :btn "Discover"}])
 
@@ -62,28 +62,38 @@
 (defn random-delay []
   (+ 7000 (rand-int 13000)))
 
-(defn clamp [x min max]
-  (-> x (max min) (min max)))
+;; (defn clamp [x min max]
+;;   (-> x (max min) (min max)))
 
-(defn lerp [a b t]
-  (+ a (* (- b a) t)))
+;; (defn lerp [a b t]
+;;   (+ a (* (- b a) t)))
 
-(defn ease-out [t]
-  (- 1 (* (- 1 t) (- 1 t))))
+;; (defn ease-out [t]
+;;   (- 1 (* (- 1 t) (- 1 t))))
+
+;; (defn compute-duration [last-ts]
+;;   (let [dt (- (now) last-ts)
+;;         min-dt 1000
+;;         max-dt 3000
+;;         min-duration 100
+;;         max-duration 700
+;;         ;; normalize dt to 0..1
+;;         t (-> (/ (- dt min-dt)
+;;                  (- max-dt min-dt))
+;;               (clamp 0 1))]
+;;     (js/Math.round
+;;      ;; (lerp min-duration max-duration t))))
+;;       (lerp min-duration max-duration (ease-out t)))))
+
+;; velocity-based duration
 
 (defn compute-duration [last-ts]
-  (let [dt (- (now) last-ts)
-        min-dt 1000
-        max-dt 3000
-        min-duration 100
-        max-duration 700
-        ;; normalize dt to 0..1
-        t (-> (/ (- dt min-dt)
-                 (- max-dt min-dt))
-              (clamp 0 1))]
-    (js/Math.round
-     ;; (lerp min-duration max-duration t))))
-      (lerp min-duration max-duration (ease-out t)))))
+  (let [dt (- (now) last-ts)]
+    ;; faster interaction → shorter animation
+    (cond
+      (< dt 1000) 100
+      (< dt 2000) 400
+      :else 700)))
 
 ;; ----------------------------
 ;; transition
