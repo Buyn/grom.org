@@ -21,7 +21,7 @@
 ;; data
 ;; ----------------------------
 
-(def slides
+(defn slides []
   [{:key :chameleon
     :img "img/Hero_Slide_1_chameleon.jpg"
     :title (t :hero/chameleon)
@@ -46,7 +46,7 @@
     :text "Supporting vets working with wildlife."
     :btn "Discover"}])
 
-(def slide-count (count slides))
+(def slide-count (count (slides)))
 
 ;; ----------------------------
 ;; helpers
@@ -167,8 +167,8 @@
 
 (defn background []
   (let [{:keys [current prev dir anim duration]} @state
-        curr (nth slides current)
-        prev-slide (when prev (nth slides prev))]
+        curr (nth (slides) current)
+        prev-slide (when prev (nth (slides) prev))]
     [:div {:class "absolute inset-0 overflow-hidden"}
      ;; previous
      (when prev-slide
@@ -199,7 +199,7 @@
 
 (defn content []
   (let [{:keys [current]} @state
-        {:keys [title text btn]} (nth slides current)]
+        {:keys [title text btn]} (nth (slides) current)]
     [:div {:class "relative z-40 text-white text-center max-w-2xl"}
      [:h1 {:class "text-5xl font-bold mb-4"} title]
      [:p {:class "text-xl mb-6"} text]
@@ -230,7 +230,7 @@
 
 (defn navigation []
   [:div {:class "absolute bottom-6 right-6 grid grid-cols-2 gap-2 z-50"}
-   (doall (map-indexed nav-item slides))])
+   (doall (map-indexed nav-item (slides)))])
 
 ;; ----------------------------
 ;; main
