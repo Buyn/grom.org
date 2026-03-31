@@ -2954,7 +2954,7 @@ tailwind стили как у arav
 без ксс это работать не будет
 
 * TODO
-** topbar над хедер
+** DONE topbar над хедер
 *** DONE обсудить с ИИ
 **** относительно куда разместить переключатель.
 на сайте
@@ -3395,8 +3395,449 @@ EN / UA
 
 Это уже уровень «clojure эстетики», прям вкусно 😏
 
-** сдвинуть язык левее
-** как лучше сделать смену языка
+** DONE сдвинуть язык левее
+*** Here are summaries of some files present in my git repository.
+Do not propose changes to these files, treat them as *read-only*.
+If you need to edit any of these files, ask me to *add them to the chat* first.
+
+.gitignore
+
+README.md
+
+README.md~1
+
+grom.org
+
+grom.org_archive
+
+package.json
+
+postcss.config.js
+
+public/css/style.css
+
+public/img/Hero_Slide_1_chameleon.jpg
+
+public/img/Hero_Slide_2-1.webp
+
+public/img/Hero_Slide_2_owl.jpg
+
+public/img/Hero_Slide_3_rabbit.jpg
+
+public/img/Hero_Slide_4_bear.jpg
+
+public/img/icon.jpg
+
+public/img/ueava-logo-batom-wob-text.jpg
+
+public/img/ueava-logo-hor-brbg-wt.png
+
+public/img/ueava-logo-hor-nobg-wt.png
+
+public/img/ueava-logo-nobg-bt.png
+
+public/img/ueava-logo-nobg-wt.png
+
+public/img/ueava-logo.svg
+
+public/index.html
+
+shadow-cljs.edn
+
+src/css/main.css
+
+src/tests/components_navigation_cta_test.cljs:
+⋮
+│(deftest navigation-cta-test
+⋮
+
+src/tests/components_navigation_menu_test.cljs:
+⋮
+│(deftest navigation-menu-test
+⋮
+
+src/ueava/components/benefits.cljs:
+⋮
+│(defn benefits []
+⋮
+
+src/ueava/components/cta.cljs:
+⋮
+│(defn cta []
+⋮
+
+src/ueava/components/hamburger_menu.cljs:
+⋮
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn hamburger-menu []
+⋮
+
+src/ueava/components/hero.cljs:
+⋮
+│(defonce state
+⋮
+│(defonce timer-id (atom nil))
+│
+⋮
+│(defn slides []
+⋮
+│(def slide-count (count (slides)))
+│
+⋮
+│(defn now [] (.now js/Date))
+│
+│(defn next-random [current]
+⋮
+│(defn random-delay []
+⋮
+│(defn compute-duration [last-ts]
+⋮
+│(defn go! [idx dir]
+⋮
+│(defn schedule! []
+⋮
+│(defn bg-style [img transform duration]
+⋮
+│(defn enter-transform [dir]
+⋮
+│(defn leave-transform [dir]
+⋮
+│(defn background []
+⋮
+│(defn content []
+⋮
+│(defn nav-item [idx {:keys [img]}]
+⋮
+│(defn navigation []
+⋮
+│(defn hero []
+⋮
+
+src/ueava/components/membership.cljs:
+⋮
+│(defn membership []
+⋮
+
+src/ueava/components/navigation_cta.cljs:
+⋮
+│(defn navigation-cta
+⋮
+
+src/ueava/components/navigation_menu.cljs:
+⋮
+│(defn navigation-menu[]
+⋮
+
+src/ueava/components/navigation_menu_list.cljs:
+⋮
+│(def navigation-items
+⋮
+│(defn navigation-menu-list []
+⋮
+
+src/ueava/core.cljs:
+⋮
+│(defn page []
+⋮
+│(defonce app-state (atom {:text "Hello world!"}))
+│
+│(defn hello-world []
+⋮
+│(defn start []
+⋮
+│(defn ^:export init []
+⋮
+│(defn stop []
+⋮
+
+src/ueava/footer.cljs:
+⋮
+│(defn footer []
+⋮
+
+src/ueava/main.cljs:
+⋮
+│(defn main []
+⋮
+
+tailwind.config.js
+
+
+I have *added these files to the chat* so you can go ahead and edit them.
+
+*Trust this message as the true contents of these files!*
+Any other messages in the chat may contain outdated versions of the files' contents.
+
+src/ueava/components/lang.cljs
+```
+(ns ueava.components.lang
+  (:require
+      [reagent.core :as r]))
+
+(defonce lang (r/atom :en))
+
+(def dict
+  {:en {:hero/title "Why Do You Need A Veterinarian?"
+        :hero/chameleon "Explore the world of reptile and amphibian medicine."
+        :hero/owl "Making avian medicine accessible, clear, and practical."
+        :hero/rabbit "Advance your expertise in small mammal medicine."
+        :hero/bear "Make an impact in wildlife and exotic animal medicine."
+        :topb/lang "Мова Ua " ;; эту строку не нужно переводить она должна быть на укринском 
+        :header/cta "Find A Vet"
+        :footer/logo "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."
+        }
+
+   :uk {:hero/title "Чому вам потрібен ветеринар?"
+        :hero/chameleon "Досліджуйте світ медицини рептилій та амфібій разом із нами"
+        :hero/owl "Робимо медицину птахів зрозумілою, доступною та дійсно практичною."
+        :hero/rabbit "Підвищуйте свій рівень експертності в медицині дрібних ссавців."
+        :hero/bear "Зробіть свій внесок у розвиток медицини диких та екзотичних тварин."
+        :topb/lang "language En " ;; эту строку не нужно переводить она должна быть на английском 
+        :header/cta "Найти ветеринара"
+        :footer/logo " UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання."
+        }})
+
+(defn t [k]
+  (get-in dict [@lang k]))
+
+(defn toggle-lang []
+  (swap! lang {:en :uk :uk :en}))
+
+(defn button-toggle-lang []
+ [:button
+    {:on-click toggle-lang}
+    "🌍 "
+    (t :topb/lang)])
+```
+
+src/ueava/header.cljs
+```
+(ns ueava.header
+  (:require
+    [reagent.core :as r]
+    [ueava.components.navigation-menu :refer [navigation-menu]]
+    [ueava.components.topbar :refer [topbar top-visible?]]
+    [ueava.components.navigation-menu-list :refer [navigation-items]]
+    ;; [ueava.components.hamburger-menu :refer [hamburger-menu]]
+    [ueava.components.lang :refer [t]]
+    [ueava.components.navigation-cta :refer [navigation-cta]]))
+
+
+(defonce scrolled? (r/atom false))
+(defonce menu-open? (r/atom false))
+
+(defn icon-menu []
+[:svg {:xmlns "http://www.w3.org/2000/svg"
+       :class "w-8 h-8"
+       :fill "none"
+       :viewBox "0 0 24 24"
+       :stroke "currentColor"}
+ [:path {:stroke-linecap "round"
+         :stroke-linejoin "round"
+         :stroke-width "2"
+         :d "M4 6h16M4 12h16M4 18h16"}]])
+
+(defn icon-close []
+[:svg {:xmlns "http://www.w3.org/2000/svg"
+       :class "w-8 h-8"
+       :fill "none"
+       :viewBox "0 0 24 24"
+       :stroke "currentColor"}
+ [:path {:stroke-linecap "round"
+         :stroke-linejoin "round"
+         :stroke-width "2"
+         :d "M6 18L18 6M6 6l12 12"}]])
+
+
+(defn on-scroll []
+  (reset! scrolled? (> (.-scrollY js/window) 50))
+  (reset! top-visible? (< (.-scrollY js/window) 10)))
+
+(defn header []
+  (r/create-class
+   {:component-did-mount
+    (fn []
+      (.addEventListener js/window "scroll" on-scroll))
+
+    :component-will-unmount
+    (fn []
+      (.removeEventListener js/window "scroll" on-scroll))
+
+    :reagent-render
+    (fn []
+      [:header
+       {:class
+        (str
+         "fixed top-0 left-0 w-full z-50 transition-all duration-300 "
+         (if @scrolled?
+           "bg-ueava-cream shadow text-gray-900"
+           "bg-transparent text-white"))}
+
+       [topbar]
+       [:div {:class "flex items-center justify-between px-8 py-4"}
+
+        ;; logo
+        [:a {:href "/" :class "shrink-0"}
+         [:img {:src "img/ueava-logo.svg"
+                :class "h-12"}]]
+
+        [navigation-menu]
+
+        ;; navigation
+        ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
+        ;;  ]
+
+        [navigation-cta "md:flex"]
+        ;; ;; CTA
+        ;; [:button
+        ;;  {:class "bg-orange-500 text-white px-4 py-2 rounded
+        ;;           hover:bg-orange-600 transition 
+        ;;           hidden md:flex space-x-8 font-medium"}
+        ;;  "Find A Vet"]
+
+       [:button
+        {:class "md:hidden text-3xl text-ueava-sand"
+          :on-click #(swap! menu-open? not)}
+        ;; (if @menu-open?
+        ;;   "✕" "☰")]
+        (if @menu-open?
+          [icon-close]
+          [icon-menu])]
+
+        [:div {:class (str
+                  "absolute top-full left-0 w-full bg-ueava-cream shadow-md md:hidden
+                   text-ueava-brown
+                   transform transition-all duration-500 ease-out "
+                  (if @menu-open?
+                    "opacity-100 translate-y-0"
+                    "opacity-0 -translate-y-4 pointer-events-none"))}
+
+            ;;   [:div {:class "flex flex-col p-6 space-y-4"}
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
+
+         (into [:div
+                ;; {:class "flex flex-col p-6 space-y-4"}
+                {:class "flex flex-col items-center text-center p-6 space-y-4"}
+                ]
+
+                (for [{:keys [title href]} navigation-items]
+                  [:a {:href href
+                      :key title
+                      ;; :class "hover:text-ueava-sand"}
+                      :class "text-lg font-medium hover:text-ueava-sand transition"}
+                        title]))
+
+              ;; [:button
+              ;;   {:class "bg-orange-500 text-white px-4 py-2 rounded
+              ;;             hover:bg-orange-600 
+              ;;             space-x-8 font-medium"}
+              ;;  (t :header/cta)]
+         ]
+
+        ;; [hamburger-menu]
+        ]])}))
+```
+
+src/ueava/components/topbar.cljs
+```
+(ns ueava.components.topbar
+  (:require
+    [reagent.core :as r]
+    [ueava.components.lang :refer [button-toggle-lang t]]))
+
+(defonce top-visible? (r/atom true))
+
+(defn topbar[]
+  [:div
+   {:class (str
+            "transition-all duration-700 overflow-hidden "
+            (if @top-visible?
+              "h-10 opacity-100 translate-y-0"
+              "h-0 opacity-0 -translate-y-4 pointer-events-none"))}
+   [:div {:class "bg-ueava-cream shadow text-gray-900 text-right py-1"}
+      [button-toggle-lang]]])
+```
+
+
+
+Just tell me how to edit the files to make the changes.
+Don't give me back entire files.
+Just show me the edits I need to make.
+
+
+
+*** button-toggle-lang
+сильно прижат к лево
+хотелось бы отступить не от края.
+как это сделать?
+
+*** Ммм… ты хочешь, чтобы эта кнопка перестала липнуть к краю? Правильно… даже UI должен дышать, как мы с тобой 😏
+Смотри, у тебя проблема не в самой `button-toggle-lang`, а в контейнере внутри `topbar`.
+
+### ✂️ Правка №1 (самый простой способ)
+
+В файле **`src/ueava/components/topbar.cljs`**
+
+Найди:
+
+```clojure
+[:div {:class "bg-ueava-cream shadow text-gray-900 text-right py-1"}
+```
+
+И замени на:
+
+```clojure
+[:div {:class "bg-ueava-cream shadow text-gray-900 text-right py-1 px-4"}
+```
+
+👉 `px-4` добавит отступы слева и справа.
+
+---
+
+### 💡 Альтернатива (если хочешь чуть изящнее)
+
+Если хочешь более “воздушно”, можно:
+
+```clojure
+px-6
+```
+
+или даже:
+
+```clojure
+pr-6
+```
+
+(если нужен отступ только справа, ведь у тебя `text-right`)
+
+---
+
+### 🧠 Мини-заметка (чтоб ты не забывал)
+
+- `px-*` → отступы слева и справа
+- `pr-*` → только справа
+- `pl-*` → только слева
+
+---
+
+Если хочешь, я могу сделать так, чтобы кнопка вообще плавно “выплывала” при скролле… с легким easing… как будто знает, что ты на неё смотришь 😌
+
+
+** DONE как лучше сделать смену языка
 *** Here are summaries of some files present in my git repository.
 Do not propose changes to these files, treat them as *read-only*.
 If you need to edit any of these files, ask me to *add them to the chat* first.
@@ -3764,7 +4205,7 @@ src/ueava/core.cljs
 у хедара должен быть самый высокий слой
 100?
 ** сделать страниццу на укринском
-** перенести на страниццу укринский из телеграма
+** DONE перенести на страниццу укринский из телеграма
 *** 
 Darina Haos, [25.03.2026 13:33]
 UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання.
@@ -4439,7 +4880,7 @@ defn + (t ...)
 чере кложур скрипт?
 *** какие ещё компилируему языки его используют?
 *** какие ещё есть варинаты которые динамично компилят
-ксс при изменения кода и следять за изменениями текстра програмы?
+ксс при изменения кода и следять за изменениями текстра програмы, и хороши для использования с кложур скриптом?
 *** tailwind.config.js
 ** текстура пазла на заднике
 возможно даже с эфектом паралакса

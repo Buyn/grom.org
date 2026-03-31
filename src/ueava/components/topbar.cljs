@@ -12,5 +12,5 @@
             (if @top-visible?
               "h-10 opacity-100 translate-y-0"
               "h-0 opacity-0 -translate-y-4 pointer-events-none"))}
-   [:div {:class "bg-ueava-cream shadow text-gray-900 text-right py-1"}
+   [:div {:class "bg-ueava-cream shadow text-gray-900 text-right py-1 px-4"}
       [button-toggle-lang]]])
