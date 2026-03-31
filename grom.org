@@ -4199,11 +4199,605 @@ src/ueava/core.cljs
 и я покажу тебе **идеально чистую реализацию i18n под твой проект**,
 без лишнего мусора и с возможностью масштабирования 😏
 
-** исправить ошибку слоёв мини меню
-оно расположено выше хедера 
+** DONE исправить ошибку слоёв мини меню
+*** оно расположено выше хедера 
 понять как заменить слой выше
 у хедара должен быть самый высокий слой
 100?
+*** Here are summaries of some files present in my git repository.
+Do not propose changes to these files, treat them as *read-only*.
+If you need to edit any of these files, ask me to *add them to the chat* first.
+
+.gitignore
+
+README.md
+
+README.md~1
+
+grom.org
+
+grom.org_archive
+
+package.json
+
+postcss.config.js
+
+public/css/style.css
+
+public/img/Hero_Slide_1_chameleon.jpg
+
+public/img/Hero_Slide_2-1.webp
+
+public/img/Hero_Slide_2_owl.jpg
+
+public/img/Hero_Slide_3_rabbit.jpg
+
+public/img/Hero_Slide_4_bear.jpg
+
+public/img/icon.jpg
+
+public/img/ueava-logo-batom-wob-text.jpg
+
+public/img/ueava-logo-hor-brbg-wt.png
+
+public/img/ueava-logo-hor-nobg-wt.png
+
+public/img/ueava-logo-nobg-bt.png
+
+public/img/ueava-logo-nobg-wt.png
+
+public/img/ueava-logo.svg
+
+public/index.html
+
+shadow-cljs.edn
+
+src/css/main.css
+
+src/tests/components_navigation_cta_test.cljs:
+⋮
+│(deftest navigation-cta-test
+⋮
+
+src/tests/components_navigation_menu_test.cljs:
+⋮
+│(deftest navigation-menu-test
+⋮
+
+src/ueava/components/benefits.cljs:
+⋮
+│(defn benefits []
+⋮
+
+src/ueava/components/cta.cljs:
+⋮
+│(defn cta []
+⋮
+
+src/ueava/components/hamburger_menu.cljs:
+⋮
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn hamburger-menu []
+⋮
+
+src/ueava/components/lang.cljs:
+⋮
+│(defonce lang (r/atom :en))
+│
+│(def dict
+⋮
+│(defn t [k]
+⋮
+│(defn toggle-lang []
+⋮
+│(defn button-toggle-lang []
+⋮
+
+src/ueava/components/membership.cljs:
+⋮
+│(defn membership []
+⋮
+
+src/ueava/components/navigation_cta.cljs:
+⋮
+│(defn navigation-cta
+⋮
+
+src/ueava/components/navigation_menu.cljs:
+⋮
+│(defn navigation-menu[]
+⋮
+
+src/ueava/components/navigation_menu_list.cljs:
+⋮
+│(def navigation-items
+⋮
+│(defn navigation-menu-list []
+⋮
+
+src/ueava/components/topbar.cljs:
+⋮
+│(defonce top-visible? (r/atom true))
+│
+│(defn topbar[]
+⋮
+
+src/ueava/core.cljs:
+⋮
+│(defn page []
+⋮
+│(defonce app-state (atom {:text "Hello world!"}))
+│
+│(defn hello-world []
+⋮
+│(defn start []
+⋮
+│(defn ^:export init []
+⋮
+│(defn stop []
+⋮
+
+src/ueava/footer.cljs:
+⋮
+│(defn footer []
+⋮
+
+tailwind.config.js
+
+
+I have *added these files to the chat* so you can go ahead and edit them.
+
+*Trust this message as the true contents of these files!*
+Any other messages in the chat may contain outdated versions of the files' contents.
+
+src/ueava/header.cljs
+```
+(ns ueava.header
+  (:require
+    [reagent.core :as r]
+    [ueava.components.navigation-menu :refer [navigation-menu]]
+    [ueava.components.topbar :refer [topbar top-visible?]]
+    [ueava.components.navigation-menu-list :refer [navigation-items]]
+    ;; [ueava.components.hamburger-menu :refer [hamburger-menu]]
+    [ueava.components.lang :refer [t]]
+    [ueava.components.navigation-cta :refer [navigation-cta]]))
+
+
+(defonce scrolled? (r/atom false))
+(defonce menu-open? (r/atom false))
+
+(defn icon-menu []
+[:svg {:xmlns "http://www.w3.org/2000/svg"
+       :class "w-8 h-8"
+       :fill "none"
+       :viewBox "0 0 24 24"
+       :stroke "currentColor"}
+ [:path {:stroke-linecap "round"
+         :stroke-linejoin "round"
+         :stroke-width "2"
+         :d "M4 6h16M4 12h16M4 18h16"}]])
+
+(defn icon-close []
+[:svg {:xmlns "http://www.w3.org/2000/svg"
+       :class "w-8 h-8"
+       :fill "none"
+       :viewBox "0 0 24 24"
+       :stroke "currentColor"}
+ [:path {:stroke-linecap "round"
+         :stroke-linejoin "round"
+         :stroke-width "2"
+         :d "M6 18L18 6M6 6l12 12"}]])
+
+
+(defn on-scroll []
+  (reset! scrolled? (> (.-scrollY js/window) 50))
+  (reset! top-visible? (< (.-scrollY js/window) 10)))
+
+(defn header []
+  (r/create-class
+   {:component-did-mount
+    (fn []
+      (.addEventListener js/window "scroll" on-scroll))
+
+    :component-will-unmount
+    (fn []
+      (.removeEventListener js/window "scroll" on-scroll))
+
+    :reagent-render
+    (fn []
+      [:header
+       {:class
+        (str
+         "fixed top-0 left-0 w-full z-50 transition-all duration-300 "
+         (if @scrolled?
+           "bg-ueava-cream shadow text-gray-900"
+           "bg-transparent text-white"))}
+
+       [topbar]
+       [:div {:class "flex items-center justify-between px-8 py-4"}
+
+        ;; logo
+        [:a {:href "/" :class "shrink-0"}
+         [:img {:src "img/ueava-logo.svg"
+                :class "h-12"}]]
+
+        [navigation-menu]
+
+        ;; navigation
+        ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+        ;;  [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
+        ;;  ]
+
+        [navigation-cta "md:flex"]
+        ;; ;; CTA
+        ;; [:button
+        ;;  {:class "bg-orange-500 text-white px-4 py-2 rounded
+        ;;           hover:bg-orange-600 transition 
+        ;;           hidden md:flex space-x-8 font-medium"}
+        ;;  "Find A Vet"]
+
+       [:button
+        {:class "md:hidden text-3xl text-ueava-sand"
+          :on-click #(swap! menu-open? not)}
+        ;; (if @menu-open?
+        ;;   "✕" "☰")]
+        (if @menu-open?
+          [icon-close]
+          [icon-menu])]
+
+        [:div {:class (str
+                  "absolute top-full left-0 w-full bg-ueava-cream shadow-md md:hidden
+                   text-ueava-brown
+                   transform transition-all duration-500 ease-out "
+                  (if @menu-open?
+                    "opacity-100 translate-y-0"
+                    "opacity-0 -translate-y-4 pointer-events-none"))}
+
+            ;;   [:div {:class "flex flex-col p-6 space-y-4"}
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+            ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
+
+         (into [:div
+                ;; {:class "flex flex-col p-6 space-y-4"}
+                {:class "flex flex-col items-center text-center p-6 space-y-4"}
+                ]
+
+                (for [{:keys [title href]} navigation-items]
+                  [:a {:href href
+                      :key title
+                      ;; :class "hover:text-ueava-sand"}
+                      :class "text-lg font-medium hover:text-ueava-sand transition"}
+                        title]))
+
+              ;; [:button
+              ;;   {:class "bg-orange-500 text-white px-4 py-2 rounded
+              ;;             hover:bg-orange-600 
+              ;;             space-x-8 font-medium"}
+              ;;  (t :header/cta)]
+         ]
+
+        ;; [hamburger-menu]
+        ]])}))
+```
+
+src/ueava/components/hero.cljs
+```
+(ns ueava.components.hero
+  (:require
+    [ueava.components.lang :refer [t]]
+    [reagent.core :as r]))
+
+;; ----------------------------
+;; state
+;; ----------------------------
+
+(defonce state
+  (r/atom {:current 0
+           :prev nil
+           :dir :right
+           :anim :idle
+           :duration 700 ;; dynamic animation duration
+           :last-ts 0})) ;; last interaction timestamp
+
+(defonce timer-id (atom nil))
+
+;; ----------------------------
+;; data
+;; ----------------------------
+
+(defn slides []
+  [{:key :chameleon
+    :img "img/Hero_Slide_1_chameleon.jpg"
+    :title (t :hero/chameleon)
+    :text "Specialized care for exotic animals."
+    :btn "Become Member"}
+
+   {:key :owl
+    :img "img/Hero_Slide_2_owl.jpg"
+    :title (t :hero/owl)
+    :text "Support for bird specialists worldwide."
+    :btn "Learn More"}
+
+   {:key :rabbit
+    :img "img/Hero_Slide_3_rabbit.jpg"
+    :title (t :hero/rabbit)
+    :text "Advanced treatment for rabbits and rodents."
+    :btn "Join UEAVA"}
+
+   {:key :bear
+    :img "img/Hero_Slide_4_bear.jpg"
+    :title (t :hero/bear)
+    :text "Supporting vets working with wildlife."
+    :btn "Discover"}])
+
+(def slide-count (count (slides)))
+
+;; ----------------------------
+;; helpers
+;; ----------------------------
+
+(defn now [] (.now js/Date))
+
+(defn next-random [current]
+  (let [idx (rand-int slide-count)]
+    (if (= idx current)
+      (mod (inc idx) slide-count)
+      idx)))
+
+(defn random-delay []
+  (+ 7000 (rand-int 13000)))
+
+;; (defn clamp [x min max]
+;;   (-> x (max min) (min max)))
+
+;; (defn lerp [a b t]
+;;   (+ a (* (- b a) t)))
+
+;; (defn ease-out [t]
+;;   (- 1 (* (- 1 t) (- 1 t))))
+
+;; (defn compute-duration [last-ts]
+;;   (let [dt (- (now) last-ts)
+;;         min-dt 1000
+;;         max-dt 3000
+;;         min-duration 100
+;;         max-duration 700
+;;         ;; normalize dt to 0..1
+;;         t (-> (/ (- dt min-dt)
+;;                  (- max-dt min-dt))
+;;               (clamp 0 1))]
+;;     (js/Math.round
+;;      ;; (lerp min-duration max-duration t))))
+;;       (lerp min-duration max-duration (ease-out t)))))
+
+;; velocity-based duration
+
+(defn compute-duration [last-ts]
+  (let [dt (- (now) last-ts)]
+    ;; faster interaction → shorter animation
+    (cond
+      (< dt 1000) 100
+      (< dt 2000) 400
+      :else 700)))
+
+;; ----------------------------
+;; transition
+;; ----------------------------
+
+(defn go! [idx dir]
+  (let [{:keys [current anim last-ts]} @state]
+    (when (and (not= idx current)
+               (= anim :idle))
+      (let [duration (compute-duration last-ts)]
+        ;; step 1: instant logical switch
+        (swap! state assoc
+               :prev current
+               :current idx
+               :dir dir
+               :anim :prepare
+               :duration duration
+               :last-ts (now))
+        ;; step 2: start animation
+        (js/requestAnimationFrame
+         (fn []
+           (swap! state assoc :anim :run)))
+        ;; step 3: cleanup
+        (js/setTimeout
+         (fn []
+           (swap! state assoc
+                  :prev nil
+                  :anim :idle))
+         duration)))))
+
+;; ----------------------------
+;; auto loop
+;; ----------------------------
+
+(defn schedule! []
+  (when @timer-id
+    (js/clearTimeout @timer-id))
+
+  (reset! timer-id
+          (js/setTimeout
+           (fn []
+             (let [{:keys [current anim]} @state]
+               (when (= anim :idle)
+                 (go! (next-random current) :right)))
+             (schedule!))
+           (random-delay))))
+
+;; ----------------------------
+;; styles
+;; ----------------------------
+
+(defn bg-style [img transform duration]
+  {:background-image (str "url('" img "')")
+   :transform transform
+   :transition (str "transform " duration "ms cubic-bezier(0.22, 1, 0.36, 1)")})
+
+(defn enter-transform [dir]
+  (if (= dir :right)
+    "translateX(100%)"
+    "translateX(-100%)"))
+
+(defn leave-transform [dir]
+  (if (= dir :right)
+    "translateX(-100%)"
+    "translateX(100%)"))
+
+;; ----------------------------
+;; background
+;; ----------------------------
+
+(defn background []
+  (let [{:keys [current prev dir anim duration]} @state
+        curr (nth (slides) current)
+        prev-slide (when prev (nth (slides) prev))]
+    [:div {:class "absolute inset-0 overflow-hidden"}
+     ;; previous
+     (when prev-slide
+       [:div
+        {:key (str "prev-" prev)
+         :class "absolute inset-0 bg-cover bg-center z-10"
+         :style (bg-style
+                 (:img prev-slide)
+                 (if (= anim :run)
+                   (leave-transform dir)
+                   "translateX(0%)")
+                 duration)}])
+     ;; current
+     [:div
+      {:key (str "curr-" current)
+       :class "absolute inset-0 bg-cover bg-center z-20"
+       :style (bg-style
+               (:img curr)
+               (cond
+                 (= anim :prepare) (enter-transform dir)
+                 (= anim :run) "translateX(0%)"
+                 :else "translateX(0%)")
+               duration)}]]))
+
+;; ----------------------------
+;; content
+;; ----------------------------
+
+(defn content []
+  (let [{:keys [current]} @state
+        {:keys [title text btn]} (nth (slides) current)]
+    [:div {:class "relative z-40 text-white text-center max-w-2xl"}
+     [:h1 {:class "text-5xl font-bold mb-4"} title]
+     [:p {:class "text-xl mb-6"} text]
+     [:button {:class "bg-white text-ueava-brown px-6 py-3 rounded-lg hover:bg-ueava-brown-100"} btn]]))
+     ;; [:button {:class "bg-ueava-brown-600 hover:bg-ueava-brown-700 text-white px-8 py-3 rounded"} btn]]))
+
+;; ----------------------------
+;; navigation
+;; ----------------------------
+
+(defn nav-item [idx {:keys [img]}]
+  (let [{:keys [current]} @state
+        trigger! (fn[]
+                   (go! idx :right)
+                   (schedule!))]
+    [:div
+     {:key idx
+      :class (str
+              "w-16 h-16 bg-cover bg-center cursor-pointer border transition "
+              (if (= idx current)
+                "border-white scale-110"
+                "border-transparent opacity-70"))
+      :style {:background-image (str "url('" img "')")}
+      ;; hover
+      :on-mouse-enter trigger!
+      ;; click
+      :on-click trigger!}]))
+
+(defn navigation []
+  [:div {:class "absolute bottom-6 right-6 grid grid-cols-2 gap-2 z-51"}
+   (doall (map-indexed nav-item (slides)))])
+
+;; ----------------------------
+;; main
+;; ----------------------------
+
+(defn hero []
+  (r/create-class
+   {:component-did-mount
+    (fn [] (schedule!))
+
+    :component-will-unmount
+    (fn []
+      (when @timer-id
+        (js/clearTimeout @timer-id)))
+
+    :reagent-render
+    (fn []
+      [:section {:class "relative h-screen flex items-center justify-center overflow-hidden"}
+       [background]
+       [:div {:class "absolute inset-0 bg-black/40 z-30"}]
+       [content]
+       [:div {:class "absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-40"}
+        [:span {:class "text-white text-2xl"} "↓"]]
+       [navigation]])}))
+```
+
+src/ueava/main.cljs
+```
+(ns ueava.main
+  (:require 
+            [ueava.components.hero :refer [hero]]
+            [ueava.components.benefits :refer [benefits]]
+            [ueava.components.cta :refer [cta]]
+            [ueava.components.membership :refer [membership]]))
+
+(defn main []
+  [:main
+    [hero]
+    [benefits]
+    [cta]
+    [membership]])
+
+```
+
+
+
+Just tell me how to edit the files to make the changes.
+Don't give me back entire files.
+Just show me the edits I need to make.
+*** хм странная ошибка
+(defn navigation []
+  [:div {:class "absolute bottom-6 right-6 grid grid-cols-2 gap-2 z-50"}
+   (doall (map-indexed nav-item (slides)))])
+
+      [:header
+       {:class
+        (str
+         "fixed top-0 left-0 w-full z-50 transition-all duration-300 "
+         (if @scrolled?
+           "bg-ueava-cream shadow text-gray-900"
+           "bg-transparent text-white"))}
+
+navigation и header
+занимают один слой и потому, как я понимаю неправельно отображаются
+navigation отображается поверх header если перемотать.
+и вроде логино сменить просто z-50.
+но если я его меняю на любое значение они просто исчезают.
+вроде я обновлял страницу. разве что серевер не перзапускал.
+непонмаю почему элементы исчезают при изменении значения.
+
+
 ** сделать страниццу на укринском
 ** DONE перенести на страниццу укринский из телеграма
 *** 
