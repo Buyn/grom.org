@@ -2,8 +2,10 @@
   (:require
     [reagent.core :as r]
     [ueava.components.navigation-menu :refer [navigation-menu]]
+    [ueava.components.topbar :refer [topbar top-visible?]]
     [ueava.components.navigation-menu-list :refer [navigation-items]]
     ;; [ueava.components.hamburger-menu :refer [hamburger-menu]]
+    [ueava.components.lang :refer [t]]
     [ueava.components.navigation-cta :refer [navigation-cta]]))
 
 
@@ -34,7 +36,8 @@
 
 
 (defn on-scroll []
-  (reset! scrolled? (> (.-scrollY js/window) 50)))
+  (reset! scrolled? (> (.-scrollY js/window) 50))
+  (reset! top-visible? (< (.-scrollY js/window) 10)))
 
 (defn header []
   (r/create-class
@@ -56,6 +59,7 @@
            "bg-ueava-cream shadow text-gray-900"
            "bg-transparent text-white"))}
 
+       [topbar]
        [:div {:class "flex items-center justify-between px-8 py-4"}
 
         ;; logo
@@ -118,11 +122,12 @@
                       :class "text-lg font-medium hover:text-ueava-sand transition"}
                         title]))
 
-              [:button
-                {:class "bg-orange-500 text-white px-4 py-2 rounded
-                          hover:bg-orange-600 
-                          space-x-8 font-medium"}
-                "Find A Vet"]]
+              ;; [:button
+              ;;   {:class "bg-orange-500 text-white px-4 py-2 rounded
+              ;;             hover:bg-orange-600 
+              ;;             space-x-8 font-medium"}
+              ;;  (t :header/cta)]
+         ]
 
         ;; [hamburger-menu]
         ]])}))
