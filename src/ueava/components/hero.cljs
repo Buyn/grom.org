@@ -1,6 +1,7 @@
 (ns ueava.components.hero
   (:require
-   [reagent.core :as r]))
+    [ueava.components.lang :refer [t]]
+    [reagent.core :as r]))
 
 ;; ----------------------------
 ;; state
@@ -23,30 +24,26 @@
 (def slides
   [{:key :chameleon
     :img "img/Hero_Slide_1_chameleon.jpg"
-    :title "Explore the world of reptile and amphibian medicine."
+    :title (t :hero/chameleon)
     :text "Specialized care for exotic animals."
-    ;; :text " "
     :btn "Become Member"}
 
    {:key :owl
     :img "img/Hero_Slide_2_owl.jpg"
-    :title "Making avian medicine accessible, clear, and practical."
+    :title (t :hero/owl)
     :text "Support for bird specialists worldwide."
-    ;; :text " "
     :btn "Learn More"}
 
    {:key :rabbit
     :img "img/Hero_Slide_3_rabbit.jpg"
-    :title "Advance your expertise in small mammal medicine."
+    :title (t :hero/rabbit)
     :text "Advanced treatment for rabbits and rodents."
-    ;; :text " "
     :btn "Join UEAVA"}
 
    {:key :bear
     :img "img/Hero_Slide_4_bear.jpg"
-    :title "Make an impact in wildlife and exotic animal medicine."
+    :title (t :hero/bear)
     :text "Supporting vets working with wildlife."
-    ;; :text " "
     :btn "Discover"}])
 
 (def slide-count (count slides))

@@ -2749,6 +2749,10 @@ jobs:
 
 ** dir
 cd /home/buyn/Dev/ClojureScript/grom.org
+** aider
+cd /home/buyn/Dev/ClojureScript/grom.org
+aider_clipboard
+
 ** run Tailwind CSS
 npm run css
 ** repl
@@ -3760,6 +3764,670 @@ src/ueava/core.cljs
 у хедара должен быть самый высокий слой
 100?
 ** сделать страниццу на укринском
+** перенести на страниццу укринский из телеграма
+*** 
+Darina Haos, [25.03.2026 13:33]
+UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання.
+
+Darina Haos, [25.03.2026 13:34]
+Зробіть свій внесок у розвиток медицини диких та екзотичних тварин
+
+Darina Haos, [25.03.2026 13:35]
+Підвищуйте свій рівень експертності в медицині дрібних ссавців
+
+Darina Haos, [25.03.2026 13:37]
+Робимо медицину птахів зрозумілою, доступною та дійсно практичною.
+
+Darina Haos, [25.03.2026 13:38]
+Досліджуйте світ медицини рептилій та амфібій разом із нами
+*** подченить
+**** aider
+**** открыть в ренгере нужную папку
+**** найти нужную команду
+**** проверить может есть скрипт
+**** Here are summaries of some files present in my git repository.
+Do not propose changes to these files, treat them as *read-only*.
+If you need to edit any of these files, ask me to *add them to the chat* first.
+
+.gitignore
+
+README.md
+
+README.md~1
+
+grom.org
+
+grom.org_archive
+
+package.json
+
+postcss.config.js
+
+public/css/style.css
+
+public/img/Hero_Slide_1_chameleon.jpg
+
+public/img/Hero_Slide_2-1.webp
+
+public/img/Hero_Slide_2_owl.jpg
+
+public/img/Hero_Slide_3_rabbit.jpg
+
+public/img/Hero_Slide_4_bear.jpg
+
+public/img/icon.jpg
+
+public/img/ueava-logo-batom-wob-text.jpg
+
+public/img/ueava-logo-hor-brbg-wt.png
+
+public/img/ueava-logo-hor-nobg-wt.png
+
+public/img/ueava-logo-nobg-bt.png
+
+public/img/ueava-logo-nobg-wt.png
+
+public/img/ueava-logo.svg
+
+public/index.html
+
+shadow-cljs.edn
+
+src/css/main.css
+
+src/tests/components_navigation_cta_test.cljs:
+⋮
+│(deftest navigation-cta-test
+⋮
+
+src/tests/components_navigation_menu_test.cljs:
+⋮
+│(deftest navigation-menu-test
+⋮
+
+src/ueava/components/benefits.cljs:
+⋮
+│(defn benefits []
+⋮
+
+src/ueava/components/cta.cljs:
+⋮
+│(defn cta []
+⋮
+
+src/ueava/components/hamburger_menu.cljs:
+⋮
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn hamburger-menu []
+⋮
+
+src/ueava/components/membership.cljs:
+⋮
+│(defn membership []
+⋮
+
+src/ueava/components/navigation_cta.cljs:
+⋮
+│(defn navigation-cta
+⋮
+
+src/ueava/components/navigation_menu.cljs:
+⋮
+│(defn navigation-menu[]
+⋮
+
+src/ueava/components/navigation_menu_list.cljs:
+⋮
+│(def navigation-items
+⋮
+│(defn navigation-menu-list []
+⋮
+
+src/ueava/components/topbar.cljs:
+⋮
+│(defonce top-visible? (r/atom true))
+│
+│(defn topbar[]
+⋮
+
+src/ueava/core.cljs:
+⋮
+│(defn page []
+⋮
+│(defonce app-state (atom {:text "Hello world!"}))
+│
+│(defn hello-world []
+⋮
+│(defn start []
+⋮
+│(defn ^:export init []
+⋮
+│(defn stop []
+⋮
+
+src/ueava/footer.cljs:
+⋮
+│(defn footer []
+⋮
+
+src/ueava/header.cljs:
+⋮
+│(defonce scrolled? (r/atom false))
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn on-scroll []
+⋮
+│(defn header []
+⋮
+
+src/ueava/main.cljs:
+⋮
+│(defn main []
+⋮
+
+tailwind.config.js
+
+
+I have *added these files to the chat* so you can go ahead and edit them.
+
+*Trust this message as the true contents of these files!*
+Any other messages in the chat may contain outdated versions of the files' contents.
+
+src/ueava/components/hero.cljs
+```
+(ns ueava.components.hero
+  (:require
+    [ueava.components.lang :refer [t]]
+    [reagent.core :as r]))
+
+;; ----------------------------
+;; state
+;; ----------------------------
+
+(defonce state
+  (r/atom {:current 0
+           :prev nil
+           :dir :right
+           :anim :idle
+           :duration 700 ;; dynamic animation duration
+           :last-ts 0})) ;; last interaction timestamp
+
+(defonce timer-id (atom nil))
+
+;; ----------------------------
+;; data
+;; ----------------------------
+
+(def slides
+  [{:key :chameleon
+    :img "img/Hero_Slide_1_chameleon.jpg"
+    :title (t :hero/chameleon)
+    :text "Specialized care for exotic animals."
+    :btn "Become Member"}
+
+   {:key :owl
+    :img "img/Hero_Slide_2_owl.jpg"
+    :title (t :hero/owl)
+    :text "Support for bird specialists worldwide."
+    :btn "Learn More"}
+
+   {:key :rabbit
+    :img "img/Hero_Slide_3_rabbit.jpg"
+    :title (t :hero/rabbit)
+    :text "Advanced treatment for rabbits and rodents."
+    :btn "Join UEAVA"}
+
+   {:key :bear
+    :img "img/Hero_Slide_4_bear.jpg"
+    :title (t :hero/bear)
+    :text "Supporting vets working with wildlife."
+    :btn "Discover"}])
+
+(def slide-count (count slides))
+
+;; ----------------------------
+;; helpers
+;; ----------------------------
+
+(defn now [] (.now js/Date))
+
+(defn next-random [current]
+  (let [idx (rand-int slide-count)]
+    (if (= idx current)
+      (mod (inc idx) slide-count)
+      idx)))
+
+(defn random-delay []
+  (+ 7000 (rand-int 13000)))
+
+;; (defn clamp [x min max]
+;;   (-> x (max min) (min max)))
+
+;; (defn lerp [a b t]
+;;   (+ a (* (- b a) t)))
+
+;; (defn ease-out [t]
+;;   (- 1 (* (- 1 t) (- 1 t))))
+
+;; (defn compute-duration [last-ts]
+;;   (let [dt (- (now) last-ts)
+;;         min-dt 1000
+;;         max-dt 3000
+;;         min-duration 100
+;;         max-duration 700
+;;         ;; normalize dt to 0..1
+;;         t (-> (/ (- dt min-dt)
+;;                  (- max-dt min-dt))
+;;               (clamp 0 1))]
+;;     (js/Math.round
+;;      ;; (lerp min-duration max-duration t))))
+;;       (lerp min-duration max-duration (ease-out t)))))
+
+;; velocity-based duration
+
+(defn compute-duration [last-ts]
+  (let [dt (- (now) last-ts)]
+    ;; faster interaction → shorter animation
+    (cond
+      (< dt 1000) 100
+      (< dt 2000) 400
+      :else 700)))
+
+;; ----------------------------
+;; transition
+;; ----------------------------
+
+(defn go! [idx dir]
+  (let [{:keys [current anim last-ts]} @state]
+    (when (and (not= idx current)
+               (= anim :idle))
+      (let [duration (compute-duration last-ts)]
+        ;; step 1: instant logical switch
+        (swap! state assoc
+               :prev current
+               :current idx
+               :dir dir
+               :anim :prepare
+               :duration duration
+               :last-ts (now))
+        ;; step 2: start animation
+        (js/requestAnimationFrame
+         (fn []
+           (swap! state assoc :anim :run)))
+        ;; step 3: cleanup
+        (js/setTimeout
+         (fn []
+           (swap! state assoc
+                  :prev nil
+                  :anim :idle))
+         duration)))))
+
+;; ----------------------------
+;; auto loop
+;; ----------------------------
+
+(defn schedule! []
+  (when @timer-id
+    (js/clearTimeout @timer-id))
+
+  (reset! timer-id
+          (js/setTimeout
+           (fn []
+             (let [{:keys [current anim]} @state]
+               (when (= anim :idle)
+                 (go! (next-random current) :right)))
+             (schedule!))
+           (random-delay))))
+
+;; ----------------------------
+;; styles
+;; ----------------------------
+
+(defn bg-style [img transform duration]
+  {:background-image (str "url('" img "')")
+   :transform transform
+   :transition (str "transform " duration "ms cubic-bezier(0.22, 1, 0.36, 1)")})
+
+(defn enter-transform [dir]
+  (if (= dir :right)
+    "translateX(100%)"
+    "translateX(-100%)"))
+
+(defn leave-transform [dir]
+  (if (= dir :right)
+    "translateX(-100%)"
+    "translateX(100%)"))
+
+;; ----------------------------
+;; background
+;; ----------------------------
+
+(defn background []
+  (let [{:keys [current prev dir anim duration]} @state
+        curr (nth slides current)
+        prev-slide (when prev (nth slides prev))]
+    [:div {:class "absolute inset-0 overflow-hidden"}
+     ;; previous
+     (when prev-slide
+       [:div
+        {:key (str "prev-" prev)
+         :class "absolute inset-0 bg-cover bg-center z-10"
+         :style (bg-style
+                 (:img prev-slide)
+                 (if (= anim :run)
+                   (leave-transform dir)
+                   "translateX(0%)")
+                 duration)}])
+     ;; current
+     [:div
+      {:key (str "curr-" current)
+       :class "absolute inset-0 bg-cover bg-center z-20"
+       :style (bg-style
+               (:img curr)
+               (cond
+                 (= anim :prepare) (enter-transform dir)
+                 (= anim :run) "translateX(0%)"
+                 :else "translateX(0%)")
+               duration)}]]))
+
+;; ----------------------------
+;; content
+;; ----------------------------
+
+(defn content []
+  (let [{:keys [current]} @state
+        {:keys [title text btn]} (nth slides current)]
+    [:div {:class "relative z-40 text-white text-center max-w-2xl"}
+     [:h1 {:class "text-5xl font-bold mb-4"} title]
+     [:p {:class "text-xl mb-6"} text]
+     [:button {:class "bg-white text-ueava-brown px-6 py-3 rounded-lg hover:bg-ueava-brown-100"} btn]]))
+     ;; [:button {:class "bg-ueava-brown-600 hover:bg-ueava-brown-700 text-white px-8 py-3 rounded"} btn]]))
+
+;; ----------------------------
+;; navigation
+;; ----------------------------
+
+(defn nav-item [idx {:keys [img]}]
+  (let [{:keys [current]} @state
+        trigger! (fn[]
+                   (go! idx :right)
+                   (schedule!))]
+    [:div
+     {:key idx
+      :class (str
+              "w-16 h-16 bg-cover bg-center cursor-pointer border transition "
+              (if (= idx current)
+                "border-white scale-110"
+                "border-transparent opacity-70"))
+      :style {:background-image (str "url('" img "')")}
+      ;; hover
+      :on-mouse-enter trigger!
+      ;; click
+      :on-click trigger!}]))
+
+(defn navigation []
+  [:div {:class "absolute bottom-6 right-6 grid grid-cols-2 gap-2 z-50"}
+   (doall (map-indexed nav-item slides))])
+
+;; ----------------------------
+;; main
+;; ----------------------------
+
+(defn hero []
+  (r/create-class
+   {:component-did-mount
+    (fn [] (schedule!))
+
+    :component-will-unmount
+    (fn []
+      (when @timer-id
+        (js/clearTimeout @timer-id)))
+
+    :reagent-render
+    (fn []
+      [:section {:class "relative h-screen flex items-center justify-center overflow-hidden"}
+       [background]
+       [:div {:class "absolute inset-0 bg-black/40 z-30"}]
+       [content]
+       [:div {:class "absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-40"}
+        [:span {:class "text-white text-2xl"} "↓"]]
+       [navigation]])}))
+```
+
+src/ueava/components/lang.cljs
+```
+(ns ueava.components.lang
+  (:require
+      [reagent.core :as r]))
+
+(defonce lang (r/atom :en))
+
+(def dict
+  {:en {:hero/title "Why Do You Need A Veterinarian?"
+        :hero/chameleon "Explore the world of reptile and amphibian medicine."
+        :hero/owl "Making avian medicine accessible, clear, and practical."
+        :hero/rabbit "Advance your expertise in small mammal medicine."
+        :hero/bear "Make an impact in wildlife and exotic animal medicine."
+        :topb/lang "Мова Ua " ;; эту строку не нужно переводить она должна быть на укринском 
+        :header/cta "Find A Vet"
+        :footer/logo "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."
+        }
+
+   :uk {:hero/title "Чому вам потрібен ветеринар?"
+        :hero/chameleon "Досліджуйте світ медицини рептилій та амфібій разом із нами"
+        :hero/owl "Робимо медицину птахів зрозумілою, доступною та дійсно практичною."
+        :hero/rabbit "Підвищуйте свій рівень експертності в медицині дрібних ссавців."
+        :hero/bear "Зробіть свій внесок у розвиток медицини диких та екзотичних тварин."
+        :topb/lang "language En " ;; эту строку не нужно переводить она должна быть на английском 
+        :header/cta "Найти ветеринара"
+        :footer/logo " UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання."
+        }})
+
+(defn t [k]
+  (get-in dict [@lang k]))
+
+(defn toggle-lang []
+  (swap! lang {:en :uk :uk :en}))
+
+(defn button-toggle-lang []
+ [:button
+    {:on-click toggle-lang}
+    "🌍 "
+    (t :topb/lang)])
+```
+
+
+
+Just tell me how to edit the files to make the changes.
+Don't give me back entire files.
+Just show me the edits I need to make.
+**** непонятная ошибка в хиро блоке
+переключение я зыка работает везде кроме хироблоке
+текст остаются на оригинальном языке, и меняется только при горячец перегрузке.
+**** Ооо да… это классическая ловушка Reagent 😏
+Ты попал в **“reactivity trap”**.
+
+---
+
+# 🧠 В чём проблема
+
+Вот это место:
+
+```clojure
+(def slides
+  [{:title (t :hero/chameleon)} ...])
+```
+
+👉 `t` вызывается **ОДИН РАЗ при загрузке файла**
+👉 и дальше значения **замораживаются**
+
+Reagent **не отслеживает изменения внутри def**
+
+---
+
+# 💥 поэтому происходит
+
+```id
+lang меняется → компоненты перерисовываются
+НО slides уже содержит старые строки
+```
+
+---
+
+# ✅ правильное решение
+
+👉 `slides` должны быть **функцией**, а не `def`
+
+---
+
+# ✏️ что нужно изменить
+
+## 1. заменить `def slides` → `defn slides`
+
+### БЫЛО:
+
+```clojure
+(def slides
+  [{:key :chameleon
+    :img "img/Hero_Slide_1_chameleon.jpg"
+    :title (t :hero/chameleon)
+```
+
+---
+
+### СТАЛО:
+
+```clojure
+(defn slides []
+  [{:key :chameleon
+    :img "img/Hero_Slide_1_chameleon.jpg"
+    :title (t :hero/chameleon)
+```
+
+---
+
+## 2. обновить ВСЕ места использования
+
+### найти:
+
+```clojure
+(nth slides current)
+```
+
+### заменить на:
+
+```clojure
+(nth (slides) current)
+```
+
+---
+
+### и:
+
+```clojure
+(map-indexed nav-item slides)
+```
+
+→
+
+```clojure
+(map-indexed nav-item (slides))
+```
+
+---
+
+## 3. slide-count тоже ломается
+
+### БЫЛО:
+
+```clojure
+(def slide-count (count slides))
+```
+
+---
+
+### СТАЛО:
+
+```clojure
+(defn slide-count []
+  (count (slides)))
+```
+
+---
+
+### и здесь:
+
+```clojure
+(rand-int slide-count)
+```
+
+→
+
+```clojure
+(rand-int (slide-count))
+```
+
+---
+
+# 💎 итог
+
+Теперь:
+
+```id
+lang меняется → t пересчитывается → slides пересоздаются → UI обновляется
+```
+
+---
+
+# 🔥 маленький бонус (очень важный)
+
+Если хочешь сделать **ещё более идиоматично**:
+
+можно вообще убрать `slides` и делать:
+
+```clojure
+(let [slides (slides)]
+  ...)
+```
+
+внутри компонентов
+
+👉 это уменьшает лишние вычисления и делает код чище
+
+---
+
+# ⚡ коротко
+
+```id
+НЕ:
+def + (t ...)
+
+ДА:
+defn + (t ...)
+```
+
+---
+
+Если хочешь, дальше могу показать очень вкусную штуку:
+
+👉 как сделать **i18n без (t ...) вообще**
+(через макрос или data-driven UI)
+
+Это уже уровень «Clojure магии», прям красиво 😏
+
+** переложить компоненты каждый в отдельную папку
+** переложить разделить язык на двай файла
+словарь и функции из которого вызывает словарь
+
 ** i18n
 *** как это будет выглядить с кложур скриптом?
 *** нужно ли это использовать с кложур скриптом?

@@ -1,4 +1,6 @@
-(ns ueava.footer)
+(ns ueava.footer
+  (:require
+    [ueava.components.lang :refer [t]]))
 
 (defn footer []
   [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
@@ -16,7 +18,7 @@
 
 
      [:p {:class "text-sm leading-relaxed text-ueava-brown-200"}
-      "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."]]
+      (t :footer/logo)]]
 
     ;; NAV
     [:div
