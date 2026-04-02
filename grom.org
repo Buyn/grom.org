@@ -3558,9 +3558,65 @@ Just show me the edits I need to make.
 ---
 
 Если хочешь, я могу пойти дальше и сделать тебе вообще чистый i18n слой — с fallback'ами, lazy loading и без этих “магических ключей” 😈
-** ренуть кнопку
+** DONE ренуть кнопку
 Кнопку вернул. Я оказывается её нечайно убрал.
 новую версию обуюликовал
+
+заменил
+** TODO перевести
+*** Darina Haos, [02.04.2026 16:00]
+Join the Professional Community Advancing Exotic Animal Medicine -
+ Долучайтеся до професійної спільноти, що формує майбутнє медицини екзотичних тварин.
+
+
+Become part of Ukrainian Exotic Animal Veterinary Association — a veterinary association uniting professionals in exotic animal.
+
+Станьте частиною UEAVA
+Українська асоціація ветеринарної медицини екзотичних тварин — це простір для розвитку, співпраці та професійного зростання лікарів, які працюють з екзотичними тваринами.
+
+Darina Haos, [02.04.2026 16:01]
+Join UEAVA
+
+Приєднатися до UEAVA
+
+Darina Haos, [02.04.2026 16:06]
+
+
+Darina Haos, [02.04.2026 16:07]
+Тепер по цьому правки:
+Why Join UEAVA
+-  Що ви отримуєте з UEAVA
+
+Darina Haos, [02.04.2026 16:12]
+Scientific Journal
+→ Науковий журнал
+
+Access research and publications in exotic animal medicine.
+→ Отримуйте доступ до актуальних досліджень і публікацій у сфері медицини екзотичних тварин.
+P.s: там і в англійській версії має бути правка з reptile and amphibian medicine, на exotic animal medicine
+
+Darina Haos, [02.04.2026 16:18]
+Find-A-Vet Directory
+→ Всеукраїнський каталог ветеринарних лікарів
+
+Darina Haos, [02.04.2026 16:19]
+Be listed in a nationwide directory of veterinary professionals.
+→ Будьте представлені у всеукраїнському каталозі ветеринарних лікарів і підвищуйте свою професійну видимість.
+
+Darina Haos, [02.04.2026 16:20]
+Professional Community
+- Професійна спільнота
+
+Darina Haos, [02.04.2026 16:22]
+Далі правка на англійській версії:
+Join a professional network of veterinary experts across Ukraine.
+
+Darina Haos, [02.04.2026 16:23]
+Її український двійник
+
+Darina Haos, [02.04.2026 16:23]
+Долучайтеся до професійної спільноти ветеринарних фахівців з усієї України.
+
 ** сделать страниццу на укринском
 ** переложить компоненты каждый в отдельную папку
 ** переложить разделить язык на двай файла
