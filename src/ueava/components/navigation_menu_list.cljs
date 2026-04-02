@@ -14,7 +14,7 @@
 ;;   ;; ]
 ;;   )
 
-(def navigation-items
+(defn navigation-items []
   [{:title (t :hlist/Home)        :href "#"}
    {:title (t :hlist/About)       :href "#"}
    {:title (t :hlist/Resources)   :href "#"}
@@ -22,7 +22,7 @@
    {:title (t :hlist/Conferences) :href "#"}])
 
 (defn navigation-menu-list []
-  (for [{:keys [title href]} navigation-items]
+  (for [{:keys [title href]} (navigation-items)]
     [:a {:href href
          :key title
          :class "hover:text-ueava-sand"}

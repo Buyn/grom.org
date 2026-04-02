@@ -14,7 +14,7 @@
   ;; (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
   ;;   (navigation-menu-list)))
   (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
-    (for [{:keys [title href]} navigation-items]
+    (for [{:keys [title href]} (navigation-items)]
       [:a {:href href
           :key title
           :class "hover:text-ueava-sand"}

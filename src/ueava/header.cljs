@@ -115,7 +115,7 @@
                 {:class "flex flex-col items-center text-center p-6 space-y-4"}
                 ]
 
-                (for [{:keys [title href]} navigation-items]
+                (for [{:keys [title href]} (navigation-items)]
                   [:a {:href href
                       :key title
                       ;; :class "hover:text-ueava-sand"}
