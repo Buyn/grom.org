@@ -122,11 +122,11 @@
                       :class "text-lg font-medium hover:text-ueava-sand transition"}
                         title]))
 
-              ;; [:button
-              ;;   {:class "bg-orange-500 text-white px-4 py-2 rounded
-              ;;             hover:bg-orange-600 
-              ;;             space-x-8 font-medium"}
-              ;;  (t :header/cta)]
+              [:button
+                {:class "bg-orange-500 text-white px-4 py-2 rounded
+                          hover:bg-orange-600 
+                          space-x-8 font-medium"}
+               (t :header/cta)]
          ]
 
         ;; [hamburger-menu]
