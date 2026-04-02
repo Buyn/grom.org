@@ -1,4 +1,6 @@
-(ns ueava.components.navigation-menu-list)
+(ns ueava.components.navigation-menu-list
+  (:require
+    [ueava.components.lang :refer [t]]))
 
 ;; (defn navigation-menu-list[]
 ;;   ;; [:<>
@@ -13,11 +15,11 @@
 ;;   )
 
 (def navigation-items
-  [{:title "Home"        :href "#"}
-   {:title "About"       :href "#"}
-   {:title "Resources"   :href "#"}
-   {:title "Membership"  :href "#"}
-   {:title "Conferences" :href "#"}])
+  [{:title (t :hlist/Home)        :href "#"}
+   {:title (t :hlist/About)       :href "#"}
+   {:title (t :hlist/Resources)   :href "#"}
+   {:title (t :hlist/Membership)  :href "#"}
+   {:title (t :hlist/Conferences) :href "#"}])
 
 (defn navigation-menu-list []
   (for [{:keys [title href]} navigation-items]

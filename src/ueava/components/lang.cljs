@@ -10,8 +10,13 @@
         :hero/owl "Making avian medicine accessible, clear, and practical."
         :hero/rabbit "Advance your expertise in small mammal medicine."
         :hero/bear "Make an impact in wildlife and exotic animal medicine."
-        :topb/lang "Мова Ua " ;; эту строку не нужно переводить она должна быть на укринском 
+        :topb/lang " Ua" ;; эту строку не нужно переводить она должна быть на укринском 
         :header/cta "Find A Vet"
+        :hlist/Home "Home"
+        :hlist/About "About"
+        :hlist/Resources "Resources"
+        :hlist/Membership "Membership"
+        :hlist/Conferences "Conferences"
         :footer/logo "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."
         }
 
@@ -20,8 +25,13 @@
         :hero/owl "Робимо медицину птахів зрозумілою, доступною та дійсно практичною."
         :hero/rabbit "Підвищуйте свій рівень експертності в медицині дрібних ссавців."
         :hero/bear "Зробіть свій внесок у розвиток медицини диких та екзотичних тварин."
-        :topb/lang "language En " ;; эту строку не нужно переводить она должна быть на английском 
+        :topb/lang " En " ;; эту строку не нужно переводить она должна быть на английском 
         :header/cta "Найти ветеринара"
+        :hlist/Home "Домой"
+        :hlist/About "Про нас"
+        :hlist/Resources "Ресурси"
+        :hlist/Membership "Членство"
+        :hlist/Conferences "Конференції"
         :footer/logo " UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання."
         }})
 
