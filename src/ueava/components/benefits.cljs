@@ -8,18 +8,18 @@
    [:div {:class "max-w-6xl mx-auto px-6"}
 
     [:h2 {:class "text-3xl font-bold text-center mb-12"}
-     "Why Join UEAVA"]
+     (t :benefits/title)]
 
     [:div {:class "grid md:grid-cols-3 gap-8"}
 
      [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
-      [:h3 {:class "text-xl font-semibold mb-3"} "Scientific Journal"]
-      [:p "Access research and publications in reptile and amphibian medicine."]]
+      [:h3 {:class "text-xl font-semibold mb-3"} (t :benefits/c1-title)]
+      [:p (t :benefits/c1-dis)]]
 
      [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
-      [:h3 {:class "text-xl font-semibold mb-3"} "Find-A-Vet Directory"]
-      [:p "Be listed in an international directory of specialists."]]
+      [:h3 {:class "text-xl font-semibold mb-3"} (t :benefits/c2-title)]
+      [:p (t :benefits/c2-dis)]]
 
      [:div {:class "bg-white p-6 rounded-lg shadow hover:shadow-lg transition"}
-      [:h3 {:class "text-xl font-semibold mb-3"} "Professional Community"]
-      [:p "Connect with veterinarians and researchers worldwide."]]]]])
+      [:h3 {:class "text-xl font-semibold mb-3"} (t :benefits/c3-title)]
+      [:p (t :benefits/c3-dis)]]]]])
