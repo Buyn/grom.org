@@ -1,4 +1,6 @@
-(ns ueava.components.benefits)
+(ns ueava.components.benefits
+  (:require
+    [ueava.components.lang :refer [t]]))
 
 (defn benefits []
   [:section {:class "py-20 bg-gray-50"}
