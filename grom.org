@@ -3923,12 +3923,11 @@ clojure -m cljs.main --compile my-cljs-project.core --repl
 (evil-close-fold)
 (let ((curent-buffer (buffer-name)))
   (if (get-buffer "*compilation*")
-    (compile "npm run build-gh")
     (progn
       (select-frame-by-name "*compilation*")
       (recompile)
-      (select-frame-by-name curent-buffer)))
-    )
+      (select-frame-by-name curent-buffer))
+    (compile "npm run build-gh")))
 
 ;; (find-file-other-frame "reagent-test/src/learn_cljs/reagent_test.cljs")
 ;; (find-file-other-frame "~/INI/hydra-cfg.el")
