@@ -10406,3 +10406,2703 @@ Just show me the edits I need to make.
 новую версию обуюликовал
 
 заменил
+
+* DONE перевести
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-04-06 Пн 10:53
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** Darina Haos, [02.04.2026 16:00]
+Join the Professional Community Advancing Exotic Animal Medicine -
+ Долучайтеся до професійної спільноти, що формує майбутнє медицини екзотичних тварин.
+
+
+Become part of Ukrainian Exotic Animal Veterinary Association — a veterinary association uniting professionals in exotic animal.
+
+Станьте частиною UEAVA
+Українська асоціація ветеринарної медицини екзотичних тварин — це простір для розвитку, співпраці та професійного зростання лікарів, які працюють з екзотичними тваринами.
+
+Darina Haos, [02.04.2026 16:01]
+Join UEAVA
+
+Приєднатися до UEAVA
+
+Darina Haos, [02.04.2026 16:06]
+
+
+Darina Haos, [02.04.2026 16:07]
+Тепер по цьому правки:
+Why Join UEAVA
+-  Що ви отримуєте з UEAVA
+
+Darina Haos, [02.04.2026 16:12]
+Scientific Journal
+→ Науковий журнал
+
+Access research and publications in exotic animal medicine.
+→ Отримуйте доступ до актуальних досліджень і публікацій у сфері медицини екзотичних тварин.
+P.s: там і в англійській версії має бути правка з reptile and amphibian medicine, на exotic animal medicine
+
+Darina Haos, [02.04.2026 16:18]
+Find-A-Vet Directory
+→ Всеукраїнський каталог ветеринарних лікарів
+
+Darina Haos, [02.04.2026 16:19]
+Be listed in a nationwide directory of veterinary professionals.
+→ Будьте представлені у всеукраїнському каталозі ветеринарних лікарів і підвищуйте свою професійну видимість.
+
+Darina Haos, [02.04.2026 16:20]
+Professional Community
+- Професійна спільнота
+
+Darina Haos, [02.04.2026 16:22]
+Далі правка на англійській версії:
+Join a professional network of veterinary experts across Ukraine.
+
+Darina Haos, [02.04.2026 16:23]
+Її український двійник
+
+Darina Haos, [02.04.2026 16:23]
+Долучайтеся до професійної спільноти ветеринарних фахівців з усієї України.
+** 
+сделано! Должно всё работать.
+принимай!
+
+* DONE что такое tailwind
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-04-06 Пн 10:53
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** в контексте кложурскрипта
+** это посуте бутстреп?
+** это самый популярный вариант работы с КСС?
+** это самый популярный вариант работы с КСС
+чере кложур скрипт?
+** какие ещё компилируему языки его используют?
+** какие ещё есть варинаты которые динамично компилят
+ксс при изменения кода и следять за изменениями текстра програмы, и хороши для использования с кложур скриптом?
+** tailwind.config.js
+
+* CANCELED old grom.org
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-02 Вт 19:07
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: CANCELED
+:END:
+** CANCELED src project
+*** shadow-cljs.edn
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+:header-args: :tangle ./shadow-cljs.edn
+**** file shadow-cljs.edn
+(find-file-other-frame "./shadow-cljs.edn")
+**** src shadow-cljs.edn
+#+begin_src clojure :no-expand t :mkdirp yes
+{:source-paths ["src"]
+
+ :dependencies [[binaryage/devtools "0.9.10"]
+                [proto-repl "0.3.1"]
+                [reagent "0.8.0"]
+                [cljs-ajax "0.7.3"]]
+
+ :nrepl        {:port 3333}
+
+ :builds
+ {:app {:target :browser
+        :output-dir "public/js"
+        :asset-path "/js"
+
+        :modules
+        {:main
+         {:entries [giggin.core]}}
+
+        :devtools
+        {:after-load  giggin.core/main
+         :http-root   "public"
+         :http-port   3000}}
+
+  :test {:target :node-test
+           :output-to "out/node-tests.js"
+           ;; :ns-regexp "-test$" ; по умолчанию
+           ;; :autorun false
+           }}}
+
+
+#+end_src
+
+#+RESULTS:
+: Please reevaluate when nREPL is connected
+*** package.json
+:PROPERTIES:
+:header-args: :tangle ./package.json
+:END:
+**** file package.json
+(find-file-other-frame "./package.json")
+**** src package.json
+#+begin_src json :no-expand t :mkdirp yes
+{
+  "name": "Grom.Org",
+  "version": "0.0.1",
+  "description": "Grom.Org - find a gig!",
+  "repository": "https://github.com/jacekschae/learn-reagent-course-files.git",
+  "private": true,
+  "scripts": {
+    "dev": "shadow-cljs watch app",
+    "release": "shadow-cljs release app",
+    "clean": "rm -rf target && rm -rf public/js",
+    "clean-win": "rmdir /s /q public/js & rmdir /s /q target"
+  },
+  "devDependencies": {
+    "shadow-cljs": "^2.27.5"
+  },
+  "dependencies": {
+    "firebase": "^10.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "create-react-class": "^15.7.0"
+  }
+}
+
+
+#+end_src
+
+#+RESULTS:
+: Please reevaluate when nREPL is connected
+*** other
+(find-file-other-frame "./.gitignore")
+(find-file-other-frame "./package.json")
+(find-file-other-frame "./grom.org.org")
+** CANCELED src core
+*** core.cljs
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+:header-args: :tangle ./src/giggin/core.cljs
+**** file core.cljs
+(find-file-other-frame "./src/giggin/core.cljs")
+**** src core.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.core
+  (:require [reagent.core :as r]
+            [giggin.components.gigs :refer [gigs]]
+            [giggin.state :refer [gigs-cursor] :as state ]
+            [giggin.components.header :refer [header]]
+            [giggin.components.orders :refer [orders]]
+            [giggin.api :as api]
+            [giggin.fb.init :refer [firebase-init]]
+            [giggin.components.footer :refer [footer]]))
+
+(defonce app-state state/app-state)
+
+(defn app
+  []
+  [:div.container
+   [header]
+   [gigs app-state]
+   [orders app-state]
+   [footer]])
+
+(defn ^:export main
+  []
+  (api/fetch-gigs (gigs-cursor app-state))
+  (r/render
+    [app]
+    (.getElementById js/document "app"))
+  (firebase-init)
+  )
+
+
+#+end_src
+
+
+**** reple
+(in-ns 'giggin.core)
+app
+(app)
+(require '[giggin.components.gigs :refer [gigs]])
+**** test
+[[*core_test.cljs][core_test.cljs]]
+*** state.cljs
+:PROPERTIES:
+:header-args: :tangle ./src/giggin/state.cljs
+:END:
+**** file state.cljs
+(find-file-other-frame "./src/giggin/state.cljs")
+**** src state.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.state
+  (:require [reagent.core :as r]))
+
+
+(defn gigs-cursor [app]
+  (r/cursor app [:gigs]))
+
+(defn orders-cursor [app]
+  (r/cursor app [:orders]))
+
+(defn gig-editor-cursor [app]
+  (r/cursor app [:gig-editor]))
+
+(def app-state (r/atom {
+                :orders {}
+                :gig-editor {
+                     :modal false
+                     :values {:id (str "gig-" (random-uuid))
+                               :title "" :desc "" :price 0 :img "" :sold-out false}}
+                :gigs {
+                   :gig-01 {:id :gig-01
+                            :title "Macaron"
+                            :artist "Baher Khairy"
+                            :desc "Sweet meringue-based rhythms with smooth and sweet injections of soul"
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552695/giggin/baher-khairy-97645.jpg"
+                            :price 1000
+                            :sold-out false}
+                   :gig-02 {:id :gig-02
+                            :title "Stairs"
+                            :artist "Brentr De Ranter"
+                            :desc "Stairs to the highets peaks of music."
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552695/giggin/brent-de-ranter-426248.jpg"
+                            :price 2000
+                            :sold-out false}
+                   :gig-03 {:id :gig-03
+                            :title "Infusion"
+                            :artist "Camille Couvez"
+                            :desc "Introduction of a new elements of music into modern world"
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552695/giggin/camille-couvez-424606.jpg"
+                            :price 3000
+                            :sold-out false}
+                   :gig-04 {:id :gig-04
+                            :title "Books"
+                            :artist "Cesar-Viteri"
+                            :desc "A book of music, exploring different music genres across last decade"
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552695/giggin/cesar-viteri-426877.jpg"
+                            :seats 40
+                            :price 4000
+                            :sold-out false}
+                   :gig-05 {:id :gig-05
+                            :title "White"
+                            :artist "Dan Schiumarini"
+                            :desc "Vulnerability and humility exposed with Raps of Dan Schiumarini"
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552695/giggin/dan-schiumarini-427769.jpg"
+                            :price 5000
+                            :sold-out false}
+                   :gig-06 {:id :gig-06
+                            :title "Hustin'"
+                            :artist "Frank Cordoba"
+                            :desc "Story of Hip Hop hustle by Frank Cordoba"
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552695/giggin/frank-cordoba-425264.jpg"
+                            :price 6000
+                            :sold-out false}
+                   :gig-07 {:id :gig-07
+                            :title "Pumping"
+                            :artist "Jakob Owens"
+                            :desc "Get energized and ready to rock with this fresh and bright work of Jakob Owens"
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552695/giggin/jakob-owens-393298.jpg"
+                            :price 7000
+                            :sold-out false}
+                   :gig-08 {:id :gig-08
+                            :title "Lion"
+                            :artist "Jakob Puff"
+                            :desc "An album of wild and brave sounds explored by Jakob Puff"
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552695/giggin/jakob-puff-425634.jpg"
+                            :price 8000
+                            :sold-out false}
+                   :gig-09 {:id :gig-09
+                            :title "ampersand"
+                            :artist "Kirstyn Paynter"
+                            :desc "Connect music and words with ampersand and enjoy find out what happens next"
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552696/giggin/kirstyn-paynter-424217.jpg"
+                            :price 9000
+                            :sold-out false}
+                   :gig-10 {:id :gig-10
+                            :title "Taxi"
+                            :artist "Peter Kasprzyk"
+                            :desc "Taka a Taxi ride with Peter to explore different beats of the city"
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552696/giggin/peter-kasprzyk-111462.jpg"
+                            :price 9000
+                            :sold-out false}
+                   :gig-11 {:id :gig-11
+                            :title "Plaza De La Juderia"
+                            :artist "Quino Al"
+                            :desc "Spanish rhythms from Plaza De La Juderia"
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552696/giggin/quino-al-427620.jpg"
+                            :price 9000
+                            :sold-out false}
+                   :gig-12 {:id :gig-12
+                            :title "Girl"
+                            :artist "Shine Tang"
+                            :desc "Shine Tang offers a grand exploration of classical music"
+                            :img "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552696/giggin/shine-tang-425878.jpg"
+                            :price 9000
+                            :sold-out false}}}))
+
+
+#+end_src
+
+#+RESULTS:
+: Please reevaluate when nREPL is connected
+**** reple
+@giggin.state/orders
+
+
+(in-ns 'giggin.state)
+app
+(app)
+(require '[giggin.components.gigs :refer [gigs]])
+
+(defn f [] (js/console.log "called"))
+(f 1 2 3)
+
+*** helpers.cljs
+:PROPERTIES:
+:header-args: :tangle ./src/giggin/helpers.cljs
+:END:
+**** file helpers.cljs
+(find-file-other-frame "./src/giggin/helpers.cljs")
+**** src helpers.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.helpers)
+
+(defn format-price
+  "convert cens to evro"
+  [cents]
+  (str "$" (/ cents 100)))
+
+
+
+#+end_src
+
+#+RESULTS:
+: Please reevaluate when nREPL is connected
+*** api.cljs
+:PROPERTIES:
+:header-args: :tangle ./src/giggin/api.cljs
+:END:
+**** file api.cljs
+(find-file-other-frame "./src/giggin/api.cljs")
+**** src api.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.api
+  (:require [ajax.core :refer [GET]]))
+
+(defn index-by
+  [key coll]
+  "Transfomr a coll to a map with a given key as a lookup value"
+  (->> coll
+       ;; (map (juxt key identity))
+       (map (juxt #(keyword (key %)) identity))
+       (into {})))
+
+(defn handler [gigs response]
+  (reset! gigs (index-by :id response)))
+
+(defn error-handler [{:keys [status status-text]}]
+  (.log js/console (str "something bad happened: " status " " status-text)))
+
+(defn fetch-gigs
+  [gigs]
+  (GET "https://gist.githubusercontent.com/jacekschae/8c10aa58a6163905fffcec33dd6f5a01/raw/20874f73b2c1d0ad08d828131d6ea8392950780a/gigs.json"
+       {:handler #(handler gigs %)
+        :error-handler error-handler
+        :response-format :json
+        :keywords? true}))
+
+
+#+end_src
+
+#+RESULTS:
+: Please reevaluate when nREPL is connected
+**** reple
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+***** 01
+(ns giggin.api
+  (:require [ajax.core :refer [GET]]))
+
+  (require '[ajax.core :refer [GET]])
+
+(defn handler [response]
+  (.log js/console response)
+  (println "get result - ")
+  (println response))
+
+(defn error-handler [{:keys [status status-text]}]
+  (.log js/console (str "something bad happened: " status " " status-text))
+  (println "get erros - ")
+  (println (str "something bad happened: " status " " status-text)))
+
+(defn fetch-gigs
+  []
+  (GET "https://gist.githubusercontent.com/jacekschae/8c10aa58a6163905fffcec33dd6f5a01/raw/20874f73b2c1d0ad08d828131d6ea8392950780a/gigs.json"
+       {:handler handler
+        :error-handler error-handler
+        :response-format :json
+        :keywords? true}))
+
+(fetch-gigs)
+
+(def result (fetch-gigs))
+(println result)
+
+(GET "https://gist.githubusercontent.com/jacekschae/8c10aa58a6163905fffcec33dd6f5a01/raw/20874f73b2c1d0ad08d828131d6ea8392950780a/gigs.json"
+       {:handler handler
+        :error-handler error-handler
+        :response-format :json
+        :keywords? true})
+
+***** 02
+(defonce gigs-atom (atom nil))
+
+(defn handler [response]
+  (reset! gigs response)
+  (js/console.log "gigs loaded:" response))
+
+(defn handler [response]
+  (reset! gigs-atom response)
+  (.log js/console response))
+
+(println @gigs-atom)
+
+(fetch-gigs)
+
+  
+***** block 01
+#+begin_src clojure :tangle no
+(require '[ajax.core :refer [GET]])
+
+(defonce gigs-atom (atom nil))
+
+(defn handler [response]
+  (reset! gigs-atom response)
+  (js/console.log "gigs loaded:" response))
+
+(defn error-handler [{:keys [status status-text]}]
+  (.log js/console (str "something bad happened: " status " " status-text))
+  (println "get erros - ")
+  (println (str "something bad happened: " status " " status-text)))
+
+(defn fetch-gigs
+  []
+  (GET "https://gist.githubusercontent.com/jacekschae/8c10aa58a6163905fffcec33dd6f5a01/raw/20874f73b2c1d0ad08d828131d6ea8392950780a/gigs.json"
+       {:handler handler
+        :error-handler error-handler
+        :response-format :json
+        :keywords? true}))
+
+#+end_src
+
+#+RESULTS:
+: Please reevaluate when nREPL is connected
+
+***** block 02
+#+begin_src clojure :tangle no
+(fetch-gigs)
+
+(println @gigs-atom)
+
+
+#+end_src
+
+***** block 03
+(defn index-by
+  [key coll]
+  "Transfomr a coll to a map with a given key as a lookup value"
+  (->> coll
+       (map (juxt key identity))
+       (into {})))
+#+begin_src clojure :tangle no
+(fetch-gigs)
+
+(println @gigs-atom)
+
+@gigs-atom
+
+(map (juxt key identity) @gigs-atom)
+
+(println (map key @gigs-atom))
+
+@gigs-atom
+(keys @gigs-atom)
+
+(first @gigs-atom)
+
+(def normal-gigs (->> @gigs-atom
+       (map (juxt :id identity))
+       (into {})))
+
+normal-gigs
+(first normal-gigs)
+
+(key (first normal-gigs))
+
+("gig-09" normal-gigs)
+#+end_src
+***** block 04
+(defn index-by
+  [key coll]
+  "Transfomr a coll to a map with a given key as a lookup value"
+  (->> coll
+       (map (juxt key identity))
+       (into {})))
+#+begin_src clojure :tangle no
+(fetch-gigs)
+
+(println @gigs-atom)
+
+@gigs-atom
+
+(map (juxt key identity) @gigs-atom)
+
+(println (map key @gigs-atom))
+
+@gigs-atom
+(keys @gigs-atom)
+
+(first @gigs-atom)
+
+(def normal-gigs (->> @gigs-atom
+       (map (juxt :id identity))
+       (into {})))
+
+(def normal-gigs
+  (->> @gigs-atom
+       (map (juxt #(keyword (:id %)) identity))
+       (into {})))
+
+normal-gigs
+(first normal-gigs)
+
+(keyword (key (first normal-gigs)))
+
+(:gig-09 normal-gigs)
+
+(:img (:gig-09 normal-gigs))
+#+end_src
+**** CANCELED archiv
+
+;; (defn handler [response]
+;;   (.log js/console response))
+
+;; (defn index-by
+;;   [key coll]
+;;   "Transfomr a coll to a map with a given key as a lookup value"
+;;   (->> coll
+;;        (map (juxt key identity))
+;;        (into {})))
+
+
+** CANCELED src components
+*** header.cljs
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+:header-args: :tangle ./src/giggin/components/header.cljs
+**** file header.cljs
+(find-file-other-frame "./src/giggin/components/header.cljs")
+**** src header.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.components.header)
+
+(defn header
+  []
+  [:header
+   [:div {:display "flex"}
+    ;; [:img.logo { :src "img/portal-logo.jpg"
+    ;;             :alt "Poratl logo"}]
+    [:img      { :src "img/portal-logo-title.jpg"
+                  :alt "Poratl title logo"}]]])
+
+#+end_src
+
+#+RESULTS:
+: Please reevaluate when nREPL is connected
+*** gigs.cljs
+:PROPERTIES:
+:header-args: :tangle ./src/giggin/components/gigs.cljs
+:END:
+**** file gigs.cljs
+(find-file-other-frame "./src/giggin/components/gigs.cljs")
+**** src gigs.cljs
+***** new gigs
+    ;; [giggin.state :as state ]
+#+begin_src clojure :no-expand t :mkdirp yes 
+(ns giggin.components.gigs
+  (:require
+            [giggin.components.gig-editor :refer [gig-editor-component gig-editor-open gig-editor-new]]
+            [giggin.components.orders :refer [add-to-order]]
+            [reagent.core :as r]
+            [giggin.helpers :refer [format-price]]))
+
+(defn gig [app {:keys [id img title price desc] :as el}]
+    [:div.gig {:key id}
+      [:img.gig__artwork {:src img
+                          :alt title
+                          :on-click #(gig-editor-open app el)}]
+      [:div.gig__body
+        [:div.gig__title
+          [:div.btn.btn--primary.float--right.tooltip
+            { :data-tooltip "Add to order!"
+              :on-click #(add-to-order app id)}
+            [:i.icon.icon--plus]]
+          title]]
+      [:p.gig__price (format-price price)]
+      [:p.gig__desc desc]])
+
+(defn add-new-gig [app]
+  [:div.gig
+    [:button.add-gig
+        {:on-click #(gig-editor-new app)}
+        [:div.add__title
+      [:i.icon.icon--plus]
+      [:h1 "Add gig"]]]])
+
+(defn gigs [app]
+    [:main
+      [gig-editor-component app]
+      [:div.gigs
+        [add-new-gig app]
+        (for [el (vals (:gigs @app))]
+          (gig app el))]])
+
+
+
+#+end_src
+**** CANCELED arhiv
+***** CANCELED all
+#+begin_src clojure :no-expand t :mkdirp yes :tangle no
+(ns giggin.components.gigs
+  (:require [giggin.state :as state ]
+            [giggin.components.gig-editor :refer [gig-editor]]
+            [reagent.core :as r]
+            [clojure.string :as str]
+            [giggin.helpers :refer [format-price]]))
+
+(defn gig [{:keys [id img title price desc] :as el}]
+  (let [add-to-order #(swap! state/orders update id inc)]
+    [:div.gig {:key id}
+      [:img.gig__artwork {:src img :alt title}]
+      [:div.gig__body
+        [:div.gig__title
+          [:div.btn.btn--primary.float--right.tooltip
+            { :data-tooltip "Add to order!"
+              :on-click add-to-order}
+            [:i.icon.icon--plus]]
+          title]]
+      [:p.gig__price (format-price price)]
+      [:p.gig__desc desc]]))
+
+
+
+(defn btn-add-gig []
+  (let [modal (r/atom false)
+        values (r/atom {:id (str "gig-" (random-uuid))
+                        :title "" :desc "" :price 0 :img "" :sold-out false})]
+        [:div.gig
+          [:button.add-gig
+              {:on-click #(reset! modal true)}
+              [:div.add__title
+            [:i.icon.icon--plus]
+            [:h1 "Add gig"]]]
+          [gig-editor-new app]]))
+
+(defn gigs []
+  (let [app-state state/app-state]
+      [:main
+        [gig-editor-component app-state (:gig-editor @app-state)]
+        [:div.gigs
+          [btn-add-gig app-state]
+          (for [el (vals @state/gigs)]
+            (gig el))]]))
+
+
+#+end_src
+
+*** gig_editor.cljs
+:PROPERTIES:
+:header-args: :tangle ./src/giggin/components/gig_editor.cljs
+:END:
+**** file gig_editor.cljs
+(find-file-other-frame "./src/giggin/components/gig_editor.cljs")
+**** src gig_editor.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.components.gig-editor
+  (:require [reagent.core :as r]
+            [clojure.string :as str]))
+
+(defn form-group-item
+  [{:keys [id type value values]}]
+  (let [chenge-value-to-atom
+          #(swap! values
+                  assoc
+                    (keyword id)
+                    (.. % -target -value))]
+    [:div.form__group
+   [:label.form__label {:for id} id]
+   [:input.form__input {:type type
+                        :id id
+                        :value value
+                        :on-change chenge-value-to-atom}]]))
+
+(defn form-sold-out
+  [values]
+  (let [toggle-checkbox
+          #(swap! values
+                  assoc
+                    :sold-out
+                    (.. % -target -checked))]
+   [:div.form__group
+      [:label.form__label {:for "sold-out"} "sold-out"]
+      [:label.form__switch
+       [:input#sold-out {
+                :type :checkbox
+                :checked (:sold-out values)
+                :on-change toggle-checkbox}]
+       [:i.form__icon]]]))
+
+
+(defn form-group
+  [values]
+  [:div
+     [form-group-item
+        { :id "title"
+          :type "text"
+          :value (:title @values)
+          :values values}]
+     [form-group-item
+        { :id "desc"
+          :type "text"
+          :value (:desc @values)
+          :values values}]
+     [form-group-item
+        { :id "img"
+          :type "text"
+          :value (:img @values)
+          :values values}]
+     [form-group-item
+        { :id "price"
+          :type "number"
+          :value (:price @values)
+          :values values}]])
+
+
+;; (defn gig-editor-toggle
+;;   [app & [status]]
+;;   (swap! app update-in [:gig-editor :modal]
+;;          #(if (some? status) status (not %))))
+
+(defn gig-editor-toggle
+  ([app] (swap! app update-in [:gig-editor :modal] not))
+  ([app status]
+         (swap! app assoc-in [:gig-editor :modal] status)))
+
+
+(defn gig-editor-open
+  ([app]
+   (gig-editor-toggle app true))
+  ([app {:keys [id title desc price img sold-out] :as el}]
+    (swap! app
+          assoc-in [:gig-editor :values]
+          { :id       (or id (str "gig-" (random-uuid)))
+            :title    (str/trim title)
+            :desc     (str/trim desc)
+            :img      (str/trim img)
+            :price    (js/parseInt price)
+            :sold-out sold-out})
+   (gig-editor-toggle app true)))
+
+(defn gig-editor-new
+  [app]
+  (gig-editor-open app
+                   {:id (str "gig-" (random-uuid))
+                    :title "" :desc "" :price 0 :img "" :sold-out false}))
+
+(defn gig-editor-insert
+  "записывает значение из сруктуры гигэдитора в структуру гиг
+    или если передано значение то записывает переданое в структуру гиг"
+  ([app] (gig-editor-insert app (get-in @app [:gig-editor :values])))
+  ([app {:keys [id title desc price img sold-out]}]
+    (swap! app
+            assoc-in [:gigs id]
+            { :id       (or id (str "gig-" (random-uuid)))
+              :title    (str/trim title)
+              :desc     (str/trim desc)
+              :img      (str/trim img)
+              :price    (js/parseInt price)
+              :sold-out sold-out})))
+
+
+
+(defn gig-editor-component
+  [app]
+  (let [modal (r/cursor app [:gig-editor :modal])
+        values (r/cursor app [:gig-editor :values])
+        close-modal #(gig-editor-toggle app false)
+        save-and-close (fn []
+                          (gig-editor-insert app )
+                          (close-modal))]
+      [:div.modal (when @modal {:class "active"})
+    [:div.modal__overlay]
+    [:div.modal__container
+      [:div.modal__body
+        [form-group values]
+        [form-sold-out values]]
+      [:div.modal__footer
+        [:button.btn.btn--link.float--left
+          {:on-click close-modal}
+          "Cancel"]
+        [:button.btn.btn--secondary
+          {:on-click save-and-close}
+          "Save"]]]]))
+
+#+end_src
+**** arhiv
+  ;; (swap! app
+  ;;           update-in [:gig-editor :values] {})
+
+                          ;; (gig-editor-insert app )
+
+;; (defn gig-editor-toggl
+;;   [app [& status]]
+;;   (swap! app
+;;          assoc-in [:gig-editor :modal]
+;;          not))
+
+;; (defn insert-gig
+;;   [app {:keys [id title desc price img sold-out]}]
+;;     (swap! app
+;;          assoc id { :id (or id (str "gig-" (random-uuid)))
+;;                     :title (str/trim title)
+;;                     :desc (str/trim desc)
+;;                     :img (str/trim img)
+;;                     :price (js/parseInt price)
+;;                     :sold-out sold-out}))
+
+**** test
+[[*gig_editor_test.cljs][gig_editor_test.cljs]]
+*** orders.cljs
+:PROPERTIES:
+:header-args: :tangle ./src/giggin/components/orders.cljs
+:END:
+**** file orders.cljs
+(find-file-other-frame "./src/giggin/components/orders.cljs")
+**** src orders.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.components.orders
+  (:require [giggin.state :as state ]
+            [giggin.helpers :refer [format-price]]
+            [giggin.state :refer [orders-cursor gigs-cursor]]
+            [giggin.components.admin-panel :refer [admin-panel]]
+            [giggin.components.checkout-modal :refer [checkout-modal]]))
+
+(defn add-to-order
+  [app id]
+  (swap! app update-in [:orders (keyword id)] inc))
+
+(defn orders-total
+  [orders gigs]
+  (->> orders
+       (map (fn [[id quant]]
+              (* quant (get-in gigs [id :price]))))
+       (apply + 0)))
+
+(defn remove-order
+  [orders id q]
+  (if (> q 1)
+    (swap! orders update id dec)
+    (swap! orders dissoc id)))
+
+(defn order-item
+  [orders id quant gigs]
+  (let [title (get-in gigs [id :title])
+        src   (get-in gigs [id :img])
+        price (get-in gigs [id :price])]
+      [:div.item {:key id}
+        [:div.img
+          [:img { :src src
+                  :alt title}]]
+        [:div.content
+          [:p.title (str
+            title " \u00D7 " quant)]]
+        [:div.action
+          [:div.price (format-price (* quant price))]
+          [:button.btn.btn--link.tooltip
+                { :data-tooltip "Remove"
+                  :on-click #(remove-order orders id quant)}
+              [:i.icon.icon--cross]]]]))
+
+
+(defn orders
+  [app]
+  (let [orders (orders-cursor app)
+        gigs   (gigs-cursor app)]
+   [:aside
+    [:div.order 
+      [admin-panel app]
+      (if (empty? @orders)
+        [:div.empty
+         [:div.title "You don't have any orders."]
+         [:div.subtitle "Click on a + to add an order"]]
+        [:div.body
+          (for [[id quant] @orders]
+            (order-item orders id quant @gigs))
+          [:div.total
+            [:hr]
+            [:div.item
+              [:div.content "Total: "]
+              [:div.action
+              [:div.price
+                (format-price (orders-total @orders @gigs))]]
+              [:button.btn.btn--link.tooltip
+                  { :data-tooltip "Remove all"
+                    :on-click #(reset! orders {})}
+                [:i.icon.icon--delete]]]
+            [checkout-modal]]])]]))
+
+
+
+#+end_src
+
+*** footer.cljs
+:PROPERTIES:
+:header-args: :tangle ./src/giggin/components/footer.cljs
+:END:
+**** file footer.cljs
+(find-file-other-frame "./src/giggin/components/footer.cljs")
+**** src footer.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.components.footer)
+
+(defn footer
+  []
+  [:footer
+   [:img {:src "img/portal-logo.jpg" :alt "portal icon"}]])
+
+#+end_src
+
+*** checkout_modal.cljs
+:PROPERTIES:
+:header-args: :tangle ./src/giggin/components/checkout_modal.cljs
+:END:
+**** file checkout_modal.cljs
+(find-file-other-frame "./src/giggin/components/checkout_modal.cljs")
+**** src checkout_modal.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.components.checkout-modal
+  (:require [reagent.core :as r]))
+
+(defn checkout-modal
+  []
+  (let [modal (r/atom false)
+        toggle-modal #(reset! modal %)]
+    (fn
+      []
+      [:div.checkout-modal
+       [:button.btn.btn--secondary
+        {:on-click #(toggle-modal true)
+         :style {:width "100%"}}
+        "Checkout"]
+       [:div.modal (when @modal {:class "active"})
+        [:div.modal__overlay]
+        [:div.modal__container
+         [:div.modal__body
+          [:div.payment
+           [:img.payment-logo {:src "/img/paypal.svg" :alt "Paypal logo"}]
+           [:img.payment-logo {:src "/img/stripe.svg" :alt "Stripe logo"}]]]
+         [:div.modal__footer
+          [:button.btn.btn--link.float--left
+           {:on-click #(toggle-modal false)}
+           "Cancel"]]]]])))
+
+
+
+#+end_src
+
+#+RESULTS:
+: Please reevaluate when nREPL is connected
+*** admin_panel.cljs
+:PROPERTIES:
+:header-args: :tangle ./src/giggin/components/admin_panel.cljs
+:END:
+**** file admin_panel.cljs
+(find-file-other-frame "./src/giggin/components/admin_panel.cljs")
+**** src admin_panel.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.components.admin-panel
+  (:require [giggin.state :refer [gigs-cursor]]
+            [giggin.fb.db :refer [db-save!]]))
+
+(defn admin-panel
+  [app]
+  [:div.admin-panel
+   [:button.btn.btn--primary
+    {:styles {:width "100%"}
+     :on-click #(db-save! ["gigs"] (clj->js @(gigs-cursor app)))}
+    "Publish"]])
+
+
+#+end_src
+**** archiv
+
+     :on-click #(db-save! ["gigs"] (clj->js @state/gigs))}
+
+** src other
+*** CANCELED firebase
+**** fb/init.cljs
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+:header-args: :tangle ./src/giggin/fb/init.cljs
+***** file
+(find-file-other-frame "./src/giggin/fb/init.cljs")
+***** src fb/init.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.fb.init
+  (:require ["firebase/app" :as firebase]
+            ["firebase/database"]
+            ["firebase/auth"]))
+
+(defn firebase-init
+  []
+  (if (zero? (alength firebase/apps))
+    (firebase/initializeApp
+     #js {:apiKey "your-api-key"
+          :authDomain "your-auth-domain"
+          :databaseURL "your-databse-url"
+          :projectId "your-project-id"})
+    (firebase/app)))
+
+
+#+end_src
+***** CANCELED archiv
+
+(ns giggin.fb.init
+  (:require ["firebase/app" :as firebase]
+            ["firebase/database"]
+            ["firebase/auth"]))
+
+(defn firebase-init
+  []
+  (firebase/initializeApp
+   {:apiKey "your-api-key"
+    :authDomain "your-auth-domain"
+    :databaseURL "your-databse-url"
+    :projectId "your-project-id"}))
+
+**** fb/db.cljs
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+:header-args: :tangle ./src/giggin/fb/db.cljs
+***** file
+(find-file-other-frame "./src/giggin/fb/db.cljs")
+***** src fb/db.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns giggin.fb.db
+  (:require ["firebase/app" :refer [database]]
+            [clojure.string :as str]))
+
+(defn db-ref
+  [path]
+  (.ref (database) (str/join "/" path)))
+
+(defn db-save!
+  [path value]
+  (.set (db-ref path) value))
+
+
+#+end_src
+
+** CANCELED src resources
+*** index.html
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+:header-args: :tangle ./public/index.html
+**** file
+(find-file-other-frame "./public/index.html")
+**** src
+#+begin_src html :no-expand t :mkdirp yes 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" >
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/portal-logo.jpg">
+    <title>Grom.Org</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="app">
+      Loding app...
+    </div>
+
+    <script src="/js/main.js" type="text/javascript"></script>
+    <script>window.onload = function() { giggin.core.main(); }</script>
+  </body>
+</html>
+#+end_src
+**** CANCELED exampl
+(find-file-other-frame "/home/buyn/Dev/ClojureScript/tutorials/my-cljs-project/group-chat/resources/public/index.html")
+(find-file-other-frame "~/Dev/ClojureScript/tutorials/my-cljs-project/example-todomvc/resources/public/index.html")
+
+*** style.css
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+:header-args: :tangle ./public/css/style.css
+**** file style.css
+(find-file-other-frame "./public/css/style.css")
+**** src style.css
+***** all
+#+begin_src css :no-expand t :mkdirp yes 
+/* = reset ================================================================= */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+        display: block;
+}
+body {
+        line-height: 1;
+}
+ol, ul {
+        list-style: none;
+}
+blockquote, q {
+        quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+        content: '';
+        content: none;
+}
+table {
+        border-collapse: collapse;
+        border-spacing: 0;
+}
+
+/* apply a natural box layout model to all elements, but allowing views to change */
+html {
+  box-sizing: border-box;
+}
+,*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+button:focus {
+        outline:0;
+}
+
+/* = giggin ================================================================ */
+
+:root {
+  --primary: #021d49;
+  --primary-alpha: rgba(2, 29, 73, 0.5);
+  --secondary: #00ffb0;
+        --secondary-alpha: rgba(0, 255,126, 0.5);
+  --gray: #f6f6f6;
+  --black: #000;
+  --gray-alpha: rgba(246, 246, 246, 0.9);
+  --black-color: #222223;
+        --red-color: #ff4d4f
+}
+
+::selection {
+  background: var(--secondary);
+}
+
+::-moz-selection {
+  background: var(--secondary);
+}
+
+body, button {
+  /* font-family: 'Poppins', sans-serif; */
+  /* font-family: 'Merriweather', Merriweather */
+  /* font-family: 'Playfair', Playfair; */
+  font-family: 'UnifrakturCook', cursive;
+
+  font-size: 1.4rem;
+        background: var(--black);
+  color: var(--primary)
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: .4rem;
+  padding-right: .4rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 1000px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: 0.7fr 0.3fr;
+    grid-template-rows: auto 1fr auto;
+  }
+}
+
+a {
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+a {
+  color: var(--primary);
+  outline: none;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover,
+a:active,
+a.active {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+header {
+  grid-column: span 2;
+  padding: 1vw;
+  text-align: center;
+}
+
+header .btn {
+  height: 4rem;
+}
+
+.logo {
+  width: 25vw;
+  min-width: 160px;
+  max-width: 380px;
+}
+
+aside {
+  flex: 2;
+  padding: .4rem;
+}
+
+main {
+  padding: .4rem;
+}
+
+footer {
+  grid-column: span 2;
+  padding: 30px;
+  padding-left: 0px;
+  text-align: left;
+  font-size: 0.8em;
+  vertical-align: middle;
+}
+
+footer img {
+  max-width: 40px;
+}
+
+h1 {
+  margin-bottom: 1em;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid var(--gray);
+  margin-bottom: 20px;
+}
+
+.payment {
+        max-width: 400px;
+  margin: 0 auto;
+}
+
+.payment-logo {
+        padding-top: 6vh;
+  width: 100%;
+}
+
+.float--right {
+  float: right !important;
+  padding: .8rem;
+}
+.float--left {
+  float: left !important;
+  padding: .8rem;
+}
+
+.gigs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  grid-gap: 20px;
+}
+
+.gig {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-gap: 10px;
+  border: .01rem solid #fff;
+  background: #fff;
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.gig .gig__body p {
+  padding: .8rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.gig .gig__footer {
+  padding: .8rem;
+}
+
+.gig .gig-header:last-child,
+.gig .gig-body:last-child,
+.gig .gig-footer:last-child {
+  padding-bottom: .8rem;
+}
+
+.gig .gig-image {
+  padding-top: .8rem;
+}
+
+.gig .gig-image:first-child {
+  padding-top: 0;
+}
+
+.gig__artwork:first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.gig {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.gig .gig__body .gig__title {
+  padding: .8rem;
+  padding-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-size: 1.2rem;
+        color: var(--secondary);
+}
+
+.gig .gig__body .gig__price {
+  padding-top: .1rem;
+  width: 100%;
+  color: var(--primary-alpha);
+}
+
+.gig .gig__body .gig__desc {
+  font-size: .8rem;
+  padding-bottom: .8rem;
+}
+
+.gig__artwork {
+  width: 100%;
+}
+
+.gig__edit {
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gig__edit:hover {
+  cursor:pointer;
+  opacity: 0.4
+}
+
+.sold-out {
+        border: .05rem solid var(--red-color);
+  border-color: var(--red-color);
+        background: #fff;
+  color: var(--red-color);
+  border-radius: 6px;
+        font-size: .9rem;
+        height: 2rem;
+        padding: .45rem .6rem;
+        line-height: 1rem;
+  outline: none;
+  text-align: center;
+}
+
+/* = Button = */
+
+.btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border: .05rem solid var(--secondary);
+  border-radius: 6px;
+  color: var(--secondary);
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1rem;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all .2s ease;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: .9rem;
+  height: 2rem;
+  padding: .45rem .6rem;
+}
+
+.btn:focus,
+.btn:hover {
+  background: var(--gray);
+  border-color: var(--primary);
+  text-decoration: none;
+}
+
+.btn[disabled],
+.btn:disabled,
+.btn.disabled {
+  cursor: default;
+  opacity: .5;
+  pointer-events: none;
+}
+
+.btn.btn--primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn.btn--primary:focus,
+.btn.btn--primary:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--primary);
+}
+
+.btn.btn--primary:active,
+.btn.btn--primary.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--secondary);
+}
+
+.btn.btn--secondary {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--primary);
+}
+
+.btn.btn--secondary:focus,
+.btn.btn--secondary:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--gray);
+}
+
+.btn.btn--secondary:active,
+.btn.btn--secondary.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--secondary);
+}
+
+.btn.btn--link {
+  background: transparent;
+  border-color: transparent;
+  color: var(--primary);
+}
+
+.btn.btn--link:focus,
+.btn.btn--link:hover,
+.btn.btn--link:active,
+.btn.btn--link.active {
+  color: var(--secondary);
+}
+
+.btn.btn--clear {
+  background: transparent;
+  border: 0;
+  color: currentColor;
+  height: .8rem;
+  line-height: .8rem;
+  margin-left: .2rem;
+  margin-right: -2px;
+  opacity: 1;
+  padding: 0;
+  text-decoration: none;
+  width: .8rem;
+}
+
+.btn.btn--clear:hover {
+  color: #00ffb9;
+  opacity: .95;
+}
+
+.btn.btn--clear::before {
+  content: "\2715";
+}
+
+.btn .icon {
+  vertical-align: -10%;
+}
+
+/* = Icon = */
+
+.icon {
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: inherit;
+  font-style: normal;
+  height: 1em;
+  position: relative;
+  text-indent: -9999px;
+  vertical-align: middle;
+  width: 1em;
+}
+
+.icon::before,
+.icon::after {
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon--forward::before {
+  border: 1px solid currentColor;
+  border-bottom: 0;
+  border-right: 0;
+  content: "";
+  height: .62em;
+  width: .62em;
+}
+
+.icon--forward::after {
+  background: currentColor;
+  content: "";
+  height: 13px;
+  width: 1px;
+}
+
+.icon--forward::after {
+  left: 46%;
+}
+
+.icon--forward::before {
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+
+.icon--plus::before,
+.icon--cross::before {
+  background: currentColor;
+  content: "";
+  height: 1px;
+  width: 100%;
+}
+
+.icon--plus::after,
+.icon--cross::after {
+  background: currentColor;
+  content: "";
+  height: 100%;
+  width: 1px;
+}
+
+.icon--cross::before {
+  width: 100%;
+}
+
+.icon--cross::after {
+  height: 100%;
+}
+
+.icon--cross::before,
+.icon--cross::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.icon--delete::before {
+  border: 1px solid currentColor;
+  border-bottom-left-radius: .1rem;
+  border-bottom-right-radius: .1rem;
+  border-top: 0;
+  content: "";
+  height: .65em;
+  top: 60%;
+  width: .75em;
+}
+
+.icon--delete::after {
+  background: currentColor;
+  box-shadow: -.25em .2em, .25em .2em;
+  content: "";
+  height: 1px;
+  top: .05rem;
+  width: .55em;
+}
+
+/* = Tooltip = */
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  background: rgba(69, 77, 93, .9);
+  border-radius: 6px;
+  color: #fff;
+  content: attr(data-tooltip);
+  display: block;
+  font-size: .8rem;
+  max-width: 320px;
+  opacity: 0;
+  overflow: hidden;
+  padding: .3rem .5rem;
+  pointer-events: none;
+  position: absolute;
+  text-overflow: ellipsis;
+  transform: translate(-50%, .4rem);
+  transition: all .2s ease;
+  white-space: pre;
+  z-index: 300;
+        bottom: 50%;
+  left: auto;
+  right: 100%;
+  transform: translate(.4rem, 50%);
+}
+
+.tooltip:focus::after,
+.tooltip:hover::after {
+  opacity: 1;
+  transform: translate(-.2rem, 50%);
+}
+
+.tooltip[disabled],
+.tooltip.disabled {
+  pointer-events: auto;
+}
+
+/* = Orders =*/
+
+.order {
+  border: .05rem solid var(--gray);
+  border-radius: 6px;
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  flex-direction: column;
+        background: #fff;
+}
+
+.order .total {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding: .8rem;
+  font-size: 1.1rem;
+}
+
+.order .order-nav {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.order .body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: .6rem .8rem;
+  padding-bottom: 0;
+}
+
+/* = admin-panel = */
+.admin-panel {
+  border: .05rem solid var(--gray);
+  border-radius: 6px;
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  flex-direction: column;
+        -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding: .8rem;
+  font-size: 1.1rem;
+        margin-bottom: 1rem;
+        background: #fff;
+}
+
+
+/* = item = */
+
+.item {
+  align-content: space-between;
+  align-items: center;
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-line-pack: justify;
+  /* visibility: hidden; */
+}
+
+.item .action {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.item .action .price {
+        -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  display: inline-block;
+  line-height: 1rem;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all .2s ease;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: .9rem;
+  height: 2rem;
+  padding: .45rem .6rem;
+        background: transparent;
+  border-color: transparent;
+  color: var(--primary);
+        cursor: default;
+        opacity: .5;
+        pointer-events: none;
+}
+
+.item img {
+  margin: .4rem .4rem .4rem .2rem;
+  border-radius: 4px;
+  max-width: 30px;
+}
+
+.item .content {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.item .title {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-margin-before: 0px;
+  line-height: 1rem;
+  font-size: .9rem;
+}
+
+.item .sold-out {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-margin-before: 0px;
+  line-height: 1rem;
+  font-size: .9rem;
+        color: var(--red-color);
+}
+
+.item.item-centered .title,
+.item.item-centered .item-subtitle {
+  margin-bottom: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* = empty =*/
+
+.empty {
+  background-color: #fff;
+  border: .05rem solid #fff;
+  color: var(--primary-alpha);
+  border-radius: 6px;
+  padding: 3.2rem 1.6rem;
+  text-align: center;
+}
+
+.empty .title,
+.empty .subtitle {
+  margin: .8rem auto;
+}
+
+.empty .subtitle {
+  font-size: .9rem;
+}
+
+/* = add-event =*/
+.add-gig {
+  border: .05rem solid #fff;
+  background-color: #fff;
+  color: var(--secondary);
+  border-radius: 6px;
+  padding: 3.2rem 1.6rem;
+  text-align: center;
+  opacity: 0.4;
+}
+
+.add-gig:hover {
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 3.2rem 1.6rem;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.add-gig .add__title {
+  margin: .8rem auto;
+}
+
+/* = modal = */
+
+.checkout-modal {
+        margin-top: 20px;
+}
+
+.checkout {
+  min-height: 75%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.modal {
+  align-items: center;
+  bottom: 0;
+  display: none;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: .4rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.modal:target,
+.modal.active {
+  display: flex;
+  display: -ms-flexbox;
+  opacity: 1;
+  z-index: 400;
+}
+
+.modal:target .modal__overlay,
+.modal.active .modal__overlay {
+  background: var(--gray);
+  bottom: 0;
+  cursor: default;
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.modal:target .modal__container,
+.modal.active .modal__container {
+        box-shadow: none;
+  max-width: 960px;
+  width: 100%;
+  z-index: 1;
+}
+
+.modal__container {
+  background: var(--gray);
+  border-radius: 1rem;
+  box-shadow: 0 .2rem .5rem rgba(69, 77, 93, .3);
+  display: block;
+  padding: 0 .8rem;
+  text-align: left;
+}
+
+.modal__container .modal__header .modal__title {
+  color: var(--primary);
+  background: #fff;
+}
+
+@media (min-width: 768px) {
+  .modal__container .modal__body {
+    min-height: 450px;
+  }
+  .modal__container .modal__body .checkout {
+    padding-top: 4rem;
+  }
+}
+
+.modal__container .modal__body {
+  max-height: 66vh;
+  overflow-y: auto;
+  padding: .4rem;
+  position: relative;
+
+}
+
+.modal__container .modal__footer {
+  padding-bottom: 1.2rem;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .modal__container .modal__header {
+    position: fixed;
+    top: 1.4rem;
+    right: 1.8rem;
+    left: 1.8rem;
+    background-color: #fff;
+  }
+
+  .modal__container .modal__footer {
+    position: fixed;
+    bottom: .4rem;
+    right: 1.8rem;
+    left: 1.8rem;
+  }
+}
+
+
+.step {
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  list-style: none;
+  margin: .2rem 0;
+  width: 100%;
+}
+
+.step .step__item {
+  -ms-flex: 1 1 0;
+  flex: 1 1 0;
+  margin-top: 0;
+  min-height: 1rem;
+  position: relative;
+  text-align: center;
+}
+
+.step .step__item:not(:first-child)::before {
+  background: var(--secondary);
+  content: "";
+  height: 1px;
+  left: -50%;
+  position: absolute;
+  top: 7px;
+  width: 100%;
+}
+
+.step .step__item a {
+  color: var(--primary-alpha);
+  display: inline-block;
+  padding: 20px 10px 0;
+  text-decoration: none;
+  background: #fff;
+}
+
+.step .step__item a::before {
+  background: var(--secondary);
+  border: .1rem solid #fff;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 10px;
+  left: 50%;
+  position: absolute;
+  top: 3px;
+  transform: translateX(-50%);
+  width: 10px;
+  z-index: 1;
+}
+
+.step .step__item.active a::before {
+  background: #fff;
+  border: .1rem solid var(--secondary);
+}
+
+.step .step__item.active ~ .step__item::before {
+  background: var(--gray);
+}
+
+.step .step__item.active ~ .step__item a::before {
+  background: var(--gray);
+}
+
+/* =form= */
+
+.form__group:not(:last-child) {
+  margin-bottom: .4rem;
+}
+
+.form__label {
+        color: var(--primary);
+  display: block;
+  line-height: 1rem;
+  padding: .4rem 0;
+        margin-top: .6rem;
+  font-size: .8rem;
+}
+
+.form__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #fff;
+  background-image: none;
+  border: .05rem solid #d3d3d3;
+  border-radius: 6px;
+  color: var(--primary);
+  display: block;
+  font-size: .8rem;
+  height: 1.8rem;
+  line-height: 1rem;
+  max-width: 100%;
+  outline: none;
+  padding: .35rem .4rem;
+  position: relative;
+  transition: all .2s ease;
+  width: 100%;
+}
+
+.form__input:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 .2rem rgba(00, 255, 176, .5);
+}
+
+.form__input::-webkit-input-placeholder {
+  color: #d3d3d3;
+}
+
+.form__input:-ms-input-placeholder {
+  color: #d3d3d3;
+}
+
+.form__input::placeholder {
+  color: #d3d3d3;
+}
+
+textarea.form__input {
+  height: auto;
+}
+
+.form__switch {
+  display: inline-block;
+  line-height: 1rem;
+  margin: .2rem 0;
+  min-height: 1.2rem;
+  padding: .2rem .4rem .2rem 1.2rem;
+  position: relative;
+}
+
+.form__switch input {
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
+.form__switch input:focus + .form__icon {
+  border-color: var(--secondary);
+}
+
+.form__switch input:checked + .form__icon {
+  background: var(--secondary);
+  border-color: var(--secondary-alpha);
+}
+
+.form__switch .form__icon {
+  border: .05rem solid var(--secondary);
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  transition: all .2s ease;
+        font-size: .8rem;
+}
+
+.form__switch.input-lg {
+  font-size: .9rem;
+  margin: .3rem 0;
+}
+
+.form__switch {
+  padding-left: 2rem;
+}
+
+.form__switch .form__icon {
+  background: var(--gray);
+  background-clip: padding-box;
+  border-radius: 50px;
+  height: 22px;
+  left: 0;
+  top: 4px;
+  width: 42px;
+}
+
+.form__switch .form__icon::before {
+  background: #fff;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 20px;
+  left: 1px;
+  position: absolute;
+  top: 0px;
+  transition: all .2s ease;
+  width: 20px;
+}
+
+.form__switch input:checked + .form__icon::before {
+  left: 20px;
+}
+
+.form__switch input:active + .form__icon::before {
+  background: #f8f9fa;
+}
+
+
+/* = avatar = */
+
+figure {
+  display: block;
+}
+
+.avatar {
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+  height: 2rem;
+  width: 2rem;
+}
+
+.avatar img {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+#+end_src
+**** exampl
+(find-file-other-frame "~/Dev/ClojureScript/tutorials/my-cljs-project/example-todomvc/resources/public/css/style.css")
+**** CANCELED arhiv
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+*** other
+(find-file-other-frame "./public/img/giggin-icon.png")
+(find-file-other-frame "./public/img/giggin-logo.svg")
+(find-file-other-frame "./public/img/paypal.svg")
+(find-file-other-frame "./public/img/stripe.svg")
+
+* CANCELED old tests grom.org
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-02 Вт 19:07
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: CANCELED
+:END:
+*** core_test.cljs
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+./src/tests/core_test.cljs
+**** file core_test
+(find-file-other-frame "./src/tests/core_test")
+**** src core_test
+;; src/giggin/core_test.cljs
+ошибка возникает при попытке подключения кора из-за наличия в нём алдакса
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns tests.core-test
+  (:require [cljs.test :refer [deftest is]]
+            ;; [giggin.core :as core]
+            ))
+
+(deftest example-test
+  (is (= 1 1)))
+
+#+end_src
+
+**** reple
+npx shadow-cljs compile test
+node out/node-tests.js
+
+*** gig_editor_test.cljs
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+./src/tests/gig_editor_test.cljs
+**** file gig_editor_test
+(find-file-other-frame "./src/tests/gig_editor_test.cljs")
+**** src gig_editor_test
+;; src/giggin/gig_editor_test.cljs
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns tests.gig-editor-test
+  (:require [cljs.test :refer [deftest is]]
+            [giggin.state :as state ]
+            [reagent.core :as r]
+            [giggin.components.gig-editor :as t]))
+
+(deftest new-edit-test
+  (let [app state/app-state
+        value (r/cursor app [:gig-editor :values])
+        modal (r/cursor app [:gig-editor :modal])
+        init-value    @value
+        test1-id-value (str "gig-" (random-uuid))
+        test1-value   {:id test1-id-value
+                      :title "test" :desc "test" :price 100 :img "100" :sold-out false}]
+    (is (= (not @modal)))
+    (t/gig-editor-new app)
+    (is (= (dissoc @value :id) (dissoc init-value :id)))
+    (is (= @modal true))
+    (t/gig-editor-toggle app false)
+    (is (= @modal false))
+    (t/gig-editor-open app test1-value)
+    (is (= @value test1-value))
+    (is (= @modal true))
+    (t/gig-editor-insert app)
+    (is (= @value test1-value))
+    (is (= (get-in @app [:gigs test1-id-value]) test1-value))
+    (is (= @modal true))
+    (t/gig-editor-new app)
+    (is (= (dissoc @value :id) (dissoc init-value :id)))
+    (is (= @modal true))
+    ))
+
+#+end_src
+
+**** reple
+npx shadow-cljs compile test
+node out/node-tests.js
+
+#+begin_src elisp :results output silent :tangle no
+;; (evil-previous-line)
+;; (org-cycle)
+;; (delete-other-windows)
+(let (buffer-name-to-close (buffer-name))
+        (evil-window-split)
+        (eshell)
+        (evil-quit)
+        (switch-to-buffer-other-frame buffer-name-to-close))
+#+end_src
+*** orders_test.cljs
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+./src/tests/orders_test.cljs
+**** file orders_test
+(find-file-other-frame "./src/tests/orders_test.cljs")
+
+**** src orders_test
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns tests.orders-test
+  (:require [cljs.test :refer [deftest is]]
+            [giggin.state :as state ]
+            [tests.testhelper :refer [hiccup-normalize] ]
+            [reagent.core :as r]
+            [giggin.components.orders :as t]))
+
+(deftest orders-test
+  (let [app state/app-state
+        ;; modal (r/cursor app [:gig-editor :modal])
+        orders (state/orders-cursor app)
+        gigs (state/gigs-cursor app)
+        ;; gig1 (second (first @gigs))
+        gig1 (:gig-05 @gigs)
+        init-value    #(t/orders app)
+        ;; test1-id-value (str "gig-" (random-uuid))
+        ;; test1-value   {:id test1-id-value
+        ;;               :title "test" :desc "test" :price 100 :img "100" :sold-out false}
+        ]
+    ;; (println @gigs)
+    ;; (println gig1)
+    (is (= (first (init-value)) :aside))
+    (is (= (first (second (init-value))) :div.order))
+    (is (= (hiccup-normalize (init-value))
+       [:aside
+        [:div.order
+         [:__component__ :__ratom__]
+         [:div.empty
+          [:div.title "You don't have any orders."]
+          [:div.subtitle "Click on a + to add an order"]]]]))
+    (is (= true (empty? @orders)))
+    (t/add-to-order  app (:id gig1))
+    (is (= false (empty? @orders)))
+    ;; (println (hiccup-normalize (t/orders app)))
+    ;; (println "gig1 = " gig1)
+    (is (= 5000 (:price gig1)))
+    (is (= (hiccup-normalize (t/orders app))
+       [:aside
+        [:div.order
+         [:__component__ :__ratom__]
+         [:div.body
+          [[:div.item
+            {:key :gig-05}
+            [:div.img
+             [:img {
+                :src "https://res.cloudinary.com/schae/image/upload/f_auto,q_auto/v1519552695/giggin/dan-schiumarini-427769.jpg",
+                :alt "White"}]]
+            [:div.content [:p.title "White × 1"]]
+            [:div.action
+             [:div.price "$50"]
+             [:button.btn.btn--link.tooltip
+              {:data-tooltip "Remove", :on-click :__fn__}
+              [:i.icon.icon--cross]]]]]
+          [:div.total
+           [:hr]
+           [:div.item
+            [:div.content "Total: "]
+            [:div.action [:div.price "$50"]]
+            [:button.btn.btn--link.tooltip
+             {:data-tooltip "Remove all", :on-click :__fn__}
+             [:i.icon.icon--delete]]]
+           [:__component__]]]]]))
+    ))
+
+
+(deftest orders-item-test
+  (let [app state/app-state
+        gigs (state/gigs-cursor app)
+        orders (state/orders-cursor app)
+        ;; modal (r/cursor app [:gig-editor :modal])
+        gig1 (first @gigs)
+        init-value    (t/order-item orders (:id gig1) 1 @gigs)
+        ]
+    (is (= (hiccup-normalize init-value)
+      [:div.item {:key nil}
+        [:div.img [:img {:src nil, :alt nil}]]
+        [:div.content [:p.title " × 1"]]
+        [:div.action
+          [:div.price "$0"]
+          [:button.btn.btn--link.tooltip
+            {:data-tooltip "Remove",
+              :on-click :__fn__}
+            [:i.icon.icon--cross]]]]))
+    ;; (t/gig-editor-new app)
+    ;; (is (= (dissoc @value :id) (dissoc init-value :id)))
+    ;; (is (= @modal true))
+    ))
+
+#+end_src
+**** exampls
+***** 03
+
+(defn strip-components [hiccup]
+  (cond
+    ;; 1️⃣ Reagent-компонент
+    (and (vector? hiccup) (fn? (first hiccup)))
+      (into [:__component__]
+            (map strip-components (rest hiccup)))
+    ;; 2️⃣ hiccup-вектор
+    (vector? hiccup)
+      (mapv strip-components hiccup)
+    ;; 3️⃣ props map (event handlers и т.п.)
+    (map? hiccup)
+      (into {}
+            (for [[k v] hiccup]
+              [k (if (fn? v)
+                  :__fn__
+                  (strip-components v))]))
+    ;; 4️⃣ всё остальное
+    :else hiccup))
+***** 02
+(defn strip-components [hiccup]
+  (cond
+    (and (vector? hiccup) (fn? (first hiccup)))
+      (into [:__component__] (map strip-components (rest hiccup)))
+    (vector? hiccup)
+      (mapv strip-components hiccup)
+    :else hiccup))
+***** 01
+    (is (= (not @modal)))
+    (t/gig-editor-new app)
+    (is (= (dissoc @value :id) (dissoc init-value :id)))
+    (is (= @modal true))
+    (t/gig-editor-toggle app false)
+    (is (= @modal false))
+    (t/gig-editor-open app test1-value)
+    (is (= @value test1-value))
+    (is (= @modal true))
+    (t/gig-editor-insert app)
+    (is (= @value test1-value))
+    (is (= (get-in @app [:gigs test1-id-value]) test1-value))
+    (is (= @modal true))
+    (t/gig-editor-new app)
+    (is (= (dissoc @value :id) (dissoc init-value :id)))
+    (is (= @modal true))
+**** reple
+npx shadow-cljs compile test
+node out/node-tests.js
+
+#+begin_src elisp :results output silent :tangle no
+;; (evil-previous-line)
+;; (org-cycle)
+;; (delete-other-windows)
+(let (buffer-name-to-close (buffer-name))
+        (evil-window-split)
+        (eshell)
+        (evil-quit)
+        (switch-to-buffer-other-frame buffer-name-to-close))
+#+end_src
+*** testhelper.cljs
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+./src/tests/testhelper.cljs
+**** file orders_test
+(find-file-other-frame "./src/tests/testhelper.cljs")
+
+**** src orders_test
+#+begin_src clojure :no-expand t :mkdirp yes
+(ns tests.testhelper
+  ;; (:require [reagent.ratom :as ratom])
+  )
+
+
+(defn hiccup-normalize [hiccup]
+  (cond
+    ;; 0️⃣ Reagent atom / cursor / reaction
+    (instance? cljs.core/Atom hiccup)
+      :__atom__
+
+    (satisfies? cljs.core/IAtom hiccup)
+      :__ratom__
+
+    ;; 1️⃣ Reagent-компонент
+    (and (vector? hiccup) (fn? (first hiccup)))
+      (into [:__component__]
+          (map hiccup-normalize (rest hiccup)))
+
+    ;; 2️⃣ hiccup-вектор
+    (vector? hiccup)
+      (mapv hiccup-normalize hiccup)
+
+    ;; 3️⃣ seq / list (важно!)
+    (sequential? hiccup)
+      (map hiccup-normalize hiccup)
+
+    ;; 4️⃣ props map
+    (map? hiccup)
+      (into {}
+          (for [[k v] hiccup]
+            [k (cond
+                 (fn? v) :__fn__
+                 :else   (hiccup-normalize v))]))
+
+
+    ;; 5️⃣ всё остальное
+
+    :else hiccup))
+
+
+
+#+end_src
+
+**** exempl
+***** 03
+    ;; (ratom/ratom? hiccup)
+
+***** 02
+(defn hiccup-normalize [hiccup]
+  (cond
+    ;; 0️⃣ atom / cursor / state
+    (instance? cljs.core/Atom hiccup)
+      :__atom__
+
+    ;; 1️⃣ Reagent-компонент
+    (and (vector? hiccup) (fn? (first hiccup)))
+      (into [:__component__]
+          (map hiccup-normalize (rest hiccup)))
+
+    ;; 2️⃣ hiccup-вектор
+    (vector? hiccup)
+      (mapv hiccup-normalize hiccup)
+
+    ;; 3️⃣ props map (event handlers и т.п.)
+    (map? hiccup)
+      (into {}
+          (for [[k v] hiccup]
+            [k (cond
+                 (fn? v) :__fn__
+                 :else   (hiccup-normalize v))]))
+
+
+    ;; 5️⃣ всё остальное
+    :else hiccup))
+
+
+***** 01
+(defn hiccup-normalize [hiccup]
+  (cond
+    ;; 1️⃣ Reagent-компонент
+    (and (vector? hiccup) (fn? (first hiccup)))
+      (into [:__component__]
+            (map hiccup-normalize (rest hiccup)))
+    ;; 2️⃣ hiccup-вектор
+    (vector? hiccup)
+      (mapv hiccup-normalize hiccup)
+
+    ;; 3️⃣ props map (event handlers и т.п.)
+    (map? hiccup)
+      (into {}
+            (for [[k v] hiccup]
+              [k (if (fn? v)
+                  :__fn__
+                  (hiccup-normalize v))]))
+
+    ;; 4️⃣ atom / cursor / state
+    (instance? cljs.core/Atom x)
+      :__atom__
+
+    ;; 5️⃣ всё остальное
+    :else hiccup))
+
+
+* описание
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-02 Вт 19:08
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_CATEGORY: grom
+:END:
+** 
+
+* DONE Kiro CLI
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-02 Вт 19:18
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+https://kiro.dev/cli/
+** install
+curl -fsSL https://cli.kiro.dev/install | bash
+
+Start using Kiro CLI:
+
+bash
+cd my-project
+kiro-cli
+** tts
+*** раскажи мне о состоянии проекта
+ tell me about the status of the project
+
+Here's a summary of the project status:
+
+Project: Clojure Tabletop Simulator
+A browser-based 2D tabletop simulator built with ClojureScript, shadow-cljs, Reagent, 
+and Tailwind CSS.
+
+What's done (all core features implemented):
+
+- Project scaffold, state atom, and core entry point
+- Pure logic: Fisher-Yates shuffle, deck factories (standard + custom), dice roll logic
+- Deck config validation
+- All state transition helpers (move, flip, draw, shuffle, pan, zoom, etc.)
+- Serialization / deserialization + save-file validation
+- All UI components: start screen, table canvas (pan/zoom), context menu, card, deck, 
+die, hand area, component panel, deck customizer, save button
+- Everything wired together in app.cljs
+
+What's pending (all optional):
+
+The only remaining tasks are property-based tests (marked with * as optional in the spec
+):
+- Property tests for shuffle, deck factories, dice, deck config validation, state 
+transitions, and serialization round-trip
+
+These are skippable for MVP — the spec explicitly notes them as optional for a faster 
+delivery.
+
+Bottom line: The app is functionally complete. All 16 main tasks are checked off. The 
+only open items are optional property tests that weren't part of the MVP scope.
+
+*** какой командой мне запустить тесты в проекте?
+
+What command should I run all tests in the project?
+Reading file: /home/buyn/Dev/AI/kiro-proj/clojure-tabletop-sim-kiro/shadow-cljs.edn, all lines (using tool: read)
+ ✓ Successfully read 396 bytes from /home/buyn/Dev/AI/kiro-proj/clojure-tabletop-sim-kiro/shadow-cljs.edn
+ - Completed in 0.0s
+
+> npx shadow-cljs compile test && node out/test.js
+
+
+Or if you want watch mode during development:
+npx shadow-cljs watch test
+
+
+The config uses a :node-test target, so it compiles to out/test.js and runs with Node.
+
+ ▸ Credits: 0.11 • Time: 6s
+
+
+*** запуск проекта
+npm install
+npx shadow-cljs watch app
+
+*** files
+(find-file-other-frame "/home/buyn/Dev/AI/kiro-proj/clojure-tabletop-sim-kiro/public/index.html")
+(find-file-other-frame "/home/buyn/Dev/AI/kiro-proj/clojure-tabletop-sim-kiro/public/css/style.css")
+/home/buyn/Dev/AI/kiro-proj/clojure-tabletop-sim-kiro/package.json
+
+*** 
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+*** css file is missing
+web page only text and battons
+add to package script
+
+      "css": "tailwindcss -i ./src/css/main.css -o ./public/css/style.css --watch"
