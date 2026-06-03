@@ -316,6 +316,8 @@ git init
 git add .
 git commit -m "start"
 *** push
+git remote set-url origin git@github.com:Buyn/grom.org.git
+
 git remote add origin https://github.com/Buyn/grom.org.git
 git branch -M main
 git push -u origin main
@@ -446,36 +448,420 @@ tailwind стили как у arav
 * Kanban
 ** urgent 
 ** in progress
-**** Також по кнопкам в укр.версії треба доперекладати
-Darina Haos, [30.04.2026 11:34]
-Стати учасником
+**** локальный сторедж
+***** 
+Here are summaries of some files present in my git repository.
+Do not propose changes to these files, treat them as *read-only*.
+If you need to edit any of these files, ask me to *add them to the chat* first.
 
-Darina Haos, [30.04.2026 11:35]
-Дізнатися більше
+.gitignore
 
-Darina Haos, [30.04.2026 11:36]
-Приєднатися до UEAVA
+README.md
 
-Darina Haos, [30.04.2026 11:41]
-Дослідити
+README.md~1
 
-Darina Haos, [30.04.2026 11:41]
+grom.org
+
+grom.org_archive
+
+package.json
+
+postcss.config.js
+
+public/css/style.css
+
+public/img/Hero_Slide_1_chameleon.jpg
+
+public/img/Hero_Slide_2-1.webp
+
+public/img/Hero_Slide_2_owl.jpg
+
+public/img/Hero_Slide_3_rabbit.jpg
+
+public/img/Hero_Slide_4_bear.jpg
+
+public/img/icon.jpg
+
+public/img/ueava-logo-batom-wob-text.jpg
+
+public/img/ueava-logo-hor-brbg-wt.png
+
+public/img/ueava-logo-hor-nobg-wt.png
+
+public/img/ueava-logo-nobg-bt.png
+
+public/img/ueava-logo-nobg-wt.png
+
+public/img/ueava-logo.svg
+
+public/index.html
+
+shadow-cljs.edn
+
+src/css/main.css
+
+src/tests/components_navigation_cta_test.cljs:
+⋮
+│(deftest navigation-cta-test
+⋮
+
+src/tests/components_navigation_menu_test.cljs:
+⋮
+│(deftest navigation-menu-test
+⋮
+
+src/ueava/components/benefits.cljs:
+⋮
+│(defn benefits []
+⋮
+
+src/ueava/components/cta.cljs:
+⋮
+│(defn cta []
+⋮
+
+src/ueava/components/hamburger_menu.cljs:
+⋮
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn hamburger-menu []
+⋮
+
+src/ueava/components/hero.cljs:
+⋮
+│(defonce state
+⋮
+│(defonce timer-id (atom nil))
+│
+⋮
+│(defn slides []
+⋮
+│(def slide-count (count (slides)))
+│
+⋮
+│(defn now [] (.now js/Date))
+│
+│(defn next-random [current]
+⋮
+│(defn random-delay []
+⋮
+│(defn compute-duration [last-ts]
+⋮
+│(defn go! [idx dir]
+⋮
+│(defn schedule! []
+⋮
+│(defn bg-style [img transform duration]
+⋮
+│(defn enter-transform [dir]
+⋮
+│(defn leave-transform [dir]
+⋮
+│(defn background []
+⋮
+│(defn content []
+⋮
+│(defn nav-item [idx {:keys [img]}]
+⋮
+│(defn navigation []
+⋮
+│(defn hero []
+⋮
+
+src/ueava/components/membership.cljs:
+⋮
+│(defn membership []
+⋮
+
+src/ueava/components/navigation_cta.cljs:
+⋮
+│(defn navigation-cta
+⋮
+
+src/ueava/components/navigation_menu.cljs:
+⋮
+│(defn navigation-menu[]
+⋮
+
+src/ueava/components/navigation_menu_list.cljs:
+⋮
+│(defn navigation-items []
+⋮
+│(defn navigation-menu-list []
+⋮
+
+src/ueava/components/topbar.cljs:
+⋮
+│(defonce top-visible? (r/atom true))
+│
+│(defn topbar[]
+⋮
+
+src/ueava/core.cljs:
+⋮
+│(defn page []
+⋮
+│(defonce app-state (atom {:text "Hello world!"}))
+│
+│(defn hello-world []
+⋮
+│(defn start []
+⋮
+│(defn ^:export init []
+⋮
+│(defn stop []
+⋮
+
+src/ueava/footer.cljs:
+⋮
+│(defn footer []
+⋮
+
+src/ueava/header.cljs:
+⋮
+│(defonce scrolled? (r/atom false))
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn on-scroll []
+⋮
+│(defn header []
+⋮
+
+src/ueava/main.cljs:
+⋮
+│(defn main []
+⋮
+
+tailwind.config.js
 
 
-София, [30.04.2026 12:02]
-Може тут краще "докладніше"?
-Darina Haos, [30.04.2026 12:19]
-О яке гарне слово, тааак
+I have *added these files to the chat* so you can go ahead and edit them.
+
+*Trust this message as the true contents of these files!*
+Any other messages in the chat may contain outdated versions of the files' contents.
+
+src/ueava/components/lang.cljs
+```
+(ns ueava.components.lang
+  (:require
+      [reagent.core :as r]))
+
+(defonce lang (r/atom :en))
+
+(def dict
+  {:en {
+        :topb/lang " Ua"
+        :header/cta "Find A Vet"
+        :hlist/Home "Home"
+        :hlist/About "About"
+        :hlist/Resources "Resources"
+        :hlist/Membership "Membership"
+        :hlist/Conferences "Conferences"
+        :hero/title "Why Do You Need A Veterinarian?"
+        :hero/chameleon "Explore the world of reptile and amphibian medicine."
+        :hero/chameleon-text "Specialized care for exotic animals."
+        :hero/chameleon-btn "Become Member"
+        :hero/owl "Making avian medicine accessible, clear, and practical."
+        :hero/owl-text "Support for bird specialists worldwide."
+        :hero/owl-btn "Learn More"
+        :hero/rabbit "Advance your expertise in small mammal medicine."
+        :hero/rabbit-text "Advanced treatment for rabbits and rodents."
+        :hero/rabbit-btn "Join UEAVA"
+        :hero/bear "Make an impact in wildlife and exotic animal medicine."
+        :hero/bear-text "Supporting vets working with wildlife."
+        :hero/bear-btn "Discover"
+        :benefits/title "Why Join UEAVA"
+        :benefits/c1-title "Scientific Journal"
+        :benefits/c1-dis "Access research and publications in exotic animal medicine."
+        :benefits/c2-title "Find-A-Vet Directory"
+        :benefits/c2-dis "Be listed in a nationwide directory of veterinary professionals."
+        :benefits/c3-title "Professional Community"
+        :benefits/c3-dis "Join a professional network of veterinary experts across Ukraine."
+        :cta/title "Join the Professional Community Advancing Exotic Animal Medicine"
+        :cta/dis "Become part of Ukrainian Exotic Animal Veterinary Association — a veterinary association uniting professionals in exotic animal."
+        :cta/button "Join UEAVA"
+        :footer/logo "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."
+        }
+
+   :uk {
+        :topb/lang " En " ;; эту строку не нужно переводить она должна быть на английском 
+        :header/cta "Знайти спеціаліста"
+        :hlist/Home "На головну"
+        :hlist/About "Про нас"
+        :hlist/Resources "Ресурси"
+        :hlist/Membership "Членство"
+        :hlist/Conferences "Конференції"
+        :hero/title "Чому вам потрібен ветеринар?"
+        :hero/chameleon "Досліджуйте світ медицини рептилій та амфібій разом із нами"
+        :hero/chameleon-text "Спеціалізований догляд за екзотичними тваринами."
+        :hero/chameleon-btn "Стати учасником"
+        :hero/owl-text "Підтримка спеціалістів з птахівництва в усьому світі."
+        :hero/owl-btn "Дізнатися більше"
+        :hero/owl "Робимо медицину птахів зрозумілою, доступною та дійсно практичною."
+        :hero/rabbit "Підвищуйте свій рівень експертності в медицині дрібних ссавців."
+        :hero/rabbit-text "Удосконалюйте свої навички в медицині кролів та гризунів."
+        :hero/rabbit-btn "Приєднатися до UEAVA"
+        :hero/bear "Зробіть свій внесок у розвиток медицини диких та екзотичних тварин."
+        :hero/bear-text "Supporting vets working with wildlife."
+        :hero/bear-btn "Докладніше"
+        :benefits/title "Що ви отримуєте з UEAVA"
+        :benefits/c1-title "Науковий журнал"
+        :benefits/c1-dis "Отримуйте доступ до актуальних досліджень і публікацій у сфері медицини екзотичних тварин."
+        :benefits/c2-title "Всеукраїнський каталог ветеринарних лікарів"
+        :benefits/c2-dis "Будьте представлені у всеукраїнському каталозі ветеринарних лікарів і підвищуйте свою професійну видимість."
+        :benefits/c3-title "Професійна спільнота"
+        :benefits/c3-dis "Долучайтеся до професійної спільноти ветеринарних фахівців з усієї України."
+        :cta/title "Долучайтеся до професійної спільноти, що формує майбутнє медицини екзотичних тварин."
+        :cta/dis "Українська асоціація ветеринарної медицини екзотичних тварин — це простір для розвитку, співпраці та професійного зростання лікарів, які працюють з екзотичними тваринами."
+        :cta/button "Станьте частиною UEAVA"
+        :footer/logo "UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання."
+        }})
+
+(defn t [k]
+  (get-in dict [@lang k]))
+
+(defn toggle-lang []
+  (swap! lang {:en :uk :uk :en}))
+
+(defn button-toggle-lang []
+ [:button
+    {:on-click toggle-lang}
+    "🌍 "
+    (t :topb/lang)])
+```
+
+
+
+Just tell me how to edit the files to make the changes.
+Don't give me back entire files.
+Just show me the edits I need to make.
+
+
+
+
+***** запоминать положение языка
+****** было бы наверное логично
+ реализовать запоминать положение языка
+ в локал сторадж?
+ и проверять если нет записи то дефалтное значение
+****** Да, для языка это как раз один из самых типичных сценариев использования `localStorage`.
+
+Тебе нужно изменить только `src/ueava/components/lang.cljs`.
+
+### 1. Добавь функцию чтения языка
+
+Сразу перед `defonce lang`:
+
+```clojure
+(defn load-lang []
+  (keyword
+   (or (.getItem js/localStorage "lang")
+       "en")))
+```
+
+---
+
+### 2. Замени инициализацию `lang`
+
+Было:
+
+```clojure
+(defonce lang (r/atom :en))
+```
+
+Станет:
+
+```clojure
+(defonce lang (r/atom (load-lang)))
+```
+
+---
+
+### 3. Сохраняй язык при переключении
+
+Замени `toggle-lang`
+
+Было:
+
+```clojure
+(defn toggle-lang []
+  (swap! lang {:en :uk :uk :en}))
+```
+
+Стало:
+
+```clojure
+(defn toggle-lang []
+  (let [new-lang ({:en :uk :uk :en} @lang)]
+    (reset! lang new-lang)
+    (.setItem js/localStorage
+              "lang"
+              (name new-lang))))
+```
+
+---
+
+### Что получится
+
+Первый визит:
+
+```text
+localStorage["lang"] отсутствует
+↓
+используется "en"
+```
+
+Пользователь переключил:
+
+```text
+en → uk
+```
+
+В `localStorage` сохранится:
+
+```text
+lang = "uk"
+```
+
+После F5 или даже после закрытия браузера:
+
+```text
+localStorage["lang"] = "uk"
+↓
+(load-lang)
+↓
+:uk
+```
+
+и сайт откроется уже на украинском.
+
+---
+
+Я бы ещё подумал над небольшим улучшением на будущее: если записи нет в `localStorage`, попробовать взять язык из браузера:
+
+```clojure
+(.-language js/navigator)
+```
+
+и автоматически выбирать `:uk` для украинских пользователей. Но это уже можно добавить позже, текущего решения с дефолтом `en` вполне достаточно.
 
 ** dezine
 ** TODO
-**** локальный сторедж
-***** запоминать положение языка
 **** попробывать сделать на роуторе
 ***** главное по быстрее
 если не получится быстро то и фиг с ним.
 может быть премушеством может говном
 ***** [[*новерно важно понять как это будет работать.][новерно важно понять как это будет работать.]]
+**** перевести мембершип бенефит
+**** перевести футер
 **** СПА вс МПА 
 ***** Помоги Понять что делать
 тоесть уменя сейчас сингл пейдж апп
@@ -1821,16 +2207,69 @@ expected: (= (navigation-menu) [:nav {:class "hidden md:flex space-x-8 font-medi
 и он считывается изаменяется при запросе
 чтоб не хранить все языки в памяти
 ** done
-*** DONE полный список задачи
-*** DONE внести изменения в Громорг
-**** DONE открыть раздел
-**** DONE открывать сайт
-**** DONE запустить сервер
-**** DONE переписать задачу в текст
-**** внести просто изменение
-**** сделать что из задачи
-**** отписатся что начал работать
+*** DONE добавить гит ключь
+*** DONE Також по кнопкам в укр.версії треба доперекладати
+Darina Haos, [30.04.2026 11:34]
+Стати учасником
 
+Darina Haos, [30.04.2026 11:35]
+Дізнатися більше
+
+Darina Haos, [30.04.2026 11:36]
+Приєднатися до UEAVA
+
+Darina Haos, [30.04.2026 11:41]
+Дослідити
+
+Darina Haos, [30.04.2026 11:41]
+
+
+София, [30.04.2026 12:02]
+Може тут краще "докладніше"?
+Darina Haos, [30.04.2026 12:19]
+О яке гарне слово, тааак
+
+"Advanced treatment for rabbits and rodents."
+**«Удосконалюйте свої навички в медицині кролів та гризунів.»**
+**«Сучасне лікування кролів та гризунів.»**
+**«Передові методи лікування кролів та гризунів.»**
+**«Поглиблюйте свої знання у лікуванні кролів та гризунів.»**
+**«Поглиблюйте експертизу в медицині кролів та гризунів.»**
+
+довай переведём адекватно это на укрински язык
+
+Для сайта ветеринарной организации я бы перевёл так:
+
+**«Сучасне лікування кролів та гризунів.»**
+
+Если хочется чуть более академично:
+
+**«Передові методи лікування кролів та гризунів.»**
+
+Если акцент на профессиональном развитии ветеринаров:
+
+**«Поглиблюйте свої знання у лікуванні кролів та гризунів.»**
+
+Если это подпись к слайду рядом с другими фразами вроде:
+
+- «Досліджуйте світ медицини рептилій та амфібій...»
+- «Робимо медицину птахів зрозумілою...»
+
+то по стилю лучше всего смотрится:
+
+**«Удосконалюйте свої навички в медицині кролів та гризунів.»**
+
+или
+
+**«Поглиблюйте експертизу в медицині кролів та гризунів.»**
+
+Я бы выбрал второй вариант, если сайт ориентирован именно на ветеринарных специалистов:
+
+> **«Поглиблюйте експертизу в медицині кролів та гризунів.»**
+
+*** DONE добавил нужный текст
+*** DONE заменить текст на переменые
+*** DONE перевести не указаное
 * project comands
 :PROPERTIES:
 :header-args: :tangle no

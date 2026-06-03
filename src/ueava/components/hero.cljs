@@ -25,26 +25,26 @@
   [{:key :chameleon
     :img "img/Hero_Slide_1_chameleon.jpg"
     :title (t :hero/chameleon)
-    :text "Specialized care for exotic animals."
-    :btn "Become Member"}
+    :text (t :hero/chameleon-text)
+    :btn (t :hero/chameleon-btn)}
 
    {:key :owl
     :img "img/Hero_Slide_2_owl.jpg"
     :title (t :hero/owl)
-    :text "Support for bird specialists worldwide."
-    :btn "Learn More"}
+    :text (t :hero/owl-text)
+    :btn (t :hero/owl-btn)}
 
    {:key :rabbit
     :img "img/Hero_Slide_3_rabbit.jpg"
     :title (t :hero/rabbit)
-    :text "Advanced treatment for rabbits and rodents."
-    :btn "Join UEAVA"}
+    :text (t :hero/rabbit-text)
+    :btn (t :hero/rabbit-btn)}
 
    {:key :bear
     :img "img/Hero_Slide_4_bear.jpg"
     :title (t :hero/bear)
-    :text "Supporting vets working with wildlife."
-    :btn "Discover"}])
+    :text (t :hero/bear-text)
+    :btn (t :hero/bear-btn)}])
 
 (def slide-count (count (slides)))
 

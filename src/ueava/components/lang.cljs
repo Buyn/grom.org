@@ -2,11 +2,18 @@
   (:require
       [reagent.core :as r]))
 
-(defonce lang (r/atom :en))
+(defn load-lang []
+  (keyword
+   (or (.getItem js/localStorage "lang")
+       "en")))
+
+;; (defonce lang (r/atom :en))
+
+(defonce lang (r/atom (load-lang)))
 
 (def dict
   {:en {
-        :topb/lang " Ua" ;; эту строку не нужно переводить она должна быть на укринском 
+        :topb/lang " Ua"
         :header/cta "Find A Vet"
         :hlist/Home "Home"
         :hlist/About "About"
@@ -15,9 +22,17 @@
         :hlist/Conferences "Conferences"
         :hero/title "Why Do You Need A Veterinarian?"
         :hero/chameleon "Explore the world of reptile and amphibian medicine."
+        :hero/chameleon-text "Specialized care for exotic animals."
+        :hero/chameleon-btn "Become Member"
         :hero/owl "Making avian medicine accessible, clear, and practical."
+        :hero/owl-text "Support for bird specialists worldwide."
+        :hero/owl-btn "Learn More"
         :hero/rabbit "Advance your expertise in small mammal medicine."
+        :hero/rabbit-text "Advanced treatment for rabbits and rodents."
+        :hero/rabbit-btn "Join UEAVA"
         :hero/bear "Make an impact in wildlife and exotic animal medicine."
+        :hero/bear-text "Supporting vets working with wildlife."
+        :hero/bear-btn "Discover"
         :benefits/title "Why Join UEAVA"
         :benefits/c1-title "Scientific Journal"
         :benefits/c1-dis "Access research and publications in exotic animal medicine."
@@ -41,9 +56,17 @@
         :hlist/Conferences "Конференції"
         :hero/title "Чому вам потрібен ветеринар?"
         :hero/chameleon "Досліджуйте світ медицини рептилій та амфібій разом із нами"
+        :hero/chameleon-text "Спеціалізований догляд за екзотичними тваринами."
+        :hero/chameleon-btn "Стати учасником"
+        :hero/owl-text "Підтримка спеціалістів з птахівництва в усьому світі."
+        :hero/owl-btn "Дізнатися більше"
         :hero/owl "Робимо медицину птахів зрозумілою, доступною та дійсно практичною."
         :hero/rabbit "Підвищуйте свій рівень експертності в медицині дрібних ссавців."
+        :hero/rabbit-text "Удосконалюйте свої навички в медицині кролів та гризунів."
+        :hero/rabbit-btn "Приєднатися до UEAVA"
         :hero/bear "Зробіть свій внесок у розвиток медицини диких та екзотичних тварин."
+        :hero/bear-text "Supporting vets working with wildlife."
+        :hero/bear-btn "Докладніше"
         :benefits/title "Що ви отримуєте з UEAVA"
         :benefits/c1-title "Науковий журнал"
         :benefits/c1-dis "Отримуйте доступ до актуальних досліджень і публікацій у сфері медицини екзотичних тварин."

@@ -13106,3 +13106,29 @@ web page only text and battons
 add to package script
 
       "css": "tailwindcss -i ./src/css/main.css -o ./public/css/style.css --watch"
+
+* DONE полный список задачи
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-04 Чт 01:19
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+
+* DONE внести изменения в Громорг
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-04 Чт 01:19
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** DONE открыть раздел
+** DONE открывать сайт
+** DONE запустить сервер
+** DONE переписать задачу в текст
+** внести просто изменение
+** сделать что из задачи
+** отписатся что начал работать
+
