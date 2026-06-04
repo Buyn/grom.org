@@ -1,7 +1,7 @@
 goog.provide('ueava.components.navigation_cta');
 ueava.components.navigation_cta.navigation_cta = (function ueava$components$navigation_cta$navigation_cta(var_args){
-var G__13606 = arguments.length;
-switch (G__13606) {
+var G__12976 = arguments.length;
+switch (G__12976) {
 case 0:
 return ueava.components.navigation_cta.navigation_cta.cljs$core$IFn$_invoke$arity$0();
 

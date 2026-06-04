@@ -1,0 +1,1 @@
+{"version":3,"sources":["ueava/pages/about.cljs"],"mappings":";AAEA,+BAAA,/BAAMA;AAAN,AAAA,0FAAA,sDAAA,mFAAA,mDAAA,2CAAA,wDAAA,kCAAA,mFAAA,kDAAA","names":["ueava.pages.about/about-page"],"sourcesContent":["(ns ueava.pages.about)\n\n(defn about-page []\n  [:main\n   [:div {:class \"container mx-auto py-20\"}\n    [:h1 \"About\"]]])\n"]}
