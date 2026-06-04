@@ -22,17 +22,18 @@
 
     ;; NAV
     [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Navigation"]
+     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/nav-title)]
 
      [:ul {:class "space-y-2"}
-      [:li [:a {:href "#" :class "hover:text-white"} "Home"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "About"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Membership"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Resources"]]]]
+      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Home)]]
+      [:li [:a {:href "/about" :class "hover:text-white"} (t :hlist/About)]]
+      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Resources)]]
+      [:li [:a {:href "/membership" :class "hover:text-white"} (t :hlist/Membership)]]
+      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Conferences)]]]]
 
     ;; RESOURCES
     [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Resources"]
+     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/res-title)]
 
      [:ul {:class "space-y-2"}
       [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
@@ -42,12 +43,13 @@
 
     ;; NEWSLETTER
     [:div
-     [:h3 {:class "text-white font-semibold mb-4"} "Newsletter"]
+     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/news-title)]
 
      [:p {:class "text-sm mb-4"}
-      "Subscribe to receive updates and news."]
+      (t :footer/news-text)]
 
-     [:div {:class "flex"}
+     ;; [:div {:class "flex"} items-center items-start
+     [:div {:class "flex flex-col items-end self-center"}
       [:input {:type "email"
                :placeholder "Email"
                :class "w-full px-3 py-2
@@ -55,11 +57,11 @@
                        bg-gray-800
                        border border-gray-700
                        focus:outline-none"}]
-
-      [:button {:class "bg-white text-ueava-brown
-                        px-4 rounded-r
+;; px-4 
+      [:button  {:class "bg-white text-ueava-brown
+                        rounded-r
                         hover:bg-ueava-brown-100"}
-       "Join"]]]]
+                (t :footer/news-button)]]]]
 
    ;; bottom
    [:div {:class "border-t border-gray-800"}

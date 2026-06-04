@@ -44,6 +44,11 @@
         :cta/dis "Become part of Ukrainian Exotic Animal Veterinary Association — a veterinary association uniting professionals in exotic animal."
         :cta/button "Join UEAVA"
         :footer/logo "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."
+        :footer/nav-title "Navigation"
+        :footer/res-title "Resources"
+        :footer/news-title "Newsletter"
+        :footer/news-text "Subscribe to receive updates and news."
+        :footer/news-button "Subscribe"
         }
 
    :uk {
@@ -65,7 +70,7 @@
         :hero/rabbit-text "Удосконалюйте свої навички в медицині кролів та гризунів."
         :hero/rabbit-btn "Приєднатися до UEAVA"
         :hero/bear "Зробіть свій внесок у розвиток медицини диких та екзотичних тварин."
-        :hero/bear-text "Supporting vets working with wildlife."
+        :hero/bear-text "Підтримка ветеринарів, які працюють з дикими тваринами."
         :hero/bear-btn "Докладніше"
         :benefits/title "Що ви отримуєте з UEAVA"
         :benefits/c1-title "Науковий журнал"
@@ -78,6 +83,11 @@
         :cta/dis "Українська асоціація ветеринарної медицини екзотичних тварин — це простір для розвитку, співпраці та професійного зростання лікарів, які працюють з екзотичними тваринами."
         :cta/button "Станьте частиною UEAVA"
         :footer/logo "UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання."
+        :footer/nav-title "Навігація"
+        :footer/res-title "Ресурси"
+        :footer/news-title "Інформаційний бюлетень"
+        :footer/news-text "Підпишіться, щоб отримувати оновлення та новини."
+        :footer/news-button "Підписатися"
         }})
 
 (defn t [k]
