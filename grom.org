@@ -17,6 +17,7 @@
 *** src
 **** core
 (find-file-other-frame "./src/ueava/core.cljs")
+(find-file-other-frame "./src/ueava/router.cljs")
 (find-file-other-frame "./src/ueava/footer.cljs")
 ***** header
 (find-file-other-frame "./src/ueava/header.cljs")
@@ -25,8 +26,13 @@
 (find-file-other-frame "./src/ueava/components/navigation_menu_list.cljs")
 (find-file-other-frame "./src/ueava/components/navigation_cta.cljs")
 (find-file-other-frame "./src/ueava/components/hamburger_menu.cljs")
+***** pages
+(find-file-other-frame "./src/ueava/pages/home.cljs") копия мейна
+(find-file-other-frame "./src/ueava/pages/about.cljs")
+(find-file-other-frame "./src/ueava/pages/membership.cljs")
+
 ***** main
-(find-file-other-frame "./src/ueava/main.cljs")
+(find-file-other-frame "./src/ueava/main.cljs") возможно нужо будет удалить современем
 (find-file-other-frame "./src/ueava/components/hero.cljs")
 (find-file-other-frame "./src/ueava/components/benefits.cljs")
 (find-file-other-frame "./src/ueava/components/cta.cljs")
@@ -448,8 +454,6 @@ tailwind стили как у arav
 * Kanban
 ** urgent 
 ** in progress
-** dezine
-** TODO
 *** попробывать сделать на роуторе
 **** [[*новерно важно понять как это будет работать.][новерно важно понять как это будет работать.]]
 **** сделать переменую
@@ -471,8 +475,6 @@ tailwind стили как у arav
    [header]
    [current-page]
    [footer]])
-
-**** 
 
 **** 
 Here are summaries of some files present in my git repository.
@@ -743,11 +745,477 @@ Just show me the edits I need to make.
 
 
 
+**** ладно как довай сделаем роутер
+что меняем? что делаем?
+как реализуем? что добовлем?
 **** ладно как нам это реализовать?
+Я бы делал это маленькими шагами и пока **без полноценного роутера**.
+
+Судя по текущему коду, тебе достаточно подготовить архитектуру под страницы.
+
+---
+
+## Шаг 1. Создай каталог страниц
+
+Например:
+
+```text
+src/ueava/pages/
+  home.cljs
+  about.cljs
+```
+
+---
+
+## Шаг 2. Текущий `main.cljs` преврати в Home
+
+Создай:
+
+```clojure
+(ns ueava.pages.home
+  (:require
+    [ueava.components.hero :refer [hero]]
+    [ueava.components.benefits :refer [benefits]]
+    [ueava.components.cta :refer [cta]]
+    [ueava.components.membership :refer [membership]]))
+
+(defn home-page []
+  [:main
+   [hero]
+   [benefits]
+   [cta]
+   [membership]])
+```
+
+---
+
+## Шаг 3. Создай About
+
+```clojure
+(ns ueava.pages.about)
+
+(defn about-page []
+  [:main
+   [:div {:class "container mx-auto py-16"}
+    [:h1 "About UEAVA"]
+    [:p "Lorem ipsum..."]]])
+```
+
+Пока хоть заглушку.
+
+---
+
+## Шаг 4. Временно сделай переключатель страниц через атом
+
+📍 `src/ueava/core.cljs`
+
+После `app-state` добавь:
+
+```clojure
+(defonce current-page
+  (atom :home))
+```
+
+---
+
+Добавь функцию:
+
+```clojure
+(defn render-page []
+  (case @current-page
+    :home [home-page]
+    :about [about-page]
+    [:div "404"]))
+```
+
+---
+
+И в `page`
+
+замени:
+
+```clojure
+[main]
+```
+
+на
+
+```clojure
+[render-page]
+```
+
+---
+
+## Что это даст
+
+У тебя уже появится настоящая модель страниц:
+
+```text
+header
+   ↓
+current-page
+   ↓
+footer
+```
+
+---
+
+И ты сможешь прямо из REPL сделать:
+
+```clojure
+(reset! current-page :about)
+```
+
+и увидеть новую страницу.
+
+---
+
+## Почему я советую так
+
+Потому что сейчас ты ещё не решил:
+
+- нужен роутер или нет;
+- будут отдельные html или нет;
+- как будут выглядеть URL.
+
+Но ты уже получишь:
+
+```text
+pages/
+  home.cljs
+  about.cljs
+  membership.cljs
+```
+
+и нормальную структуру проекта.
+
+---
+
+После этого роутер добавляется буквально за 15 минут.
+
+Твой `render-page`:
+
+```clojure
+(case @current-page ...)
+```
+
+уже и есть зачаток роутера.
+
+Сначала сделай страницы как отдельные компоненты и убедись, что тебе нравится такая организация кода. Только потом решай, привязывать ли `current-page` к URL браузера или оставить несколько отдельных HTML-страниц. Это позволит принять решение на практике, а не теоретически.
 
 **** DONE главное по быстрее
 если не получится быстро то и фиг с ним.
 может быть премушеством может говном
+**** TODO Я бы не тащил сразу ни `reitit`, ни `secretary`.
+
+Сначала сделал бы **простейший роутер на 20 строк**, чтобы понять, нравится ли тебе сама модель.
+
+---
+
+# Шаг 1. Добавить файл роутера
+
+Создай новый файл:
+
+```text
+src/ueava/router.cljs
+```
+
+Содержимое примерно такое:
+
+```clojure
+(ns ueava.router
+  (:require [reagent.core :as r]))
+
+(defonce route (r/atom :home))
+
+(def routes
+  {"/" :home
+   "/about" :about
+   "/membership" :membership})
+
+(defn current-route []
+  (get routes
+       (.-pathname js/location)
+       :home))
+```
+
+---
+
+# Шаг 2. Инициализация роутера
+
+В этом же файле добавить:
+
+```clojure
+(defn sync-route! []
+  (reset! route (current-route)))
+```
+
+и
+
+```clojure
+(defn init-router! []
+  (sync-route!)
+  (.addEventListener
+   js/window
+   "popstate"
+   sync-route!))
+```
+
+---
+
+# Шаг 3. Навигация без перезагрузки
+
+В этом же файле:
+
+```clojure
+(defn navigate! [url]
+  (.pushState js/history nil "" url)
+  (sync-route!))
+```
+
+---
+
+Теперь у тебя есть:
+
+```clojure
+@route
+```
+
+который может быть:
+
+```clojure
+:home
+:about
+:membership
+```
+
+---
+
+# Шаг 4. Страницы
+
+Я бы сразу сделал:
+
+```text
+src/ueava/pages/
+```
+
+и вынес текущий контент.
+
+Создай:
+
+```text
+src/ueava/pages/home.cljs
+```
+
+---
+
+Перенеси туда содержимое текущего `main.cljs`.
+
+То есть всё:
+
+```clojure
+[hero]
+[benefits]
+[cta]
+[membership]
+```
+
+становится:
+
+```clojure
+(defn home-page []
+ ...)
+```
+
+---
+
+# Шаг 5. Заглушка About
+
+Создай:
+
+```text
+src/ueava/pages/about.cljs
+```
+
+```clojure
+(ns ueava.pages.about)
+
+(defn about-page []
+  [:main
+   [:div {:class "container mx-auto py-20"}
+    [:h1 "About"]]])
+```
+
+---
+
+# Шаг 6. Заглушка Membership
+
+Создай:
+
+```text
+src/ueava/pages/membership_page.cljs
+```
+
+```clojure
+(ns ueava.pages.membership-page)
+
+(defn membership-page []
+  [:main
+   [:div {:class "container mx-auto py-20"}
+    [:h1 "Membership"]]])
+```
+
+---
+
+# Шаг 7. Переделать core.cljs
+
+Добавить require:
+
+```clojure
+[ueava.router :refer [route init-router!]]
+[ueava.pages.home :refer [home-page]]
+[ueava.pages.about :refer [about-page]]
+[ueava.pages.membership-page :refer [membership-page]]
+```
+
+---
+
+Заменить текущий `page`.
+
+Сейчас:
+
+```clojure
+[main]
+```
+
+Убрать.
+
+---
+
+Добавить:
+
+```clojure
+(defn current-page []
+  (case @route
+    :home [home-page]
+    :about [about-page]
+    :membership [membership-page]
+    [home-page]))
+```
+
+---
+
+В `page`:
+
+```clojure
+[:div
+ [header]
+ [current-page]
+ [footer]]
+```
+
+---
+
+# Шаг 8. В init вызвать роутер
+
+В `core.cljs`
+
+Перед:
+
+```clojure
+(start)
+```
+
+вставить:
+
+```clojure
+(init-router!)
+```
+
+---
+
+# Шаг 9. Меню
+
+Вместо:
+
+```clojure
+{:href "#"}
+```
+
+станет:
+
+```clojure
+{:href "/about"}
+```
+
+или
+
+```clojure
+{:href "/membership"}
+```
+
+---
+
+Но тут нужен ещё один небольшой рефакторинг меню, чтобы использовать `navigate!`.
+
+Пока этого не делай.
+
+Сначала просто подними роутер и убедись, что:
+
+```text
+/
+```
+
+открывает Home,
+
+а
+
+```text
+/about
+```
+
+открывает About при прямом вводе URL.
+
+---
+
+После этого останется последний шаг:
+
+сделать компонент
+
+```clojure
+[:a
+ {:href "/about"
+  :on-click ...}
+]
+```
+
+который отменяет стандартный переход браузера и вызывает:
+
+```clojure
+(navigate! "/about")
+```
+
+И тогда получится полноценный SPA без перезагрузки страниц.
+
+Я бы именно так шёл: сначала заставить роутер работать на прямых URL, потом уже подключать красивую навигацию. Это позволит отлаживать систему маленькими шагами, а не переписывать всё сразу.
+*** нужен ли айди
+
+(defn navigation-items []
+  [{:title (t :hlist/Home)        :href "/home"}
+   {:title (t :hlist/About)       :href "/about"}
+   {:title (t :hlist/Resources)   :href "/home"}
+   {:title (t :hlist/Membership)  :href "/membership"}
+   {:title (t :hlist/Conferences) :href "/home"}])
+
+(defn navigation-menu-list []
+  (for [{:keys [title href]} (navigation-items)]
+    [:a {:href href
+         :key title
+         :class "hover:text-ueava-sand"}
+          title]))
+
+** dezine
+** TODO
 *** отчёт
 **** доперевёл хиро слады.
 **** сделал что сайт запоминает состояние выбора языка.
@@ -2583,6 +3051,23 @@ Darina Haos, [30.04.2026 12:19]
 *** DONE добавил нужный текст
 *** DONE заменить текст на переменые
 *** DONE перевести не указаное
+*** DONE old code
+(find-file-other-frame "./src/ueava/core.cljs")
+
+    ;; [hello-world]
+
+;; (defn init []
+;;   (rdom/render [page]
+;;                (.getElementById js/document "app")))
+
+;; define your app data so that it doesn't get over-written on reload
+
+;; (defonce app-state (atom {:text "Hello world!"}))
+
+;; (defn hello-world []
+;;   [:div
+;;    [:h1 (:text @app-state)]
+;;    [:h3 "Edit this and watch it change!"]])
 * project comands
 :PROPERTIES:
 :header-args: :tangle no

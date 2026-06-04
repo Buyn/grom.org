@@ -3,38 +3,42 @@
             [ueava.header :refer [header]]
             [ueava.main :refer [main]]
             [ueava.footer :refer [footer]]
+            [ueava.router :refer [route init-router!]]
+            [ueava.pages.home :refer [home-page]]
+            [ueava.pages.about :refer [about-page]]
+            [ueava.pages.membership :refer [membership-page]]
             ))
 
+(defn current-page []
+  (case @route
+    :home [home-page]
+    :about [about-page]
+    :membership [membership-page]
+    [home-page]))
+
+;; (defn page []
+;;   [:div
+;;    [header]
+;;    [main]
+;;    [footer]])
 
 (defn page []
   [:div
-   [header]
-   [main]
-   [footer]])
+    [header]
+    [current-page]
+    [footer]])
 
-;; (defn init []
-;;   (rdom/render [page]
-;;                (.getElementById js/document "app")))
-
-;; define your app data so that it doesn't get over-written on reload
-
-;; (defonce app-state (atom {:text "Hello world!"}))
-
-;; (defn hello-world []
-;;   [:div
-;;    [:h1 (:text @app-state)]
-;;    [:h3 "Edit this and watch it change!"]])
 
 (defn start []
   (reagent/render-component
     [page]
-    ;; [hello-world]
     (. js/document (getElementById "app"))))
 
 (defn ^:export init []
   ;; init is called ONCE when the page loads
   ;; this is called in the index.html and must be exported
   ;; so it is available even in :advanced release builds
+  (init-router!)
   (start))
 
 (defn stop []

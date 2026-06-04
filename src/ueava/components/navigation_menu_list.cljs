@@ -15,11 +15,11 @@
 ;;   )
 
 (defn navigation-items []
-  [{:title (t :hlist/Home)        :href "#"}
-   {:title (t :hlist/About)       :href "#"}
-   {:title (t :hlist/Resources)   :href "#"}
-   {:title (t :hlist/Membership)  :href "#"}
-   {:title (t :hlist/Conferences) :href "#"}])
+  [{:title (t :hlist/Home)        :href "/home"}
+   {:title (t :hlist/About)       :href "/about"}
+   {:title (t :hlist/Resources)   :href "/home"}
+   {:title (t :hlist/Membership)  :href "/membership"}
+   {:title (t :hlist/Conferences) :href "/home"}])
 
 (defn navigation-menu-list []
   (for [{:keys [title href]} (navigation-items)]
