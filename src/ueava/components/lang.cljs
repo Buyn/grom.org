@@ -83,8 +83,14 @@
 (defn t [k]
   (get-in dict [@lang k]))
 
+;; (defn toggle-lang []
+;;   (swap! lang {:en :uk :uk :en}))
 (defn toggle-lang []
-  (swap! lang {:en :uk :uk :en}))
+  (let [new-lang ({:en :uk :uk :en} @lang)]
+    (reset! lang new-lang)
+    (.setItem js/localStorage
+              "lang"
+              (name new-lang))))
 
 (defn button-toggle-lang []
  [:button

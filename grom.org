@@ -448,8 +448,33 @@ tailwind стили как у arav
 * Kanban
 ** urgent 
 ** in progress
-**** локальный сторедж
-***** 
+** dezine
+** TODO
+*** попробывать сделать на роуторе
+**** [[*новерно важно понять как это будет работать.][новерно важно понять как это будет работать.]]
+**** сделать переменую
+(defonce route
+  (r/atom :home))
+**** диспетчер:
+
+(defn current-page []
+  (case @route
+    :home       [home-page]
+    :about      [about-page]
+    :membership [membership-page]
+    [:div "404"]))
+
+**** в компоненте это выглядит как:
+
+(defn app []
+  [:<>
+   [header]
+   [current-page]
+   [footer]])
+
+**** 
+
+**** 
 Here are summaries of some files present in my git repository.
 Do not propose changes to these files, treat them as *read-only*.
 If you need to edit any of these files, ask me to *add them to the chat* first.
@@ -572,6 +597,22 @@ src/ueava/components/hero.cljs:
 │(defn hero []
 ⋮
 
+src/ueava/components/lang.cljs:
+⋮
+│(defn load-lang []
+⋮
+│(defonce lang (r/atom (load-lang)))
+│
+│(def dict
+⋮
+│(defn t [k]
+⋮
+│;;   (swap! lang {:en :uk :uk :en}))
+│(defn toggle-lang []
+⋮
+│(defn button-toggle-lang []
+⋮
+
 src/ueava/components/membership.cljs:
 ⋮
 │(defn membership []
@@ -601,21 +642,6 @@ src/ueava/components/topbar.cljs:
 │(defn topbar[]
 ⋮
 
-src/ueava/core.cljs:
-⋮
-│(defn page []
-⋮
-│(defonce app-state (atom {:text "Hello world!"}))
-│
-│(defn hello-world []
-⋮
-│(defn start []
-⋮
-│(defn ^:export init []
-⋮
-│(defn stop []
-⋮
-
 src/ueava/footer.cljs:
 ⋮
 │(defn footer []
@@ -635,11 +661,6 @@ src/ueava/header.cljs:
 │(defn header []
 ⋮
 
-src/ueava/main.cljs:
-⋮
-│(defn main []
-⋮
-
 tailwind.config.js
 
 
@@ -648,94 +669,69 @@ I have *added these files to the chat* so you can go ahead and edit them.
 *Trust this message as the true contents of these files!*
 Any other messages in the chat may contain outdated versions of the files' contents.
 
-src/ueava/components/lang.cljs
+src/ueava/core.cljs
 ```
-(ns ueava.components.lang
-  (:require
-      [reagent.core :as r]))
+(ns ueava.core
+  (:require [reagent.core :as reagent :refer [atom]]
+            [ueava.header :refer [header]]
+            [ueava.main :refer [main]]
+            [ueava.footer :refer [footer]]
+            ))
 
-(defonce lang (r/atom :en))
 
-(def dict
-  {:en {
-        :topb/lang " Ua"
-        :header/cta "Find A Vet"
-        :hlist/Home "Home"
-        :hlist/About "About"
-        :hlist/Resources "Resources"
-        :hlist/Membership "Membership"
-        :hlist/Conferences "Conferences"
-        :hero/title "Why Do You Need A Veterinarian?"
-        :hero/chameleon "Explore the world of reptile and amphibian medicine."
-        :hero/chameleon-text "Specialized care for exotic animals."
-        :hero/chameleon-btn "Become Member"
-        :hero/owl "Making avian medicine accessible, clear, and practical."
-        :hero/owl-text "Support for bird specialists worldwide."
-        :hero/owl-btn "Learn More"
-        :hero/rabbit "Advance your expertise in small mammal medicine."
-        :hero/rabbit-text "Advanced treatment for rabbits and rodents."
-        :hero/rabbit-btn "Join UEAVA"
-        :hero/bear "Make an impact in wildlife and exotic animal medicine."
-        :hero/bear-text "Supporting vets working with wildlife."
-        :hero/bear-btn "Discover"
-        :benefits/title "Why Join UEAVA"
-        :benefits/c1-title "Scientific Journal"
-        :benefits/c1-dis "Access research and publications in exotic animal medicine."
-        :benefits/c2-title "Find-A-Vet Directory"
-        :benefits/c2-dis "Be listed in a nationwide directory of veterinary professionals."
-        :benefits/c3-title "Professional Community"
-        :benefits/c3-dis "Join a professional network of veterinary experts across Ukraine."
-        :cta/title "Join the Professional Community Advancing Exotic Animal Medicine"
-        :cta/dis "Become part of Ukrainian Exotic Animal Veterinary Association — a veterinary association uniting professionals in exotic animal."
-        :cta/button "Join UEAVA"
-        :footer/logo "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."
-        }
+(defn page []
+  [:div
+   [header]
+   [main]
+   [footer]])
 
-   :uk {
-        :topb/lang " En " ;; эту строку не нужно переводить она должна быть на английском 
-        :header/cta "Знайти спеціаліста"
-        :hlist/Home "На головну"
-        :hlist/About "Про нас"
-        :hlist/Resources "Ресурси"
-        :hlist/Membership "Членство"
-        :hlist/Conferences "Конференції"
-        :hero/title "Чому вам потрібен ветеринар?"
-        :hero/chameleon "Досліджуйте світ медицини рептилій та амфібій разом із нами"
-        :hero/chameleon-text "Спеціалізований догляд за екзотичними тваринами."
-        :hero/chameleon-btn "Стати учасником"
-        :hero/owl-text "Підтримка спеціалістів з птахівництва в усьому світі."
-        :hero/owl-btn "Дізнатися більше"
-        :hero/owl "Робимо медицину птахів зрозумілою, доступною та дійсно практичною."
-        :hero/rabbit "Підвищуйте свій рівень експертності в медицині дрібних ссавців."
-        :hero/rabbit-text "Удосконалюйте свої навички в медицині кролів та гризунів."
-        :hero/rabbit-btn "Приєднатися до UEAVA"
-        :hero/bear "Зробіть свій внесок у розвиток медицини диких та екзотичних тварин."
-        :hero/bear-text "Supporting vets working with wildlife."
-        :hero/bear-btn "Докладніше"
-        :benefits/title "Що ви отримуєте з UEAVA"
-        :benefits/c1-title "Науковий журнал"
-        :benefits/c1-dis "Отримуйте доступ до актуальних досліджень і публікацій у сфері медицини екзотичних тварин."
-        :benefits/c2-title "Всеукраїнський каталог ветеринарних лікарів"
-        :benefits/c2-dis "Будьте представлені у всеукраїнському каталозі ветеринарних лікарів і підвищуйте свою професійну видимість."
-        :benefits/c3-title "Професійна спільнота"
-        :benefits/c3-dis "Долучайтеся до професійної спільноти ветеринарних фахівців з усієї України."
-        :cta/title "Долучайтеся до професійної спільноти, що формує майбутнє медицини екзотичних тварин."
-        :cta/dis "Українська асоціація ветеринарної медицини екзотичних тварин — це простір для розвитку, співпраці та професійного зростання лікарів, які працюють з екзотичними тваринами."
-        :cta/button "Станьте частиною UEAVA"
-        :footer/logo "UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання."
-        }})
+;; (defn init []
+;;   (rdom/render [page]
+;;                (.getElementById js/document "app")))
 
-(defn t [k]
-  (get-in dict [@lang k]))
+;; define your app data so that it doesn't get over-written on reload
 
-(defn toggle-lang []
-  (swap! lang {:en :uk :uk :en}))
+(defonce app-state (atom {:text "Hello world!"}))
 
-(defn button-toggle-lang []
- [:button
-    {:on-click toggle-lang}
-    "🌍 "
-    (t :topb/lang)])
+(defn hello-world []
+  [:div
+   [:h1 (:text @app-state)]
+   [:h3 "Edit this and watch it change!"]])
+
+(defn start []
+  (reagent/render-component
+    [page]
+    ;; [hello-world]
+    (. js/document (getElementById "app"))))
+
+(defn ^:export init []
+  ;; init is called ONCE when the page loads
+  ;; this is called in the index.html and must be exported
+  ;; so it is available even in :advanced release builds
+  (start))
+
+(defn stop []
+  ;; stop is called before any code is reloaded
+  ;; this is controlled by :before-load in the config
+  (js/console.log "stop"))
+```
+
+src/ueava/main.cljs
+```
+(ns ueava.main
+  (:require 
+            [ueava.components.hero :refer [hero]]
+            [ueava.components.benefits :refer [benefits]]
+            [ueava.components.cta :refer [cta]]
+            [ueava.components.membership :refer [membership]]))
+
+(defn main []
+  [:main
+    [hero]
+    [benefits]
+    [cta]
+    [membership]])
+
 ```
 
 
@@ -747,129 +743,27 @@ Just show me the edits I need to make.
 
 
 
-***** запоминать положение языка
-****** было бы наверное логично
- реализовать запоминать положение языка
- в локал сторадж?
- и проверять если нет записи то дефалтное значение
-****** Да, для языка это как раз один из самых типичных сценариев использования `localStorage`.
+**** ладно как нам это реализовать?
 
-Тебе нужно изменить только `src/ueava/components/lang.cljs`.
-
-### 1. Добавь функцию чтения языка
-
-Сразу перед `defonce lang`:
-
-```clojure
-(defn load-lang []
-  (keyword
-   (or (.getItem js/localStorage "lang")
-       "en")))
-```
-
----
-
-### 2. Замени инициализацию `lang`
-
-Было:
-
-```clojure
-(defonce lang (r/atom :en))
-```
-
-Станет:
-
-```clojure
-(defonce lang (r/atom (load-lang)))
-```
-
----
-
-### 3. Сохраняй язык при переключении
-
-Замени `toggle-lang`
-
-Было:
-
-```clojure
-(defn toggle-lang []
-  (swap! lang {:en :uk :uk :en}))
-```
-
-Стало:
-
-```clojure
-(defn toggle-lang []
-  (let [new-lang ({:en :uk :uk :en} @lang)]
-    (reset! lang new-lang)
-    (.setItem js/localStorage
-              "lang"
-              (name new-lang))))
-```
-
----
-
-### Что получится
-
-Первый визит:
-
-```text
-localStorage["lang"] отсутствует
-↓
-используется "en"
-```
-
-Пользователь переключил:
-
-```text
-en → uk
-```
-
-В `localStorage` сохранится:
-
-```text
-lang = "uk"
-```
-
-После F5 или даже после закрытия браузера:
-
-```text
-localStorage["lang"] = "uk"
-↓
-(load-lang)
-↓
-:uk
-```
-
-и сайт откроется уже на украинском.
-
----
-
-Я бы ещё подумал над небольшим улучшением на будущее: если записи нет в `localStorage`, попробовать взять язык из браузера:
-
-```clojure
-(.-language js/navigator)
-```
-
-и автоматически выбирать `:uk` для украинских пользователей. Но это уже можно добавить позже, текущего решения с дефолтом `en` вполне достаточно.
-
-** dezine
-** TODO
-**** попробывать сделать на роуторе
-***** главное по быстрее
+**** DONE главное по быстрее
 если не получится быстро то и фиг с ним.
 может быть премушеством может говном
-***** [[*новерно важно понять как это будет работать.][новерно важно понять как это будет работать.]]
-**** перевести мембершип бенефит
-**** перевести футер
-**** СПА вс МПА 
-***** Помоги Понять что делать
+*** отчёт
+**** доперевёл хиро слады.
+**** сделал что сайт запоминает состояние выбора языка.
+тоесть после перезагрузки страницы помнит какой был выбран язык, прошлый раз, и выбирает его. запоминает это для устройства.
+**** не переведена часть бенефитс
+то есть нижняя, над футером.
+*** перевести мембершип бенефит
+*** перевести футер
+*** СПА вс МПА 
+**** Помоги Понять что делать
 тоесть уменя сейчас сингл пейдж апп
 встал вопрос что нужно добавить пару страниц.
 и вставл вопрос мне что-то глобально менять или просто добавить какбы ещё один апп. Тоесть использовать совместные виджеты и просто сделать ещё один хтмл и переключатся на него?
 тоесть новоя страница должна будет содержать много текста и нетак много разной графики.
 Или есть какоето более элегантное решение?
-***** Для твоего случая я бы **не делал второй SPA**.
+**** Для твоего случая я бы **не делал второй SPA**.
 
 Судя по структуре проекта (`shadow-cljs`, Reagent, Tailwind), ты уже близок к тому, что обычно делают на сайтах-визитках организаций:
 
@@ -1017,23 +911,23 @@ src/ueava/pages/
 - Contacts
 
 то лучше сразу внедрить роутинг. Для Reagent сейчас чаще всего используют Reitit — он довольно лёгкий и хорошо вписывается в такую архитектуру.
-***** 
+**** 
 что меня смушает в роутинге, поправь если я понимаю неправльен, То что много все тексты будут загружатся сразу. Что вроде как избыточня нагрузка. А если речь что минимум на двух языках получается, то совсем перебора.
 или это всё несовсем так?
-***** но так кроме текста
+**** но так кроме текста
 и повторяюшихся виджетов футера, хедера, меню.
 на новых страницах могут быть и изображения\фотографии!
-***** хм немогу мотивировать себя к роутину.
+**** хм немогу мотивировать себя к роутину.
 Ну тоесть я вношу лишнюю сушность, чтоб сайт быстрее переключался между страницами?
 и как в это вписать переключение языков.
 ну тоесть мне в обший фаил превода вставить все тексты.
 или разделить фаил перевода на перевод для виджетов(то что маленькое и постоянно повторяется) и перевод основновно текаст(чтоб както унифицировать межанику для основного элемента разных страниц)?
-***** ага вот это уже отличие!
+**** ага вот это уже отличие!
 тоесть роутинг кроме скорости даёт возможность упрастить состояние
 тоесть при ротинге я смогу просо пердовать состояния.
 а в хтмл варианте преёдутся например использовать кукесы?
-***** ладно довай сумирую
-****** 1 вариант
+**** ладно довай сумирую
+***** 1 вариант
 разделить всё на отдельные хтмл с реюзом виджетов
 index.html
 about.html
@@ -1043,7 +937,7 @@ conferences.html
 + всё грзится и живёт по отельно
 - перегрузка на каждой странице и потеря состояний
   несколько само повтроние структуры кложура и хтмля занаво дозгрузка жс
-****** 2 роутинг
+***** 2 роутинг
 грузится всё разом текст и код
 но картинки подгружаются по мере необходимости
 + нетерется состояние
@@ -1053,7 +947,7 @@ conferences.html
 - много грузится за раз
   получает немного усложнёная структура
   вносится дополнительная сушность
-****** 3 разделить на элементы
+***** 3 разделить на элементы
 home.cljs
 about.cljs
 membership.cljs
@@ -1062,14 +956,14 @@ membership.cljs
 + можно разделить на модули
   грузится только нужное
 - пока не понял
-***** довай я постораюсь понять, правельно ли я тебя понял с переводом.
+**** довай я постораюсь понять, правельно ли я тебя понял с переводом.
 тоесть для обших виджетов я использую обший файл перевода.
 а для основного текста страници.
 я тексты на всех языках держужу внутри cljs самой страницы. и отображется соотвественно тот что сейчас активин?
-***** интересно тут вырисовывает разделение сущностей.
+**** интересно тут вырисовывает разделение сущностей.
 Тоесть посуте у меня есть хоум страница полная кучи виджетов
 и куча страниц статей. Построеных по одному и томуже типу. Основная статья зажатая между футером и хедером.
-***** новерно важно понять как это будет работать.
+**** новерно важно понять как это будет работать.
 тоест если я делаю это через рутер
 я должен буду каждый раз прятать ненужные элементы и отображать нужные?
 это не добавит путаницу не сделает это более грязным?
@@ -1267,15 +1161,15 @@ pages/
 - Если начинаешь чувствовать, что копируешь `header`, `footer`, переключатель языка и меню уже третий раз — это обычно момент, когда SPA-роутер начинает окупаться.
 
 Для проекта размеров UEAVA оба пути жизнеспособны. Тут вопрос скорее в том, где тебе будет проще поддерживать код через несколько месяцев.
-**** Про нас
+*** Про нас
 Про нас, я скину наше фото і текст скоріш за все скопіпізжу з ІГ.
-**** Про Конференції
+*** Про Конференції
 Про Конференції : фото 9 конференції і про те що відбувалося напишу текст
-**** Выложить статут
+*** Выложить статут
 
 В ресурси статут.
 /home/buyn/Desktop/worck/grom/Статут ГО_АВЛЕТУ.pdf
-**** Про нас
+*** Про нас
 Darina Haos, [28.05.2026 21:31]
 Привіт, це я з ідеями тексту і т.п по посиланняи переходам
 
@@ -1311,13 +1205,13 @@ Darina Haos, [28.05.2026 21:34]
 Скину фотки Софії, Свою, Віце.
 Членів засновників фотки також з ПІП
 
-**** ресурси
+*** ресурси
 Darina Haos, [28.05.2026 21:37]
 В графу "ресурси" бачу перехід на сторінку бо будуть підпункти:
 Циркуляри - там статут і протоколи зібрань і т.п хуйня-муйня.
 Також можливо бібліотека де будуть книжки/статті/вебінари і зробити його тільки по платному доступу (типу тимчасовий доступ на рік, по підписці)
 
-**** Членство
+*** Членство
 Darina Haos, [28.05.2026 21:41]
 В графі "Членство": перехід на сторінку де буде текст:
 Переваги членства в UEAVA
@@ -1350,11 +1244,11 @@ UEAVA — це середовище однодумців, де можна обм
 
 Стаючи членом асоціації, ви долучаєтесь до розвитку професійної ветеринарної спільноти, популяризації доказової медицини та формування сучасних стандартів лікування екзотичних тварин.
 
-**** анкети на реєстрацію
+*** анкети на реєстрацію
 Darina Haos, [28.05.2026 21:41]
 І далі перехід до анкети на реєстрацію
 
-**** рахунок
+*** рахунок
 Darina Haos, [28.05.2026 21:42]
 Вже є рахунок я, не знаю як буде правильно зробити можу поки реквізити надати, а можу коли буде все зроблено і куплений домен зв'язатись з монобанкои і вказати наш сайт як офіційний щоб було легше налаштувати банкінг
 
@@ -1379,11 +1273,11 @@ UA483220010000026006700003113
 ЄДРПОУ Банку
 21133352
 
-**** "Конференції"
+*** "Конференції"
 Darina Haos, [28.05.2026 21:53]
 Графа "Конференції", я думаю зробити альбомами поки що з конкордії, типу папку з фото файлами. @Witch_stitch якщо є ідеї як краще було б, то пиши, це поки те що в голову прийшло
 
-**** Тепер те саме англійською
+*** Тепер те саме англійською
 Darina Haos, [28.05.2026 21:55]
 Тепер те саме англійською
 
@@ -1405,7 +1299,7 @@ UEAVA organizes educational events, lectures, conferences, clinical discussions,
 
 We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development.
 
-**** Членство
+*** Членство
 Darina Haos, [28.05.2026 21:57]
 Членство:
 Membership in UEAVA is more than simply joining a professional association — it is becoming part of a community of veterinary professionals dedicated to advancing modern exotic animal medicine in Ukraine.
@@ -1439,7 +1333,7 @@ By becoming a member of the association, you contribute to the development of th
 Darina Haos, [28.05.2026 21:57]
 Я чесно скористалась жпт для перекладу, башка пухне, тому якщо хтось гарно спік інгліш, або просто в очі кинеться дофіга помилок - вказуйте сміливо і правте
 
-**** посилання на фото з конференції
+*** посилання на фото з конференції
 Darina Haos, [28.05.2026 22:39]
 https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy
 
@@ -1449,12 +1343,11 @@ Darina Haos, [28.05.2026 22:39]
 Darina Haos, [02.06.2026 19:28]
 Спасибо большое, я готова піднажать, бо засідають критиканти на п'яти
 
-
-**** эфект волны на кнопках
+*** эфект волны на кнопках
 как в примере
 возможно движение гадиента
 https://arav.org/about/who-we-are/
-**** Анкета
+*** Анкета
 
 Анкета я думаю должна выглядеть таким образом:
 Имя, фамилия
@@ -2207,6 +2100,426 @@ expected: (= (navigation-menu) [:nav {:class "hidden md:flex space-x-8 font-medi
 и он считывается изаменяется при запросе
 чтоб не хранить все языки в памяти
 ** done
+*** DONE локальный сторедж
+**** 
+Here are summaries of some files present in my git repository.
+Do not propose changes to these files, treat them as *read-only*.
+If you need to edit any of these files, ask me to *add them to the chat* first.
+
+.gitignore
+
+README.md
+
+README.md~1
+
+grom.org
+
+grom.org_archive
+
+package.json
+
+postcss.config.js
+
+public/css/style.css
+
+public/img/Hero_Slide_1_chameleon.jpg
+
+public/img/Hero_Slide_2-1.webp
+
+public/img/Hero_Slide_2_owl.jpg
+
+public/img/Hero_Slide_3_rabbit.jpg
+
+public/img/Hero_Slide_4_bear.jpg
+
+public/img/icon.jpg
+
+public/img/ueava-logo-batom-wob-text.jpg
+
+public/img/ueava-logo-hor-brbg-wt.png
+
+public/img/ueava-logo-hor-nobg-wt.png
+
+public/img/ueava-logo-nobg-bt.png
+
+public/img/ueava-logo-nobg-wt.png
+
+public/img/ueava-logo.svg
+
+public/index.html
+
+shadow-cljs.edn
+
+src/css/main.css
+
+src/tests/components_navigation_cta_test.cljs:
+⋮
+│(deftest navigation-cta-test
+⋮
+
+src/tests/components_navigation_menu_test.cljs:
+⋮
+│(deftest navigation-menu-test
+⋮
+
+src/ueava/components/benefits.cljs:
+⋮
+│(defn benefits []
+⋮
+
+src/ueava/components/cta.cljs:
+⋮
+│(defn cta []
+⋮
+
+src/ueava/components/hamburger_menu.cljs:
+⋮
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn hamburger-menu []
+⋮
+
+src/ueava/components/hero.cljs:
+⋮
+│(defonce state
+⋮
+│(defonce timer-id (atom nil))
+│
+⋮
+│(defn slides []
+⋮
+│(def slide-count (count (slides)))
+│
+⋮
+│(defn now [] (.now js/Date))
+│
+│(defn next-random [current]
+⋮
+│(defn random-delay []
+⋮
+│(defn compute-duration [last-ts]
+⋮
+│(defn go! [idx dir]
+⋮
+│(defn schedule! []
+⋮
+│(defn bg-style [img transform duration]
+⋮
+│(defn enter-transform [dir]
+⋮
+│(defn leave-transform [dir]
+⋮
+│(defn background []
+⋮
+│(defn content []
+⋮
+│(defn nav-item [idx {:keys [img]}]
+⋮
+│(defn navigation []
+⋮
+│(defn hero []
+⋮
+
+src/ueava/components/membership.cljs:
+⋮
+│(defn membership []
+⋮
+
+src/ueava/components/navigation_cta.cljs:
+⋮
+│(defn navigation-cta
+⋮
+
+src/ueava/components/navigation_menu.cljs:
+⋮
+│(defn navigation-menu[]
+⋮
+
+src/ueava/components/navigation_menu_list.cljs:
+⋮
+│(defn navigation-items []
+⋮
+│(defn navigation-menu-list []
+⋮
+
+src/ueava/components/topbar.cljs:
+⋮
+│(defonce top-visible? (r/atom true))
+│
+│(defn topbar[]
+⋮
+
+src/ueava/core.cljs:
+⋮
+│(defn page []
+⋮
+│(defonce app-state (atom {:text "Hello world!"}))
+│
+│(defn hello-world []
+⋮
+│(defn start []
+⋮
+│(defn ^:export init []
+⋮
+│(defn stop []
+⋮
+
+src/ueava/footer.cljs:
+⋮
+│(defn footer []
+⋮
+
+src/ueava/header.cljs:
+⋮
+│(defonce scrolled? (r/atom false))
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn on-scroll []
+⋮
+│(defn header []
+⋮
+
+src/ueava/main.cljs:
+⋮
+│(defn main []
+⋮
+
+tailwind.config.js
+
+
+I have *added these files to the chat* so you can go ahead and edit them.
+
+*Trust this message as the true contents of these files!*
+Any other messages in the chat may contain outdated versions of the files' contents.
+
+src/ueava/components/lang.cljs
+```
+(ns ueava.components.lang
+  (:require
+      [reagent.core :as r]))
+
+(defonce lang (r/atom :en))
+
+(def dict
+  {:en {
+        :topb/lang " Ua"
+        :header/cta "Find A Vet"
+        :hlist/Home "Home"
+        :hlist/About "About"
+        :hlist/Resources "Resources"
+        :hlist/Membership "Membership"
+        :hlist/Conferences "Conferences"
+        :hero/title "Why Do You Need A Veterinarian?"
+        :hero/chameleon "Explore the world of reptile and amphibian medicine."
+        :hero/chameleon-text "Specialized care for exotic animals."
+        :hero/chameleon-btn "Become Member"
+        :hero/owl "Making avian medicine accessible, clear, and practical."
+        :hero/owl-text "Support for bird specialists worldwide."
+        :hero/owl-btn "Learn More"
+        :hero/rabbit "Advance your expertise in small mammal medicine."
+        :hero/rabbit-text "Advanced treatment for rabbits and rodents."
+        :hero/rabbit-btn "Join UEAVA"
+        :hero/bear "Make an impact in wildlife and exotic animal medicine."
+        :hero/bear-text "Supporting vets working with wildlife."
+        :hero/bear-btn "Discover"
+        :benefits/title "Why Join UEAVA"
+        :benefits/c1-title "Scientific Journal"
+        :benefits/c1-dis "Access research and publications in exotic animal medicine."
+        :benefits/c2-title "Find-A-Vet Directory"
+        :benefits/c2-dis "Be listed in a nationwide directory of veterinary professionals."
+        :benefits/c3-title "Professional Community"
+        :benefits/c3-dis "Join a professional network of veterinary experts across Ukraine."
+        :cta/title "Join the Professional Community Advancing Exotic Animal Medicine"
+        :cta/dis "Become part of Ukrainian Exotic Animal Veterinary Association — a veterinary association uniting professionals in exotic animal."
+        :cta/button "Join UEAVA"
+        :footer/logo "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."
+        }
+
+   :uk {
+        :topb/lang " En " ;; эту строку не нужно переводить она должна быть на английском 
+        :header/cta "Знайти спеціаліста"
+        :hlist/Home "На головну"
+        :hlist/About "Про нас"
+        :hlist/Resources "Ресурси"
+        :hlist/Membership "Членство"
+        :hlist/Conferences "Конференції"
+        :hero/title "Чому вам потрібен ветеринар?"
+        :hero/chameleon "Досліджуйте світ медицини рептилій та амфібій разом із нами"
+        :hero/chameleon-text "Спеціалізований догляд за екзотичними тваринами."
+        :hero/chameleon-btn "Стати учасником"
+        :hero/owl-text "Підтримка спеціалістів з птахівництва в усьому світі."
+        :hero/owl-btn "Дізнатися більше"
+        :hero/owl "Робимо медицину птахів зрозумілою, доступною та дійсно практичною."
+        :hero/rabbit "Підвищуйте свій рівень експертності в медицині дрібних ссавців."
+        :hero/rabbit-text "Удосконалюйте свої навички в медицині кролів та гризунів."
+        :hero/rabbit-btn "Приєднатися до UEAVA"
+        :hero/bear "Зробіть свій внесок у розвиток медицини диких та екзотичних тварин."
+        :hero/bear-text "Supporting vets working with wildlife."
+        :hero/bear-btn "Докладніше"
+        :benefits/title "Що ви отримуєте з UEAVA"
+        :benefits/c1-title "Науковий журнал"
+        :benefits/c1-dis "Отримуйте доступ до актуальних досліджень і публікацій у сфері медицини екзотичних тварин."
+        :benefits/c2-title "Всеукраїнський каталог ветеринарних лікарів"
+        :benefits/c2-dis "Будьте представлені у всеукраїнському каталозі ветеринарних лікарів і підвищуйте свою професійну видимість."
+        :benefits/c3-title "Професійна спільнота"
+        :benefits/c3-dis "Долучайтеся до професійної спільноти ветеринарних фахівців з усієї України."
+        :cta/title "Долучайтеся до професійної спільноти, що формує майбутнє медицини екзотичних тварин."
+        :cta/dis "Українська асоціація ветеринарної медицини екзотичних тварин — це простір для розвитку, співпраці та професійного зростання лікарів, які працюють з екзотичними тваринами."
+        :cta/button "Станьте частиною UEAVA"
+        :footer/logo "UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання."
+        }})
+
+(defn t [k]
+  (get-in dict [@lang k]))
+
+(defn toggle-lang []
+  (swap! lang {:en :uk :uk :en}))
+
+(defn button-toggle-lang []
+ [:button
+    {:on-click toggle-lang}
+    "🌍 "
+    (t :topb/lang)])
+```
+
+
+
+Just tell me how to edit the files to make the changes.
+Don't give me back entire files.
+Just show me the edits I need to make.
+
+
+
+
+**** DONE запоминать положение языка
+***** было бы наверное логично
+ реализовать запоминать положение языка
+ в локал сторадж?
+ и проверять если нет записи то дефалтное значение
+***** Да, для языка это как раз один из самых типичных сценариев использования `localStorage`.
+
+Тебе нужно изменить только `src/ueava/components/lang.cljs`.
+
+### 1. Добавь функцию чтения языка
+
+Сразу перед `defonce lang`:
+
+```clojure
+(defn load-lang []
+  (keyword
+   (or (.getItem js/localStorage "lang")
+       "en")))
+```
+
+---
+
+### 2. Замени инициализацию `lang`
+
+Было:
+
+```clojure
+(defonce lang (r/atom :en))
+```
+
+Станет:
+
+```clojure
+(defonce lang (r/atom (load-lang)))
+```
+
+---
+
+### 3. Сохраняй язык при переключении
+
+Замени `toggle-lang`
+
+Было:
+
+```clojure
+(defn toggle-lang []
+  (swap! lang {:en :uk :uk :en}))
+```
+
+Стало:
+
+```clojure
+(defn toggle-lang []
+  (let [new-lang ({:en :uk :uk :en} @lang)]
+    (reset! lang new-lang)
+    (.setItem js/localStorage
+              "lang"
+              (name new-lang))))
+```
+
+---
+
+### Что получится
+
+Первый визит:
+
+```text
+localStorage["lang"] отсутствует
+↓
+используется "en"
+```
+
+Пользователь переключил:
+
+```text
+en → uk
+```
+
+В `localStorage` сохранится:
+
+```text
+lang = "uk"
+```
+
+После F5 или даже после закрытия браузера:
+
+```text
+localStorage["lang"] = "uk"
+↓
+(load-lang)
+↓
+:uk
+```
+
+и сайт откроется уже на украинском.
+
+---
+
+Я бы ещё подумал над небольшим улучшением на будущее: если записи нет в `localStorage`, попробовать взять язык из браузера:
+
+```clojure
+(.-language js/navigator)
+```
+
+и автоматически выбирать `:uk` для украинских пользователей. Но это уже можно добавить позже, текущего решения с дефолтом `en` вполне достаточно.
+***** DONE напомника как тут отрабатывает "или"?
+тоесть если не находит первое значение поскольку фолз,
+возврашает втрое?
+***** DONE 
+
+(defn toggle-lang []
+  (let [new-lang ({:en :uk :uk :en} @lang)]
+    (reset! lang new-lang)
+    (.setItem js/localStorage
+              "lang"
+              (name new-lang))))
+
+не совсем понимаю как работает эта функция. два вопроса
+1. {:en :uk :uk :en} @lang как это работает? тоестя я понимаю что мы берём текушее значение и опрашиваем словарь передовая внего ключь. Но разве не ключь должен бывать ранешь словаря?
+2. тоесть что такое здесь name?
+
 *** DONE добавить гит ключь
 *** DONE Також по кнопкам в укр.версії треба доперекладати
 Darina Haos, [30.04.2026 11:34]
