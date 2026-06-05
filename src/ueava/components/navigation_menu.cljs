@@ -1,6 +1,7 @@
 (ns ueava.components.navigation-menu
   (:require
     ;; [ueava.components.navigation-cta :refer [navigation-cta]]
+    [ueava.router :refer [navigate!]]
     [ueava.components.navigation-menu-list :refer [navigation-menu-list navigation-items]]))
 
 (defn navigation-menu[]
@@ -11,14 +12,18 @@
   ;;  [:nav {:class "hidden md:flex space-x-8 font-medium"}]
   ;;         [navigation-menu-list]))
 
-  ;; (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
-  ;;   (navigation-menu-list)))
   (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
-    (for [{:keys [title href]} (navigation-items)]
-      [:a {:href href
-          :key title
-          :class "hover:text-ueava-sand"}
-            title])))
+    (navigation-menu-list)))
+
+  ;; (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+  ;;   (for [{:keys [title href]} (navigation-items)]
+  ;;     [:a {;; :href href
+  ;;         :key title
+  ;;         :on-click (fn [e]
+  ;;                     (.preventDefault e)
+  ;;                     (navigate! href))
+  ;;         :class "hover:text-ueava-sand"}
+  ;;           title])))
 
   
         ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}

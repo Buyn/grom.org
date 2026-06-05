@@ -18,6 +18,17 @@
 **** core
 (find-file-other-frame "./src/ueava/core.cljs")
 (find-file-other-frame "./src/ueava/router.cljs")
+**** pages
+(find-file-other-frame "./src/ueava/pages/home.cljs") копия мейна
+(find-file-other-frame "./src/ueava/pages/about.cljs")
+(find-file-other-frame "./src/ueava/pages/membership.cljs")
+***** main
+(find-file-other-frame "./src/ueava/main.cljs") возможно нужо будет удалить современем
+(find-file-other-frame "./src/ueava/components/hero.cljs")
+(find-file-other-frame "./src/ueava/components/benefits.cljs")
+(find-file-other-frame "./src/ueava/components/cta.cljs")
+(find-file-other-frame "./src/ueava/components/membership.cljs")
+**** components
 (find-file-other-frame "./src/ueava/footer.cljs")
 ***** header
 (find-file-other-frame "./src/ueava/header.cljs")
@@ -26,22 +37,10 @@
 (find-file-other-frame "./src/ueava/components/navigation_menu_list.cljs")
 (find-file-other-frame "./src/ueava/components/navigation_cta.cljs")
 (find-file-other-frame "./src/ueava/components/hamburger_menu.cljs")
-***** pages
-(find-file-other-frame "./src/ueava/pages/home.cljs") копия мейна
-(find-file-other-frame "./src/ueava/pages/about.cljs")
-(find-file-other-frame "./src/ueava/pages/membership.cljs")
-
-***** main
-(find-file-other-frame "./src/ueava/main.cljs") возможно нужо будет удалить современем
-(find-file-other-frame "./src/ueava/components/hero.cljs")
-(find-file-other-frame "./src/ueava/components/benefits.cljs")
-(find-file-other-frame "./src/ueava/components/cta.cljs")
-(find-file-other-frame "./src/ueava/components/membership.cljs")
-**** css
-(find-file-other-frame "./src/css/main.css")
-**** components
 ***** lang
 (find-file-other-frame "./src/ueava/components/lang.cljs")
+**** css
+(find-file-other-frame "./src/css/main.css")
 ** tree
 *** I
 #+begin_src eshell :tangle no :dir /home/buyn/Dev/ClojureScript/grom.org
@@ -453,7 +452,7 @@ tailwind стили как у arav
 
 * Kanban
 ** urgent 
-*** TODO футер
+*** DONE футер
 **** 
      [:div {:class "flex"}
       [:input {:type "email"
@@ -685,11 +684,11 @@ px-4
 безнего оно не растягиваеттся но нужно что кнопка была прижата к права или по средине
 ** in progress
 *** попробывать сделать на роуторе
-**** [[*новерно важно понять как это будет работать.][новерно важно понять как это будет работать.]]
-**** сделать переменую
+**** DONE [[*новерно важно понять как это будет работать.][новерно важно понять как это будет работать.]]
+**** DONE сделать переменую
 (defonce route
   (r/atom :home))
-**** диспетчер:
+**** DONE диспетчер:
 
 (defn current-page []
   (case @route
@@ -698,7 +697,7 @@ px-4
     :membership [membership-page]
     [:div "404"]))
 
-**** в компоненте это выглядит как:
+**** DONE в компоненте это выглядит как:
 
 (defn app []
   [:<>
@@ -706,7 +705,7 @@ px-4
    [current-page]
    [footer]])
 
-**** 
+**** DONE 
 Here are summaries of some files present in my git repository.
 Do not propose changes to these files, treat them as *read-only*.
 If you need to edit any of these files, ask me to *add them to the chat* first.
@@ -975,10 +974,10 @@ Just show me the edits I need to make.
 
 
 
-**** ладно как довай сделаем роутер
+**** DONE ладно как довай сделаем роутер
 что меняем? что делаем?
 как реализуем? что добовлем?
-**** ладно как нам это реализовать?
+**** DONE ладно как нам это реализовать?
 Я бы делал это маленькими шагами и пока **без полноценного роутера**.
 
 Судя по текущему коду, тебе достаточно подготовить архитектуру под страницы.
@@ -1428,6 +1427,216 @@ src/ueava/pages/membership_page.cljs
 И тогда получится полноценный SPA без перезагрузки страниц.
 
 Я бы именно так шёл: сначала заставить роутер работать на прямых URL, потом уже подключать красивую навигацию. Это позволит отлаживать систему маленькими шагами, а не переписывать всё сразу.
+**** DONE 
+После этого останется последний шаг:
+
+сделать компонент
+
+```clojure
+[:a
+ {:href "/about"
+  :on-click ...}
+]
+```
+
+который отменяет стандартный переход браузера и вызывает:
+
+```clojure
+(navigate! "/about")
+```
+
+И тогда получится полноценный SPA без перезагрузки страниц.
+
+Я бы именно так шёл: сначала заставить роутер работать на прямых URL, потом уже подключать красивую навигацию. Это позволит отлаживать систему маленькими шагами, а не переписывать всё сразу.
+**** DONE остальное сделал а вот эту часть непонял.
+Сейчас у тебя, скорее всего, ссылки выглядят примерно так:
+
+```clojure
+[:a {:href "/about"}
+ "About"]
+```
+
+Когда пользователь нажимает такую ссылку, браузер делает обычный переход:
+
+```text
+/about
+```
+
+и полностью перезагружает страницу.
+
+То есть твой роутер тут вообще не участвует.
+
+---
+
+Для SPA нужно перехватить клик.
+
+Например:
+
+```clojure
+[:a
+ {:href "/about"
+  :on-click
+  (fn [e]
+    (.preventDefault e)
+    (navigate! "/about"))}
+ "About"]
+```
+
+Что происходит:
+
+1. Пользователь нажимает ссылку.
+
+2. `preventDefault` говорит браузеру:
+
+   ```text
+   Не переходи по ссылке самостоятельно.
+   ```
+
+3. Вызывается:
+
+   ```clojure
+   (navigate! "/about")
+   ```
+
+4. Внутри `navigate!`:
+
+   ```clojure
+   (.pushState js/history nil "" "/about")
+   ```
+
+   меняет адрес в браузере.
+
+5. Затем:
+
+   ```clojure
+   (sync-route!)
+   ```
+
+   обновляет атом `route`.
+
+6. Reagent видит изменение:
+
+   ```clojure
+   @route
+   ```
+
+   и автоматически перерисовывает:
+
+   ```clojure
+   [current-page]
+   ```
+
+7. Пользователь видит страницу About.
+
+---
+
+То есть визуально происходит:
+
+```text
+Home
+ ↓ клик
+About
+```
+
+но при этом:
+
+```text
+header не пересоздаётся
+footer не пересоздаётся
+lang не теряется
+атомы не теряются
+JS не перегружается
+```
+
+---
+
+Чтобы не писать этот код в каждой ссылке, обычно делают маленький компонент.
+
+Например, в `router.cljs`:
+
+```clojure
+(defn link [url text]
+  [:a
+   {:href url
+    :on-click
+    (fn [e]
+      (.preventDefault e)
+      (navigate! url))}
+   text])
+```
+
+Тогда в меню:
+
+```clojure
+[link "/about" "About"]
+```
+
+или
+
+```clojure
+[link "/membership" "Membership"]
+```
+
+---
+
+Ещё один момент.
+
+Если сейчас ввести в адресной строке:
+
+```text
+http://localhost:3000/about
+```
+
+и нажать Enter, сервер должен вернуть `index.html`.
+
+Если вместо этого ты получаешь:
+
+```text
+404 Not Found
+```
+
+то понадобится ещё настроить dev-сервер и хостинг на поддержку SPA-маршрутов.
+
+Получается ли у тебя уже открыть:
+
+```text
+/
+/about
+/membership
+```
+
+прямым вводом URL без ошибок? Это хороший индикатор того, что первый этап роутера уже работает.
+**** CANCELED arhiv
+
+;; (defn navigation-menu-list[]
+;;   ;; [:<>
+;;   `(
+;;    [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+;;    [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+;;    [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+;;    [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+;;    [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
+;;    )
+;;   ;; ]
+;;   )
+
+
+
+
+
+;; (defn navigation-menu-list []
+;;   (mapv
+;;    (fn [{:keys [title href]}]
+;;      [:a {:href href :class "hover:text-ueava-sand"}
+;;       title])
+;;    navigation-items))
+
+
+**** DONE выглядит как запуск солца в ручную.
+зачем мы делаем это вручную, вместо того чтоб использовать готовый рутер?
+**** вчём разница reitit, secretary?
+какие вообще есть варианыт?
+какие самые пополярные?
 ** dezine
 ** TODO
 *** нужен ли айди
@@ -1445,21 +1654,11 @@ src/ueava/pages/membership_page.cljs
          :key title
          :class "hover:text-ueava-sand"}
           title]))
-
 *** отчёт
-**** доперевёл хиро слады.
-**** сделал что сайт запоминает состояние выбора языка.
-тоесть после перезагрузки страницы помнит какой был выбран язык, прошлый раз, и выбирает его. запоминает это для устройства.
-**** не переведена часть бенефитс
-то есть нижняя, над футером. незнаю нужна ли она и что нужно
-**** частично перевёр футер 
-то что очивидно и то что точно будет
-**** работаю над инфраструктурой чтоб добавить другие страници
-о нас
-конференции
-итд
+**** проверяй коментирую.
 *** перевести мембершип бенефит
-*** перевести футер
+*** DONE перевести футер
+*** доперевести футер
 *** СПА вс МПА 
 **** Помоги Понять что делать
 тоесть уменя сейчас сингл пейдж апп
