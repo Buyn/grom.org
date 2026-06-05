@@ -1985,6 +1985,192 @@ https://buyn.github.io/about
 или просто прейти на готовое решение? Чтоб постоянно в ручную не исправлять такое?
 
 
+**** ладно довай реализуем Решение №1
+покажи все нужные изменения.
+
+Да, для GitHub Pages это самый простой путь.
+
+Нужно изменить только `src/ueava/router.cljs` и ссылки в меню.
+
+---
+
+# 1. Изменить routes
+
+Сейчас:
+
+```clojure
+(def routes
+  {"/" :home
+   "/about" :about
+   "/membership" :membership})
+```
+
+Замени на:
+
+```clojure
+(def routes
+  {""             :home
+   "#"            :home
+   "#/"           :home
+   "#/home"       :home
+   "#/about"      :about
+   "#/membership" :membership})
+```
+
+---
+
+# 2. Читать hash вместо pathname
+
+Сейчас:
+
+```clojure
+(defn current-route []
+  (get routes
+       (.-pathname js/location)
+       :home))
+```
+
+Замени на:
+
+```clojure
+(defn current-route []
+  (get routes
+       (.-hash js/location)
+       :home))
+```
+
+---
+
+# 3. Переделать navigate!
+
+Сейчас:
+
+```clojure
+(defn navigate! [url]
+  (.pushState js/history nil "" url)
+  (sync-route!))
+```
+
+Замени на:
+
+```clojure
+(defn navigate! [url]
+  (set! (.-hash js/location) url))
+```
+
+---
+
+# 4. Реагировать на изменение hash
+
+Сейчас:
+
+```clojure
+(defn init-router! []
+  (sync-route!)
+  (.addEventListener
+   js/window
+   "popstate"
+   sync-route!))
+```
+
+Замени на:
+
+```clojure
+(defn init-router! []
+  (sync-route!)
+  (.addEventListener
+   js/window
+   "hashchange"
+   sync-route!))
+```
+
+---
+
+# 5. Исправить navigation-items
+
+Сейчас у тебя:
+
+```clojure
+{:title (t :hlist/Home)       :href "/home"}
+{:title (t :hlist/About)      :href "/about"}
+{:title (t :hlist/Membership) :href "/membership"}
+```
+
+Замени на:
+
+```clojure
+{:title (t :hlist/Home)       :href "#/home"}
+{:title (t :hlist/About)      :href "#/about"}
+{:title (t :hlist/Membership) :href "#/membership"}
+```
+
+А временные заглушки тоже желательно привести к hash-маршрутам:
+
+```clojure
+{:title (t :hlist/Resources)   :href "#/home"}
+{:title (t :hlist/Conferences) :href "#/home"}
+```
+
+---
+
+# 6. Исправить начальный URL
+
+Когда сайт открывается по адресу:
+
+```text
+https://buyn.github.io/grom.org/
+```
+
+`hash` будет пустым.
+
+У тебя уже есть:
+
+```clojure
+"" :home
+```
+
+поэтому всё заработает без дополнительных действий.
+
+---
+
+# Результат
+
+Локально:
+
+```text
+http://localhost:8080/#/about
+```
+
+GitHub Pages:
+
+```text
+https://buyn.github.io/grom.org/#/about
+```
+
+```text
+https://buyn.github.io/grom.org/#/membership
+```
+
+```text
+https://buyn.github.io/grom.org/#/home
+```
+
+и GitHub Pages перестанет выдавать 404, потому что сервер всегда будет получать запрос только на:
+
+```text
+https://buyn.github.io/grom.org/
+```
+
+а всё после `#` обрабатывается уже твоим ClojureScript-кодом.
+
+**** 
+
+**** а это нельзя решить через .nojekyll фаил?
+
+**** а куда нужно положить 404.html
+я положил рядом с индекс файлом.
+но это вроде не имеет некаково эфекта.
+
 **** вчём разница reitit, secretary?
 какие вообще есть варианыт?
 какие самые пополярные?
