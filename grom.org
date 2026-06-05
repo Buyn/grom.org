@@ -90,6 +90,7 @@ konsole -e bash -c "npm run dev"
 
 npx shadow-cljs watch app
 ** aider
+
 cd /home/buyn/Dev/ClojureScript/grom.org;aider_clipboard
 
 cd /home/buyn/Dev/ClojureScript/grom.org
@@ -97,6 +98,11 @@ aider_clipboard
 
 ** publish
 *** npm run build-gh
+(let (buffer-name-to-close (buffer-name))
+         (evil-window-split)
+         (eshell)
+         (evil-quit)
+         (switch-to-buffer-other-frame buffer-name-to-close))
 cd /home/buyn/Dev/ClojureScript/grom.org
 npm run build-gh
 *** git
