@@ -1640,6 +1640,351 @@ http://localhost:3000/about
 
 **** DONE выглядит как запуск солца в ручную.
 зачем мы делаем это вручную, вместо того чтоб использовать готовый рутер?
+
+**** 
+
+Here are summaries of some files present in my git repository.
+Do not propose changes to these files, treat them as *read-only*.
+If you need to edit any of these files, ask me to *add them to the chat* first.
+
+.gitignore
+
+README.md
+
+README.md~1
+
+grom.org
+
+grom.org_archive
+
+package.json
+
+postcss.config.js
+
+public/css/style.css
+
+public/img/Hero_Slide_1_chameleon.jpg
+
+public/img/Hero_Slide_2-1.webp
+
+public/img/Hero_Slide_2_owl.jpg
+
+public/img/Hero_Slide_3_rabbit.jpg
+
+public/img/Hero_Slide_4_bear.jpg
+
+public/img/icon.jpg
+
+public/img/ueava-logo-batom-wob-text.jpg
+
+public/img/ueava-logo-hor-brbg-wt.png
+
+public/img/ueava-logo-hor-nobg-wt.png
+
+public/img/ueava-logo-nobg-bt.png
+
+public/img/ueava-logo-nobg-wt.png
+
+public/img/ueava-logo.svg
+
+public/index.html
+
+shadow-cljs.edn
+
+src/css/main.css
+
+src/tests/components_navigation_cta_test.cljs:
+⋮
+│(deftest navigation-cta-test
+⋮
+
+src/tests/components_navigation_menu_test.cljs:
+⋮
+│(deftest navigation-menu-test
+⋮
+
+src/ueava/components/benefits.cljs:
+⋮
+│(defn benefits []
+⋮
+
+src/ueava/components/cta.cljs:
+⋮
+│(defn cta []
+⋮
+
+src/ueava/components/hamburger_menu.cljs:
+⋮
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn hamburger-menu []
+⋮
+
+src/ueava/components/hero.cljs:
+⋮
+│(defonce state
+⋮
+│(defonce timer-id (atom nil))
+│
+⋮
+│(defn slides []
+⋮
+│(def slide-count (count (slides)))
+│
+⋮
+│(defn now [] (.now js/Date))
+│
+│(defn next-random [current]
+⋮
+│(defn random-delay []
+⋮
+│(defn compute-duration [last-ts]
+⋮
+│(defn go! [idx dir]
+⋮
+│(defn schedule! []
+⋮
+│(defn bg-style [img transform duration]
+⋮
+│(defn enter-transform [dir]
+⋮
+│(defn leave-transform [dir]
+⋮
+│(defn background []
+⋮
+│(defn content []
+⋮
+│(defn nav-item [idx {:keys [img]}]
+⋮
+│(defn navigation []
+⋮
+│(defn hero []
+⋮
+
+src/ueava/components/lang.cljs:
+⋮
+│(defn load-lang []
+⋮
+│(defonce lang (r/atom (load-lang)))
+│
+│(def dict
+⋮
+│(defn t [k]
+⋮
+│;;   (swap! lang {:en :uk :uk :en}))
+│(defn toggle-lang []
+⋮
+│(defn button-toggle-lang []
+⋮
+
+src/ueava/components/membership.cljs:
+⋮
+│(defn membership []
+⋮
+
+src/ueava/components/navigation_cta.cljs:
+⋮
+│(defn navigation-cta
+⋮
+
+src/ueava/components/topbar.cljs:
+⋮
+│(defonce top-visible? (r/atom true))
+│
+│(defn topbar[]
+⋮
+
+src/ueava/core.cljs:
+⋮
+│(defn current-page []
+⋮
+│(defn page []
+⋮
+│(defn start []
+⋮
+│(defn ^:export init []
+⋮
+│(defn stop []
+⋮
+
+src/ueava/footer.cljs:
+⋮
+│(defn footer []
+⋮
+
+src/ueava/header.cljs:
+⋮
+│(defonce scrolled? (r/atom false))
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn on-scroll []
+⋮
+│(defn header []
+⋮
+
+src/ueava/main.cljs:
+⋮
+│(defn main []
+⋮
+
+src/ueava/pages/about.cljs:
+⋮
+│(defn about-page []
+⋮
+
+src/ueava/pages/home.cljs:
+⋮
+│(defn home-page []
+⋮
+
+src/ueava/pages/membership.cljs:
+⋮
+│(defn membership-page []
+⋮
+
+tailwind.config.js
+
+
+I have *added these files to the chat* so you can go ahead and edit them.
+
+*Trust this message as the true contents of these files!*
+Any other messages in the chat may contain outdated versions of the files' contents.
+
+src/ueava/router.cljs
+```
+(ns ueava.router
+  (:require [reagent.core :as r]))
+
+(defonce route (r/atom :home))
+
+(def routes
+  {"/" :home
+   "/about" :about
+   "/membership" :membership})
+
+(defn current-route []
+  (get routes
+       (.-pathname js/location)
+       :home))
+
+(defn sync-route! []
+  (reset! route (current-route)))
+
+(defn init-router! []
+  (sync-route!)
+  (.addEventListener
+   js/window
+   "popstate"
+   sync-route!))
+
+(defn navigate! [url]
+  (.pushState js/history nil "" url)
+  (sync-route!))
+```
+
+src/ueava/components/navigation_menu.cljs
+```
+(ns ueava.components.navigation-menu
+  (:require
+    ;; [ueava.components.navigation-cta :refer [navigation-cta]]
+    [ueava.router :refer [navigate!]]
+    [ueava.components.navigation-menu-list :refer [navigation-menu-list navigation-items]]))
+
+(defn navigation-menu[]
+        ;; navigation
+   ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}
+   ;;        [navigation-menu-list]])
+  ;; (into
+  ;;  [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+  ;;         [navigation-menu-list]))
+
+  (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+    (navigation-menu-list)))
+
+  ;; (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+  ;;   (for [{:keys [title href]} (navigation-items)]
+  ;;     [:a {;; :href href
+  ;;         :key title
+  ;;         :on-click (fn [e]
+  ;;                     (.preventDefault e)
+  ;;                     (navigate! href))
+  ;;         :class "hover:text-ueava-sand"}
+  ;;           title])))
+
+  
+        ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}
+        ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+        ;; [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+        ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+        ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+        ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
+        ;;  ]
+
+        ;; CTA
+        ;; [navigation-cta "md:flex"]
+  ;; )
+```
+
+src/ueava/components/navigation_menu_list.cljs
+```
+(ns ueava.components.navigation-menu-list
+  (:require
+    [ueava.components.lang :refer [t]]
+    [ueava.router :refer [navigate!]]))
+
+(defn navigation-items []
+  [{:title (t :hlist/Home)        :href "/home"}
+   {:title (t :hlist/About)       :href "/about"}
+   {:title (t :hlist/Resources)   :href "/home"}
+   {:title (t :hlist/Membership)  :href "/membership"}
+   {:title (t :hlist/Conferences) :href "/home"}])
+
+;; not used
+(defn navigation-menu-list []
+  (for [{:keys [title href]} (navigation-items)]
+    [:a {
+          ;; :href href
+          :key title
+          :on-click (fn [e]
+                  (.preventDefault e)
+                      (navigate! href)
+                      )
+          :class "hover:text-ueava-sand"}
+        title]))
+```
+
+
+
+Just tell me how to edit the files to make the changes.
+Don't give me back entire files.
+Just show me the edits I need to make.
+
+
+
+
+**** 
+сделал роутер
+он вроде работает на локальном сереве
+за паблишил на гит
+https://buyn.github.io/grom.org/
+основная страници
+при переходе получает
+https://buyn.github.io/home
+
+https://buyn.github.io/about
+ну и соответсвенно похоже ломается.
+это потому что это самодельный роутер и исправлять в ручную?
+или просто прейти на готовое решение? Чтоб постоянно в ручную не исправлять такое?
+
+
 **** вчём разница reitit, secretary?
 какие вообще есть варианыт?
 какие самые пополярные?
