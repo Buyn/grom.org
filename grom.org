@@ -458,1191 +458,9 @@ tailwind стили как у arav
 
 * Kanban
 ** urgent 
-*** DONE футер
-**** 
-     [:div {:class "flex"}
-      [:input {:type "email"
-               :placeholder "Email"
-               :class "w-full px-3 py-2
-                       rounded-l
-                       bg-gray-800
-                       border border-gray-700
-                       focus:outline-none"}]
-
-      [:button {:class "bg-white text-ueava-brown
-                        px-4 rounded-r
-                        hover:bg-ueava-brown-100"}
-       (t :footer/news-button)]]]]
-как сделать чтоб кнопка была на новой строке?
-**** кнопка растягивается на всю длину контейнера
-и обрезается частично.
-нужно убрать растяжение кнопки. но оставить растяжение поля.
-**** 
-
-(ns ueava.footer
-  (:require
-    [ueava.components.lang :refer [t]]))
-
-(defn footer []
-  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
-
-   [:div {:class "max-w-7xl mx-auto px-6 py-16
-                  grid gap-12
-                  md:grid-cols-[260px_1fr_1fr_1fr]"}
-
-    ;; BRAND
-    [:div {:class "flex flex-col gap-6"}
-
-      [:img
-        {:src "img/ueava-logo-hor-nobg-wt.png"
-         }]
-
-
-     [:p {:class "text-sm leading-relaxed text-ueava-brown-200"}
-      (t :footer/logo)]]
-
-    ;; NAV
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/nav-title)]
-
-     [:ul {:class "space-y-2"}
-      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Home)]]
-      [:li [:a {:href "/about" :class "hover:text-white"} (t :hlist/About)]]
-      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Resources)]]
-      [:li [:a {:href "/membership" :class "hover:text-white"} (t :hlist/Membership)]]
-      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Conferences)]]]]
-
-    ;; RESOURCES
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/res-title)]
-
-     [:ul {:class "space-y-2"}
-      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
-
-    ;; NEWSLETTER
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/news-title)]
-
-     [:p {:class "text-sm mb-4"}
-      (t :footer/news-text)]
-
-     ;; [:div {:class "flex"}
-     [:div {:class "flex flex-col items-start gap-2 "}
-      [:input {:type "email"
-               :placeholder "Email"
-               :class "w-full px-3 py-2
-                       rounded-l
-                       bg-gray-800
-                       border border-gray-700
-                       focus:outline-none"}]
-
-      [:button {:class "bg-white text-ueava-brown
-                        px-4 rounded-r
-                        hover:bg-ueava-brown-100"}
-       (t :footer/news-button)]]]]
-
-   ;; bottom
-   [:div {:class "border-t border-gray-800"}
-
-    [:div {:class "max-w-7xl mx-auto px-6 py-6
-                   flex flex-col md:flex-row
-                   justify-between text-sm"}
-
-     [:span "© 2026 UEAVA"]
-
-     [:div {:class "flex gap-6 mt-3 md:mt-0"}
-      [:a {:href "#" :class "hover:text-white"} "Privacy"]
-      [:a {:href "#" :class "hover:text-white"} "Terms"]
-      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
-**** ну незнаю вот текст всего файла 
-[:button {:class "bg-white text-ueava-brown
-                        px-4 rounded-r
-                        hover:bg-ueava-brown-100"}
-       (t :footer/news-button)]
-но кнопка попрежнему растягивается на всю длину.
-хоть и попробывал указаные варианты.
-**** 
-::before, ::after {
-  --tw-content: '';
-}
-element {
-}
-.text-ueava-brown {
-  --tw-text-opacity: 1;
-  color: rgb(74 37 18 / var(--tw-text-opacity, 1));
-}
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-.rounded-r {
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-}
-button, [role="button"] {
-  cursor: pointer;
-}
-button, input:where([type="button"]), input:where([type="reset"]), input:where([type="submit"]) {
-  -webkit-appearance: button;
-
-  background-color: transparent;
-  background-image: none;
-}
-button, select {
-  text-transform: none;
-}
-button, input, optgroup, select, textarea {
-  font-family: inherit;
-  font-feature-settings: inherit;
-  font-variation-settings: inherit;
-  font-size: 100%;
-  font-weight: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-  color: inherit;
-  margin: 0;
-
-  padding: 0;
-
-    padding-right: 0px;
-    padding-left: 0px;
-
-}
-*, ::before, ::after {
-  box-sizing: border-box;
-  border-width: 0;
-
-  border-style: solid;
-
-  border-color: #e5e7eb;
-
-}
-*, ::before, ::after {
-}
-.text-ueava-brown-100 {
-  --tw-text-opacity: 1;
-  color: rgb(250 227 221 / var(--tw-text-opacity, 1));
-}
-.bg-ueava-brown-950 {
-  --tw-bg-opacity: 1;
-}
-body {
-  line-height: inherit;
-}
-:root {
-  --yellow: lightyellow;
-  --blue: lightblue;
-  --pink: pink;
-  --green: lightgreen;
-}
-@import (prefers-color-scheme: dark) {
-  :root {
-    --tridactyl-header-first-bg: var(--tridactyl-photon-colours-in-content-category-header-background);
-    --tridactyl-header-second-bg: var(--tridactyl-photon-colours-in-content-category-header-background);
-    --tridactyl-header-third-bg: var(--tridactyl-header-first-bg);
-  }
-}
-:root {
-}
-@import (prefers-color-scheme: dark) {
-  :root {
-    --tridactyl-header-first-bg: var(--tridactyl-photon-colours-in-content-category-header-background);
-    --tridactyl-header-second-bg: var(--tridactyl-photon-colours-in-content-category-header-background);
-    --tridactyl-header-third-bg: var(--tridactyl-header-first-bg);
-  }
-}
-:root {
-}
-@import (prefers-color-scheme: dark) {
-  :root {
-    --tridactyl-header-first-bg: var(--tridactyl-photon-colours-in-content-category-header-background);
-    --tridactyl-header-second-bg: var(--tridactyl-photon-colours-in-content-category-header-background);
-    --tridactyl-header-third-bg: var(--tridactyl-header-first-bg);
-  }
-}
-:root {
-}
-:root {
-}
-html, :host {
-  line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-  -moz-tab-size: 4;
-  tab-size: 4;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-feature-settings: normal;
-  font-variation-settings: normal;
-}
-**** 
-я скопировал все свойства в инстпекторе для кнопки.
-контрол-с контрол-в
-если есть лучший способ передать в чать свойства из инспектора, то научи.
-**** 
-насколько я понял это происходит из свойства
-px-4
-безнего оно не растягиваеттся но нужно что кнопка была прижата к права или по средине
 ** in progress
-*** попробывать сделать на роуторе
-**** DONE [[*новерно важно понять как это будет работать.][новерно важно понять как это будет работать.]]
-**** DONE сделать переменую
-(defonce route
-  (r/atom :home))
-**** DONE диспетчер:
-
-(defn current-page []
-  (case @route
-    :home       [home-page]
-    :about      [about-page]
-    :membership [membership-page]
-    [:div "404"]))
-
-**** DONE в компоненте это выглядит как:
-
-(defn app []
-  [:<>
-   [header]
-   [current-page]
-   [footer]])
-
-**** DONE 
-Here are summaries of some files present in my git repository.
-Do not propose changes to these files, treat them as *read-only*.
-If you need to edit any of these files, ask me to *add them to the chat* first.
-
-.gitignore
-
-README.md
-
-README.md~1
-
-grom.org
-
-grom.org_archive
-
-package.json
-
-postcss.config.js
-
-public/css/style.css
-
-public/img/Hero_Slide_1_chameleon.jpg
-
-public/img/Hero_Slide_2-1.webp
-
-public/img/Hero_Slide_2_owl.jpg
-
-public/img/Hero_Slide_3_rabbit.jpg
-
-public/img/Hero_Slide_4_bear.jpg
-
-public/img/icon.jpg
-
-public/img/ueava-logo-batom-wob-text.jpg
-
-public/img/ueava-logo-hor-brbg-wt.png
-
-public/img/ueava-logo-hor-nobg-wt.png
-
-public/img/ueava-logo-nobg-bt.png
-
-public/img/ueava-logo-nobg-wt.png
-
-public/img/ueava-logo.svg
-
-public/index.html
-
-shadow-cljs.edn
-
-src/css/main.css
-
-src/tests/components_navigation_cta_test.cljs:
-⋮
-│(deftest navigation-cta-test
-⋮
-
-src/tests/components_navigation_menu_test.cljs:
-⋮
-│(deftest navigation-menu-test
-⋮
-
-src/ueava/components/benefits.cljs:
-⋮
-│(defn benefits []
-⋮
-
-src/ueava/components/cta.cljs:
-⋮
-│(defn cta []
-⋮
-
-src/ueava/components/hamburger_menu.cljs:
-⋮
-│(defonce menu-open? (r/atom false))
-│
-│(defn icon-menu []
-⋮
-│(defn icon-close []
-⋮
-│(defn hamburger-menu []
-⋮
-
-src/ueava/components/hero.cljs:
-⋮
-│(defonce state
-⋮
-│(defonce timer-id (atom nil))
-│
-⋮
-│(defn slides []
-⋮
-│(def slide-count (count (slides)))
-│
-⋮
-│(defn now [] (.now js/Date))
-│
-│(defn next-random [current]
-⋮
-│(defn random-delay []
-⋮
-│(defn compute-duration [last-ts]
-⋮
-│(defn go! [idx dir]
-⋮
-│(defn schedule! []
-⋮
-│(defn bg-style [img transform duration]
-⋮
-│(defn enter-transform [dir]
-⋮
-│(defn leave-transform [dir]
-⋮
-│(defn background []
-⋮
-│(defn content []
-⋮
-│(defn nav-item [idx {:keys [img]}]
-⋮
-│(defn navigation []
-⋮
-│(defn hero []
-⋮
-
-src/ueava/components/lang.cljs:
-⋮
-│(defn load-lang []
-⋮
-│(defonce lang (r/atom (load-lang)))
-│
-│(def dict
-⋮
-│(defn t [k]
-⋮
-│;;   (swap! lang {:en :uk :uk :en}))
-│(defn toggle-lang []
-⋮
-│(defn button-toggle-lang []
-⋮
-
-src/ueava/components/membership.cljs:
-⋮
-│(defn membership []
-⋮
-
-src/ueava/components/navigation_cta.cljs:
-⋮
-│(defn navigation-cta
-⋮
-
-src/ueava/components/navigation_menu.cljs:
-⋮
-│(defn navigation-menu[]
-⋮
-
-src/ueava/components/navigation_menu_list.cljs:
-⋮
-│(defn navigation-items []
-⋮
-│(defn navigation-menu-list []
-⋮
-
-src/ueava/components/topbar.cljs:
-⋮
-│(defonce top-visible? (r/atom true))
-│
-│(defn topbar[]
-⋮
-
-src/ueava/footer.cljs:
-⋮
-│(defn footer []
-⋮
-
-src/ueava/header.cljs:
-⋮
-│(defonce scrolled? (r/atom false))
-│(defonce menu-open? (r/atom false))
-│
-│(defn icon-menu []
-⋮
-│(defn icon-close []
-⋮
-│(defn on-scroll []
-⋮
-│(defn header []
-⋮
-
-tailwind.config.js
-
-
-I have *added these files to the chat* so you can go ahead and edit them.
-
-*Trust this message as the true contents of these files!*
-Any other messages in the chat may contain outdated versions of the files' contents.
-
-src/ueava/core.cljs
-```
-(ns ueava.core
-  (:require [reagent.core :as reagent :refer [atom]]
-            [ueava.header :refer [header]]
-            [ueava.main :refer [main]]
-            [ueava.footer :refer [footer]]
-            ))
-
-
-(defn page []
-  [:div
-   [header]
-   [main]
-   [footer]])
-
-;; (defn init []
-;;   (rdom/render [page]
-;;                (.getElementById js/document "app")))
-
-;; define your app data so that it doesn't get over-written on reload
-
-(defonce app-state (atom {:text "Hello world!"}))
-
-(defn hello-world []
-  [:div
-   [:h1 (:text @app-state)]
-   [:h3 "Edit this and watch it change!"]])
-
-(defn start []
-  (reagent/render-component
-    [page]
-    ;; [hello-world]
-    (. js/document (getElementById "app"))))
-
-(defn ^:export init []
-  ;; init is called ONCE when the page loads
-  ;; this is called in the index.html and must be exported
-  ;; so it is available even in :advanced release builds
-  (start))
-
-(defn stop []
-  ;; stop is called before any code is reloaded
-  ;; this is controlled by :before-load in the config
-  (js/console.log "stop"))
-```
-
-src/ueava/main.cljs
-```
-(ns ueava.main
-  (:require 
-            [ueava.components.hero :refer [hero]]
-            [ueava.components.benefits :refer [benefits]]
-            [ueava.components.cta :refer [cta]]
-            [ueava.components.membership :refer [membership]]))
-
-(defn main []
-  [:main
-    [hero]
-    [benefits]
-    [cta]
-    [membership]])
-
-```
-
-
-
-Just tell me how to edit the files to make the changes.
-Don't give me back entire files.
-Just show me the edits I need to make.
-
-
-
-
-**** DONE ладно как довай сделаем роутер
-что меняем? что делаем?
-как реализуем? что добовлем?
-**** DONE ладно как нам это реализовать?
-Я бы делал это маленькими шагами и пока **без полноценного роутера**.
-
-Судя по текущему коду, тебе достаточно подготовить архитектуру под страницы.
-
----
-
-## Шаг 1. Создай каталог страниц
-
-Например:
-
-```text
-src/ueava/pages/
-  home.cljs
-  about.cljs
-```
-
----
-
-## Шаг 2. Текущий `main.cljs` преврати в Home
-
-Создай:
-
-```clojure
-(ns ueava.pages.home
-  (:require
-    [ueava.components.hero :refer [hero]]
-    [ueava.components.benefits :refer [benefits]]
-    [ueava.components.cta :refer [cta]]
-    [ueava.components.membership :refer [membership]]))
-
-(defn home-page []
-  [:main
-   [hero]
-   [benefits]
-   [cta]
-   [membership]])
-```
-
----
-
-## Шаг 3. Создай About
-
-```clojure
-(ns ueava.pages.about)
-
-(defn about-page []
-  [:main
-   [:div {:class "container mx-auto py-16"}
-    [:h1 "About UEAVA"]
-    [:p "Lorem ipsum..."]]])
-```
-
-Пока хоть заглушку.
-
----
-
-## Шаг 4. Временно сделай переключатель страниц через атом
-
-📍 `src/ueava/core.cljs`
-
-После `app-state` добавь:
-
-```clojure
-(defonce current-page
-  (atom :home))
-```
-
----
-
-Добавь функцию:
-
-```clojure
-(defn render-page []
-  (case @current-page
-    :home [home-page]
-    :about [about-page]
-    [:div "404"]))
-```
-
----
-
-И в `page`
-
-замени:
-
-```clojure
-[main]
-```
-
-на
-
-```clojure
-[render-page]
-```
-
----
-
-## Что это даст
-
-У тебя уже появится настоящая модель страниц:
-
-```text
-header
-   ↓
-current-page
-   ↓
-footer
-```
-
----
-
-И ты сможешь прямо из REPL сделать:
-
-```clojure
-(reset! current-page :about)
-```
-
-и увидеть новую страницу.
-
----
-
-## Почему я советую так
-
-Потому что сейчас ты ещё не решил:
-
-- нужен роутер или нет;
-- будут отдельные html или нет;
-- как будут выглядеть URL.
-
-Но ты уже получишь:
-
-```text
-pages/
-  home.cljs
-  about.cljs
-  membership.cljs
-```
-
-и нормальную структуру проекта.
-
----
-
-После этого роутер добавляется буквально за 15 минут.
-
-Твой `render-page`:
-
-```clojure
-(case @current-page ...)
-```
-
-уже и есть зачаток роутера.
-
-Сначала сделай страницы как отдельные компоненты и убедись, что тебе нравится такая организация кода. Только потом решай, привязывать ли `current-page` к URL браузера или оставить несколько отдельных HTML-страниц. Это позволит принять решение на практике, а не теоретически.
-
-**** DONE главное по быстрее
-если не получится быстро то и фиг с ним.
-может быть премушеством может говном
-**** TODO Я бы не тащил сразу ни `reitit`, ни `secretary`.
-
-Сначала сделал бы **простейший роутер на 20 строк**, чтобы понять, нравится ли тебе сама модель.
-
----
-
-# Шаг 1. Добавить файл роутера
-
-Создай новый файл:
-
-```text
-src/ueava/router.cljs
-```
-
-Содержимое примерно такое:
-
-```clojure
-(ns ueava.router
-  (:require [reagent.core :as r]))
-
-(defonce route (r/atom :home))
-
-(def routes
-  {"/" :home
-   "/about" :about
-   "/membership" :membership})
-
-(defn current-route []
-  (get routes
-       (.-pathname js/location)
-       :home))
-```
-
----
-
-# Шаг 2. Инициализация роутера
-
-В этом же файле добавить:
-
-```clojure
-(defn sync-route! []
-  (reset! route (current-route)))
-```
-
-и
-
-```clojure
-(defn init-router! []
-  (sync-route!)
-  (.addEventListener
-   js/window
-   "popstate"
-   sync-route!))
-```
-
----
-
-# Шаг 3. Навигация без перезагрузки
-
-В этом же файле:
-
-```clojure
-(defn navigate! [url]
-  (.pushState js/history nil "" url)
-  (sync-route!))
-```
-
----
-
-Теперь у тебя есть:
-
-```clojure
-@route
-```
-
-который может быть:
-
-```clojure
-:home
-:about
-:membership
-```
-
----
-
-# Шаг 4. Страницы
-
-Я бы сразу сделал:
-
-```text
-src/ueava/pages/
-```
-
-и вынес текущий контент.
-
-Создай:
-
-```text
-src/ueava/pages/home.cljs
-```
-
----
-
-Перенеси туда содержимое текущего `main.cljs`.
-
-То есть всё:
-
-```clojure
-[hero]
-[benefits]
-[cta]
-[membership]
-```
-
-становится:
-
-```clojure
-(defn home-page []
- ...)
-```
-
----
-
-# Шаг 5. Заглушка About
-
-Создай:
-
-```text
-src/ueava/pages/about.cljs
-```
-
-```clojure
-(ns ueava.pages.about)
-
-(defn about-page []
-  [:main
-   [:div {:class "container mx-auto py-20"}
-    [:h1 "About"]]])
-```
-
----
-
-# Шаг 6. Заглушка Membership
-
-Создай:
-
-```text
-src/ueava/pages/membership_page.cljs
-```
-
-```clojure
-(ns ueava.pages.membership-page)
-
-(defn membership-page []
-  [:main
-   [:div {:class "container mx-auto py-20"}
-    [:h1 "Membership"]]])
-```
-
----
-
-# Шаг 7. Переделать core.cljs
-
-Добавить require:
-
-```clojure
-[ueava.router :refer [route init-router!]]
-[ueava.pages.home :refer [home-page]]
-[ueava.pages.about :refer [about-page]]
-[ueava.pages.membership-page :refer [membership-page]]
-```
-
----
-
-Заменить текущий `page`.
-
-Сейчас:
-
-```clojure
-[main]
-```
-
-Убрать.
-
----
-
-Добавить:
-
-```clojure
-(defn current-page []
-  (case @route
-    :home [home-page]
-    :about [about-page]
-    :membership [membership-page]
-    [home-page]))
-```
-
----
-
-В `page`:
-
-```clojure
-[:div
- [header]
- [current-page]
- [footer]]
-```
-
----
-
-# Шаг 8. В init вызвать роутер
-
-В `core.cljs`
-
-Перед:
-
-```clojure
-(start)
-```
-
-вставить:
-
-```clojure
-(init-router!)
-```
-
----
-
-# Шаг 9. Меню
-
-Вместо:
-
-```clojure
-{:href "#"}
-```
-
-станет:
-
-```clojure
-{:href "/about"}
-```
-
-или
-
-```clojure
-{:href "/membership"}
-```
-
----
-
-Но тут нужен ещё один небольшой рефакторинг меню, чтобы использовать `navigate!`.
-
-Пока этого не делай.
-
-Сначала просто подними роутер и убедись, что:
-
-```text
-/
-```
-
-открывает Home,
-
-а
-
-```text
-/about
-```
-
-открывает About при прямом вводе URL.
-
----
-
-После этого останется последний шаг:
-
-сделать компонент
-
-```clojure
-[:a
- {:href "/about"
-  :on-click ...}
-]
-```
-
-который отменяет стандартный переход браузера и вызывает:
-
-```clojure
-(navigate! "/about")
-```
-
-И тогда получится полноценный SPA без перезагрузки страниц.
-
-Я бы именно так шёл: сначала заставить роутер работать на прямых URL, потом уже подключать красивую навигацию. Это позволит отлаживать систему маленькими шагами, а не переписывать всё сразу.
-**** DONE 
-После этого останется последний шаг:
-
-сделать компонент
-
-```clojure
-[:a
- {:href "/about"
-  :on-click ...}
-]
-```
-
-который отменяет стандартный переход браузера и вызывает:
-
-```clojure
-(navigate! "/about")
-```
-
-И тогда получится полноценный SPA без перезагрузки страниц.
-
-Я бы именно так шёл: сначала заставить роутер работать на прямых URL, потом уже подключать красивую навигацию. Это позволит отлаживать систему маленькими шагами, а не переписывать всё сразу.
-**** DONE остальное сделал а вот эту часть непонял.
-Сейчас у тебя, скорее всего, ссылки выглядят примерно так:
-
-```clojure
-[:a {:href "/about"}
- "About"]
-```
-
-Когда пользователь нажимает такую ссылку, браузер делает обычный переход:
-
-```text
-/about
-```
-
-и полностью перезагружает страницу.
-
-То есть твой роутер тут вообще не участвует.
-
----
-
-Для SPA нужно перехватить клик.
-
-Например:
-
-```clojure
-[:a
- {:href "/about"
-  :on-click
-  (fn [e]
-    (.preventDefault e)
-    (navigate! "/about"))}
- "About"]
-```
-
-Что происходит:
-
-1. Пользователь нажимает ссылку.
-
-2. `preventDefault` говорит браузеру:
-
-   ```text
-   Не переходи по ссылке самостоятельно.
-   ```
-
-3. Вызывается:
-
-   ```clojure
-   (navigate! "/about")
-   ```
-
-4. Внутри `navigate!`:
-
-   ```clojure
-   (.pushState js/history nil "" "/about")
-   ```
-
-   меняет адрес в браузере.
-
-5. Затем:
-
-   ```clojure
-   (sync-route!)
-   ```
-
-   обновляет атом `route`.
-
-6. Reagent видит изменение:
-
-   ```clojure
-   @route
-   ```
-
-   и автоматически перерисовывает:
-
-   ```clojure
-   [current-page]
-   ```
-
-7. Пользователь видит страницу About.
-
----
-
-То есть визуально происходит:
-
-```text
-Home
- ↓ клик
-About
-```
-
-но при этом:
-
-```text
-header не пересоздаётся
-footer не пересоздаётся
-lang не теряется
-атомы не теряются
-JS не перегружается
-```
-
----
-
-Чтобы не писать этот код в каждой ссылке, обычно делают маленький компонент.
-
-Например, в `router.cljs`:
-
-```clojure
-(defn link [url text]
-  [:a
-   {:href url
-    :on-click
-    (fn [e]
-      (.preventDefault e)
-      (navigate! url))}
-   text])
-```
-
-Тогда в меню:
-
-```clojure
-[link "/about" "About"]
-```
-
-или
-
-```clojure
-[link "/membership" "Membership"]
-```
-
----
-
-Ещё один момент.
-
-Если сейчас ввести в адресной строке:
-
-```text
-http://localhost:3000/about
-```
-
-и нажать Enter, сервер должен вернуть `index.html`.
-
-Если вместо этого ты получаешь:
-
-```text
-404 Not Found
-```
-
-то понадобится ещё настроить dev-сервер и хостинг на поддержку SPA-маршрутов.
-
-Получается ли у тебя уже открыть:
-
-```text
-/
-/about
-/membership
-```
-
-прямым вводом URL без ошибок? Это хороший индикатор того, что первый этап роутера уже работает.
-**** CANCELED arhiv
-
-;; (defn navigation-menu-list[]
-;;   ;; [:<>
-;;   `(
-;;    [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-;;    [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-;;    [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-;;    [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-;;    [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
-;;    )
-;;   ;; ]
-;;   )
-
-
-
-
-
-;; (defn navigation-menu-list []
-;;   (mapv
-;;    (fn [{:keys [title href]}]
-;;      [:a {:href href :class "hover:text-ueava-sand"}
-;;       title])
-;;    navigation-items))
-
-
-**** DONE выглядит как запуск солца в ручную.
-зачем мы делаем это вручную, вместо того чтоб использовать готовый рутер?
-
+*** TODO Про нас
 **** 
-
 Here are summaries of some files present in my git repository.
 Do not propose changes to these files, treat them as *read-only*.
 If you need to edit any of these files, ask me to *add them to the chat* first.
@@ -1722,63 +540,6 @@ src/ueava/components/hamburger_menu.cljs:
 │(defn icon-close []
 ⋮
 │(defn hamburger-menu []
-⋮
-
-src/ueava/components/hero.cljs:
-⋮
-│(defonce state
-⋮
-│(defonce timer-id (atom nil))
-│
-⋮
-│(defn slides []
-⋮
-│(def slide-count (count (slides)))
-│
-⋮
-│(defn now [] (.now js/Date))
-│
-│(defn next-random [current]
-⋮
-│(defn random-delay []
-⋮
-│(defn compute-duration [last-ts]
-⋮
-│(defn go! [idx dir]
-⋮
-│(defn schedule! []
-⋮
-│(defn bg-style [img transform duration]
-⋮
-│(defn enter-transform [dir]
-⋮
-│(defn leave-transform [dir]
-⋮
-│(defn background []
-⋮
-│(defn content []
-⋮
-│(defn nav-item [idx {:keys [img]}]
-⋮
-│(defn navigation []
-⋮
-│(defn hero []
-⋮
-
-src/ueava/components/lang.cljs:
-⋮
-│(defn load-lang []
-⋮
-│(defonce lang (r/atom (load-lang)))
-│
-│(def dict
-⋮
-│(defn t [k]
-⋮
-│;;   (swap! lang {:en :uk :uk :en}))
-│(defn toggle-lang []
-⋮
-│(defn button-toggle-lang []
 ⋮
 
 src/ueava/components/membership.cljs:
@@ -1816,20 +577,6 @@ src/ueava/footer.cljs:
 │(defn footer []
 ⋮
 
-src/ueava/header.cljs:
-⋮
-│(defonce scrolled? (r/atom false))
-│(defonce menu-open? (r/atom false))
-│
-│(defn icon-menu []
-⋮
-│(defn icon-close []
-⋮
-│(defn on-scroll []
-⋮
-│(defn header []
-⋮
-
 src/ueava/main.cljs:
 ⋮
 │(defn main []
@@ -1858,36 +605,256 @@ I have *added these files to the chat* so you can go ahead and edit them.
 *Trust this message as the true contents of these files!*
 Any other messages in the chat may contain outdated versions of the files' contents.
 
-src/ueava/router.cljs
+src/ueava/header.cljs
 ```
-(ns ueava.router
-  (:require [reagent.core :as r]))
+(ns ueava.header
+  (:require
+    [reagent.core :as r]
+    [ueava.components.navigation-menu :refer [navigation-menu]]
+    [ueava.components.topbar :refer [topbar top-visible?]]
+    [ueava.components.navigation-menu-list :refer [navigation-items]]
+    ;; [ueava.components.hamburger-menu :refer [hamburger-menu]]
+    [ueava.components.lang :refer [t]]
+    [ueava.components.navigation-cta :refer [navigation-cta]]))
 
-(defonce route (r/atom :home))
 
-(def routes
-  {"/" :home
-   "/about" :about
-   "/membership" :membership})
+(defonce scrolled? (r/atom false))
+(defonce menu-open? (r/atom false))
 
-(defn current-route []
-  (get routes
-       (.-pathname js/location)
-       :home))
+(defn icon-menu []
+[:svg {:xmlns "http://www.w3.org/2000/svg"
+       :class "w-8 h-8"
+       :fill "none"
+       :viewBox "0 0 24 24"
+       :stroke "currentColor"}
+ [:path {:stroke-linecap "round"
+         :stroke-linejoin "round"
+         :stroke-width "2"
+         :d "M4 6h16M4 12h16M4 18h16"}]])
 
-(defn sync-route! []
-  (reset! route (current-route)))
+(defn icon-close []
+[:svg {:xmlns "http://www.w3.org/2000/svg"
+       :class "w-8 h-8"
+       :fill "none"
+       :viewBox "0 0 24 24"
+       :stroke "currentColor"}
+ [:path {:stroke-linecap "round"
+         :stroke-linejoin "round"
+         :stroke-width "2"
+         :d "M6 18L18 6M6 6l12 12"}]])
 
-(defn init-router! []
-  (sync-route!)
-  (.addEventListener
-   js/window
-   "popstate"
-   sync-route!))
 
-(defn navigate! [url]
-  (.pushState js/history nil "" url)
-  (sync-route!))
+(defn on-scroll []
+  (reset! scrolled? (> (.-scrollY js/window) 50))
+  (reset! top-visible? (< (.-scrollY js/window) 10)))
+
+(defn header []
+  (r/create-class
+   {:component-did-mount
+    (fn []
+      (.addEventListener js/window "scroll" on-scroll))
+
+    :component-will-unmount
+    (fn []
+      (.removeEventListener js/window "scroll" on-scroll))
+
+    :reagent-render
+    (fn []
+      [:header
+       {:class
+        (str
+         "fixed top-0 left-0 w-full z-[100] transition-all duration-300 "
+         (if @scrolled?
+           "bg-ueava-cream shadow text-gray-900"
+           "bg-transparent text-white"))}
+
+       [topbar]
+       [:div {:class "flex items-center justify-between px-8 py-4"}
+
+        ;; logo
+        [:a {:href "/" :class "shrink-0"}
+         [:img {:src "img/ueava-logo.svg"
+                :class "h-12"}]]
+
+        [navigation-menu]
+
+        [navigation-cta "md:flex"]
+
+       [:button
+        {:class "md:hidden text-3xl text-ueava-sand"
+          :on-click #(swap! menu-open? not)}
+        ;; (if @menu-open?
+        ;;   "✕" "☰")]
+        (if @menu-open?
+          [icon-close]
+          [icon-menu])]
+
+        [:div {:class (str
+                  "absolute top-full left-0 w-full bg-ueava-cream shadow-md md:hidden
+                   text-ueava-brown
+                   transform transition-all duration-500 ease-out "
+                  (if @menu-open?
+                    "opacity-100 translate-y-0"
+                    "opacity-0 -translate-y-4 pointer-events-none"))}
+
+
+         (into [:div
+                {:class "flex flex-col items-center text-center p-6 space-y-4"}
+                ]
+
+                (for [{:keys [title href]} (navigation-items)]
+                  [:a {:href href
+                      :key title
+                      :class "text-lg font-medium hover:text-ueava-sand transition"}
+                        title]))
+
+              [:button
+                {:class "bg-orange-500 text-white px-4 py-2 rounded
+                          hover:bg-orange-600 
+                          space-x-8 font-medium"}
+               (t :header/cta)]
+         ]
+
+        ;; [hamburger-menu]
+        ]])}))
+```
+
+src/ueava/components/lang.cljs
+```
+(ns ueava.components.lang
+  (:require
+      [reagent.core :as r]))
+
+(defn load-lang []
+  (keyword
+   (or (.getItem js/localStorage "lang")
+       "en")))
+
+;; (defonce lang (r/atom :en))
+
+(defonce lang (r/atom (load-lang)))
+
+(def dict
+  {:en {
+        :topb/lang " Ua"
+        :header/cta "Find A Vet"
+        :hlist/Home "Home"
+        :hlist/About "About"
+        :hlist/Resources "Resources"
+        :hlist/Membership "Membership"
+        :hlist/Conferences "Conferences"
+        :hero/title "Why Do You Need A Veterinarian?"
+        :hero/chameleon "Explore the world of reptile and amphibian medicine."
+        :hero/chameleon-text "Specialized care for exotic animals."
+        :hero/chameleon-btn "Become Member"
+        :hero/owl "Making avian medicine accessible, clear, and practical."
+        :hero/owl-text "Support for bird specialists worldwide."
+        :hero/owl-btn "Learn More"
+        :hero/rabbit "Advance your expertise in small mammal medicine."
+        :hero/rabbit-text "Advanced treatment for rabbits and rodents."
+        :hero/rabbit-btn "Join UEAVA"
+        :hero/bear "Make an impact in wildlife and exotic animal medicine."
+        :hero/bear-text "Supporting vets working with wildlife."
+        :hero/bear-btn "Discover"
+        :benefits/title "Why Join UEAVA"
+        :benefits/c1-title "Scientific Journal"
+        :benefits/c1-dis "Access research and publications in exotic animal medicine."
+        :benefits/c2-title "Find-A-Vet Directory"
+        :benefits/c2-dis "Be listed in a nationwide directory of veterinary professionals."
+        :benefits/c3-title "Professional Community"
+        :benefits/c3-dis "Join a professional network of veterinary experts across Ukraine."
+        :cta/title "Join the Professional Community Advancing Exotic Animal Medicine"
+        :cta/dis "Become part of Ukrainian Exotic Animal Veterinary Association — a veterinary association uniting professionals in exotic animal."
+        :cta/button "Join UEAVA"
+        :footer/logo "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."
+        :footer/nav-title "Navigation"
+        :footer/res-title "Resources"
+        :footer/news-title "Newsletter"
+        :footer/news-text "Subscribe to receive updates and news."
+        :footer/news-button "Subscribe"
+        }
+
+   :uk {
+        :topb/lang " En " ;; эту строку не нужно переводить она должна быть на английском 
+        :header/cta "Знайти спеціаліста"
+        :hlist/Home "На головну"
+        :hlist/About "Про нас"
+        :hlist/Resources "Ресурси"
+        :hlist/Membership "Членство"
+        :hlist/Conferences "Конференції"
+        :hero/title "Чому вам потрібен ветеринар?"
+        :hero/chameleon "Досліджуйте світ медицини рептилій та амфібій разом із нами"
+        :hero/chameleon-text "Спеціалізований догляд за екзотичними тваринами."
+        :hero/chameleon-btn "Стати учасником"
+        :hero/owl-text "Підтримка спеціалістів з птахівництва в усьому світі."
+        :hero/owl-btn "Дізнатися більше"
+        :hero/owl "Робимо медицину птахів зрозумілою, доступною та дійсно практичною."
+        :hero/rabbit "Підвищуйте свій рівень експертності в медицині дрібних ссавців."
+        :hero/rabbit-text "Удосконалюйте свої навички в медицині кролів та гризунів."
+        :hero/rabbit-btn "Приєднатися до UEAVA"
+        :hero/bear "Зробіть свій внесок у розвиток медицини диких та екзотичних тварин."
+        :hero/bear-text "Підтримка ветеринарів, які працюють з дикими тваринами."
+        :hero/bear-btn "Докладніше"
+        :benefits/title "Що ви отримуєте з UEAVA"
+        :benefits/c1-title "Науковий журнал"
+        :benefits/c1-dis "Отримуйте доступ до актуальних досліджень і публікацій у сфері медицини екзотичних тварин."
+        :benefits/c2-title "Всеукраїнський каталог ветеринарних лікарів"
+        :benefits/c2-dis "Будьте представлені у всеукраїнському каталозі ветеринарних лікарів і підвищуйте свою професійну видимість."
+        :benefits/c3-title "Професійна спільнота"
+        :benefits/c3-dis "Долучайтеся до професійної спільноти ветеринарних фахівців з усієї України."
+        :cta/title "Долучайтеся до професійної спільноти, що формує майбутнє медицини екзотичних тварин."
+        :cta/dis "Українська асоціація ветеринарної медицини екзотичних тварин — це простір для розвитку, співпраці та професійного зростання лікарів, які працюють з екзотичними тваринами."
+        :cta/button "Станьте частиною UEAVA"
+        :footer/logo "UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання."
+        :footer/nav-title "Навігація"
+        :footer/res-title "Ресурси"
+        :footer/news-title "Інформаційний бюлетень"
+        :footer/news-text "Підпишіться, щоб отримувати оновлення та новини."
+        :footer/news-button "Підписатися"
+        }})
+
+(defn t [k]
+  (get-in dict [@lang k]))
+
+;; (defn toggle-lang []
+;;   (swap! lang {:en :uk :uk :en}))
+(defn toggle-lang []
+  (let [new-lang ({:en :uk :uk :en} @lang)]
+    (reset! lang new-lang)
+    (.setItem js/localStorage
+              "lang"
+              (name new-lang))))
+
+(defn button-toggle-lang []
+ [:button
+    {:on-click toggle-lang}
+    "🌍 "
+    (t :topb/lang)])
+```
+
+src/ueava/components/navigation_menu_list.cljs
+```
+(ns ueava.components.navigation-menu-list
+  (:require
+    [ueava.components.lang :refer [t]]
+    [ueava.router :refer [navigate!]]))
+
+(defn navigation-items []
+  [ {:title (t :hlist/Home)        :href "#/home"}
+    {:title (t :hlist/About)       :href "#/about"}
+    {:title (t :hlist/Resources)   :href "#/Resources"}
+    {:title (t :hlist/Membership)  :href "#/membership"}
+    {:title (t :hlist/Conferences) :href "#/Conferences"}])
+
+(defn navigation-menu-list []
+  (for [{:keys [title href]} (navigation-items)]
+    [:a {:key title
+          :on-click (fn [e]
+                  (.preventDefault e)
+                      (navigate! href)
+                      )
+          :class "hover:text-ueava-sand"}
+        title]))
 ```
 
 src/ueava/components/navigation_menu.cljs
@@ -1899,15 +866,16 @@ src/ueava/components/navigation_menu.cljs
     [ueava.components.navigation-menu-list :refer [navigation-menu-list navigation-items]]))
 
 (defn navigation-menu[]
+
+  (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+    (navigation-menu-list)))
+
         ;; navigation
    ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}
    ;;        [navigation-menu-list]])
   ;; (into
   ;;  [:nav {:class "hidden md:flex space-x-8 font-medium"}]
   ;;         [navigation-menu-list]))
-
-  (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
-    (navigation-menu-list)))
 
   ;; (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
   ;;   (for [{:keys [title href]} (navigation-items)]
@@ -1933,32 +901,299 @@ src/ueava/components/navigation_menu.cljs
   ;; )
 ```
 
-src/ueava/components/navigation_menu_list.cljs
+src/ueava/router.cljs
 ```
-(ns ueava.components.navigation-menu-list
+(ns ueava.router
+  (:require [reagent.core :as r]))
+
+(defonce route (r/atom :home))
+
+(def routes
+  {""             :home
+   "#"            :home
+   "#/"           :home
+   "#/home"       :home
+   "#/about"      :about
+   "#/membership" :membership})
+
+(defn current-route []
+  (get routes
+       (.-hash js/location)
+       :home))
+
+(defn sync-route! []
+  (reset! route (current-route)))
+
+(defn init-router! []
+  (sync-route!)
+  (.addEventListener
+   js/window
+   "hashchange"
+   sync-route!))
+
+(defn navigate! [url]
+  (set! (.-hash js/location) url))
+```
+
+src/ueava/components/hero.cljs
+```
+(ns ueava.components.hero
   (:require
     [ueava.components.lang :refer [t]]
-    [ueava.router :refer [navigate!]]))
+    [reagent.core :as r]))
 
-(defn navigation-items []
-  [{:title (t :hlist/Home)        :href "/home"}
-   {:title (t :hlist/About)       :href "/about"}
-   {:title (t :hlist/Resources)   :href "/home"}
-   {:title (t :hlist/Membership)  :href "/membership"}
-   {:title (t :hlist/Conferences) :href "/home"}])
+;; ----------------------------
+;; state
+;; ----------------------------
 
-;; not used
-(defn navigation-menu-list []
-  (for [{:keys [title href]} (navigation-items)]
-    [:a {
-          ;; :href href
-          :key title
-          :on-click (fn [e]
-                  (.preventDefault e)
-                      (navigate! href)
-                      )
-          :class "hover:text-ueava-sand"}
-        title]))
+(defonce state
+  (r/atom {:current 0
+           :prev nil
+           :dir :right
+           :anim :idle
+           :duration 700 ;; dynamic animation duration
+           :last-ts 0})) ;; last interaction timestamp
+
+(defonce timer-id (atom nil))
+
+;; ----------------------------
+;; data
+;; ----------------------------
+
+(defn slides []
+  [{:key :chameleon
+    :img "img/Hero_Slide_1_chameleon.jpg"
+    :title (t :hero/chameleon)
+    :text (t :hero/chameleon-text)
+    :btn (t :hero/chameleon-btn)}
+
+   {:key :owl
+    :img "img/Hero_Slide_2_owl.jpg"
+    :title (t :hero/owl)
+    :text (t :hero/owl-text)
+    :btn (t :hero/owl-btn)}
+
+   {:key :rabbit
+    :img "img/Hero_Slide_3_rabbit.jpg"
+    :title (t :hero/rabbit)
+    :text (t :hero/rabbit-text)
+    :btn (t :hero/rabbit-btn)}
+
+   {:key :bear
+    :img "img/Hero_Slide_4_bear.jpg"
+    :title (t :hero/bear)
+    :text (t :hero/bear-text)
+    :btn (t :hero/bear-btn)}])
+
+(def slide-count (count (slides)))
+
+;; ----------------------------
+;; helpers
+;; ----------------------------
+
+(defn now [] (.now js/Date))
+
+(defn next-random [current]
+  (let [idx (rand-int slide-count)]
+    (if (= idx current)
+      (mod (inc idx) slide-count)
+      idx)))
+
+(defn random-delay []
+  (+ 7000 (rand-int 13000)))
+
+;; (defn clamp [x min max]
+;;   (-> x (max min) (min max)))
+
+;; (defn lerp [a b t]
+;;   (+ a (* (- b a) t)))
+
+;; (defn ease-out [t]
+;;   (- 1 (* (- 1 t) (- 1 t))))
+
+;; (defn compute-duration [last-ts]
+;;   (let [dt (- (now) last-ts)
+;;         min-dt 1000
+;;         max-dt 3000
+;;         min-duration 100
+;;         max-duration 700
+;;         ;; normalize dt to 0..1
+;;         t (-> (/ (- dt min-dt)
+;;                  (- max-dt min-dt))
+;;               (clamp 0 1))]
+;;     (js/Math.round
+;;      ;; (lerp min-duration max-duration t))))
+;;       (lerp min-duration max-duration (ease-out t)))))
+
+;; velocity-based duration
+
+(defn compute-duration [last-ts]
+  (let [dt (- (now) last-ts)]
+    ;; faster interaction → shorter animation
+    (cond
+      (< dt 1000) 100
+      (< dt 2000) 400
+      :else 700)))
+
+;; ----------------------------
+;; transition
+;; ----------------------------
+
+(defn go! [idx dir]
+  (let [{:keys [current anim last-ts]} @state]
+    (when (and (not= idx current)
+               (= anim :idle))
+      (let [duration (compute-duration last-ts)]
+        ;; step 1: instant logical switch
+        (swap! state assoc
+               :prev current
+               :current idx
+               :dir dir
+               :anim :prepare
+               :duration duration
+               :last-ts (now))
+        ;; step 2: start animation
+        (js/requestAnimationFrame
+         (fn []
+           (swap! state assoc :anim :run)))
+        ;; step 3: cleanup
+        (js/setTimeout
+         (fn []
+           (swap! state assoc
+                  :prev nil
+                  :anim :idle))
+         duration)))))
+
+;; ----------------------------
+;; auto loop
+;; ----------------------------
+
+(defn schedule! []
+  (when @timer-id
+    (js/clearTimeout @timer-id))
+
+  (reset! timer-id
+          (js/setTimeout
+           (fn []
+             (let [{:keys [current anim]} @state]
+               (when (= anim :idle)
+                 (go! (next-random current) :right)))
+             (schedule!))
+           (random-delay))))
+
+;; ----------------------------
+;; styles
+;; ----------------------------
+
+(defn bg-style [img transform duration]
+  {:background-image (str "url('" img "')")
+   :transform transform
+   :transition (str "transform " duration "ms cubic-bezier(0.22, 1, 0.36, 1)")})
+
+(defn enter-transform [dir]
+  (if (= dir :right)
+    "translateX(100%)"
+    "translateX(-100%)"))
+
+(defn leave-transform [dir]
+  (if (= dir :right)
+    "translateX(-100%)"
+    "translateX(100%)"))
+
+;; ----------------------------
+;; background
+;; ----------------------------
+
+(defn background []
+  (let [{:keys [current prev dir anim duration]} @state
+        curr (nth (slides) current)
+        prev-slide (when prev (nth (slides) prev))]
+    [:div {:class "absolute inset-0 overflow-hidden"}
+     ;; previous
+     (when prev-slide
+       [:div
+        {:key (str "prev-" prev)
+         :class "absolute inset-0 bg-cover bg-center z-10"
+         :style (bg-style
+                 (:img prev-slide)
+                 (if (= anim :run)
+                   (leave-transform dir)
+                   "translateX(0%)")
+                 duration)}])
+     ;; current
+     [:div
+      {:key (str "curr-" current)
+       :class "absolute inset-0 bg-cover bg-center z-20"
+       :style (bg-style
+               (:img curr)
+               (cond
+                 (= anim :prepare) (enter-transform dir)
+                 (= anim :run) "translateX(0%)"
+                 :else "translateX(0%)")
+               duration)}]]))
+
+;; ----------------------------
+;; content
+;; ----------------------------
+
+(defn content []
+  (let [{:keys [current]} @state
+        {:keys [title text btn]} (nth (slides) current)]
+    [:div {:class "relative z-40 text-white text-center max-w-2xl"}
+     [:h1 {:class "text-5xl font-bold mb-4"} title]
+     [:p {:class "text-xl mb-6"} text]
+     [:button {:class "bg-white text-ueava-brown px-6 py-3 rounded-lg hover:bg-ueava-brown-100"} btn]]))
+     ;; [:button {:class "bg-ueava-brown-600 hover:bg-ueava-brown-700 text-white px-8 py-3 rounded"} btn]]))
+
+;; ----------------------------
+;; navigation
+;; ----------------------------
+
+(defn nav-item [idx {:keys [img]}]
+  (let [{:keys [current]} @state
+        trigger! (fn[]
+                   (go! idx :right)
+                   (schedule!))]
+    [:div
+     {:key idx
+      :class (str
+              "w-16 h-16 bg-cover bg-center cursor-pointer border transition "
+              (if (= idx current)
+                "border-white scale-110"
+                "border-transparent opacity-70"))
+      :style {:background-image (str "url('" img "')")}
+      ;; hover
+      :on-mouse-enter trigger!
+      ;; click
+      :on-click trigger!}]))
+
+(defn navigation []
+  [:div {:class "absolute bottom-6 right-6 grid grid-cols-2 gap-2 z-50"}
+   (doall (map-indexed nav-item (slides)))])
+
+;; ----------------------------
+;; main
+;; ----------------------------
+
+(defn hero []
+  (r/create-class
+   {:component-did-mount
+    (fn [] (schedule!))
+
+    :component-will-unmount
+    (fn []
+      (when @timer-id
+        (js/clearTimeout @timer-id)))
+
+    :reagent-render
+    (fn []
+      [:section {:class "relative h-screen flex items-center justify-center overflow-hidden"}
+       [background]
+       [:div {:class "absolute inset-0 bg-black/40 z-30"}]
+       [content]
+       [:div {:class "absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-40"}
+        [:span {:class "text-white text-2xl"} "↓"]]
+       [navigation]])}))
 ```
 
 
@@ -1969,647 +1204,9 @@ Just show me the edits I need to make.
 
 
 
-
-**** 
-сделал роутер
-он вроде работает на локальном сереве
-за паблишил на гит
-https://buyn.github.io/grom.org/
-основная страници
-при переходе получает
-https://buyn.github.io/home
-
-https://buyn.github.io/about
-ну и соответсвенно похоже ломается.
-это потому что это самодельный роутер и исправлять в ручную?
-или просто прейти на готовое решение? Чтоб постоянно в ручную не исправлять такое?
-
-
-**** ладно довай реализуем Решение №1
-покажи все нужные изменения.
-
-Да, для GitHub Pages это самый простой путь.
-
-Нужно изменить только `src/ueava/router.cljs` и ссылки в меню.
-
----
-
-# 1. Изменить routes
-
-Сейчас:
-
-```clojure
-(def routes
-  {"/" :home
-   "/about" :about
-   "/membership" :membership})
-```
-
-Замени на:
-
-```clojure
-(def routes
-  {""             :home
-   "#"            :home
-   "#/"           :home
-   "#/home"       :home
-   "#/about"      :about
-   "#/membership" :membership})
-```
-
----
-
-# 2. Читать hash вместо pathname
-
-Сейчас:
-
-```clojure
-(defn current-route []
-  (get routes
-       (.-pathname js/location)
-       :home))
-```
-
-Замени на:
-
-```clojure
-(defn current-route []
-  (get routes
-       (.-hash js/location)
-       :home))
-```
-
----
-
-# 3. Переделать navigate!
-
-Сейчас:
-
-```clojure
-(defn navigate! [url]
-  (.pushState js/history nil "" url)
-  (sync-route!))
-```
-
-Замени на:
-
-```clojure
-(defn navigate! [url]
-  (set! (.-hash js/location) url))
-```
-
----
-
-# 4. Реагировать на изменение hash
-
-Сейчас:
-
-```clojure
-(defn init-router! []
-  (sync-route!)
-  (.addEventListener
-   js/window
-   "popstate"
-   sync-route!))
-```
-
-Замени на:
-
-```clojure
-(defn init-router! []
-  (sync-route!)
-  (.addEventListener
-   js/window
-   "hashchange"
-   sync-route!))
-```
-
----
-
-# 5. Исправить navigation-items
-
-Сейчас у тебя:
-
-```clojure
-{:title (t :hlist/Home)       :href "/home"}
-{:title (t :hlist/About)      :href "/about"}
-{:title (t :hlist/Membership) :href "/membership"}
-```
-
-Замени на:
-
-```clojure
-{:title (t :hlist/Home)       :href "#/home"}
-{:title (t :hlist/About)      :href "#/about"}
-{:title (t :hlist/Membership) :href "#/membership"}
-```
-
-А временные заглушки тоже желательно привести к hash-маршрутам:
-
-```clojure
-{:title (t :hlist/Resources)   :href "#/home"}
-{:title (t :hlist/Conferences) :href "#/home"}
-```
-
----
-
-# 6. Исправить начальный URL
-
-Когда сайт открывается по адресу:
-
-```text
-https://buyn.github.io/grom.org/
-```
-
-`hash` будет пустым.
-
-У тебя уже есть:
-
-```clojure
-"" :home
-```
-
-поэтому всё заработает без дополнительных действий.
-
----
-
-# Результат
-
-Локально:
-
-```text
-http://localhost:8080/#/about
-```
-
-GitHub Pages:
-
-```text
-https://buyn.github.io/grom.org/#/about
-```
-
-```text
-https://buyn.github.io/grom.org/#/membership
-```
-
-```text
-https://buyn.github.io/grom.org/#/home
-```
-
-и GitHub Pages перестанет выдавать 404, потому что сервер всегда будет получать запрос только на:
-
-```text
-https://buyn.github.io/grom.org/
-```
-
-а всё после `#` обрабатывается уже твоим ClojureScript-кодом.
-
-**** 
-
-**** а это нельзя решить через .nojekyll фаил?
-
-**** а куда нужно положить 404.html
-я положил рядом с индекс файлом.
-но это вроде не имеет некаково эфекта.
-
-**** вчём разница reitit, secretary?
-какие вообще есть варианыт?
-какие самые пополярные?
-** dezine
-** TODO
-*** нужен ли айди
-
-(defn navigation-items []
-  [{:title (t :hlist/Home)        :href "/home"}
-   {:title (t :hlist/About)       :href "/about"}
-   {:title (t :hlist/Resources)   :href "/home"}
-   {:title (t :hlist/Membership)  :href "/membership"}
-   {:title (t :hlist/Conferences) :href "/home"}])
-
-(defn navigation-menu-list []
-  (for [{:keys [title href]} (navigation-items)]
-    [:a {:href href
-         :key title
-         :class "hover:text-ueava-sand"}
-          title]))
-*** отчёт
-**** проверяй коментирую.
-*** перевести мембершип бенефит
-*** DONE перевести футер
-*** доперевести футер
-*** СПА вс МПА 
-**** Помоги Понять что делать
-тоесть уменя сейчас сингл пейдж апп
-встал вопрос что нужно добавить пару страниц.
-и вставл вопрос мне что-то глобально менять или просто добавить какбы ещё один апп. Тоесть использовать совместные виджеты и просто сделать ещё один хтмл и переключатся на него?
-тоесть новоя страница должна будет содержать много текста и нетак много разной графики.
-Или есть какоето более элегантное решение?
-**** Для твоего случая я бы **не делал второй SPA**.
-
-Судя по структуре проекта (`shadow-cljs`, Reagent, Tailwind), ты уже близок к тому, что обычно делают на сайтах-визитках организаций:
-
-- Главная страница (`/`)
-- About (`/about`)
-- Membership (`/membership`)
-- Resources (`/resources`)
-- Conferences (`/conferences`)
-
-И всё это один фронтенд, один набор компонентов, один CSS.
-
----
-
-### Вариант 1. Самый простой — несколько HTML страниц
-
-```
-public/
-  index.html
-  about.html
-  membership.html
-  resources.html
-```
-
-Каждая подключает один и тот же JS-бандл.
-
-Плюсы:
-
-- очень просто;
-- отличный SEO;
-- работает без JS-роутинга.
-
-Минусы:
-
-- придётся дублировать HTML-шаблоны;
-- навигация будет делать полную перезагрузку страницы.
-
-Для сайта организации это вполне нормальный вариант.
-
----
-
-### Вариант 2. Нормальный SPA-роутинг
-
-Добавляешь библиотеку вроде:
-
-```clojure
-reitit-frontend
-```
-
-или
-
-```clojure
-secretary
-```
-
-и делаешь:
-
-```clojure
-(def routes
-  {"/" home-page
-   "/about" about-page
-   "/membership" membership-page})
-```
-
-а в `page`:
-
-```clojure
-(case @current-route
-  :home [home]
-  :about [about]
-  :membership [membership])
-```
-
-Плюсы:
-
-- один HTML;
-- переиспользование компонентов;
-- переходы мгновенные.
-
-Минусы:
-
-- немного сложнее.
-
----
-
-### Вариант 3. Что бы я выбрал
-
-Для сайта UEAVA я бы сделал:
-
-```
-src/ueava/pages/
-  home.cljs
-  about.cljs
-  membership.cljs
-  resources.cljs
-  conferences.cljs
-```
-
-Каждая страница — отдельный компонент:
-
-```clojure
-(defn about-page []
-  [:<>
-   [header]
-   [about-content]
-   [footer]])
-```
-
-А дальше подключил лёгкий роутер (`reitit-frontend`).
-
-Это выглядит профессионально и масштабируется.
-
----
-
-### Что меня смущает в твоём текущем коде
-
-Сейчас у тебя меню использует:
-
-```clojure
-{:href "#"}
-```
-
-То есть фактически роутинга нет вообще.
-
-Если ты всё равно собираешься добавлять страницы, сейчас как раз хороший момент перейти на:
-
-```clojure
-{:href "/about"}
-{:href "/membership"}
-```
-
-и сразу завести роутер.
-
----
-
-Если страниц будет всего **2–3 и сайт почти статичный**, то отдельные HTML-файлы вполне разумны.
-
-Если ты ожидаешь, что через полгода будет:
-
-- About
-- Membership
-- Resources
-- Events
-- Conferences
-- Blog
-- Contacts
-
-то лучше сразу внедрить роутинг. Для Reagent сейчас чаще всего используют Reitit — он довольно лёгкий и хорошо вписывается в такую архитектуру.
-**** 
-что меня смушает в роутинге, поправь если я понимаю неправльен, То что много все тексты будут загружатся сразу. Что вроде как избыточня нагрузка. А если речь что минимум на двух языках получается, то совсем перебора.
-или это всё несовсем так?
-**** но так кроме текста
-и повторяюшихся виджетов футера, хедера, меню.
-на новых страницах могут быть и изображения\фотографии!
-**** хм немогу мотивировать себя к роутину.
-Ну тоесть я вношу лишнюю сушность, чтоб сайт быстрее переключался между страницами?
-и как в это вписать переключение языков.
-ну тоесть мне в обший фаил превода вставить все тексты.
-или разделить фаил перевода на перевод для виджетов(то что маленькое и постоянно повторяется) и перевод основновно текаст(чтоб както унифицировать межанику для основного элемента разных страниц)?
-**** ага вот это уже отличие!
-тоесть роутинг кроме скорости даёт возможность упрастить состояние
-тоесть при ротинге я смогу просо пердовать состояния.
-а в хтмл варианте преёдутся например использовать кукесы?
-**** ладно довай сумирую
-***** 1 вариант
-разделить всё на отдельные хтмл с реюзом виджетов
-index.html
-about.html
-membership.html
-resources.html
-conferences.html
-+ всё грзится и живёт по отельно
-- перегрузка на каждой странице и потеря состояний
-  несколько само повтроние структуры кложура и хтмля занаво дозгрузка жс
-***** 2 роутинг
-грузится всё разом текст и код
-но картинки подгружаются по мере необходимости
-+ нетерется состояние
-  быстрое переключение между страницами
-  компактный не повторяюшийся код
-  хорошо для оптимизации
-- много грузится за раз
-  получает немного усложнёная структура
-  вносится дополнительная сушность
-***** 3 разделить на элементы
-home.cljs
-about.cljs
-membership.cljs
-недоконца понял чем отличается от роутинга
-но вроде как понял что 
-+ можно разделить на модули
-  грузится только нужное
-- пока не понял
-**** довай я постораюсь понять, правельно ли я тебя понял с переводом.
-тоесть для обших виджетов я использую обший файл перевода.
-а для основного текста страници.
-я тексты на всех языках держужу внутри cljs самой страницы. и отображется соотвественно тот что сейчас активин?
-**** интересно тут вырисовывает разделение сущностей.
-Тоесть посуте у меня есть хоум страница полная кучи виджетов
-и куча страниц статей. Построеных по одному и томуже типу. Основная статья зажатая между футером и хедером.
-**** новерно важно понять как это будет работать.
-тоест если я делаю это через рутер
-я должен буду каждый раз прятать ненужные элементы и отображать нужные?
-это не добавит путаницу не сделает это более грязным?
-
-Нет. И вот тут у тебя, кажется, возникло небольшое заблуждение о том, как обычно пишут SPA.
-
-Ты представляешь это примерно так:
-
-```clojure
-(defn page []
-  [:<>
-   (if (= @route :home)
-     [home-page])
-
-   (if (= @route :about)
-     [about-page])
-
-   (if (= @route :membership)
-     [membership-page])
-
-   ...])
-```
-
-или даже хуже:
-
-```clojure
-[:div {:style {:display (if (= @route :home)
-                          "block"
-                          "none")}}
- [home-page]]
-
-[:div {:style {:display (if (= @route :about)
-                          "block"
-                          "none")}}
- [about-page]]
-```
-
-Это действительно было бы грязно.
-
----
-
-Обычно делают иначе.
-
-Есть один роутер:
-
-```clojure
-(defonce route
-  (r/atom :home))
-```
-
-И один диспетчер:
-
-```clojure
-(defn current-page []
-  (case @route
-    :home       [home-page]
-    :about      [about-page]
-    :membership [membership-page]
-    [:div "404"]))
-```
-
-А главный компонент:
-
-```clojure
-(defn app []
-  [:<>
-   [header]
-
-   [current-page]
-
-   [footer]])
-```
-
----
-
-Когда ты находишься на About:
-
-```text
-Header
-About
-Footer
-```
-
-Home вообще не рендерится.
-
-Не скрывается.
-
-Не висит в DOM.
-
-Его просто нет.
-
----
-
-Фактически React/Reagent делает примерно это:
-
-```text
-Было:
-
-Header
-Home
-Footer
-
-Стало:
-
-Header
-About
-Footer
-```
-
-Средняя часть заменяется.
-
----
-
-Поэтому структура обычно получается чище, а не грязнее.
-
-Например:
-
-```text
-pages/
-  home.cljs
-  about.cljs
-  membership.cljs
-
-components/
-  header.cljs
-  footer.cljs
-  navigation.cljs
-
-router.cljs
-```
-
----
-
-`home.cljs`
-
-```clojure
-(defn home-page []
-  ...)
-```
-
----
-
-`about.cljs`
-
-```clojure
-(defn about-page []
-  ...)
-```
-
----
-
-`router.cljs`
-
-```clojure
-(defn current-page []
-  (case @route
-    :home [home-page]
-    :about [about-page]
-    :membership [membership-page]))
-```
-
----
-
-Получается, что каждая страница выглядит почти как самостоятельное приложение.
-
----
-
-Кстати, именно поэтому я раньше написал, что тебе стоит сначала сделать:
-
-```text
-pages/
-  home.cljs
-  about.cljs
-  membership.cljs
-```
-
-Даже если роутера пока нет.
-
-Потому что потом добавить роутер будет очень просто:
-
-```clojure
-(case @route
-  :home [home-page]
-  :about [about-page]
-  :membership [membership-page])
-```
-
-и всё.
-
----
-
-Я бы сказал так:
-
-- Если сейчас тебе психологически проще сделать `about.html`, `membership.html` — это абсолютно разумно.
-- Если начинаешь чувствовать, что копируешь `header`, `footer`, переключатель языка и меню уже третий раз — это обычно момент, когда SPA-роутер начинает окупаться.
-
-Для проекта размеров UEAVA оба пути жизнеспособны. Тут вопрос скорее в том, где тебе будет проще поддерживать код через несколько месяцев.
-*** Про нас
+**** Про нас
 Про нас, я скину наше фото і текст скоріш за все скопіпізжу з ІГ.
-*** Про Конференції
-Про Конференції : фото 9 конференції і про те що відбувалося напишу текст
-*** Выложить статут
-
-В ресурси статут.
-/home/buyn/Desktop/worck/grom/Статут ГО_АВЛЕТУ.pdf
-*** Про нас
+***** ru
 Darina Haos, [28.05.2026 21:31]
 Привіт, це я з ідеями тексту і т.п по посиланняи переходам
 
@@ -2645,12 +1242,375 @@ Darina Haos, [28.05.2026 21:34]
 Скину фотки Софії, Свою, Віце.
 Членів засновників фотки також з ПІП
 
+***** Тепер те саме англійською
+Darina Haos, [28.05.2026 21:55]
+Тепер те саме англійською
+
+Darina Haos, [28.05.2026 21:55]
+UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species.
+
+Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine.
+
+We strive to:
+
+- develop a strong professional veterinary community;
+- support lifelong learning and professional growth for veterinarians;
+- promote modern scientific knowledge and clinical protocols;
+- create a platform for communication, collaboration, and exchange of experience;
+- popularize evidence-based veterinary medicine;
+- improve the quality of veterinary care for exotic animals.
+
+UEAVA organizes educational events, lectures, conferences, clinical discussions, and professional projects aimed at advancing exotic animal medicine in Ukraine.
+
+We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development.
+**** довай сделаем хороший дезаин
+вмести заглушки.
+начичинатся должно или с переключюшихся фото с произвольным количеством фото, как вариант. По аналогии с хиро. но тублатом снизу аля галерея.
+либо с тёмного блока градиента, поверх которо будет читабелным белый текст, из прозраного хедера.
+ну и видемо отображаюший текст учитывая выбраный язык
+**** Мне кажется, ты сейчас уже вышел из стадии "сделать роутер" и перешёл в стадию "спроектировать контент страницы".
+
+И тут я бы сначала определился с UX страницы "About", а потом уже писал код.
+
+Из того что описала Дарина, я вижу примерно такую структуру:
+
+---
+
+# Вариант 1 (мой фаворит)
+
+## Hero секция
+
+Во весь экран.
+
+Фон:
+
+- общая фотография команды
+- лёгкое затемнение
+- градиент сверху вниз
+
+```text
+██████████████████
+██              ██
+██   About Us   ██
+██              ██
+██  текст ...   ██
+██              ██
+██████████████████
+```
+
+Поверх:
+
+```text
+About UEAVA
+
+UEAVA is a professional community...
+```
+
+Белый текст.
+
+Как сейчас на Hero.
+
+---
+
+## Основной текст
+
+После Hero.
+
+Не на всю ширину.
+
+Например:
+
+```text
+┌─────────────────────┐
+│                     │
+│    About text       │
+│                     │
+└─────────────────────┘
+```
+
+`max-w-4xl`
+
+или
+
+`max-w-5xl`
+
+чтобы было удобно читать.
+
+---
+
+## "We strive to"
+
+Красивые карточки.
+
+Вместо списка:
+
+```text
+✓ develop community
+✓ lifelong learning
+✓ evidence based medicine
+```
+
+Сделать:
+
+```text
+┌──────┐ ┌──────┐ ┌──────┐
+│ icon │ │ icon │ │ icon │
+│ text │ │ text │ │ text │
+└──────┘ └──────┘ └──────┘
+```
+
+3+3 карточки.
+
+Это визуально разобьёт простыню текста.
+
+---
+
+## Президія
+
+Тут начинается самое интересное.
+
+---
+
+### Вариант А
+
+Большие карточки.
+
+```text
+ ┌─────────────┐
+ │             │
+ │   PHOTO     │
+ │             │
+ └─────────────┘
+
+ Софія ...
+ President
+```
+
+Потом рядом:
+
+```text
+Darina ...
+Vice President
+```
+
+---
+
+### Вариант Б
+
+Мне нравится больше.
+
+Сначала:
+
+```text
+Presidium
+```
+
+Потом:
+
+```text
+○ ○ ○
+```
+
+Круглые фотографии.
+
+Как у команд стартапов.
+
+---
+
+## Засновники
+
+Отдельный блок.
+
+Можно уже меньшими карточками.
+
+---
+
+# Что касается галереи сверху
+
+Я бы НЕ делал второй Hero.
+
+То есть не копировал существующий Hero один в один.
+
+Сейчас Hero работает потому что:
+
+```text
+картинка
+заголовок
+кнопка
+```
+
+---
+
+Для About пользователь пришёл читать.
+
+Если сверху начнёт каждые 10 секунд ездить:
+
+```text
+Фото 1
+Фото 2
+Фото 3
+Фото 4
+```
+
+это начинает отвлекать.
+
+---
+
+Я бы сделал так:
+
+### Hero
+
+Статичная лучшая фотография команды.
+
+---
+
+Ниже отдельный блок:
+
+```text
+Gallery
+```
+
+И уже там:
+
+```text
+┌──┐ ┌──┐ ┌──┐
+│  │ │  │ │  │
+└──┘ └──┘ └──┘
+```
+
+или
+
+```text
+◀ photo ▶
+```
+
+если хочется карусель.
+
+---
+
+# По переводам
+
+Для этой страницы я бы НЕ добавлял весь этот текст в `lang.cljs`.
+
+Он уже начинает разрастаться.
+
+Создай прямо внутри:
+
+```text
+pages/about.cljs
+```
+
+что-то вроде:
+
+```clojure
+(def about-content
+  {:en {...}
+   :uk {...}})
+```
+
+и бери текст оттуда.
+
+Общие переводы:
+
+```clojure
+:hlist/About
+:header/cta
+```
+
+оставь в `lang.cljs`.
+
+Тексты страницы — рядом со страницей.
+
+---
+
+Если бы я делал UEAVA дальше, то структура была бы примерно такой:
+
+```text
+pages/
+  home.cljs
+  about.cljs
+  membership.cljs
+  conferences.cljs
+  resources.cljs
+
+components/
+  hero.cljs
+  topbar.cljs
+  footer.cljs
+  navigation.cljs
+
+router.cljs
+
+components/lang.cljs
+```
+
+А страницу About я бы строил по схеме:
+
+```text
+Hero photo
+    ↓
+About text
+    ↓
+Mission cards
+    ↓
+Presidium
+    ↓
+Founders
+    ↓
+Gallery
+```
+
+Так она будет выглядеть как полноценная страница организации, а не как ещё один слайдер поверх текста.
+**** Звучит неплохо
+
+(ns ueava.pages.about)
+
+(defn about-page []
+  [:main
+   [:div {:class "container mx-auto py-16"}
+    [:h1 "About UEAVA"]
+    [:p " Lorem ipsum..."]]])
+
+дай полней текст страницы. Посомотрим как оно вышлядит.
+вместо изображенией замени блоками свг с текстом описываюгими что та мдолжно быть.
+
+** dezine
+** TODO
+*** Про Конференції
+Про Конференції : фото 9 конференції і про те що відбувалося напишу текст
+*** понять используется ли часть мобильная
+и понять можно ли их обеденить
+(find-file-other-frame "./src/ueava/header.cljs")
+         (into [:div
+                {:class "flex flex-col items-center text-center p-6 space-y-4"}
+                ]
+
+                (for [{:keys [title href]} (navigation-items)]
+                  [:a {:href href
+                      :key title
+                      :class "text-lg font-medium hover:text-ueava-sand transition"}
+                        title]))
+
+*** "Конференції"
+Darina Haos, [28.05.2026 21:53]
+Графа "Конференції", я думаю зробити альбомами поки що з конкордії, типу папку з фото файлами. @Witch_stitch якщо є ідеї як краще було б, то пиши, це поки те що в голову прийшло
+
 *** ресурси
 Darina Haos, [28.05.2026 21:37]
 В графу "ресурси" бачу перехід на сторінку бо будуть підпункти:
 Циркуляри - там статут і протоколи зібрань і т.п хуйня-муйня.
 Також можливо бібліотека де будуть книжки/статті/вебінари і зробити його тільки по платному доступу (типу тимчасовий доступ на рік, по підписці)
 
+*** заглушки для страниц
+*** отчёт
+**** добавил заглушки для страниц
+**** проверяй коментирую.
+*** перевести мембершип бенефит
+*** доперевести футер
+*** Выложить статут
+
+В ресурси статут.
+/home/buyn/Desktop/worck/grom/Статут ГО_АВЛЕТУ.pdf
 *** Членство
 Darina Haos, [28.05.2026 21:41]
 В графі "Членство": перехід на сторінку де буде текст:
@@ -2683,61 +1643,6 @@ UEAVA — це середовище однодумців, де можна обм
 Розвиток ветеринарної медицини екзотичних тварин в Україні
 
 Стаючи членом асоціації, ви долучаєтесь до розвитку професійної ветеринарної спільноти, популяризації доказової медицини та формування сучасних стандартів лікування екзотичних тварин.
-
-*** анкети на реєстрацію
-Darina Haos, [28.05.2026 21:41]
-І далі перехід до анкети на реєстрацію
-
-*** рахунок
-Darina Haos, [28.05.2026 21:42]
-Вже є рахунок я, не знаю як буде правильно зробити можу поки реквізити надати, а можу коли буде все зроблено і куплений домен зв'язатись з монобанкои і вказати наш сайт як офіційний щоб було легше налаштувати банкінг
-
-Darina Haos, [28.05.2026 21:49]
-QR-код для поповнення рахунку ГО "АВЛЕТУ"
-https://bank.gov.ua/qr/QkNECjAwMgoxClVDVAoK0JPQniAi0JDQktCb0JXQotCjIgpVQTQ4MzIyMDAxMDAwMDAyNjAwNjcwMDAwMzExMwoKNDU2OTkxMjQKCgoKCg
-
-Darina Haos, [28.05.2026 21:51]
-Може бути "Щорічний членський внесок" та  "Добровільний внесок"
-
-Darina Haos, [28.05.2026 21:52]
-Отримувач
-ГО "АВЛЕТУ"
-IBAN
-UA483220010000026006700003113
-ЄДРПОУ
-45699124
-Акціонерне товариство
-УНІВЕРСАЛ БАНК
-МФО
-322001
-ЄДРПОУ Банку
-21133352
-
-*** "Конференції"
-Darina Haos, [28.05.2026 21:53]
-Графа "Конференції", я думаю зробити альбомами поки що з конкордії, типу папку з фото файлами. @Witch_stitch якщо є ідеї як краще було б, то пиши, це поки те що в голову прийшло
-
-*** Тепер те саме англійською
-Darina Haos, [28.05.2026 21:55]
-Тепер те саме англійською
-
-Darina Haos, [28.05.2026 21:55]
-UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species.
-
-Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine.
-
-We strive to:
-
-- develop a strong professional veterinary community;
-- support lifelong learning and professional growth for veterinarians;
-- promote modern scientific knowledge and clinical protocols;
-- create a platform for communication, collaboration, and exchange of experience;
-- popularize evidence-based veterinary medicine;
-- improve the quality of veterinary care for exotic animals.
-
-UEAVA organizes educational events, lectures, conferences, clinical discussions, and professional projects aimed at advancing exotic animal medicine in Ukraine.
-
-We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development.
 
 *** Членство
 Darina Haos, [28.05.2026 21:57]
@@ -2772,6 +1677,35 @@ By becoming a member of the association, you contribute to the development of th
 
 Darina Haos, [28.05.2026 21:57]
 Я чесно скористалась жпт для перекладу, башка пухне, тому якщо хтось гарно спік інгліш, або просто в очі кинеться дофіга помилок - вказуйте сміливо і правте
+
+*** анкети на реєстрацію
+Darina Haos, [28.05.2026 21:41]
+І далі перехід до анкети на реєстрацію
+
+*** рахунок
+Darina Haos, [28.05.2026 21:42]
+Вже є рахунок я, не знаю як буде правильно зробити можу поки реквізити надати, а можу коли буде все зроблено і куплений домен зв'язатись з монобанкои і вказати наш сайт як офіційний щоб було легше налаштувати банкінг
+
+Darina Haos, [28.05.2026 21:49]
+QR-код для поповнення рахунку ГО "АВЛЕТУ"
+https://bank.gov.ua/qr/QkNECjAwMgoxClVDVAoK0JPQniAi0JDQktCb0JXQotCjIgpVQTQ4MzIyMDAxMDAwMDAyNjAwNjcwMDAwMzExMwoKNDU2OTkxMjQKCgoKCg
+
+Darina Haos, [28.05.2026 21:51]
+Може бути "Щорічний членський внесок" та  "Добровільний внесок"
+
+Darina Haos, [28.05.2026 21:52]
+Отримувач
+ГО "АВЛЕТУ"
+IBAN
+UA483220010000026006700003113
+ЄДРПОУ
+45699124
+Акціонерне товариство
+УНІВЕРСАЛ БАНК
+МФО
+322001
+ЄДРПОУ Банку
+21133352
 
 *** посилання на фото з конференції
 Darina Haos, [28.05.2026 22:39]
@@ -2811,33 +1745,41 @@ Darina Haos, [30.04.2026 12:18]
 Darina Haos, [30.04.2026 12:18]
 Там тоді не тільки диплом, а студентський, і питання теж, якщо студент потім став лікарем як оновити статус?
 Я тому думала про це, але не написала.
+*** удалить меин
+
+(find-file-other-frame "./src/ueava/main.cljs") возможно нужо будет удалить современем
+*** перенести
+(ns ueava.components.navigation-menu-list
+в
+(ns ueava.components.navigation-menu
+явно лишний фаил и в одном замечетально будут жить
 
 ** backlog
-**** TODO aider.el for clipbord
-***** это возможно???????
+*** TODO aider.el for clipbord
+**** это возможно???????
 или это только из клая
 если это возможно то это сильно упростит процес взаимодействия
-***** прочитать инструкцию
-****** добавить сылку
+**** прочитать инструкцию
+***** добавить сылку
 git aider.el
 https://github.com/tninja/aider.el
 OpenCode
-****** если есть
-****** установить сюда как блок
-***** установвить
-****** git aider.el
+***** если есть
+***** установить сюда как блок
+**** установвить
+***** git aider.el
 https://github.com/tninja/aider.el
-****** use
-***** запустить
-***** попробывать настроить под клипборд
-**** вынести отдельно список проектов для ИИ
-***** в роам
-***** возможно с рубрикацией
+***** use
+**** запустить
+**** попробывать настроить под клипборд
+*** вынести отдельно список проектов для ИИ
+**** в роам
+**** возможно с рубрикацией
 проесты для агента
 проесты для аи команды
 проесты для кодера
-**** перенести
-***** What is OpenCode?
+*** перенести
+**** What is OpenCode?
 
 OpenCode is an open source agent that helps you write code in your
 terminal, IDE, or desktop.
@@ -2859,7 +1801,7 @@ terminal, IDE, or desktop.
 ,* [*]
  Any editor Available as a terminal interface, desktop app, and IDE
  extension
-***** AI Code Interface
+**** AI Code Interface
 https://github.com/tninja/ai-code-interface.el
 
 An Emacs interface for AI-assisted software development. The
@@ -2930,7 +1872,7 @@ integrating seamlessly with AI-driven agile development workflows.
 ,* Screenshot
 
 [[https://github.com/tninja/ai-code-interface.el/blob/main/transient_menu.png][./transient_menu.png]]
-**** Projectile Commander Methods:
+*** Projectile Commander Methods:
 
 ?:	Commander help buffer.
 D:	Open project root in dired.
@@ -2950,22 +1892,21 @@ p:	Run ripgrep on project.
 r:	Replace a string in the project.
 s:	Switch project.
 v:	Open project root in vc-dir or magit.
-**** markdown-mode
+*** markdown-mode
 https://jblevins.org/projects/markdown-mode/
 
-**** DONE сделать страниццу на укринском
-**** переложить разделить
-**** текстура пазла на заднике
+*** переложить разделить
+*** текстура пазла на заднике
 возможно даже с эфектом паралакса
 
-**** 🔥 параллакс
+*** 🔥 параллакс
 текст двигается медленнее фона
-**** добавить в меню подменю
+*** добавить в меню подменю
 тоесть это не кнопки а выплываюшие меню
-**** 🔥 inertia feeling (как iOS)
+*** 🔥 inertia feeling (как iOS)
 ease-out cubic bezier
-***** 👉 инерция
-**** 🔥 stagger animation
+**** 👉 инерция
+*** 🔥 stagger animation
 
 заголовок → текст → кнопка
 *** свг вопросы работы с
@@ -3540,506 +2481,9 @@ expected: (= (navigation-menu) [:nav {:class "hidden md:flex space-x-8 font-medi
 и он считывается изаменяется при запросе
 чтоб не хранить все языки в памяти
 ** done
-*** DONE локальный сторедж
-**** 
-Here are summaries of some files present in my git repository.
-Do not propose changes to these files, treat them as *read-only*.
-If you need to edit any of these files, ask me to *add them to the chat* first.
+*** DONE а почему хеш так работает?
+это какаето договорёность?
 
-.gitignore
-
-README.md
-
-README.md~1
-
-grom.org
-
-grom.org_archive
-
-package.json
-
-postcss.config.js
-
-public/css/style.css
-
-public/img/Hero_Slide_1_chameleon.jpg
-
-public/img/Hero_Slide_2-1.webp
-
-public/img/Hero_Slide_2_owl.jpg
-
-public/img/Hero_Slide_3_rabbit.jpg
-
-public/img/Hero_Slide_4_bear.jpg
-
-public/img/icon.jpg
-
-public/img/ueava-logo-batom-wob-text.jpg
-
-public/img/ueava-logo-hor-brbg-wt.png
-
-public/img/ueava-logo-hor-nobg-wt.png
-
-public/img/ueava-logo-nobg-bt.png
-
-public/img/ueava-logo-nobg-wt.png
-
-public/img/ueava-logo.svg
-
-public/index.html
-
-shadow-cljs.edn
-
-src/css/main.css
-
-src/tests/components_navigation_cta_test.cljs:
-⋮
-│(deftest navigation-cta-test
-⋮
-
-src/tests/components_navigation_menu_test.cljs:
-⋮
-│(deftest navigation-menu-test
-⋮
-
-src/ueava/components/benefits.cljs:
-⋮
-│(defn benefits []
-⋮
-
-src/ueava/components/cta.cljs:
-⋮
-│(defn cta []
-⋮
-
-src/ueava/components/hamburger_menu.cljs:
-⋮
-│(defonce menu-open? (r/atom false))
-│
-│(defn icon-menu []
-⋮
-│(defn icon-close []
-⋮
-│(defn hamburger-menu []
-⋮
-
-src/ueava/components/hero.cljs:
-⋮
-│(defonce state
-⋮
-│(defonce timer-id (atom nil))
-│
-⋮
-│(defn slides []
-⋮
-│(def slide-count (count (slides)))
-│
-⋮
-│(defn now [] (.now js/Date))
-│
-│(defn next-random [current]
-⋮
-│(defn random-delay []
-⋮
-│(defn compute-duration [last-ts]
-⋮
-│(defn go! [idx dir]
-⋮
-│(defn schedule! []
-⋮
-│(defn bg-style [img transform duration]
-⋮
-│(defn enter-transform [dir]
-⋮
-│(defn leave-transform [dir]
-⋮
-│(defn background []
-⋮
-│(defn content []
-⋮
-│(defn nav-item [idx {:keys [img]}]
-⋮
-│(defn navigation []
-⋮
-│(defn hero []
-⋮
-
-src/ueava/components/membership.cljs:
-⋮
-│(defn membership []
-⋮
-
-src/ueava/components/navigation_cta.cljs:
-⋮
-│(defn navigation-cta
-⋮
-
-src/ueava/components/navigation_menu.cljs:
-⋮
-│(defn navigation-menu[]
-⋮
-
-src/ueava/components/navigation_menu_list.cljs:
-⋮
-│(defn navigation-items []
-⋮
-│(defn navigation-menu-list []
-⋮
-
-src/ueava/components/topbar.cljs:
-⋮
-│(defonce top-visible? (r/atom true))
-│
-│(defn topbar[]
-⋮
-
-src/ueava/core.cljs:
-⋮
-│(defn page []
-⋮
-│(defonce app-state (atom {:text "Hello world!"}))
-│
-│(defn hello-world []
-⋮
-│(defn start []
-⋮
-│(defn ^:export init []
-⋮
-│(defn stop []
-⋮
-
-src/ueava/footer.cljs:
-⋮
-│(defn footer []
-⋮
-
-src/ueava/header.cljs:
-⋮
-│(defonce scrolled? (r/atom false))
-│(defonce menu-open? (r/atom false))
-│
-│(defn icon-menu []
-⋮
-│(defn icon-close []
-⋮
-│(defn on-scroll []
-⋮
-│(defn header []
-⋮
-
-src/ueava/main.cljs:
-⋮
-│(defn main []
-⋮
-
-tailwind.config.js
-
-
-I have *added these files to the chat* so you can go ahead and edit them.
-
-*Trust this message as the true contents of these files!*
-Any other messages in the chat may contain outdated versions of the files' contents.
-
-src/ueava/components/lang.cljs
-```
-(ns ueava.components.lang
-  (:require
-      [reagent.core :as r]))
-
-(defonce lang (r/atom :en))
-
-(def dict
-  {:en {
-        :topb/lang " Ua"
-        :header/cta "Find A Vet"
-        :hlist/Home "Home"
-        :hlist/About "About"
-        :hlist/Resources "Resources"
-        :hlist/Membership "Membership"
-        :hlist/Conferences "Conferences"
-        :hero/title "Why Do You Need A Veterinarian?"
-        :hero/chameleon "Explore the world of reptile and amphibian medicine."
-        :hero/chameleon-text "Specialized care for exotic animals."
-        :hero/chameleon-btn "Become Member"
-        :hero/owl "Making avian medicine accessible, clear, and practical."
-        :hero/owl-text "Support for bird specialists worldwide."
-        :hero/owl-btn "Learn More"
-        :hero/rabbit "Advance your expertise in small mammal medicine."
-        :hero/rabbit-text "Advanced treatment for rabbits and rodents."
-        :hero/rabbit-btn "Join UEAVA"
-        :hero/bear "Make an impact in wildlife and exotic animal medicine."
-        :hero/bear-text "Supporting vets working with wildlife."
-        :hero/bear-btn "Discover"
-        :benefits/title "Why Join UEAVA"
-        :benefits/c1-title "Scientific Journal"
-        :benefits/c1-dis "Access research and publications in exotic animal medicine."
-        :benefits/c2-title "Find-A-Vet Directory"
-        :benefits/c2-dis "Be listed in a nationwide directory of veterinary professionals."
-        :benefits/c3-title "Professional Community"
-        :benefits/c3-dis "Join a professional network of veterinary experts across Ukraine."
-        :cta/title "Join the Professional Community Advancing Exotic Animal Medicine"
-        :cta/dis "Become part of Ukrainian Exotic Animal Veterinary Association — a veterinary association uniting professionals in exotic animal."
-        :cta/button "Join UEAVA"
-        :footer/logo "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."
-        }
-
-   :uk {
-        :topb/lang " En " ;; эту строку не нужно переводить она должна быть на английском 
-        :header/cta "Знайти спеціаліста"
-        :hlist/Home "На головну"
-        :hlist/About "Про нас"
-        :hlist/Resources "Ресурси"
-        :hlist/Membership "Членство"
-        :hlist/Conferences "Конференції"
-        :hero/title "Чому вам потрібен ветеринар?"
-        :hero/chameleon "Досліджуйте світ медицини рептилій та амфібій разом із нами"
-        :hero/chameleon-text "Спеціалізований догляд за екзотичними тваринами."
-        :hero/chameleon-btn "Стати учасником"
-        :hero/owl-text "Підтримка спеціалістів з птахівництва в усьому світі."
-        :hero/owl-btn "Дізнатися більше"
-        :hero/owl "Робимо медицину птахів зрозумілою, доступною та дійсно практичною."
-        :hero/rabbit "Підвищуйте свій рівень експертності в медицині дрібних ссавців."
-        :hero/rabbit-text "Удосконалюйте свої навички в медицині кролів та гризунів."
-        :hero/rabbit-btn "Приєднатися до UEAVA"
-        :hero/bear "Зробіть свій внесок у розвиток медицини диких та екзотичних тварин."
-        :hero/bear-text "Supporting vets working with wildlife."
-        :hero/bear-btn "Докладніше"
-        :benefits/title "Що ви отримуєте з UEAVA"
-        :benefits/c1-title "Науковий журнал"
-        :benefits/c1-dis "Отримуйте доступ до актуальних досліджень і публікацій у сфері медицини екзотичних тварин."
-        :benefits/c2-title "Всеукраїнський каталог ветеринарних лікарів"
-        :benefits/c2-dis "Будьте представлені у всеукраїнському каталозі ветеринарних лікарів і підвищуйте свою професійну видимість."
-        :benefits/c3-title "Професійна спільнота"
-        :benefits/c3-dis "Долучайтеся до професійної спільноти ветеринарних фахівців з усієї України."
-        :cta/title "Долучайтеся до професійної спільноти, що формує майбутнє медицини екзотичних тварин."
-        :cta/dis "Українська асоціація ветеринарної медицини екзотичних тварин — це простір для розвитку, співпраці та професійного зростання лікарів, які працюють з екзотичними тваринами."
-        :cta/button "Станьте частиною UEAVA"
-        :footer/logo "UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання."
-        }})
-
-(defn t [k]
-  (get-in dict [@lang k]))
-
-(defn toggle-lang []
-  (swap! lang {:en :uk :uk :en}))
-
-(defn button-toggle-lang []
- [:button
-    {:on-click toggle-lang}
-    "🌍 "
-    (t :topb/lang)])
-```
-
-
-
-Just tell me how to edit the files to make the changes.
-Don't give me back entire files.
-Just show me the edits I need to make.
-
-
-
-
-**** DONE запоминать положение языка
-***** было бы наверное логично
- реализовать запоминать положение языка
- в локал сторадж?
- и проверять если нет записи то дефалтное значение
-***** Да, для языка это как раз один из самых типичных сценариев использования `localStorage`.
-
-Тебе нужно изменить только `src/ueava/components/lang.cljs`.
-
-### 1. Добавь функцию чтения языка
-
-Сразу перед `defonce lang`:
-
-```clojure
-(defn load-lang []
-  (keyword
-   (or (.getItem js/localStorage "lang")
-       "en")))
-```
-
----
-
-### 2. Замени инициализацию `lang`
-
-Было:
-
-```clojure
-(defonce lang (r/atom :en))
-```
-
-Станет:
-
-```clojure
-(defonce lang (r/atom (load-lang)))
-```
-
----
-
-### 3. Сохраняй язык при переключении
-
-Замени `toggle-lang`
-
-Было:
-
-```clojure
-(defn toggle-lang []
-  (swap! lang {:en :uk :uk :en}))
-```
-
-Стало:
-
-```clojure
-(defn toggle-lang []
-  (let [new-lang ({:en :uk :uk :en} @lang)]
-    (reset! lang new-lang)
-    (.setItem js/localStorage
-              "lang"
-              (name new-lang))))
-```
-
----
-
-### Что получится
-
-Первый визит:
-
-```text
-localStorage["lang"] отсутствует
-↓
-используется "en"
-```
-
-Пользователь переключил:
-
-```text
-en → uk
-```
-
-В `localStorage` сохранится:
-
-```text
-lang = "uk"
-```
-
-После F5 или даже после закрытия браузера:
-
-```text
-localStorage["lang"] = "uk"
-↓
-(load-lang)
-↓
-:uk
-```
-
-и сайт откроется уже на украинском.
-
----
-
-Я бы ещё подумал над небольшим улучшением на будущее: если записи нет в `localStorage`, попробовать взять язык из браузера:
-
-```clojure
-(.-language js/navigator)
-```
-
-и автоматически выбирать `:uk` для украинских пользователей. Но это уже можно добавить позже, текущего решения с дефолтом `en` вполне достаточно.
-***** DONE напомника как тут отрабатывает "или"?
-тоесть если не находит первое значение поскольку фолз,
-возврашает втрое?
-***** DONE 
-
-(defn toggle-lang []
-  (let [new-lang ({:en :uk :uk :en} @lang)]
-    (reset! lang new-lang)
-    (.setItem js/localStorage
-              "lang"
-              (name new-lang))))
-
-не совсем понимаю как работает эта функция. два вопроса
-1. {:en :uk :uk :en} @lang как это работает? тоестя я понимаю что мы берём текушее значение и опрашиваем словарь передовая внего ключь. Но разве не ключь должен бывать ранешь словаря?
-2. тоесть что такое здесь name?
-
-*** DONE добавить гит ключь
-*** DONE Також по кнопкам в укр.версії треба доперекладати
-Darina Haos, [30.04.2026 11:34]
-Стати учасником
-
-Darina Haos, [30.04.2026 11:35]
-Дізнатися більше
-
-Darina Haos, [30.04.2026 11:36]
-Приєднатися до UEAVA
-
-Darina Haos, [30.04.2026 11:41]
-Дослідити
-
-Darina Haos, [30.04.2026 11:41]
-
-
-София, [30.04.2026 12:02]
-Може тут краще "докладніше"?
-Darina Haos, [30.04.2026 12:19]
-О яке гарне слово, тааак
-
-"Advanced treatment for rabbits and rodents."
-**«Удосконалюйте свої навички в медицині кролів та гризунів.»**
-**«Сучасне лікування кролів та гризунів.»**
-**«Передові методи лікування кролів та гризунів.»**
-**«Поглиблюйте свої знання у лікуванні кролів та гризунів.»**
-**«Поглиблюйте експертизу в медицині кролів та гризунів.»**
-
-довай переведём адекватно это на укрински язык
-
-Для сайта ветеринарной организации я бы перевёл так:
-
-**«Сучасне лікування кролів та гризунів.»**
-
-Если хочется чуть более академично:
-
-**«Передові методи лікування кролів та гризунів.»**
-
-Если акцент на профессиональном развитии ветеринаров:
-
-**«Поглиблюйте свої знання у лікуванні кролів та гризунів.»**
-
-Если это подпись к слайду рядом с другими фразами вроде:
-
-- «Досліджуйте світ медицини рептилій та амфібій...»
-- «Робимо медицину птахів зрозумілою...»
-
-то по стилю лучше всего смотрится:
-
-**«Удосконалюйте свої навички в медицині кролів та гризунів.»**
-
-или
-
-**«Поглиблюйте експертизу в медицині кролів та гризунів.»**
-
-Я бы выбрал второй вариант, если сайт ориентирован именно на ветеринарных специалистов:
-
-> **«Поглиблюйте експертизу в медицині кролів та гризунів.»**
-
-*** DONE добавил нужный текст
-*** DONE заменить текст на переменые
-*** DONE перевести не указаное
-*** DONE old code
-(find-file-other-frame "./src/ueava/core.cljs")
-
-    ;; [hello-world]
-
-;; (defn init []
-;;   (rdom/render [page]
-;;                (.getElementById js/document "app")))
-
-;; define your app data so that it doesn't get over-written on reload
-
-;; (defonce app-state (atom {:text "Hello world!"}))
-
-;; (defn hello-world []
-;;   [:div
-;;    [:h1 (:text @app-state)]
-;;    [:h3 "Edit this and watch it change!"]])
 * project comands
 :PROPERTIES:
 :header-args: :tangle no

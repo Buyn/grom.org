@@ -5,15 +5,16 @@
     [ueava.components.navigation-menu-list :refer [navigation-menu-list navigation-items]]))
 
 (defn navigation-menu[]
+
+  (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+    (navigation-menu-list)))
+
         ;; navigation
    ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}
    ;;        [navigation-menu-list]])
   ;; (into
   ;;  [:nav {:class "hidden md:flex space-x-8 font-medium"}]
   ;;         [navigation-menu-list]))
-
-  (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
-    (navigation-menu-list)))
 
   ;; (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
   ;;   (for [{:keys [title href]} (navigation-items)]
