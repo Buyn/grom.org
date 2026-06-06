@@ -460,7 +460,7 @@ tailwind стили как у arav
 ** urgent 
 ** in progress
 *** TODO Про нас
-**** 
+**** DONE 
 Here are summaries of some files present in my git repository.
 Do not propose changes to these files, treat them as *read-only*.
 If you need to edit any of these files, ask me to *add them to the chat* first.
@@ -1204,7 +1204,7 @@ Just show me the edits I need to make.
 
 
 
-**** Про нас
+**** DONE Про нас
 Про нас, я скину наше фото і текст скоріш за все скопіпізжу з ІГ.
 ***** ru
 Darina Haos, [28.05.2026 21:31]
@@ -1263,12 +1263,12 @@ We strive to:
 UEAVA organizes educational events, lectures, conferences, clinical discussions, and professional projects aimed at advancing exotic animal medicine in Ukraine.
 
 We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development.
-**** довай сделаем хороший дезаин
+**** DONE довай сделаем хороший дезаин
 вмести заглушки.
 начичинатся должно или с переключюшихся фото с произвольным количеством фото, как вариант. По аналогии с хиро. но тублатом снизу аля галерея.
 либо с тёмного блока градиента, поверх которо будет читабелным белый текст, из прозраного хедера.
 ну и видемо отображаюший текст учитывая выбраный язык
-**** Мне кажется, ты сейчас уже вышел из стадии "сделать роутер" и перешёл в стадию "спроектировать контент страницы".
+**** DONE Мне кажется, ты сейчас уже вышел из стадии "сделать роутер" и перешёл в стадию "спроектировать контент страницы".
 
 И тут я бы сначала определился с UX страницы "About", а потом уже писал код.
 
@@ -1561,7 +1561,7 @@ Gallery
 ```
 
 Так она будет выглядеть как полноценная страница организации, а не как ещё один слайдер поверх текста.
-**** Звучит неплохо
+**** DONE Звучит неплохо
 
 (ns ueava.pages.about)
 
@@ -1573,7 +1573,548 @@ Gallery
 
 дай полней текст страницы. Посомотрим как оно вышлядит.
 вместо изображенией замени блоками свг с текстом описываюгими что та мдолжно быть.
+**** DONE ну верста смотрится неплохо, но
+вот как сделать это не гряхно хоть бы сдвумя языками, не очевидно для меня.
+и не понятно как это будет выгляить с изображением.
+допустим довай возмёт изображение
+    :img "img/Hero_Slide_1_chameleon.jpg"
+и встаим его
+и сдвумя языкаим.
+сделай поный пример, с полным текстом файла.
+**** Я бы сделал не через огромный `lang.cljs`, а через локальный словарь страницы.
 
+Тогда `about.cljs` становится полностью самодостаточным.
+
+Примерно так:
+
+```clojure
+(ns ueava.pages.about
+  (:require
+   [ueava.components.lang :refer [lang]]))
+
+(def about-content
+  {:en
+   {:title "About UEAVA"
+
+    :subtitle
+    "Professional community advancing exotic animal medicine in Ukraine."
+
+    :p1
+    "UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species."
+
+    :p2
+    "Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine."
+
+    :p3
+    "We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development."
+
+    :mission-title "Our Mission"
+
+    :mission-1
+    "Develop a strong professional veterinary community."
+
+    :mission-2
+    "Support lifelong learning and professional growth for veterinarians."
+
+    :mission-3
+    "Promote modern scientific knowledge and clinical protocols."
+
+    :mission-4
+    "Create a platform for communication, collaboration, and exchange of experience."
+
+    :mission-5
+    "Popularize evidence-based veterinary medicine."
+
+    :mission-6
+    "Improve the quality of veterinary care for exotic animals."
+
+    :presidium "Presidium"
+
+    :president "President"
+    :vice-president "Vice President"
+    :board-member "Board Member"}
+
+   :uk
+   {:title "Про UEAVA"
+
+    :subtitle
+    "Професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин."
+
+    :p1
+    "UEAVA — це професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин. Ми об’єднуємо фахівців з різних регіонів України для розвитку сучасної, доказової та доступної ветеринарної медицини для птахів, рептилій, гризунів, кролів, тхорів та інших екзотичних видів."
+
+    :p2
+    "Наша асоціація створена для підтримки ветеринарних лікарів, обміну досвідом, професійного навчання та популяризації високих стандартів лікування екзотичних тварин в Україні."
+
+    :p3
+    "Ми віримо, що сильна професійна спільнота, науковий підхід і співпраця між лікарями є основою розвитку сучасної ветеринарної медицини."
+
+    :mission-title "Наша місія"
+
+    :mission-1
+    "Розвивати професійну ветеринарну спільноту."
+
+    :mission-2
+    "Підтримувати безперервне навчання лікарів."
+
+    :mission-3
+    "Поширювати сучасні наукові знання та клінічні протоколи."
+
+    :mission-4
+    "Створювати платформу для комунікації та співпраці."
+
+    :mission-5
+    "Популяризувати доказову ветеринарну медицину."
+
+    :mission-6
+    "Підвищувати якість ветеринарної допомоги екзотичним тваринам."
+
+    :presidium "Президія"
+
+    :president "Президент"
+    :vice-president "Віцепрезидент"
+    :board-member "Член президії"}})
+
+(defn tr [k]
+  (get-in about-content [@lang k]))
+
+(defn about-page []
+  [:main
+
+   ;; Hero
+
+   [:section
+    {:class "relative h-[70vh] flex items-center justify-center overflow-hidden"}
+
+    [:div
+     {:class "absolute inset-0 bg-cover bg-center"
+      :style {:background-image
+              "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+
+    [:div
+     {:class "absolute inset-0 bg-black/60"}]
+
+    [:div
+     {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+
+     [:h1
+      {:class "text-5xl md:text-7xl font-bold mb-6"}
+      (tr :title)]
+
+     [:p
+      {:class "text-xl md:text-2xl"}
+      (tr :subtitle)]]]
+
+   ;; About text
+
+   [:section
+    {:class "py-20"}
+
+    [:div
+     {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
+
+     [:p (tr :p1)]
+     [:p (tr :p2)]
+     [:p (tr :p3)]]]
+
+   ;; Mission
+
+   [:section
+    {:class "bg-gray-50 py-20"}
+
+    [:div
+     {:class "max-w-6xl mx-auto px-8"}
+
+     [:h2
+      {:class "text-4xl font-bold text-center mb-12"}
+      (tr :mission-title)]
+
+     [:div
+      {:class "grid md:grid-cols-3 gap-6"}
+
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-1)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-2)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-3)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-4)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-5)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-6)]]]]
+
+   ;; Presidium
+
+   [:section
+    {:class "py-20"}
+
+    [:div
+     {:class "max-w-6xl mx-auto px-8"}
+
+     [:h2
+      {:class "text-4xl font-bold text-center mb-12"}
+      (tr :presidium)]
+
+     [:div
+      {:class "grid md:grid-cols-3 gap-10"}
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :president)]
+       [:p "Name"]]
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :vice-president)]
+       [:p "Name"]]
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :board-member)]
+       [:p "Name"]]]]]])
+```
+
+Обрати внимание на важный момент:
+
+```clojure
+(def about-content
+  {:en {...}
+   :uk {...}})
+```
+
+лежит рядом со страницей.
+
+А общий файл `lang.cljs` содержит только то, что используется во многих местах:
+
+```clojure
+:hlist/About
+:hlist/Home
+:header/cta
+:footer/logo
+```
+
+В результате через полгода у тебя не будет одного монстра на 1500 строк переводов, а каждая страница будет хранить собственный контент рядом со своей разметкой. Это обычно намного проще поддерживать.
+**** arhiv
+
+(ns ueava.pages.about)
+
+(defn about-page []
+[:main
+
+;; --------------------------------------------------
+;; HERO
+;; --------------------------------------------------
+
+[:section
+{:class "relative min-h-screen flex items-center justify-center overflow-hidden"}
+
+;; Placeholder background image
+[:div
+{:class "absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 flex items-center justify-center"}
+
+[:div
+{:class "text-center text-white/50"}
+
+[:svg {:width "240" :height "240"}
+ [:rect {:x "10" :y "10"
+         :width "220"
+         :height "220"
+         :fill "none"
+         :stroke "currentColor"}]
+ [:text {:x "120"
+         :y "120"
+         :text-anchor "middle"}
+  "TEAM PHOTO"]]]]
+
+[:div {:class "absolute inset-0 bg-black/50"}]
+
+[:div
+{:class "relative z-10 text-center text-white max-w-4xl px-8"}
+
+[:h1
+{:class "text-5xl md:text-7xl font-bold mb-8"}
+"About UEAVA"]
+
+[:p
+{:class "text-xl md:text-2xl leading-relaxed"}
+"Professional community advancing exotic animal medicine in Ukraine."]]]
+
+;; --------------------------------------------------
+;; ABOUT
+;; --------------------------------------------------
+
+[:section
+{:class "py-24"}
+
+[:div
+{:class "max-w-5xl mx-auto px-8"}
+
+[:h2
+{:class "text-4xl font-bold mb-12 text-center"}
+"Who We Are"]
+
+[:div
+{:class "space-y-8 text-lg leading-relaxed text-gray-700"}
+
+[:p
+ "UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species."]
+
+[:p
+ "Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine."]
+
+[:p
+ "We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development."]]]]
+
+;; --------------------------------------------------
+;; MISSION
+;; --------------------------------------------------
+
+[:section
+{:class "bg-gray-50 py-24"}
+
+[:div
+{:class "max-w-6xl mx-auto px-8"}
+
+[:h2
+{:class "text-4xl font-bold text-center mb-16"}
+"Our Mission"]
+
+[:div
+{:class "grid md:grid-cols-3 gap-8"}
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Professional Community"]
+ [:p
+  "Develop a strong network of veterinary professionals."]]
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Education"]
+ [:p
+  "Support lifelong learning and professional growth."]]
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Science"]
+ [:p
+  "Promote modern scientific knowledge and evidence-based medicine."]]
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Communication"]
+ [:p
+  "Create a platform for collaboration and exchange of experience."]]
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Standards"]
+ [:p
+  "Promote high clinical standards and protocols."]]
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Animal Welfare"]
+ [:p
+  "Improve veterinary care for exotic animals throughout Ukraine."]]]]]
+
+;; --------------------------------------------------
+;; PRESIDIUM
+;; --------------------------------------------------
+
+[:section
+{:class "py-24"}
+
+[:div
+{:class "max-w-7xl mx-auto px-8"}
+
+[:h2
+{:class "text-4xl font-bold text-center mb-16"}
+"Presidium"]
+
+[:div
+{:class "grid md:grid-cols-3 gap-12"}
+
+[:div {:class "text-center"}
+
+ [:svg {:width "220" :height "220"
+        :class "mx-auto mb-6"}
+  [:circle {:cx "110" :cy "110"
+            :r "100"
+            :fill "#ddd"}]
+  [:text {:x "110"
+          :y "115"
+          :text-anchor "middle"}
+   "PHOTO"]]
+
+ [:h3 {:class "font-bold text-xl"}
+  "President"]
+
+ [:p {:class "text-gray-500"}
+  "Name Placeholder"]]
+
+[:div {:class "text-center"}
+
+ [:svg {:width "220" :height "220"
+        :class "mx-auto mb-6"}
+  [:circle {:cx "110" :cy "110"
+            :r "100"
+            :fill "#ddd"}]
+  [:text {:x "110"
+          :y "115"
+          :text-anchor "middle"}
+   "PHOTO"]]
+
+ [:h3 {:class "font-bold text-xl"}
+  "Vice President"]
+
+ [:p {:class "text-gray-500"}
+  "Name Placeholder"]]
+
+[:div {:class "text-center"}
+
+ [:svg {:width "220" :height "220"
+        :class "mx-auto mb-6"}
+  [:circle {:cx "110" :cy "110"
+            :r "100"
+            :fill "#ddd"}]
+  [:text {:x "110"
+          :y "115"
+          :text-anchor "middle"}
+   "PHOTO"]]
+
+ [:h3 {:class "font-bold text-xl"}
+  "Board Member"]
+
+ [:p {:class "text-gray-500"}
+  "Name Placeholder"]]]]]
+
+;; --------------------------------------------------
+;; FOUNDERS
+;; --------------------------------------------------
+
+[:section
+{:class "bg-gray-50 py-24"}
+
+[:div
+{:class "max-w-7xl mx-auto px-8"}
+
+[:h2
+{:class "text-4xl font-bold text-center mb-16"}
+"Founding Members"]
+
+[:div
+{:class "grid md:grid-cols-4 gap-8"}
+
+;; repeated cards
+[:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+ [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+  "PHOTO"]
+ [:h3 {:class "font-semibold"}
+  "Founder Name"]]
+
+[:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+ [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+  "PHOTO"]
+ [:h3 {:class "font-semibold"}
+  "Founder Name"]]
+
+[:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+ [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+  "PHOTO"]
+ [:h3 {:class "font-semibold"}
+  "Founder Name"]]
+
+[:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+ [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+  "PHOTO"]
+ [:h3 {:class "font-semibold"}
+  "Founder Name"]]]]]
+
+;; --------------------------------------------------
+;; GALLERY
+;; --------------------------------------------------
+
+[:section
+{:class "py-24"}
+
+[:div
+{:class "max-w-7xl mx-auto px-8"}
+
+[:h2
+{:class "text-4xl font-bold text-center mb-16"}
+"Gallery"]
+
+[:div
+{:class "grid md:grid-cols-3 gap-8"}
+
+[:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+ "EVENT PHOTO"]
+
+[:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+ "LECTURE PHOTO"]
+
+[:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+ "CONFERENCE PHOTO"]]]]]
+
+  )
+**** да стало понятней
+но новерное не стоит это всё одним куском делать.
+пологаю лучше разбить на секции.
+и потом уже обеденять их вмест?
+**** CANCELED arhiv
+***** (presidium-section-old)
+
+ ;; Presidium
+(defn presidium-section-old []
+   [:section
+    {:class "py-20"}
+
+    [:div
+     {:class "max-w-6xl mx-auto px-8"}
+
+     [:h2
+      {:class "text-4xl font-bold text-center mb-12"}
+      (tr :presidium)]
+
+     [:div
+      {:class "grid md:grid-cols-3 gap-10"}
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :president)]
+       [:p "Name"]]
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :vice-president)]
+       [:p "Name"]]
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :board-member)]
+
+       [:p "Name"]]]]])
 ** dezine
 ** TODO
 *** Про Конференції
@@ -1603,6 +2144,7 @@ Darina Haos, [28.05.2026 21:37]
 
 *** заглушки для страниц
 *** отчёт
+**** 
 **** добавил заглушки для страниц
 **** проверяй коментирую.
 *** перевести мембершип бенефит
