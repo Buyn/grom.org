@@ -17,6 +17,9 @@
     "Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine."
 
     :p3
+    "UEAVA organizes educational events, lectures, conferences, clinical discussions, and professional projects aimed at advancing exotic animal medicine in Ukraine."
+
+    :p4
     "We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development."
 
     :mission-title "Our Mission"
@@ -58,6 +61,9 @@
     "Наша асоціація створена для підтримки ветеринарних лікарів, обміну досвідом, професійного навчання та популяризації високих стандартів лікування екзотичних тварин в Україні."
 
     :p3
+    "UEAVA організовує освітні заходи, лекції, конференції, клінічні обговорення та професійні проєкти, спрямовані на розвиток ветеринарної медицини екзотичних тварин в Україні."
+
+    :p4
     "Ми віримо, що сильна професійна спільнота, науковий підхід і співпраця між лікарями є основою розвитку сучасної ветеринарної медицини."
 
     :mission-title "Наша місія"
@@ -115,29 +121,23 @@
 (defn about-text-section []
    [:section
     {:class "py-20"}
-
     [:div
-     {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
+      {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
+      [:p (tr :p1)]
+      [:p (tr :p2)]
+      [:p (tr :p3)]
+      [:p (tr :p4)]]])
 
-     [:p (tr :p1)]
-     [:p (tr :p2)]
-     [:p (tr :p3)]]]
-  )
-
-(defn mission-section []
+  (defn mission-section []
    [:section
     {:class "bg-gray-50 py-20"}
-
     [:div
      {:class "max-w-6xl mx-auto px-8"}
-
      [:h2
       {:class "text-4xl font-bold text-center mb-12"}
       (tr :mission-title)]
-
      [:div
       {:class "grid md:grid-cols-3 gap-6"}
-
       [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-1)]
       [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-2)]
       [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-3)]
@@ -149,14 +149,11 @@
 (defn presidium-section []
   [:section
     {:class "py-20"}
-
     [:div
     {:class "max-w-7xl mx-auto px-8"}
-
     [:h2
       {:class "text-4xl font-bold text-center mb-16"}
       (tr :presidium)]
-
     [:div
       {:class "grid md:grid-cols-3 gap-12"}
       [:div {:class "text-center"}
@@ -206,10 +203,71 @@
         [:p {:class "text-gray-500"}
           "Name Placeholder"]]]]])
 
+(defn founders-section []
+  [:section
+    {:class "bg-gray-50 py-24"}
+
+    [:div
+      {:class "max-w-7xl mx-auto px-8"}
+
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        "Founding Members"]
+
+      [:div
+        {:class "grid md:grid-cols-4 gap-8"}
+
+      ;; repeated cards
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]
+
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]
+
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]
+
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]]]])
+
+(defn gallery-section []
+  [:section
+    {:class "py-24"}
+    [:div
+      {:class "max-w-7xl mx-auto px-8"}
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        "Gallery"]
+
+      [:div
+        {:class "grid md:grid-cols-3 gap-8"}
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "EVENT PHOTO"]
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "LECTURE PHOTO"]
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "CONFERENCE PHOTO"]]]])
+
+
 (defn about-page []
   [:main
    (hero-section)
    (about-text-section)
    (mission-section)
    (presidium-section)
+   (founders-section)
+   (gallery-section)
    ])
+
