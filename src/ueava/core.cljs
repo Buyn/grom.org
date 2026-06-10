@@ -6,6 +6,8 @@
             [ueava.router :refer [route init-router!]]
             [ueava.pages.home :refer [home-page]]
             [ueava.pages.about :refer [about-page]]
+            [ueava.pages.conferences :refer [conferences-page]]
+            [ueava.pages.resources :refer [resources-page]]
             [ueava.pages.membership :refer [membership-page]]
             ))
 
@@ -13,6 +15,8 @@
   (case @route
     :home [home-page]
     :about [about-page]
+    :resources [resources-page]
+    :conferences [conferences-page]
     :membership [membership-page]
     [home-page]))
 

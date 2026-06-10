@@ -1,4 +1,3 @@
-
 (ns ueava.pages.about
   (:require
    [ueava.components.lang :refer [lang]]))
@@ -45,6 +44,7 @@
     :presidium "Presidium"
 
     :president "President"
+    :president-name "Daryna Barannyk"
     :vice-president "Vice President"
     :board-member "Board Member"}
 
@@ -89,6 +89,8 @@
     :presidium "Президія"
 
     :president "Президент"
+    :president-name "Баранник Дарина Олександрівна"
+
     :vice-president "Віцепрезидент"
     :board-member "Член президії"}})
 
@@ -102,7 +104,8 @@
     [:div
      {:class "absolute inset-0 bg-cover bg-center"
       :style {:background-image
-              "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+              ;; "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+              "url('img/ueava-about-team.webp')"}}]
 
     [:div
      {:class "absolute inset-0 bg-black/60"}]
@@ -146,74 +149,76 @@
       [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-6)]]]])
 
 
+(defn presidium-card [photo role name]
+  [:div {:class "text-center"}
+   [:img
+    {:src photo
+     :alt name
+     :class "w-56 h-56 mx-auto mb-6
+            border-4 border-white
+            rounded-full object-cover shadow-lg"}]
+   [:h3 {:class "font-bold text-xl"} role]
+   [:p {:class "text-gray-500"} name]])
+
+(defn presidium-r-card [photo role name]
+  [:div {:class "text-center"}
+   [:img
+    {:src photo
+     :alt name
+     :class "w-56 h-56 mx-auto mb-6 object-cover shadow-lg"}]
+   [:h3 {:class "font-bold text-xl"} role]
+   [:p {:class "text-gray-500"} name]])
+
 (defn presidium-section []
   [:section
     {:class "py-20"}
     [:div
-    {:class "max-w-7xl mx-auto px-8"}
-    [:h2
-      {:class "text-4xl font-bold text-center mb-16"}
-      (tr :presidium)]
+      {:class "max-w-7xl mx-auto px-8"}
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        (tr :presidium)]
     [:div
       {:class "grid md:grid-cols-3 gap-12"}
-      [:div {:class "text-center"}
-        [:svg {:width "220" :height "220"
-                :class "mx-auto mb-6"}
-          [:circle {:cx "110" :cy "110"
-                    :r "100"
-                    :fill "#ddd"}]
-          [:text {:x "110"
-                  :y "115"
-                  :text-anchor "middle"}
-          "PHOTO"]]
-        [:h3 {:class "font-bold text-xl"}
-          (tr :president)]
-        [:p {:class "text-gray-500"}
-          "Name Placeholder"]]
+      [presidium-card "img/ueava-about-darina.webp" (tr :president) (tr :president-name)]
+      [presidium-card "img/ueava-about-shabuldo.webp" "віце-президент" "Катерина Шабульдо"]
+      [presidium-card "img/ueava-about-luy.webp" "секретар" "Софія Дащенко"]
+      [presidium-r-card "img/ueava-about-darina2.webp" (tr :board-member) "сестричка Луй"]
+      [presidium-r-card "img/ueava-about-darina.webp" (tr :board-member) "сестричка Луй"]
+     ]]])
 
-      [:div {:class "text-center"}
-        [:svg {:width "220" :height "220"
-                :class "mx-auto mb-6"}
-          [:circle {:cx "110" :cy "110"
-                    :r "100"
-                    :fill "#ddd"}]
-          [:text {:x "110"
-                  :y "115"
-                  :text-anchor "middle"}
-          "PHOTO"]]
-        [:h3 {:class "font-bold text-xl"}
-          (tr :vice-president)]
-        [:p {:class "text-gray-500"}
-          "Name Placeholder"]]
+(defn founder-card [photo name]
+  [:div {:class "bg-white rounded-xl p-6 shadow text-center
+                  hover:shadow-xl transition"}
+   [:img
+    {:src photo
+     :alt name
+     :class "w-40 h-40 mx-auto mb-4
+             rounded-full
+             object-cover"}]
+   [:h3 {:class "font-semibold text-lg"}
+    name]])
 
-      [:div {:class "text-center"}
-        [:svg {:width "220" :height "220"
-                :class "mx-auto mb-6"}
-          [:circle {:cx "110" :cy "110"
-                    :r "100"
-                    :fill "#ddd"}]
-          [:text {:x "110"
-                  :y "115"
-                  :text-anchor "middle"}
-          "PHOTO"]]
+(def founders
+  [{:name "Founder 1"
+    :photo "img/ueava-about-peaceful.webp"}
 
-        [:h3 {:class "font-bold text-xl"}
-          (tr :board-member)]
+   {:name "Founder 2"
+    :photo "img/ueava-about-peaceful.webp"}
 
-        [:p {:class "text-gray-500"}
-          "Name Placeholder"]]]]])
+   {:name "Founder 3"
+    :photo "img/ueava-about-peaceful.webp"}
+
+   {:name "Founder 4"
+    :photo "img/ueava-about-peaceful.webp"}])
 
 (defn founders-section []
   [:section
     {:class "bg-gray-50 py-24"}
-
     [:div
       {:class "max-w-7xl mx-auto px-8"}
-
       [:h2
         {:class "text-4xl font-bold text-center mb-16"}
         "Founding Members"]
-
       [:div
         {:class "grid md:grid-cols-4 gap-8"}
 

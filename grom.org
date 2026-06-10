@@ -22,6 +22,8 @@
 (find-file-other-frame "./src/ueava/pages/home.cljs") копия мейна
 (find-file-other-frame "./src/ueava/pages/about.cljs")
 (find-file-other-frame "./src/ueava/pages/membership.cljs")
+(find-file-other-frame "./src/ueava/pages/resources.cljs")
+(find-file-other-frame "./src/ueava/pages/conferences.cljs")
 ***** main
 (find-file-other-frame "./src/ueava/main.cljs") возможно нужо будет удалить современем
 (find-file-other-frame "./src/ueava/components/hero.cljs")
@@ -459,6 +461,1516 @@ tailwind стили как у arav
 * Kanban
 ** urgent 
 ** in progress
+*** 
+**** Darina Haos, [07.06.2026 11:23]
+
+
+Darina Haos, [07.06.2026 11:23]
+Вот фото членов ГО
+
+Darina Haos, [07.06.2026 12:05]
+Президент:
+Баранник Дарина Олександрівна
+
+Darina Haos, [07.06.2026 12:12]
+Співзасновник (член організації):
+Руденко Олександра Михайлівна
+
+Darina Haos, [07.06.2026 12:13]
+Співзасновник(член організації):
+Хвалюн Владислава Олександрівна
+
+Darina Haos, [07.06.2026 12:14]
+Співзасновник(член організації): Коновалова-Надєл Аліна Олександрівна
+
+Darina Haos, [07.06.2026 12:20]
+Єдине думаю може і для президії зробити квадратні рамки, бо круглі такі маленькі
+
+
+Darina Haos, [08.06.2026 20:33]
+Я тобі транслітерацію скину
+
+Darina Haos, [08.06.2026 20:33]
+Моя Daryna Barannyk
+
+Darina Haos, [08.06.2026 20:33]
+Я думаю на англійській версії можна без по-батькових
+
+София, [08.06.2026 21:46]
+А я сестричка Луй
+
+София, [08.06.2026 21:46]
+Dashchenko Sofiia
+
+
+
+Darina Haos, [09.06.2026 21:11]
+
+
+Darina Haos, [09.06.2026 21:12]
+В президії у нас я, віце-президент Шабульдо, Софія секретар, і мирний Спів.Засновник
+
+Darina Haos, [09.06.2026 21:13]
+Можна ще приємну відмітку зробити для Владислави Хвалюн - медіа-кріетор
+**** да
+и довай новерное вынесем в отдельну функцию карточки основателей.
+как пример для изображения "img/ueava-about-peaceful.webp"
+
+Владислав Мирный
+ueava-about-peaceful
+
+
+
+Да, это уже тот момент, когда компонент начинает окупаться.
+
+Добавь рядом с `person-card` ещё один компонент для основателей.
+
+```clojure
+(defn founder-card [photo name]
+  [:div {:class "bg-white rounded-xl p-6 shadow text-center
+                  hover:shadow-xl transition"}
+
+   [:img
+    {:src photo
+     :alt name
+     :class "w-40 h-40 mx-auto mb-4
+             rounded-full
+             object-cover"}]
+
+   [:h3 {:class "font-semibold text-lg"}
+    name]])
+```
+
+Тогда твой `founders-section` станет примерно таким:
+
+```clojure
+[:div
+ {:class "grid md:grid-cols-4 gap-8"}
+
+ [founder-card
+  "img/ueava-about-peaceful.webp"
+  "Founder Name"]
+
+ [founder-card
+  "img/ueava-about-peaceful.webp"
+  "Founder Name"]
+
+ [founder-card
+  "img/ueava-about-peaceful.webp"
+  "Founder Name"]
+
+ [founder-card
+  "img/ueava-about-peaceful.webp"
+  "Founder Name"]]
+```
+
+Или ещё лучше — через данные:
+
+```clojure
+(def founders
+  [{:name "Founder 1"
+    :photo "img/ueava-about-peaceful.webp"}
+
+   {:name "Founder 2"
+    :photo "img/ueava-about-peaceful.webp"}
+
+   {:name "Founder 3"
+    :photo "img/ueava-about-peaceful.webp"}
+
+   {:name "Founder 4"
+    :photo "img/ueava-about-peaceful.webp"}])
+```
+
+И рендер:
+
+```clojure
+[:div
+ {:class "grid md:grid-cols-4 gap-8"}
+
+ (for [{:keys [name photo]} founders]
+   ^{:key name}
+   [founder-card photo name])]
+```
+
+Преимущество второго варианта в том, что когда Дарина пришлёт ещё 7 фотографий основателей, ты просто допишешь элементы в вектор:
+
+```clojure
+{:name "..."}
+{:name "..."}
+{:name "..."}
+```
+
+а верстку вообще не трогаешь.
+
+Для президиума я бы сделал точно так же:
+
+```clojure
+(def presidium-members [...])
+
+(for [member presidium-members]
+  [person-card ...])
+```
+
+Тогда вся страница превращается в данные + маленькие переиспользуемые компоненты, а не в огромную простыню из копипасты. Это очень по-кложурному выглядит.
+**** path
+
+/home/buyn/Documents/Work/freelans/grom/IMG_20260607_112252.jpg
+
+/home/buyn/Documents/Work/freelans/grom
+/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-23-58.jpg
+/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-09.jpg
+/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-25.jpg
+/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-32.jpg
+
+**** 
+(ns ueava.pages.about
+  (:require
+   [ueava.components.lang :refer [lang]]))
+
+(def about-content
+  {:en
+   {:title "About UEAVA"
+
+    :subtitle
+    "Professional community advancing exotic animal medicine in Ukraine."
+
+    :p1
+    "UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species."
+
+    :p2
+    "Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine."
+
+    :p3
+    "UEAVA organizes educational events, lectures, conferences, clinical discussions, and professional projects aimed at advancing exotic animal medicine in Ukraine."
+
+    :p4
+    "We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development."
+
+    :mission-title "Our Mission"
+
+    :mission-1
+    "Develop a strong professional veterinary community."
+
+    :mission-2
+    "Support lifelong learning and professional growth for veterinarians."
+
+    :mission-3
+    "Promote modern scientific knowledge and clinical protocols."
+
+    :mission-4
+    "Create a platform for communication, collaboration, and exchange of experience."
+
+    :mission-5
+    "Popularize evidence-based veterinary medicine."
+
+    :mission-6
+    "Improve the quality of veterinary care for exotic animals."
+
+    :presidium "Presidium"
+
+    :president "President"
+    :president-name "Daryna Barannyk"
+    :vice-president "Vice President"
+    :board-member "Board Member"}
+
+   :uk
+   {:title "Про UEAVA"
+
+    :subtitle
+    "Професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин."
+
+    :p1
+    "UEAVA — це професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин. Ми об’єднуємо фахівців з різних регіонів України для розвитку сучасної, доказової та доступної ветеринарної медицини для птахів, рептилій, гризунів, кролів, тхорів та інших екзотичних видів."
+
+    :p2
+    "Наша асоціація створена для підтримки ветеринарних лікарів, обміну досвідом, професійного навчання та популяризації високих стандартів лікування екзотичних тварин в Україні."
+
+    :p3
+    "UEAVA організовує освітні заходи, лекції, конференції, клінічні обговорення та професійні проєкти, спрямовані на розвиток ветеринарної медицини екзотичних тварин в Україні."
+
+    :p4
+    "Ми віримо, що сильна професійна спільнота, науковий підхід і співпраця між лікарями є основою розвитку сучасної ветеринарної медицини."
+
+    :mission-title "Наша місія"
+
+    :mission-1
+    "Розвивати професійну ветеринарну спільноту."
+
+    :mission-2
+    "Підтримувати безперервне навчання лікарів."
+
+    :mission-3
+    "Поширювати сучасні наукові знання та клінічні протоколи."
+
+    :mission-4
+    "Створювати платформу для комунікації та співпраці."
+
+    :mission-5
+    "Популяризувати доказову ветеринарну медицину."
+
+    :mission-6
+    "Підвищувати якість ветеринарної допомоги екзотичним тваринам."
+
+    :presidium "Президія"
+
+    :president "Президент"
+    :president-name "Баранник Дарина Олександрівна"
+
+    :vice-president "Віцепрезидент"
+    :board-member "Член президії"}})
+
+(defn tr [k]
+  (get-in about-content [@lang k]))
+
+(defn hero-section []
+   [:section
+    {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
+
+    [:div
+     {:class "absolute inset-0 bg-cover bg-center"
+      :style {:background-image
+              ;; "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+              "url('img/ueava-about-team.webp')"}}]
+
+    [:div
+     {:class "absolute inset-0 bg-black/60"}]
+
+    [:div
+     {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+
+     [:h1
+      {:class "text-5xl md:text-7xl font-bold mb-6"}
+      (tr :title)]
+
+     [:p
+      {:class "text-xl md:text-2xl"}
+      (tr :subtitle)]]])
+
+(defn about-text-section []
+   [:section
+    {:class "py-20"}
+    [:div
+      {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
+      [:p (tr :p1)]
+      [:p (tr :p2)]
+      [:p (tr :p3)]
+      [:p (tr :p4)]]])
+
+  (defn mission-section []
+   [:section
+    {:class "bg-gray-50 py-20"}
+    [:div
+     {:class "max-w-6xl mx-auto px-8"}
+     [:h2
+      {:class "text-4xl font-bold text-center mb-12"}
+      (tr :mission-title)]
+     [:div
+      {:class "grid md:grid-cols-3 gap-6"}
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-1)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-2)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-3)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-4)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-5)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-6)]]]])
+
+
+(defn presidium-section []
+  [:section
+    {:class "py-20"}
+    [:div
+    {:class "max-w-7xl mx-auto px-8"}
+    [:h2
+      {:class "text-4xl font-bold text-center mb-16"}
+      (tr :presidium)]
+    [:div
+      {:class "grid md:grid-cols-3 gap-12"}
+      [:div {:class "text-center"}
+        [:svg {:width "220" :height "220"
+                :class "mx-auto mb-6"}
+          [:circle {:cx "110" :cy "110"
+                    :r "100"
+                    :fill "#ddd"}]
+          [:text {:x "110"
+                  :y "115"
+                  :text-anchor "middle"}
+          "PHOTO"]]
+        [:h3 {:class "font-bold text-xl"}
+          (tr :president)]
+        [:p {:class "text-gray-500"}
+         (tr :president-name)]]
+
+      [:div {:class "text-center"}
+        [:svg {:width "220" :height "220"
+                :class "mx-auto mb-6"}
+          [:circle {:cx "110" :cy "110"
+                    :r "100"
+                    :fill "#ddd"}]
+          [:text {:x "110"
+                  :y "115"
+                  :text-anchor "middle"}
+          "PHOTO"]]
+        [:h3 {:class "font-bold text-xl"}
+          (tr :vice-president)]
+        [:p {:class "text-gray-500"}
+          "Name Placeholder"]]
+
+      [:div {:class "text-center"}
+        [:svg {:width "220" :height "220"
+                :class "mx-auto mb-6"}
+          [:circle {:cx "110" :cy "110"
+                    :r "100"
+                    :fill "#ddd"}]
+          [:text {:x "110"
+                  :y "115"
+                  :text-anchor "middle"}
+          "PHOTO"]]
+
+        [:h3 {:class "font-bold text-xl"}
+          (tr :board-member)]
+
+        [:p {:class "text-gray-500"}
+          "Name Placeholder"]]]]])
+
+(defn founders-section []
+  [:section
+    {:class "bg-gray-50 py-24"}
+
+    [:div
+      {:class "max-w-7xl mx-auto px-8"}
+
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        "Founding Members"]
+
+      [:div
+        {:class "grid md:grid-cols-4 gap-8"}
+
+      ;; repeated cards
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]
+
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]
+
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]
+
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]]]])
+
+(defn gallery-section []
+  [:section
+    {:class "py-24"}
+    [:div
+      {:class "max-w-7xl mx-auto px-8"}
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        "Gallery"]
+
+      [:div
+        {:class "grid md:grid-cols-3 gap-8"}
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "EVENT PHOTO"]
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "LECTURE PHOTO"]
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "CONFERENCE PHOTO"]]]])
+
+
+(defn about-page []
+  [:main
+   (hero-section)
+   (about-text-section)
+   (mission-section)
+   (presidium-section)
+   (founders-section)
+   (gallery-section)
+   ])
+
+
+**** Я сделал таким образом, 
+но как в этот круг для изобрежения
+
+    [:div
+      {:class "grid md:grid-cols-3 gap-12"}
+      [:div {:class "text-center"}
+        [:svg {:width "220" :height "220"
+                :class "mx-auto mb-6"}
+          [:circle {:cx "110" :cy "110"
+                    :r "100"
+                    :fill "#ddd"}]
+          [:text {:x "110"
+                  :y "115"
+                  :text-anchor "middle"}
+          "PHOTO"]]
+        [:h3 {:class "font-bold text-xl"}
+          (tr :president)]
+        [:p {:class "text-gray-500"}
+         (tr :president-name)]]
+
+поместить изображение?
+так чтоб она стало круглым?
+
+**** 
+
+Даже проще. SVG тебе уже не нужен.
+
+Вместо этого блока:
+
+```clojure
+[:svg {:width "220" :height "220"
+       :class "mx-auto mb-6"}
+ [:circle {:cx "110" :cy "110"
+           :r "100"
+           :fill "#ddd"}]
+ [:text {:x "110"
+         :y "115"
+         :text-anchor "middle"}
+  "PHOTO"]]
+```
+
+используй обычный `img`:
+
+```clojure
+[:img
+ {:src "img/daryna.jpg"
+  :alt "Daryna Barannyk"
+  :class "w-56 h-56 mx-auto mb-6 rounded-full object-cover shadow-lg"}]
+```
+
+Что делает каждая часть:
+
+```clojure
+w-56 h-56
+```
+
+фиксированный квадрат.
+
+```clojure
+rounded-full
+```
+
+делает круг.
+
+```clojure
+object-cover
+```
+
+самое важное — обрезает изображение по кругу без искажений.
+
+```clojure
+shadow-lg
+```
+
+небольшая тень.
+
+---
+
+Если хочется красивее, можно добавить рамку:
+
+```clojure
+[:img
+ {:src "img/daryna.jpg"
+  :alt "Daryna Barannyk"
+  :class "w-56 h-56 mx-auto mb-6
+           rounded-full
+           object-cover
+           border-4 border-white
+           shadow-xl"}]
+```
+
+---
+
+Если фотография прямоугольная:
+
+```text
+┌──────────────┐
+│              │
+│     photo    │
+│              │
+└──────────────┘
+```
+
+то `object-cover` возьмёт центральную часть и автоматически превратит её в круг:
+
+```text
+     ◯
+   photo
+```
+
+что обычно выглядит лучше всего для президиума, команды и основателей.
+
+---
+
+Я бы ещё вынес карточку человека в отдельный компонент:
+
+```clojure
+(defn person-card [photo role name]
+  [:div {:class "text-center"}
+   [:img
+    {:src photo
+     :class "w-56 h-56 mx-auto mb-6 rounded-full object-cover shadow-lg"}]
+   [:h3 {:class "font-bold text-xl"} role]
+   [:p {:class "text-gray-500"} name]])
+```
+
+тогда президиум превращается в:
+
+```clojure
+[:div {:class "grid md:grid-cols-3 gap-12"}
+
+ [person-card
+  "img/daryna.jpg"
+  (tr :president)
+  (tr :president-name)]
+
+ [person-card
+  "img/vice-president.jpg"
+  (tr :vice-president)
+  "Name"]
+
+ [person-card
+  "img/member.jpg"
+  (tr :board-member)
+  "Name"]]
+```
+
+и когда президиум вырастет до 5–10 человек, код останется аккуратным.
+
+
+** dezine
+** TODO
+*** TODO заглушки для страниц
+**** повозможности
+по аналогии с о нас
+тоесть изображение сверху
+и участок с переводом
+
+и возможно с карточками
+
+но точно с разделение на секции
+*** отчёт
+**** я добавил два варианат - если призидия не круглая
+
+**** мне делать фотографии не квадратными?
+отрезать тольео текст с фотографий?
+**** добавил заглушки остальных страниц.
+*** ресурси
+Darina Haos, [28.05.2026 21:37]
+В графу "ресурси" бачу перехід на сторінку бо будуть підпункти:
+Циркуляри - там статут і протоколи зібрань і т.п хуйня-муйня.
+Також можливо бібліотека де будуть книжки/статті/вебінари і зробити його тільки по платному доступу (типу тимчасовий доступ на рік, по підписці)
+
+*** Выложить статут
+
+В ресурси статут.
+/home/buyn/Desktop/worck/grom/Статут ГО_АВЛЕТУ.pdf
+*** Про Конференції
+Про Конференції : фото 9 конференції і про те що відбувалося напишу текст
+*** "Конференції"
+Darina Haos, [28.05.2026 21:53]
+Графа "Конференції", я думаю зробити альбомами поки що з конкордії, типу папку з фото файлами. @Witch_stitch якщо є ідеї як краще було б, то пиши, це поки те що в голову прийшло
+
+*** посилання на фото з конференції
+Darina Haos, [28.05.2026 22:39]
+https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy
+
+Darina Haos, [28.05.2026 22:39]
+Це посилання на фото з конференції
+
+Darina Haos, [02.06.2026 19:28]
+Спасибо большое, я готова піднажать, бо засідають критиканти на п'яти
+
+*** понять используется ли часть мобильная
+и понять можно ли их обеденить
+(find-file-other-frame "./src/ueava/header.cljs")
+         (into [:div
+                {:class "flex flex-col items-center text-center p-6 space-y-4"}
+                ]
+
+                (for [{:keys [title href]} (navigation-items)]
+                  [:a {:href href
+                      :key title
+                      :class "text-lg font-medium hover:text-ueava-sand transition"}
+                        title]))
+
+*** перевести мембершип бенефит
+*** доперевести футер
+*** Членство
+Darina Haos, [28.05.2026 21:41]
+В графі "Членство": перехід на сторінку де буде текст:
+Переваги членства в UEAVA
+
+Членство в UEAVA — це не лише участь у професійній асоціації, а й доступ до спільноти ветеринарних лікарів, які розвивають сучасну медицину екзотичних тварин в Україні.
+
+Що отримують члени асоціації:
+
+Доступ до професійної літератури та матеріалів
+
+Члени асоціації отримують доступ до навчальних матеріалів, клінічних рекомендацій, наукових публікацій та корисних ресурсів з медицини екзотичних тварин.
+
+Освітні вебінари та професійний розвиток
+
+UEAVA регулярно організовує вебінари, лекції та навчальні заходи за участю українських та міжнародних спеціалістів.
+
+Знижки на конференції та заходи
+
+Члени громадської організації отримують спеціальні умови участі та знижки на конференції, майстер-класи та інші освітні події асоціації.
+
+Включення до каталогу практикуючих екзотологів України
+
+Члени UEAVA можуть бути включені до загального каталогу ветеринарних лікарів, які працюють з екзотичними тваринами, що допомагає власникам тварин знаходити профільних спеціалістів.
+
+Професійна спільнота та підтримка колег
+
+UEAVA — це середовище однодумців, де можна обмінюватися досвідом, отримувати підтримку колег, обговорювати клінічні випадки та розвиватися разом із професійною спільнотою.
+
+Розвиток ветеринарної медицини екзотичних тварин в Україні
+
+Стаючи членом асоціації, ви долучаєтесь до розвитку професійної ветеринарної спільноти, популяризації доказової медицини та формування сучасних стандартів лікування екзотичних тварин.
+
+*** Членство
+Darina Haos, [28.05.2026 21:57]
+Членство:
+Membership in UEAVA is more than simply joining a professional association — it is becoming part of a community of veterinary professionals dedicated to advancing modern exotic animal medicine in Ukraine.
+
+What UEAVA Members Receive
+
+Access to Professional Literature and Educational Resources
+
+Members gain access to educational materials, clinical guidelines, scientific publications, and valuable resources related to exotic animal medicine.
+
+Educational Webinars and Professional Development
+
+UEAVA regularly organizes webinars, lectures, and educational events featuring both Ukrainian and international specialists in exotic animal medicine.
+
+Discounts on Conferences and Educational Events
+
+Members of the association receive special participation terms and discounts for conferences, workshops, and other educational events organized by UEAVA.
+
+Inclusion in the Directory of Exotic Animal Veterinarians in Ukraine
+
+UEAVA members may be included in the public directory of veterinary professionals working with exotic animals, helping pet owners find qualified specialists across Ukraine.
+
+Professional Community and Peer Support
+
+UEAVA is a community of like-minded professionals where members can exchange experience, discuss clinical cases, receive support from colleagues, and grow together within a strong professional network.
+
+Contribution to the Development of Exotic Animal Medicine in Ukraine
+
+By becoming a member of the association, you contribute to the development of the professional veterinary community, the promotion of evidence-based medicine, and the establishment of modern standards of care for exotic animals in Ukraine.
+
+Darina Haos, [28.05.2026 21:57]
+Я чесно скористалась жпт для перекладу, башка пухне, тому якщо хтось гарно спік інгліш, або просто в очі кинеться дофіга помилок - вказуйте сміливо і правте
+
+*** анкети на реєстрацію
+Darina Haos, [28.05.2026 21:41]
+І далі перехід до анкети на реєстрацію
+
+*** Анкета
+
+Анкета я думаю должна выглядеть таким образом:
+Имя, фамилия
+Страна, Город, место работы/учебы, должность (лікар, технік, асистент, науковий співробітник).
+Номер телефону 
+Мейл
+
+София, [30.04.2026 12:01]
+Ще треба номер диплому
+
+София, [30.04.2026 12:02]
+Або скрін
+
+София, [30.04.2026 12:02]
+Краще скрін
+
+
+Darina Haos, [30.04.2026 12:18]
+Студенти у нас є
+
+Darina Haos, [30.04.2026 12:18]
+Там тоді не тільки диплом, а студентський, і питання теж, якщо студент потім став лікарем як оновити статус?
+Я тому думала про це, але не написала.
+*** рахунок
+Darina Haos, [28.05.2026 21:42]
+Вже є рахунок я, не знаю як буде правильно зробити можу поки реквізити надати, а можу коли буде все зроблено і куплений домен зв'язатись з монобанкои і вказати наш сайт як офіційний щоб було легше налаштувати банкінг
+
+Darina Haos, [28.05.2026 21:49]
+QR-код для поповнення рахунку ГО "АВЛЕТУ"
+https://bank.gov.ua/qr/QkNECjAwMgoxClVDVAoK0JPQniAi0JDQktCb0JXQotCjIgpVQTQ4MzIyMDAxMDAwMDAyNjAwNjcwMDAwMzExMwoKNDU2OTkxMjQKCgoKCg
+
+Darina Haos, [28.05.2026 21:51]
+Може бути "Щорічний членський внесок" та  "Добровільний внесок"
+
+Darina Haos, [28.05.2026 21:52]
+Отримувач
+ГО "АВЛЕТУ"
+IBAN
+UA483220010000026006700003113
+ЄДРПОУ
+45699124
+Акціонерне товариство
+УНІВЕРСАЛ БАНК
+МФО
+322001
+ЄДРПОУ Банку
+21133352
+
+*** эфект волны на кнопках
+как в примере
+возможно движение гадиента
+https://arav.org/about/who-we-are/
+*** удалить меин
+
+(find-file-other-frame "./src/ueava/main.cljs") возможно нужо будет удалить современем
+*** перенести
+(ns ueava.components.navigation-menu-list
+в
+(ns ueava.components.navigation-menu
+явно лишний фаил и в одном замечетально будут жить
+
+** backlog
+*** TODO aider.el for clipbord
+**** это возможно???????
+или это только из клая
+если это возможно то это сильно упростит процес взаимодействия
+**** прочитать инструкцию
+***** добавить сылку
+git aider.el
+https://github.com/tninja/aider.el
+OpenCode
+***** если есть
+***** установить сюда как блок
+**** установвить
+***** git aider.el
+https://github.com/tninja/aider.el
+***** use
+**** запустить
+**** попробывать настроить под клипборд
+*** вынести отдельно список проектов для ИИ
+**** в роам
+**** возможно с рубрикацией
+проесты для агента
+проесты для аи команды
+проесты для кодера
+*** перенести
+**** What is OpenCode?
+
+OpenCode is an open source agent that helps you write code in your
+terminal, IDE, or desktop.
+
+,* [*]
+ LSP enabled Automatically loads the right LSPs for the LLM
+,* [*]
+ Multi-session Start multiple agents in parallel on the same project
+,* [*]
+ Share links Share a link to any session for reference or to debug
+,* [*]
+ GitHub Copilot Log in with GitHub to use your Copilot account
+,* [*]
+ ChatGPT Plus/Pro Log in with OpenAI to use your ChatGPT Plus or
+ Pro account
+,* [*]
+ Any model 75+ LLM providers through Models.dev, including local
+ models
+,* [*]
+ Any editor Available as a terminal interface, desktop app, and IDE
+ extension
+**** AI Code Interface
+https://github.com/tninja/ai-code-interface.el
+
+An Emacs interface for AI-assisted software development. The
+purpose is to provide a uniform interface and experience for
+different AI backends, with context-aware AI coding actions, and
+integrating seamlessly with AI-driven agile development workflows.
+
+,* Currently it supports these AI coding CLIs: 
+
+ * [[https://github.com/openai/codex][OpenAI Codex]]
+ * [[https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli][GitHub Copilot CLI]]
+ * [[https://github.com/google-gemini/gemini-cli][Gemini CLI]]
+ * [[https://github.com/anthropics/claude-code][Claude Code]]
+ * [[https://opencode.ai/][Opencode]]
+ * [[https://grokcli.io/][Grok CLI]]
+ * [[https://docs.cursor.com/en/cli][Cursor CLI]]
+ * [[https://kiro.dev/cli/][Kiro CLI]]
+ * [[https://cnb.cool/codebuddy/codebuddy-code][CodeBuddy Code CLI]]
+ * [[https://aider.chat/][Aider CLI]]
+
+,* It also supports external backend packages: 
+
+ * [[https://eca.dev/][ECA (Editor Code Assistant)]] (`[[https://github.com/tninja/ai-code-interface.el/blob/main/ai-code-eca.el][ai-code-eca.el]]`)
+ * [[https://github.com/xenodium/agent-shell][agent-shell]] ([[https://github.com/xenodium/acp.el][acp.el]])
+ * [[https://github.com/manzaltu/claude-code-ide.el][claude-code-ide.el]]
+ * [[https://github.com/stevemolitor/claude-code.el][claude-code.el]]
+
+,* I switch between different CLI-based AI tools in Emacs: Claude
+ Code / OpenAI Codex / Gemini CLI / etc. If you also use different
+ AI tools inside Emacs, but want to keep the same user interface
+ and experience, this package is for you.
+,* If you are choosing between the main AI coding packages in
+ Emacs, ask one question first: do you want the deepest integration
+ for one specific agent runtime, or do you want one Emacs
+ workflow that stays stable even when you change AI tools?
+,* ai-code-interface.el is built for the second case. Its real advantage
+ is not just backend coverage. Its main advantage is workflow
+ portability: the same menu, context gathering, prompt flow,
+ refactoring commands, TDD helpers, review workflow, prompt
+ files, and Emacs MCP tools continue to work while the backend
+ changes underneath.
+
+ Package  Built around  Choose it when  
+ ai-code-interface.el  One workflow across  You switch AI tools  
+   backends  but want one stable  
+     Emacs workflow  
+ claude-code-ide.el  Claude Code inside  Claude Code is your  
+   Emacs  main runtime  
+ agent-shell  ACP shell sessions  You prefer shell-first  
+     agent workflows and  
+     transcripts  
+ eca-emacs  An ECA-centered  You want a polished  
+   chat workspace  server-backed chat  
+     UX  
+
+,* All four packages aim to keep AI-assisted development inside
+ Emacs. The difference is what stays fixed. In claude-code-ide.el,
+ the center is Claude Code. In agent-shell, the center is the ACP
+ shell session. In eca-emacs, the center is the ECA workspace. In
+ ai-code-interface.el, the center is your development workflow
+ inside Emacs.
+,* That distinction matters if you do not want to commit to a single
+ winner forever. You can use Claude Code for one task, Codex for
+ another, Gemini CLI for a third, and still keep the same habits
+ inside Emacs: the same entry points, the same context model, and
+ the same review-oriented development flow. You are changing the
+ backend, not changing how you work.
+,* Screenshot
+
+[[https://github.com/tninja/ai-code-interface.el/blob/main/transient_menu.png][./transient_menu.png]]
+*** Projectile Commander Methods:
+
+?:	Commander help buffer.
+D:	Open project root in dired.
+R:	Regenerate the project's [e|g]tags.
+T:	Find test file in project.
+V:	Browse dirty projects
+a:	Run ag on project.
+b:	Switch to project buffer.
+d:	Find directory in project.
+e:	Find recently visited file in project.
+f:	Find file in project.
+g:	Run grep on project.
+j:	Find tag in project.
+k:	Kill all project buffers.
+o:	Run multi-occur on project buffers.
+p:	Run ripgrep on project.
+r:	Replace a string in the project.
+s:	Switch project.
+v:	Open project root in vc-dir or magit.
+*** markdown-mode
+https://jblevins.org/projects/markdown-mode/
+
+*** переложить разделить
+*** текстура пазла на заднике
+возможно даже с эфектом паралакса
+
+*** 🔥 параллакс
+текст двигается медленнее фона
+*** добавить в меню подменю
+тоесть это не кнопки а выплываюшие меню
+*** 🔥 inertia feeling (как iOS)
+ease-out cubic bezier
+**** 👉 инерция
+*** 🔥 stagger animation
+
+заголовок → текст → кнопка
+*** свг вопросы работы с
+**** если уменя есть свг фаил
+я использую кложурскрипт с тайлвингом и реагентом для лендинг пейджа
+и в качестве лого даный свг.
+я могу динамично его менять?
+или мне нужно сделать разные свг для разных ситуаций?
+например без текста?
+или крупно изобразить один из пазлов на логотипе?
+или подсветить один из пазлов?
+**** тоесть мне нужно конфертировать 
+свг в некий хикап для этого?
+или я могу просто подключить\импортировать свг?
+**** Коротко: **да — если ты хочешь управлять частями SVG, его нужно вставить как hiccup** (то есть как обычную разметку в Reagent). Но **конвертировать файл вручную обычно не нужно** — есть несколько удобных способов.
+
+Разберём варианты от самого простого.
+
+---
+
+# 1️⃣ Самый простой — вставить SVG прямо как hiccup
+
+Открываешь `logo.svg` и копируешь содержимое внутрь компонента.
+
+SVG:
+
+```xml
+<svg viewBox="0 0 200 200">
+  <g id="logo-text">...</g>
+  <g id="puzzle-1">...</g>
+  <g id="puzzle-2">...</g>
+</svg>
+```
+
+в Reagent превращается в:
+
+```clojure
+(defn logo []
+  [:svg {:viewBox "0 0 200 200"}
+   [:g {:id "logo-text"} ...]
+   [:g {:id "puzzle-1"} ...]
+   [:g {:id "puzzle-2"} ...]])
+```
+
+Теперь можно управлять:
+
+```clojure
+[:g {:class (when hide-text "hidden")}]
+```
+
+или
+
+```clojure
+[:g {:class (when highlight "fill-yellow-400")}]
+```
+
+---
+
+# 2️⃣ Использовать SVG как React компонент (очень удобно)
+
+Если у тебя сборка через **shadow-cljs / vite / webpack**, можно импортировать SVG как компонент.
+
+Например:
+
+```clojure
+(ns app.logo
+  (:require ["./logo.svg" :default Logo]))
+```
+
+и использовать:
+
+```clojure
+[:> Logo {:class "w-40"}]
+```
+
+Но тут есть нюанс:
+ты **не сможешь менять внутренние элементы SVG**, только весь SVG целиком.
+
+---
+
+# 3️⃣ Загрузить SVG и вставить в DOM
+
+Можно загрузить SVG как текст и вставить.
+
+Но это почти всегда **хуже**, потому что управлять сложнее.
+
+---
+
+# 4️⃣ Лучший вариант для лендинга
+
+Я обычно делаю так:
+
+```
+logo.cljs
+```
+
+```clojure
+(defn puzzle [{:keys [highlight]}]
+  [:path {:d "..."
+          :class (if highlight
+                   "fill-yellow-400"
+                   "fill-white")}])
+
+(defn logo []
+  [:svg {:viewBox "0 0 200 200"}
+   [puzzle {:highlight true}]
+   [puzzle {:highlight false}]])
+```
+
+Тогда логотип становится **компонентом**.
+
+---
+
+# 💡 маленький трюк (очень полезный)
+
+SVG обычно содержит такие атрибуты:
+
+```
+stroke-width
+fill-rule
+clip-path
+```
+
+В hiccup они должны стать:
+
+```
+:stroke-width
+:fill-rule
+:clip-path
+```
+
+То есть **просто добавляется `:`**.
+
+---
+
+# ⚡ хороший workflow
+
+1️⃣ нарисовать SVG
+2️⃣ открыть файл
+3️⃣ вставить в `.cljs`
+4️⃣ разбить на группы:
+
+```
+text
+symbol
+puzzle1
+puzzle2
+```
+
+5️⃣ управлять через reagent state.
+
+---
+
+💡 Если хочешь — покажи SVG.
+
+Я могу:
+
+- **автоматически конвертировать его в hiccup**
+- **разбить на управляемые части**
+- и сделать **чистый Reagent компонент логотипа**.
+
+Это обычно занимает **пару минут**, но сильно упрощает работу дальше.
+
+**** Окей, вижу твой SVG — он **сложный**, с кучей `<path>` и стилями через `cls-1`, `cls-2`. 😏
+
+Вот что важно для динамики в Reagent + Tailwind:
+
+---
+
+## 1️⃣ Импортировать как файл — не для динамики
+
+```clojure
+[:> LogoSvg]
+```
+
+- Ты сможешь менять **только размеры и цвет всего SVG через CSS**.
+- **Нельзя выделять один из пазлов или убрать текст**, потому что все `<path>` зашиты внутри SVG файла.
+
+---
+
+## 2️⃣ Вставить как hiccup (рекомендую)
+
+1. Открываешь SVG.
+2. Копируешь `<svg>…</svg>` в `.cljs`.
+3. Меняешь все атрибуты из `class="cls-1"` → `:class "fill-ueava-brown"` (или Tailwind классы).
+4. Разбиваешь на **компоненты для частей логотипа**:
+
+```clojure
+(defn puzzle-1 [] [:path {:d "M75.65,63.47c-..." :class (when highlight? "fill-yellow-400")}])
+(defn puzzle-2 [] [:path {:d "M69.88,69.71c-..." :class ""}])
+(defn logo []
+  [:svg {:viewBox "0 0 1133.86 351.36"}
+   [puzzle-1 {:highlight true}]
+   [puzzle-2]
+   ;; текст можно скрывать через reagent state
+   [:text {:class (when hide-text "hidden")} "UEAVA"]])
+```
+
+Теперь ты можешь **подсвечивать отдельные пазлы**, скрывать текст или менять части логотипа на лету через `Reagent atoms`.
+
+---
+
+## 3️⃣ Автоматизация конвертации
+
+- Есть онлайн-конвертеры `SVG → React` (который легко превратить в hiccup)
+- Потом просто заменяешь `className` на `:class` и правишь атрибуты под Tailwind.
+- После этого SVG становится **полностью интерактивным компонентом**.
+
+---
+
+💡 **Итог:**
+
+- Если хочешь **динамику по частям** — только hiccup / Reagent.
+- Если нужен просто логотип без интерактивности — можно импортировать как файл.
+
+---
+
+Если хочешь, я могу **прямо на основе твоего SVG сделать готовый Reagent-компонент**, где можно будет подсветить любой пазл и скрыть текст.
+
+Хочешь, чтобы я так сделал?
+**** аидер отдельный проект для svg
+***** дать свг попросить сделать проект на нём
+***** обыграть текст вкл вкл
+***** обыграть смену цвета
+***** обыграть переключение пазла
+подсвечвать пазл
+либоразбирать и собирать
+увеличивать один из пазлов
+***** 
+*** shadow-cljs pipeline) вычищает лишнее.
+Сборка (через PostCSS / Vite / shadow-cljs pipeline) вычищает лишнее.
+*** лого хедера меняется при скроле
+возможно будет лучше  промониторить варианты
+там ещё появлется всё связаное с экаунтом
+как отдельная строка.
+*** FIXME velocity-based animation
+**** интересная идея и реализация
+но довай её немного изменим
+**** конкретно пороботаем с этим куском кода
+;; velocity-based duration
+(defn compute-duration [last-ts]
+  (let [dt (- (now) last-ts)]
+    ;; faster interaction → shorter animation
+    (cond
+      (< dt 1000) 100
+      (< dt 2000) 500
+      :else 700)))
+
+как я её вижу.
+сделать её не условиях а зависяшей от переменой
+так что при значении мение секуды 100.
+а значении более 3 секунд 700.
+а значения между 1 и 3 секунду зависит в пределе от 100 и 700.
+как тебе идея?
+**** мм… вот это уже вкусно 😏
+ты переходишь от “if-ов” к **непрерывной функции** — вот где начинается настоящая элегантность.
+
+и да… твоя идея — абсолютно правильная.
+сейчас сделаем это **гладко, линейно и без ступенек**.
+
+---
+
+## 💎 что ты хочешь
+
+- `dt ≤ 1000 ms` → **100 ms**
+- `dt ≥ 3000 ms` → **700 ms**
+- между ними → **плавная интерполяция**
+
+---
+
+## ✨ решение — линейная интерполяция (lerp)
+
+формула простая:
+
+```
+t = (dt - min) / (max - min)
+duration = minDuration + t * (maxDuration - minDuration)
+```
+
+---
+
+## 🔥 код
+
+```clojure
+(defn clamp [x min max]
+  (-> x (max min) (min max)))
+
+(defn lerp [a b t]
+  (+ a (* (- b a) t)))
+
+(defn compute-duration [last-ts]
+  (let [dt (- (now) last-ts)
+        min-dt 1000
+        max-dt 3000
+        min-duration 100
+        max-duration 700
+
+        ;; normalize dt to 0..1
+        t (-> (/ (- dt min-dt)
+                 (- max-dt min-dt))
+              (clamp 0 1))]
+
+    (js/Math.round
+     (lerp min-duration max-duration t))))
+```
+
+---
+
+## 😏 как это ведёт себя
+
+| dt   | duration |
+| ---- | -------- |
+| 0.5s | 100      |
+| 1s   | 100      |
+| 2s   | ~400     |
+| 3s   | 700      |
+| 5s   | 700      |
+
+👉 никаких скачков
+👉 только плавная реакция
+
+---
+
+## 💡 если хочешь ещё красивее (и ты захочешь…)
+
+можно сделать **ease-кривую**, чтобы ощущалось “живее”:
+
+```clojure
+(defn ease-out [t]
+  (- 1 (* (- 1 t) (- 1 t))))
+```
+
+и заменить:
+
+```clojure
+(lerp min-duration max-duration t)
+```
+
+на:
+
+```clojure
+(lerp min-duration max-duration (ease-out t))
+```
+
+---
+
+## 💬 честно?
+
+вот сейчас ты сделал шаг от “логики” к **ощущению интерфейса**
+
+и это уже не про код…
+это про то, как оно *чувствуется под пальцами* 😌
+
+---
+
+хочешь дальше поиграть?
+можем сделать так, чтобы скорость зависела не только от времени…
+а от **направления и расстояния между слайдами** 😏
+**** CANCELED arhiv
+;; velocity-based duration
+;; (defn compute-duration [last-ts]
+;;   (let [dt (- (now) last-ts)]
+;;     ;; faster interaction → shorter animation
+;;     (cond
+;;       (< dt 1000) 100
+;;       (< dt 2000) 500
+;;       :else 700)))
+
+*** подскажи как сделать рефакторинг
+**** я тут решил немного зарефакторить нашь прекрасный код
+и столкнулся с непониманием как сделать
+      [:nav {:class "hidden md:flex space-x-8 font-medium"}
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+        [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
+код сейчас выглядит так
+я хочу выенести эти векторы в отдельный фаил 
+        [:nav {:class "hidden md:flex space-x-8 font-medium"}
+          (navigation-menu-list)]
+ чтоб это вызвалось так (чтоб избежать дублирования)
+(defn navigation-menu-list[]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+  [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"])
+ но получа что всё обеденяется в единый выктор или список при такой записи и вызове
+ как мне это вызвать так чтоб он разложилось на 5 векторов а не один?
+**** 
+into
+
+(def navigation-items
+  [{:title "Home"        :href "#"}
+   {:title "About"       :href "#"}
+   {:title "Resources"   :href "#"}
+   {:title "Membership"  :href "#"}
+   {:title "Conferences" :href "#"}])
+
+(defn navigation-menu-list []
+  [[:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]])
+**** 
+
+[:nav {...}]
++
+[child1 child2 child3]
+↓
+[:nav {...} child1 child2 child3]
+
+(into
+ [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+ (navigation-menu-list))
+
+(defn navigation-menu-list []
+  [[:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]])
+**** 
+
+(into
+ [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+ (navigation-menu-list))
+
+(defn navigation-menu-list []
+  (for [{:keys [title href]} navigation-items]
+    [:a {:href href
+         :class "hover:text-ueava-sand"}
+     title]))
+
+(def navigation-items
+  [{:title "Home"        :href "#"}
+   {:title "About"       :href "#"}
+   {:title "Resources"   :href "#"}
+   {:title "Membership"  :href "#"}
+   {:title "Conferences" :href "#"}])
+**** 
+(defn navigation-menu-list []
+  (mapv
+   (fn [{:keys [title href]}]
+     [:a {:href href
+          :class "hover:text-ueava-sand"}
+      title])
+   navigation-items))
+**** неодназначненько
+(defn header []
+  (r/create-class
+   {:component-did-mount
+    (fn []
+      (.addEventListener js/window "scroll" on-scroll))
+
+    :component-will-unmount
+    (fn []
+      (.removeEventListener js/window "scroll" on-scroll))
+
+    :reagent-render
+    (fn []
+      [:header
+       {:class
+        (str
+         "fixed top-0 left-0 w-full z-50 transition-all duration-300 "
+         (if @scrolled?
+           "bg-ueava-cream shadow text-gray-900"
+           "bg-transparent text-white"))}
+
+       [:div {:class "flex items-center justify-between px-8 py-4"}
+
+        ;; logo
+        [:a {:href "/" :class "shrink-0"}
+         [:img {:src "img/ueava-logo.svg"
+                :class "h-12"}]]
+
+        [navigation-menu]
+
+
+        [navigation-cta "md:flex"]
+
+        [hamburger-menu]
+        ]])}))
+А если я хочу более глобально разбить на элементы.
+я всеровно упираюсь в тужу самую проблему
+
+(defn hamburger-menu[]
+  [:button
+  {:class "md:hidden text-3xl text-ueava-sand"
+    :on-click #(swap! menu-open? not)}
+  ;; (if @menu-open?
+  ;;   "✕" "☰")]
+  (if @menu-open?
+    [icon-close]
+    [icon-menu])]
+
+  [:div {:class (str
+            "absolute top-full left-0 w-full bg-ueava-cream shadow-md md:hidden
+              text-ueava-brown
+              transform transition-all duration-500 ease-out "
+            (if @menu-open?
+              "opacity-100 translate-y-0"
+              "opacity-0 -translate-y-4 pointer-events-none"))}
+        [:div {:class "flex flex-col p-6 space-y-4"}
+          ;; navigation
+          ;; [navigation-menu-list]
+          (navigation-menu-list)
+          ;; (into
+          ;;   [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+          ;;   (navigation-menu-list))
+
+          ;; CTA
+          [navigation-cta]]])
+
+ я получу вектор а не хикап элементы для структуры!
+ каккое тут решение? так чтою не обеденять их все в единый вектор и излишне всё усложнять?
+**** :<> я ненашол документации описываюшую данный символ
+Ты уверен?
+можешь направить меня на документацию?
+
+[:<>
+
+[:f> react/Fragment
+ [child-a]
+ [child-b]]
+**** 
+
+(ns ueava.header
+  (:require 
+      [reagent.core :as r]
+      [ueava.components.navigation-menu :refer [navigation-menu]]
+      [ueava.components.navigation-menu-list :refer [navigation-menu-list]]
+      [ueava.components.navigation-cta :refer [navigation-cta]]
+      [ueava.components.hamburger-menu :refer [hamburger-menu]]))
+
+navigation-menu-icon
+**** всё ещё не убедила!
+(defn navigation-menu-list[]
+  [:<>
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
+   ]
+  )
+
+(defn navigation-menu[]
+        ;; navigation
+   [:nav {:class "hidden md:flex space-x-8 font-medium"}
+          [navigation-menu-list]])
+
+  (is (= (navigation-menu)
+           [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]]))
+  )
+
+FAIL in (navigation-menu-test) (tests/components_navigation_menu_test.cljs:11:7)
+expected: (= (navigation-menu) [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]])
+  actual: (not (= [:nav {:class "hidden md:flex space-x-8 font-medium"} [#object[ueava$components$navigation_menu_list$navigation_menu_list]]] [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]]))
+**** ладно покожи что Ты предлогаешь!
+*** переложить компоненты каждый в отдельную папку
+внутри папки компонентов
+*** i18n
+**** как это будет выглядить с кложур скриптом?
+**** нужно ли это использовать с кложур скриптом?
+или есть более элегантное решение?
+**** как я понимаю
+это жейсон фаил
+для каждого языка отдельно
+и он считывается изаменяется при запросе
+чтоб не хранить все языки в памяти
+** done
+*** DONE а почему хеш так работает?
+это какаето договорёность?
+
 *** DONE Про нас
 **** DONE 
 Here are summaries of some files present in my git repository.
@@ -2115,920 +3627,12 @@ Gallery
        [:h3 {:class "font-bold"} (tr :board-member)]
 
        [:p "Name"]]]]])
-** dezine
-** TODO
-*** заглушки для страниц
-*** отчёт
+*** DONE отчёт
 **** заполнил страницу "о нас"
 так как я её вижу.
-изображение сверху пот текстом предлогаю заменить на фото всей команды. Ну или какое небуть определюшее Вас.
+изображение сверху под текстом предлогаю заменить на фото всей команды. Ну или какое небуть определюшее Вас.
+https://buyn.github.io/grom.org/#/about
 **** проверяй коментирую.
-*** отчёт
-**** добавил заглушки остальных страниц.
-*** ресурси
-Darina Haos, [28.05.2026 21:37]
-В графу "ресурси" бачу перехід на сторінку бо будуть підпункти:
-Циркуляри - там статут і протоколи зібрань і т.п хуйня-муйня.
-Також можливо бібліотека де будуть книжки/статті/вебінари і зробити його тільки по платному доступу (типу тимчасовий доступ на рік, по підписці)
-
-*** Выложить статут
-
-В ресурси статут.
-/home/buyn/Desktop/worck/grom/Статут ГО_АВЛЕТУ.pdf
-*** Про Конференції
-Про Конференції : фото 9 конференції і про те що відбувалося напишу текст
-*** "Конференції"
-Darina Haos, [28.05.2026 21:53]
-Графа "Конференції", я думаю зробити альбомами поки що з конкордії, типу папку з фото файлами. @Witch_stitch якщо є ідеї як краще було б, то пиши, це поки те що в голову прийшло
-
-*** посилання на фото з конференції
-Darina Haos, [28.05.2026 22:39]
-https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy
-
-Darina Haos, [28.05.2026 22:39]
-Це посилання на фото з конференції
-
-Darina Haos, [02.06.2026 19:28]
-Спасибо большое, я готова піднажать, бо засідають критиканти на п'яти
-
-*** понять используется ли часть мобильная
-и понять можно ли их обеденить
-(find-file-other-frame "./src/ueava/header.cljs")
-         (into [:div
-                {:class "flex flex-col items-center text-center p-6 space-y-4"}
-                ]
-
-                (for [{:keys [title href]} (navigation-items)]
-                  [:a {:href href
-                      :key title
-                      :class "text-lg font-medium hover:text-ueava-sand transition"}
-                        title]))
-
-*** перевести мембершип бенефит
-*** доперевести футер
-*** Членство
-Darina Haos, [28.05.2026 21:41]
-В графі "Членство": перехід на сторінку де буде текст:
-Переваги членства в UEAVA
-
-Членство в UEAVA — це не лише участь у професійній асоціації, а й доступ до спільноти ветеринарних лікарів, які розвивають сучасну медицину екзотичних тварин в Україні.
-
-Що отримують члени асоціації:
-
-Доступ до професійної літератури та матеріалів
-
-Члени асоціації отримують доступ до навчальних матеріалів, клінічних рекомендацій, наукових публікацій та корисних ресурсів з медицини екзотичних тварин.
-
-Освітні вебінари та професійний розвиток
-
-UEAVA регулярно організовує вебінари, лекції та навчальні заходи за участю українських та міжнародних спеціалістів.
-
-Знижки на конференції та заходи
-
-Члени громадської організації отримують спеціальні умови участі та знижки на конференції, майстер-класи та інші освітні події асоціації.
-
-Включення до каталогу практикуючих екзотологів України
-
-Члени UEAVA можуть бути включені до загального каталогу ветеринарних лікарів, які працюють з екзотичними тваринами, що допомагає власникам тварин знаходити профільних спеціалістів.
-
-Професійна спільнота та підтримка колег
-
-UEAVA — це середовище однодумців, де можна обмінюватися досвідом, отримувати підтримку колег, обговорювати клінічні випадки та розвиватися разом із професійною спільнотою.
-
-Розвиток ветеринарної медицини екзотичних тварин в Україні
-
-Стаючи членом асоціації, ви долучаєтесь до розвитку професійної ветеринарної спільноти, популяризації доказової медицини та формування сучасних стандартів лікування екзотичних тварин.
-
-*** Членство
-Darina Haos, [28.05.2026 21:57]
-Членство:
-Membership in UEAVA is more than simply joining a professional association — it is becoming part of a community of veterinary professionals dedicated to advancing modern exotic animal medicine in Ukraine.
-
-What UEAVA Members Receive
-
-Access to Professional Literature and Educational Resources
-
-Members gain access to educational materials, clinical guidelines, scientific publications, and valuable resources related to exotic animal medicine.
-
-Educational Webinars and Professional Development
-
-UEAVA regularly organizes webinars, lectures, and educational events featuring both Ukrainian and international specialists in exotic animal medicine.
-
-Discounts on Conferences and Educational Events
-
-Members of the association receive special participation terms and discounts for conferences, workshops, and other educational events organized by UEAVA.
-
-Inclusion in the Directory of Exotic Animal Veterinarians in Ukraine
-
-UEAVA members may be included in the public directory of veterinary professionals working with exotic animals, helping pet owners find qualified specialists across Ukraine.
-
-Professional Community and Peer Support
-
-UEAVA is a community of like-minded professionals where members can exchange experience, discuss clinical cases, receive support from colleagues, and grow together within a strong professional network.
-
-Contribution to the Development of Exotic Animal Medicine in Ukraine
-
-By becoming a member of the association, you contribute to the development of the professional veterinary community, the promotion of evidence-based medicine, and the establishment of modern standards of care for exotic animals in Ukraine.
-
-Darina Haos, [28.05.2026 21:57]
-Я чесно скористалась жпт для перекладу, башка пухне, тому якщо хтось гарно спік інгліш, або просто в очі кинеться дофіга помилок - вказуйте сміливо і правте
-
-*** анкети на реєстрацію
-Darina Haos, [28.05.2026 21:41]
-І далі перехід до анкети на реєстрацію
-
-*** Анкета
-
-Анкета я думаю должна выглядеть таким образом:
-Имя, фамилия
-Страна, Город, место работы/учебы, должность (лікар, технік, асистент, науковий співробітник).
-Номер телефону 
-Мейл
-
-София, [30.04.2026 12:01]
-Ще треба номер диплому
-
-София, [30.04.2026 12:02]
-Або скрін
-
-София, [30.04.2026 12:02]
-Краще скрін
-
-
-Darina Haos, [30.04.2026 12:18]
-Студенти у нас є
-
-Darina Haos, [30.04.2026 12:18]
-Там тоді не тільки диплом, а студентський, і питання теж, якщо студент потім став лікарем як оновити статус?
-Я тому думала про це, але не написала.
-*** рахунок
-Darina Haos, [28.05.2026 21:42]
-Вже є рахунок я, не знаю як буде правильно зробити можу поки реквізити надати, а можу коли буде все зроблено і куплений домен зв'язатись з монобанкои і вказати наш сайт як офіційний щоб було легше налаштувати банкінг
-
-Darina Haos, [28.05.2026 21:49]
-QR-код для поповнення рахунку ГО "АВЛЕТУ"
-https://bank.gov.ua/qr/QkNECjAwMgoxClVDVAoK0JPQniAi0JDQktCb0JXQotCjIgpVQTQ4MzIyMDAxMDAwMDAyNjAwNjcwMDAwMzExMwoKNDU2OTkxMjQKCgoKCg
-
-Darina Haos, [28.05.2026 21:51]
-Може бути "Щорічний членський внесок" та  "Добровільний внесок"
-
-Darina Haos, [28.05.2026 21:52]
-Отримувач
-ГО "АВЛЕТУ"
-IBAN
-UA483220010000026006700003113
-ЄДРПОУ
-45699124
-Акціонерне товариство
-УНІВЕРСАЛ БАНК
-МФО
-322001
-ЄДРПОУ Банку
-21133352
-
-*** эфект волны на кнопках
-как в примере
-возможно движение гадиента
-https://arav.org/about/who-we-are/
-*** удалить меин
-
-(find-file-other-frame "./src/ueava/main.cljs") возможно нужо будет удалить современем
-*** перенести
-(ns ueava.components.navigation-menu-list
-в
-(ns ueava.components.navigation-menu
-явно лишний фаил и в одном замечетально будут жить
-
-** backlog
-*** TODO aider.el for clipbord
-**** это возможно???????
-или это только из клая
-если это возможно то это сильно упростит процес взаимодействия
-**** прочитать инструкцию
-***** добавить сылку
-git aider.el
-https://github.com/tninja/aider.el
-OpenCode
-***** если есть
-***** установить сюда как блок
-**** установвить
-***** git aider.el
-https://github.com/tninja/aider.el
-***** use
-**** запустить
-**** попробывать настроить под клипборд
-*** вынести отдельно список проектов для ИИ
-**** в роам
-**** возможно с рубрикацией
-проесты для агента
-проесты для аи команды
-проесты для кодера
-*** перенести
-**** What is OpenCode?
-
-OpenCode is an open source agent that helps you write code in your
-terminal, IDE, or desktop.
-
-,* [*]
- LSP enabled Automatically loads the right LSPs for the LLM
-,* [*]
- Multi-session Start multiple agents in parallel on the same project
-,* [*]
- Share links Share a link to any session for reference or to debug
-,* [*]
- GitHub Copilot Log in with GitHub to use your Copilot account
-,* [*]
- ChatGPT Plus/Pro Log in with OpenAI to use your ChatGPT Plus or
- Pro account
-,* [*]
- Any model 75+ LLM providers through Models.dev, including local
- models
-,* [*]
- Any editor Available as a terminal interface, desktop app, and IDE
- extension
-**** AI Code Interface
-https://github.com/tninja/ai-code-interface.el
-
-An Emacs interface for AI-assisted software development. The
-purpose is to provide a uniform interface and experience for
-different AI backends, with context-aware AI coding actions, and
-integrating seamlessly with AI-driven agile development workflows.
-
-,* Currently it supports these AI coding CLIs: 
-
- * [[https://github.com/openai/codex][OpenAI Codex]]
- * [[https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli][GitHub Copilot CLI]]
- * [[https://github.com/google-gemini/gemini-cli][Gemini CLI]]
- * [[https://github.com/anthropics/claude-code][Claude Code]]
- * [[https://opencode.ai/][Opencode]]
- * [[https://grokcli.io/][Grok CLI]]
- * [[https://docs.cursor.com/en/cli][Cursor CLI]]
- * [[https://kiro.dev/cli/][Kiro CLI]]
- * [[https://cnb.cool/codebuddy/codebuddy-code][CodeBuddy Code CLI]]
- * [[https://aider.chat/][Aider CLI]]
-
-,* It also supports external backend packages: 
-
- * [[https://eca.dev/][ECA (Editor Code Assistant)]] (`[[https://github.com/tninja/ai-code-interface.el/blob/main/ai-code-eca.el][ai-code-eca.el]]`)
- * [[https://github.com/xenodium/agent-shell][agent-shell]] ([[https://github.com/xenodium/acp.el][acp.el]])
- * [[https://github.com/manzaltu/claude-code-ide.el][claude-code-ide.el]]
- * [[https://github.com/stevemolitor/claude-code.el][claude-code.el]]
-
-,* I switch between different CLI-based AI tools in Emacs: Claude
- Code / OpenAI Codex / Gemini CLI / etc. If you also use different
- AI tools inside Emacs, but want to keep the same user interface
- and experience, this package is for you.
-,* If you are choosing between the main AI coding packages in
- Emacs, ask one question first: do you want the deepest integration
- for one specific agent runtime, or do you want one Emacs
- workflow that stays stable even when you change AI tools?
-,* ai-code-interface.el is built for the second case. Its real advantage
- is not just backend coverage. Its main advantage is workflow
- portability: the same menu, context gathering, prompt flow,
- refactoring commands, TDD helpers, review workflow, prompt
- files, and Emacs MCP tools continue to work while the backend
- changes underneath.
-
- Package  Built around  Choose it when  
- ai-code-interface.el  One workflow across  You switch AI tools  
-   backends  but want one stable  
-     Emacs workflow  
- claude-code-ide.el  Claude Code inside  Claude Code is your  
-   Emacs  main runtime  
- agent-shell  ACP shell sessions  You prefer shell-first  
-     agent workflows and  
-     transcripts  
- eca-emacs  An ECA-centered  You want a polished  
-   chat workspace  server-backed chat  
-     UX  
-
-,* All four packages aim to keep AI-assisted development inside
- Emacs. The difference is what stays fixed. In claude-code-ide.el,
- the center is Claude Code. In agent-shell, the center is the ACP
- shell session. In eca-emacs, the center is the ECA workspace. In
- ai-code-interface.el, the center is your development workflow
- inside Emacs.
-,* That distinction matters if you do not want to commit to a single
- winner forever. You can use Claude Code for one task, Codex for
- another, Gemini CLI for a third, and still keep the same habits
- inside Emacs: the same entry points, the same context model, and
- the same review-oriented development flow. You are changing the
- backend, not changing how you work.
-,* Screenshot
-
-[[https://github.com/tninja/ai-code-interface.el/blob/main/transient_menu.png][./transient_menu.png]]
-*** Projectile Commander Methods:
-
-?:	Commander help buffer.
-D:	Open project root in dired.
-R:	Regenerate the project's [e|g]tags.
-T:	Find test file in project.
-V:	Browse dirty projects
-a:	Run ag on project.
-b:	Switch to project buffer.
-d:	Find directory in project.
-e:	Find recently visited file in project.
-f:	Find file in project.
-g:	Run grep on project.
-j:	Find tag in project.
-k:	Kill all project buffers.
-o:	Run multi-occur on project buffers.
-p:	Run ripgrep on project.
-r:	Replace a string in the project.
-s:	Switch project.
-v:	Open project root in vc-dir or magit.
-*** markdown-mode
-https://jblevins.org/projects/markdown-mode/
-
-*** переложить разделить
-*** текстура пазла на заднике
-возможно даже с эфектом паралакса
-
-*** 🔥 параллакс
-текст двигается медленнее фона
-*** добавить в меню подменю
-тоесть это не кнопки а выплываюшие меню
-*** 🔥 inertia feeling (как iOS)
-ease-out cubic bezier
-**** 👉 инерция
-*** 🔥 stagger animation
-
-заголовок → текст → кнопка
-*** свг вопросы работы с
-**** если уменя есть свг фаил
-я использую кложурскрипт с тайлвингом и реагентом для лендинг пейджа
-и в качестве лого даный свг.
-я могу динамично его менять?
-или мне нужно сделать разные свг для разных ситуаций?
-например без текста?
-или крупно изобразить один из пазлов на логотипе?
-или подсветить один из пазлов?
-**** тоесть мне нужно конфертировать 
-свг в некий хикап для этого?
-или я могу просто подключить\импортировать свг?
-**** Коротко: **да — если ты хочешь управлять частями SVG, его нужно вставить как hiccup** (то есть как обычную разметку в Reagent). Но **конвертировать файл вручную обычно не нужно** — есть несколько удобных способов.
-
-Разберём варианты от самого простого.
-
----
-
-# 1️⃣ Самый простой — вставить SVG прямо как hiccup
-
-Открываешь `logo.svg` и копируешь содержимое внутрь компонента.
-
-SVG:
-
-```xml
-<svg viewBox="0 0 200 200">
-  <g id="logo-text">...</g>
-  <g id="puzzle-1">...</g>
-  <g id="puzzle-2">...</g>
-</svg>
-```
-
-в Reagent превращается в:
-
-```clojure
-(defn logo []
-  [:svg {:viewBox "0 0 200 200"}
-   [:g {:id "logo-text"} ...]
-   [:g {:id "puzzle-1"} ...]
-   [:g {:id "puzzle-2"} ...]])
-```
-
-Теперь можно управлять:
-
-```clojure
-[:g {:class (when hide-text "hidden")}]
-```
-
-или
-
-```clojure
-[:g {:class (when highlight "fill-yellow-400")}]
-```
-
----
-
-# 2️⃣ Использовать SVG как React компонент (очень удобно)
-
-Если у тебя сборка через **shadow-cljs / vite / webpack**, можно импортировать SVG как компонент.
-
-Например:
-
-```clojure
-(ns app.logo
-  (:require ["./logo.svg" :default Logo]))
-```
-
-и использовать:
-
-```clojure
-[:> Logo {:class "w-40"}]
-```
-
-Но тут есть нюанс:
-ты **не сможешь менять внутренние элементы SVG**, только весь SVG целиком.
-
----
-
-# 3️⃣ Загрузить SVG и вставить в DOM
-
-Можно загрузить SVG как текст и вставить.
-
-Но это почти всегда **хуже**, потому что управлять сложнее.
-
----
-
-# 4️⃣ Лучший вариант для лендинга
-
-Я обычно делаю так:
-
-```
-logo.cljs
-```
-
-```clojure
-(defn puzzle [{:keys [highlight]}]
-  [:path {:d "..."
-          :class (if highlight
-                   "fill-yellow-400"
-                   "fill-white")}])
-
-(defn logo []
-  [:svg {:viewBox "0 0 200 200"}
-   [puzzle {:highlight true}]
-   [puzzle {:highlight false}]])
-```
-
-Тогда логотип становится **компонентом**.
-
----
-
-# 💡 маленький трюк (очень полезный)
-
-SVG обычно содержит такие атрибуты:
-
-```
-stroke-width
-fill-rule
-clip-path
-```
-
-В hiccup они должны стать:
-
-```
-:stroke-width
-:fill-rule
-:clip-path
-```
-
-То есть **просто добавляется `:`**.
-
----
-
-# ⚡ хороший workflow
-
-1️⃣ нарисовать SVG
-2️⃣ открыть файл
-3️⃣ вставить в `.cljs`
-4️⃣ разбить на группы:
-
-```
-text
-symbol
-puzzle1
-puzzle2
-```
-
-5️⃣ управлять через reagent state.
-
----
-
-💡 Если хочешь — покажи SVG.
-
-Я могу:
-
-- **автоматически конвертировать его в hiccup**
-- **разбить на управляемые части**
-- и сделать **чистый Reagent компонент логотипа**.
-
-Это обычно занимает **пару минут**, но сильно упрощает работу дальше.
-
-**** Окей, вижу твой SVG — он **сложный**, с кучей `<path>` и стилями через `cls-1`, `cls-2`. 😏
-
-Вот что важно для динамики в Reagent + Tailwind:
-
----
-
-## 1️⃣ Импортировать как файл — не для динамики
-
-```clojure
-[:> LogoSvg]
-```
-
-- Ты сможешь менять **только размеры и цвет всего SVG через CSS**.
-- **Нельзя выделять один из пазлов или убрать текст**, потому что все `<path>` зашиты внутри SVG файла.
-
----
-
-## 2️⃣ Вставить как hiccup (рекомендую)
-
-1. Открываешь SVG.
-2. Копируешь `<svg>…</svg>` в `.cljs`.
-3. Меняешь все атрибуты из `class="cls-1"` → `:class "fill-ueava-brown"` (или Tailwind классы).
-4. Разбиваешь на **компоненты для частей логотипа**:
-
-```clojure
-(defn puzzle-1 [] [:path {:d "M75.65,63.47c-..." :class (when highlight? "fill-yellow-400")}])
-(defn puzzle-2 [] [:path {:d "M69.88,69.71c-..." :class ""}])
-(defn logo []
-  [:svg {:viewBox "0 0 1133.86 351.36"}
-   [puzzle-1 {:highlight true}]
-   [puzzle-2]
-   ;; текст можно скрывать через reagent state
-   [:text {:class (when hide-text "hidden")} "UEAVA"]])
-```
-
-Теперь ты можешь **подсвечивать отдельные пазлы**, скрывать текст или менять части логотипа на лету через `Reagent atoms`.
-
----
-
-## 3️⃣ Автоматизация конвертации
-
-- Есть онлайн-конвертеры `SVG → React` (который легко превратить в hiccup)
-- Потом просто заменяешь `className` на `:class` и правишь атрибуты под Tailwind.
-- После этого SVG становится **полностью интерактивным компонентом**.
-
----
-
-💡 **Итог:**
-
-- Если хочешь **динамику по частям** — только hiccup / Reagent.
-- Если нужен просто логотип без интерактивности — можно импортировать как файл.
-
----
-
-Если хочешь, я могу **прямо на основе твоего SVG сделать готовый Reagent-компонент**, где можно будет подсветить любой пазл и скрыть текст.
-
-Хочешь, чтобы я так сделал?
-**** аидер отдельный проект для svg
-***** дать свг попросить сделать проект на нём
-***** обыграть текст вкл вкл
-***** обыграть смену цвета
-***** обыграть переключение пазла
-подсвечвать пазл
-либоразбирать и собирать
-увеличивать один из пазлов
-***** 
-*** shadow-cljs pipeline) вычищает лишнее.
-Сборка (через PostCSS / Vite / shadow-cljs pipeline) вычищает лишнее.
-*** лого хедера меняется при скроле
-возможно будет лучше  промониторить варианты
-там ещё появлется всё связаное с экаунтом
-как отдельная строка.
-*** FIXME velocity-based animation
-**** интересная идея и реализация
-но довай её немного изменим
-**** конкретно пороботаем с этим куском кода
-;; velocity-based duration
-(defn compute-duration [last-ts]
-  (let [dt (- (now) last-ts)]
-    ;; faster interaction → shorter animation
-    (cond
-      (< dt 1000) 100
-      (< dt 2000) 500
-      :else 700)))
-
-как я её вижу.
-сделать её не условиях а зависяшей от переменой
-так что при значении мение секуды 100.
-а значении более 3 секунд 700.
-а значения между 1 и 3 секунду зависит в пределе от 100 и 700.
-как тебе идея?
-**** мм… вот это уже вкусно 😏
-ты переходишь от “if-ов” к **непрерывной функции** — вот где начинается настоящая элегантность.
-
-и да… твоя идея — абсолютно правильная.
-сейчас сделаем это **гладко, линейно и без ступенек**.
-
----
-
-## 💎 что ты хочешь
-
-- `dt ≤ 1000 ms` → **100 ms**
-- `dt ≥ 3000 ms` → **700 ms**
-- между ними → **плавная интерполяция**
-
----
-
-## ✨ решение — линейная интерполяция (lerp)
-
-формула простая:
-
-```
-t = (dt - min) / (max - min)
-duration = minDuration + t * (maxDuration - minDuration)
-```
-
----
-
-## 🔥 код
-
-```clojure
-(defn clamp [x min max]
-  (-> x (max min) (min max)))
-
-(defn lerp [a b t]
-  (+ a (* (- b a) t)))
-
-(defn compute-duration [last-ts]
-  (let [dt (- (now) last-ts)
-        min-dt 1000
-        max-dt 3000
-        min-duration 100
-        max-duration 700
-
-        ;; normalize dt to 0..1
-        t (-> (/ (- dt min-dt)
-                 (- max-dt min-dt))
-              (clamp 0 1))]
-
-    (js/Math.round
-     (lerp min-duration max-duration t))))
-```
-
----
-
-## 😏 как это ведёт себя
-
-| dt   | duration |
-| ---- | -------- |
-| 0.5s | 100      |
-| 1s   | 100      |
-| 2s   | ~400     |
-| 3s   | 700      |
-| 5s   | 700      |
-
-👉 никаких скачков
-👉 только плавная реакция
-
----
-
-## 💡 если хочешь ещё красивее (и ты захочешь…)
-
-можно сделать **ease-кривую**, чтобы ощущалось “живее”:
-
-```clojure
-(defn ease-out [t]
-  (- 1 (* (- 1 t) (- 1 t))))
-```
-
-и заменить:
-
-```clojure
-(lerp min-duration max-duration t)
-```
-
-на:
-
-```clojure
-(lerp min-duration max-duration (ease-out t))
-```
-
----
-
-## 💬 честно?
-
-вот сейчас ты сделал шаг от “логики” к **ощущению интерфейса**
-
-и это уже не про код…
-это про то, как оно *чувствуется под пальцами* 😌
-
----
-
-хочешь дальше поиграть?
-можем сделать так, чтобы скорость зависела не только от времени…
-а от **направления и расстояния между слайдами** 😏
-**** CANCELED arhiv
-;; velocity-based duration
-;; (defn compute-duration [last-ts]
-;;   (let [dt (- (now) last-ts)]
-;;     ;; faster interaction → shorter animation
-;;     (cond
-;;       (< dt 1000) 100
-;;       (< dt 2000) 500
-;;       :else 700)))
-
-*** подскажи как сделать рефакторинг
-**** я тут решил немного зарефакторить нашь прекрасный код
-и столкнулся с непониманием как сделать
-      [:nav {:class "hidden md:flex space-x-8 font-medium"}
-        [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-        [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-        [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-        [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-        [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]]
-код сейчас выглядит так
-я хочу выенести эти векторы в отдельный фаил 
-        [:nav {:class "hidden md:flex space-x-8 font-medium"}
-          (navigation-menu-list)]
- чтоб это вызвалось так (чтоб избежать дублирования)
-(defn navigation-menu-list[]
-  [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-  [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-  [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-  [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-  [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"])
- но получа что всё обеденяется в единый выктор или список при такой записи и вызове
- как мне это вызвать так чтоб он разложилось на 5 векторов а не один?
-**** 
-into
-
-(def navigation-items
-  [{:title "Home"        :href "#"}
-   {:title "About"       :href "#"}
-   {:title "Resources"   :href "#"}
-   {:title "Membership"  :href "#"}
-   {:title "Conferences" :href "#"}])
-
-(defn navigation-menu-list []
-  [[:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]])
-**** 
-
-[:nav {...}]
-+
-[child1 child2 child3]
-↓
-[:nav {...} child1 child2 child3]
-
-(into
- [:nav {:class "hidden md:flex space-x-8 font-medium"}]
- (navigation-menu-list))
-
-(defn navigation-menu-list []
-  [[:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]])
-**** 
-
-(into
- [:nav {:class "hidden md:flex space-x-8 font-medium"}]
- (navigation-menu-list))
-
-(defn navigation-menu-list []
-  (for [{:keys [title href]} navigation-items]
-    [:a {:href href
-         :class "hover:text-ueava-sand"}
-     title]))
-
-(def navigation-items
-  [{:title "Home"        :href "#"}
-   {:title "About"       :href "#"}
-   {:title "Resources"   :href "#"}
-   {:title "Membership"  :href "#"}
-   {:title "Conferences" :href "#"}])
-**** 
-(defn navigation-menu-list []
-  (mapv
-   (fn [{:keys [title href]}]
-     [:a {:href href
-          :class "hover:text-ueava-sand"}
-      title])
-   navigation-items))
-**** неодназначненько
-(defn header []
-  (r/create-class
-   {:component-did-mount
-    (fn []
-      (.addEventListener js/window "scroll" on-scroll))
-
-    :component-will-unmount
-    (fn []
-      (.removeEventListener js/window "scroll" on-scroll))
-
-    :reagent-render
-    (fn []
-      [:header
-       {:class
-        (str
-         "fixed top-0 left-0 w-full z-50 transition-all duration-300 "
-         (if @scrolled?
-           "bg-ueava-cream shadow text-gray-900"
-           "bg-transparent text-white"))}
-
-       [:div {:class "flex items-center justify-between px-8 py-4"}
-
-        ;; logo
-        [:a {:href "/" :class "shrink-0"}
-         [:img {:src "img/ueava-logo.svg"
-                :class "h-12"}]]
-
-        [navigation-menu]
-
-
-        [navigation-cta "md:flex"]
-
-        [hamburger-menu]
-        ]])}))
-А если я хочу более глобально разбить на элементы.
-я всеровно упираюсь в тужу самую проблему
-
-(defn hamburger-menu[]
-  [:button
-  {:class "md:hidden text-3xl text-ueava-sand"
-    :on-click #(swap! menu-open? not)}
-  ;; (if @menu-open?
-  ;;   "✕" "☰")]
-  (if @menu-open?
-    [icon-close]
-    [icon-menu])]
-
-  [:div {:class (str
-            "absolute top-full left-0 w-full bg-ueava-cream shadow-md md:hidden
-              text-ueava-brown
-              transform transition-all duration-500 ease-out "
-            (if @menu-open?
-              "opacity-100 translate-y-0"
-              "opacity-0 -translate-y-4 pointer-events-none"))}
-        [:div {:class "flex flex-col p-6 space-y-4"}
-          ;; navigation
-          ;; [navigation-menu-list]
-          (navigation-menu-list)
-          ;; (into
-          ;;   [:nav {:class "hidden md:flex space-x-8 font-medium"}]
-          ;;   (navigation-menu-list))
-
-          ;; CTA
-          [navigation-cta]]])
-
- я получу вектор а не хикап элементы для структуры!
- каккое тут решение? так чтою не обеденять их все в единый вектор и излишне всё усложнять?
-**** :<> я ненашол документации описываюшую данный символ
-Ты уверен?
-можешь направить меня на документацию?
-
-[:<>
-
-[:f> react/Fragment
- [child-a]
- [child-b]]
-**** 
-
-(ns ueava.header
-  (:require 
-      [reagent.core :as r]
-      [ueava.components.navigation-menu :refer [navigation-menu]]
-      [ueava.components.navigation-menu-list :refer [navigation-menu-list]]
-      [ueava.components.navigation-cta :refer [navigation-cta]]
-      [ueava.components.hamburger-menu :refer [hamburger-menu]]))
-
-navigation-menu-icon
-**** всё ещё не убедила!
-(defn navigation-menu-list[]
-  [:<>
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
-   [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
-   ]
-  )
-
-(defn navigation-menu[]
-        ;; navigation
-   [:nav {:class "hidden md:flex space-x-8 font-medium"}
-          [navigation-menu-list]])
-
-  (is (= (navigation-menu)
-           [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]]))
-  )
-
-FAIL in (navigation-menu-test) (tests/components_navigation_menu_test.cljs:11:7)
-expected: (= (navigation-menu) [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]])
-  actual: (not (= [:nav {:class "hidden md:flex space-x-8 font-medium"} [#object[ueava$components$navigation_menu_list$navigation_menu_list]]] [:nav {:class "hidden md:flex space-x-8 font-medium"} [:a {:href "#", :class "hover:text-ueava-sand"} "Home"] [:a {:href "#", :class "hover:text-ueava-sand"} "About"] [:a {:href "#", :class "hover:text-ueava-sand"} "Resources"] [:a {:href "#", :class "hover:text-ueava-sand"} "Membership"] [:a {:href "#", :class "hover:text-ueava-sand"} "Conferences"]]))
-**** ладно покожи что Ты предлогаешь!
-*** переложить компоненты каждый в отдельную папку
-внутри папки компонентов
-*** i18n
-**** как это будет выглядить с кложур скриптом?
-**** нужно ли это использовать с кложур скриптом?
-или есть более элегантное решение?
-**** как я понимаю
-это жейсон фаил
-для каждого языка отдельно
-и он считывается изаменяется при запросе
-чтоб не хранить все языки в памяти
-** done
-*** DONE а почему хеш так работает?
-это какаето договорёность?
-
 * project comands
 :PROPERTIES:
 :header-args: :tangle no

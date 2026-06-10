@@ -6,9 +6,9 @@
 (defn navigation-items []
   [ {:title (t :hlist/Home)        :href "#/home"}
     {:title (t :hlist/About)       :href "#/about"}
-    {:title (t :hlist/Resources)   :href "#/Resources"}
+    {:title (t :hlist/Resources)   :href "#/resources"}
     {:title (t :hlist/Membership)  :href "#/membership"}
-    {:title (t :hlist/Conferences) :href "#/Conferences"}])
+    {:title (t :hlist/Conferences) :href "#/conferences"}])
 
 (defn navigation-menu-list []
   (for [{:keys [title href]} (navigation-items)]

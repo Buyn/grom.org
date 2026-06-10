@@ -9,6 +9,8 @@
    "#/"           :home
    "#/home"       :home
    "#/about"      :about
+   "#/conferences":conferences
+   "#/resources"  :resources
    "#/membership" :membership})
 
 (defn current-route []
