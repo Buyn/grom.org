@@ -184,32 +184,31 @@
       [presidium-card "img/ueava-about-luy.webp" "секретар" "Софія Дащенко"]
       [presidium-r-card "img/ueava-about-darina2.webp" (tr :board-member) "сестричка Луй"]
       [presidium-r-card "img/ueava-about-darina.webp" (tr :board-member) "сестричка Луй"]
+      [presidium-r-card "img/ueava-about-luy.webp" (tr :board-member) "сестричка Луй"]
      ]]])
 
 (defn founder-card [photo name]
   [:div {:class "bg-white rounded-xl p-6 shadow text-center
                   hover:shadow-xl transition"}
    [:img
-    {:src photo
-     :alt name
-     :class "w-40 h-40 mx-auto mb-4
-             rounded-full
-             object-cover"}]
-   [:h3 {:class "font-semibold text-lg"}
-    name]])
+      { :src photo
+        :alt name
+        :class "w-40 h-40 mx-auto mb-4
+                object-cover"}]
+   [:h3 {:class "font-semibold text-lg"} name]])
 
 (def founders
-  [{:name "Founder 1"
+  [{:name "Владислав Мирный"
     :photo "img/ueava-about-peaceful.webp"}
 
-   {:name "Founder 2"
-    :photo "img/ueava-about-peaceful.webp"}
+   {:name "Руденко Олександра Михайлівна"
+    :photo "img/ueava-about-rudenko.webp"}
 
-   {:name "Founder 3"
-    :photo "img/ueava-about-peaceful.webp"}
+   {:name "Хвалюн Владислава Олександрівна - медіа-кріетор"
+    :photo "img/ueava-about-khvalyun.webp"}
 
-   {:name "Founder 4"
-    :photo "img/ueava-about-peaceful.webp"}])
+   {:name "Коновалова-Надєл Аліна Олександрівна"
+    :photo "img/ueava-about-konoval.webp"}])
 
 (defn founders-section []
   [:section
@@ -221,31 +220,11 @@
         "Founding Members"]
       [:div
         {:class "grid md:grid-cols-4 gap-8"}
-
-      ;; repeated cards
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]
-
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]
-
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]
-
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]]]])
+        ;; repeated cards
+        (for [{:keys [name photo]} founders]
+          ^{:key name}
+          [founder-card photo name])
+      ]]])
 
 (defn gallery-section []
   [:section
@@ -273,6 +252,5 @@
    (mission-section)
    (presidium-section)
    (founders-section)
-   (gallery-section)
-   ])
+   (gallery-section)])
 

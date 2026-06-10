@@ -105,8 +105,8 @@ aider_clipboard
          (eshell)
          (evil-quit)
          (switch-to-buffer-other-frame buffer-name-to-close))
-cd /home/buyn/Dev/ClojureScript/grom.org
 npm run build-gh
+cd /home/buyn/Dev/ClojureScript/grom.org
 *** git
 git remote add origin https://github.com/Buyn/grom.org.git
 git branch -M main
@@ -119,10 +119,12 @@ https://buyn.github.io/grom.org.git
 https://buyn.github.io/grom.org.git/.
 *** build-gh
 
+(find-file-other-frame "./package.json")
 cd /home/buyn/Dev/ClojureScript/grom.org
 npm run build-gh
 https://buyn.github.io/grom.org
 
+      "build-gh": "rm -rf docs && npx shadow-cljs release app && mkdir -p docs && cp -r public/* docs && touch docs/.nojekyll",
 
 *** orign
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
@@ -512,7 +514,7 @@ Darina Haos, [09.06.2026 21:12]
 
 Darina Haos, [09.06.2026 21:13]
 Можна ще приємну відмітку зробити для Владислави Хвалюн - медіа-кріетор
-**** да
+**** DONE да
 и довай новерное вынесем в отдельну функцию карточки основателей.
 как пример для изображения "img/ueava-about-peaceful.webp"
 
@@ -601,17 +603,8 @@ ueava-about-peaceful
 ```
 
 а верстку вообще не трогаешь.
-
-Для президиума я бы сделал точно так же:
-
-```clojure
-(def presidium-members [...])
-
-(for [member presidium-members]
-  [person-card ...])
-```
-
-Тогда вся страница превращается в данные + маленькие переиспользуемые компоненты, а не в огромную простыню из копипасты. Это очень по-кложурному выглядит.
+**** DONE ^{:key name}
+"^" а что делает?
 **** path
 
 /home/buyn/Documents/Work/freelans/grom/IMG_20260607_112252.jpg
@@ -622,7 +615,7 @@ ueava-about-peaceful
 /home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-25.jpg
 /home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-32.jpg
 
-**** 
+**** DONE 
 (ns ueava.pages.about
   (:require
    [ueava.components.lang :refer [lang]]))
@@ -900,7 +893,7 @@ ueava-about-peaceful
    ])
 
 
-**** Я сделал таким образом, 
+**** DONE Я сделал таким образом, 
 но как в этот круг для изобрежения
 
     [:div
@@ -923,7 +916,7 @@ ueava-about-peaceful
 поместить изображение?
 так чтоб она стало круглым?
 
-**** 
+**** DONE 
 
 Даже проще. SVG тебе уже не нужен.
 
@@ -1051,6 +1044,23 @@ shadow-lg
 
 
 ** dezine
+*** отчёт
+**** добавил что понял
+плюс варианты чтоб Вы определилась как лучше
+круглые для призидиума(мне так кажется лучше\профисиональней, позволяет визольно отделить смысловые секции) карточки для основателей
+нужность отображать животных - ну незнаю. Красиво, каваи, личностно, но немного теряется професиональность. может если сделать отдельные страници для каждого то там бы это было уместно. или всплываюшая подсказка при наведении с полноростным фото.
+**** добавил два варианат - если призидия не круглая
+но квадратная 
+**** мне делать фотографии не квадратными?
+отрезать тольео текст с фотографий?
+**** остальные фото, что сними делать?
+добавить все в фоундры?
+взять ФИО с фото?
+**** жду переводов если что
+пока в переводе только презедент.
+Повозмоности и должностей(чтоб небыло сюрпризов).
+**** если возможно просмотри ещё и на компютере\ноуте
+**** добавил заглушки остальных страниц.
 ** TODO
 *** TODO заглушки для страниц
 **** повозможности
@@ -1061,12 +1071,6 @@ shadow-lg
 и возможно с карточками
 
 но точно с разделение на секции
-*** отчёт
-**** я добавил два варианат - если призидия не круглая
-
-**** мне делать фотографии не квадратными?
-отрезать тольео текст с фотографий?
-**** добавил заглушки остальных страниц.
 *** ресурси
 Darina Haos, [28.05.2026 21:37]
 В графу "ресурси" бачу перехід на сторінку бо будуть підпункти:
@@ -1242,6 +1246,16 @@ https://arav.org/about/who-we-are/
 явно лишний фаил и в одном замечетально будут жить
 
 ** backlog
+*** Для президиума я бы сделал точно так же:
+
+```clojure
+(def presidium-members [...])
+
+(for [member presidium-members]
+  [person-card ...])
+```
+
+Тогда вся страница превращается в данные + маленькие переиспользуемые компоненты, а не в огромную простыню из копипасты. Это очень по-кложурному выглядит.
 *** TODO aider.el for clipbord
 **** это возможно???????
 или это только из клая

@@ -1,14 +1,22 @@
 goog.provide('ueava.core');
 ueava.core.current_page = (function ueava$core$current_page(){
-var G__14392 = cljs.core.deref(ueava.router.route);
-var G__14392__$1 = (((G__14392 instanceof cljs.core.Keyword))?G__14392.fqn:null);
-switch (G__14392__$1) {
+var G__12925 = cljs.core.deref(ueava.router.route);
+var G__12925__$1 = (((G__12925 instanceof cljs.core.Keyword))?G__12925.fqn:null);
+switch (G__12925__$1) {
 case "home":
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.home.home_page], null);
 
 break;
 case "about":
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.about.about_page], null);
+
+break;
+case "resources":
+return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.resources.resources_page], null);
+
+break;
+case "conferences":
+return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.conferences.conferences_page], null);
 
 break;
 case "membership":
@@ -24,9 +32,9 @@ ueava.core.page = (function ueava$core$page(){
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.header.header], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.core.current_page], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.footer.footer], null)], null);
 });
 ueava.core.start = (function ueava$core$start(){
-var G__14393 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.core.page], null);
-var G__14394 = document.getElementById("app");
-return (reagent.core.render_component.cljs$core$IFn$_invoke$arity$2 ? reagent.core.render_component.cljs$core$IFn$_invoke$arity$2(G__14393,G__14394) : reagent.core.render_component.call(null,G__14393,G__14394));
+var G__12926 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.core.page], null);
+var G__12927 = document.getElementById("app");
+return (reagent.core.render_component.cljs$core$IFn$_invoke$arity$2 ? reagent.core.render_component.cljs$core$IFn$_invoke$arity$2(G__12926,G__12927) : reagent.core.render_component.call(null,G__12926,G__12927));
 });
 ueava.core.init = (function ueava$core$init(){
 ueava.router.init_router_BANG_();
