@@ -15921,3 +15921,1692 @@ https://buyn.github.io/grom.org/
 :ARCHIVE_CATEGORY: grom
 :ARCHIVE_TODO: DONE
 :END:
+
+* DONE а почему хеш так работает?
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-10 Ср 05:29
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+это какаето договорёность?
+
+
+* DONE Про нас
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-10 Ср 05:29
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** DONE 
+Here are summaries of some files present in my git repository.
+Do not propose changes to these files, treat them as *read-only*.
+If you need to edit any of these files, ask me to *add them to the chat* first.
+
+.gitignore
+
+README.md
+
+README.md~1
+
+grom.org
+
+grom.org_archive
+
+package.json
+
+postcss.config.js
+
+public/css/style.css
+
+public/img/Hero_Slide_1_chameleon.jpg
+
+public/img/Hero_Slide_2-1.webp
+
+public/img/Hero_Slide_2_owl.jpg
+
+public/img/Hero_Slide_3_rabbit.jpg
+
+public/img/Hero_Slide_4_bear.jpg
+
+public/img/icon.jpg
+
+public/img/ueava-logo-batom-wob-text.jpg
+
+public/img/ueava-logo-hor-brbg-wt.png
+
+public/img/ueava-logo-hor-nobg-wt.png
+
+public/img/ueava-logo-nobg-bt.png
+
+public/img/ueava-logo-nobg-wt.png
+
+public/img/ueava-logo.svg
+
+public/index.html
+
+shadow-cljs.edn
+
+src/css/main.css
+
+src/tests/components_navigation_cta_test.cljs:
+⋮
+│(deftest navigation-cta-test
+⋮
+
+src/tests/components_navigation_menu_test.cljs:
+⋮
+│(deftest navigation-menu-test
+⋮
+
+src/ueava/components/benefits.cljs:
+⋮
+│(defn benefits []
+⋮
+
+src/ueava/components/cta.cljs:
+⋮
+│(defn cta []
+⋮
+
+src/ueava/components/hamburger_menu.cljs:
+⋮
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn hamburger-menu []
+⋮
+
+src/ueava/components/membership.cljs:
+⋮
+│(defn membership []
+⋮
+
+src/ueava/components/navigation_cta.cljs:
+⋮
+│(defn navigation-cta
+⋮
+
+src/ueava/components/topbar.cljs:
+⋮
+│(defonce top-visible? (r/atom true))
+│
+│(defn topbar[]
+⋮
+
+src/ueava/core.cljs:
+⋮
+│(defn current-page []
+⋮
+│(defn page []
+⋮
+│(defn start []
+⋮
+│(defn ^:export init []
+⋮
+│(defn stop []
+⋮
+
+src/ueava/footer.cljs:
+⋮
+│(defn footer []
+⋮
+
+src/ueava/main.cljs:
+⋮
+│(defn main []
+⋮
+
+src/ueava/pages/about.cljs:
+⋮
+│(defn about-page []
+⋮
+
+src/ueava/pages/home.cljs:
+⋮
+│(defn home-page []
+⋮
+
+src/ueava/pages/membership.cljs:
+⋮
+│(defn membership-page []
+⋮
+
+tailwind.config.js
+
+
+I have *added these files to the chat* so you can go ahead and edit them.
+
+*Trust this message as the true contents of these files!*
+Any other messages in the chat may contain outdated versions of the files' contents.
+
+src/ueava/header.cljs
+```
+(ns ueava.header
+  (:require
+    [reagent.core :as r]
+    [ueava.components.navigation-menu :refer [navigation-menu]]
+    [ueava.components.topbar :refer [topbar top-visible?]]
+    [ueava.components.navigation-menu-list :refer [navigation-items]]
+    ;; [ueava.components.hamburger-menu :refer [hamburger-menu]]
+    [ueava.components.lang :refer [t]]
+    [ueava.components.navigation-cta :refer [navigation-cta]]))
+
+
+(defonce scrolled? (r/atom false))
+(defonce menu-open? (r/atom false))
+
+(defn icon-menu []
+[:svg {:xmlns "http://www.w3.org/2000/svg"
+       :class "w-8 h-8"
+       :fill "none"
+       :viewBox "0 0 24 24"
+       :stroke "currentColor"}
+ [:path {:stroke-linecap "round"
+         :stroke-linejoin "round"
+         :stroke-width "2"
+         :d "M4 6h16M4 12h16M4 18h16"}]])
+
+(defn icon-close []
+[:svg {:xmlns "http://www.w3.org/2000/svg"
+       :class "w-8 h-8"
+       :fill "none"
+       :viewBox "0 0 24 24"
+       :stroke "currentColor"}
+ [:path {:stroke-linecap "round"
+         :stroke-linejoin "round"
+         :stroke-width "2"
+         :d "M6 18L18 6M6 6l12 12"}]])
+
+
+(defn on-scroll []
+  (reset! scrolled? (> (.-scrollY js/window) 50))
+  (reset! top-visible? (< (.-scrollY js/window) 10)))
+
+(defn header []
+  (r/create-class
+   {:component-did-mount
+    (fn []
+      (.addEventListener js/window "scroll" on-scroll))
+
+    :component-will-unmount
+    (fn []
+      (.removeEventListener js/window "scroll" on-scroll))
+
+    :reagent-render
+    (fn []
+      [:header
+       {:class
+        (str
+         "fixed top-0 left-0 w-full z-[100] transition-all duration-300 "
+         (if @scrolled?
+           "bg-ueava-cream shadow text-gray-900"
+           "bg-transparent text-white"))}
+
+       [topbar]
+       [:div {:class "flex items-center justify-between px-8 py-4"}
+
+        ;; logo
+        [:a {:href "/" :class "shrink-0"}
+         [:img {:src "img/ueava-logo.svg"
+                :class "h-12"}]]
+
+        [navigation-menu]
+
+        [navigation-cta "md:flex"]
+
+       [:button
+        {:class "md:hidden text-3xl text-ueava-sand"
+          :on-click #(swap! menu-open? not)}
+        ;; (if @menu-open?
+        ;;   "✕" "☰")]
+        (if @menu-open?
+          [icon-close]
+          [icon-menu])]
+
+        [:div {:class (str
+                  "absolute top-full left-0 w-full bg-ueava-cream shadow-md md:hidden
+                   text-ueava-brown
+                   transform transition-all duration-500 ease-out "
+                  (if @menu-open?
+                    "opacity-100 translate-y-0"
+                    "opacity-0 -translate-y-4 pointer-events-none"))}
+
+
+         (into [:div
+                {:class "flex flex-col items-center text-center p-6 space-y-4"}
+                ]
+
+                (for [{:keys [title href]} (navigation-items)]
+                  [:a {:href href
+                      :key title
+                      :class "text-lg font-medium hover:text-ueava-sand transition"}
+                        title]))
+
+              [:button
+                {:class "bg-orange-500 text-white px-4 py-2 rounded
+                          hover:bg-orange-600 
+                          space-x-8 font-medium"}
+               (t :header/cta)]
+         ]
+
+        ;; [hamburger-menu]
+        ]])}))
+```
+
+src/ueava/components/lang.cljs
+```
+(ns ueava.components.lang
+  (:require
+      [reagent.core :as r]))
+
+(defn load-lang []
+  (keyword
+   (or (.getItem js/localStorage "lang")
+       "en")))
+
+;; (defonce lang (r/atom :en))
+
+(defonce lang (r/atom (load-lang)))
+
+(def dict
+  {:en {
+        :topb/lang " Ua"
+        :header/cta "Find A Vet"
+        :hlist/Home "Home"
+        :hlist/About "About"
+        :hlist/Resources "Resources"
+        :hlist/Membership "Membership"
+        :hlist/Conferences "Conferences"
+        :hero/title "Why Do You Need A Veterinarian?"
+        :hero/chameleon "Explore the world of reptile and amphibian medicine."
+        :hero/chameleon-text "Specialized care for exotic animals."
+        :hero/chameleon-btn "Become Member"
+        :hero/owl "Making avian medicine accessible, clear, and practical."
+        :hero/owl-text "Support for bird specialists worldwide."
+        :hero/owl-btn "Learn More"
+        :hero/rabbit "Advance your expertise in small mammal medicine."
+        :hero/rabbit-text "Advanced treatment for rabbits and rodents."
+        :hero/rabbit-btn "Join UEAVA"
+        :hero/bear "Make an impact in wildlife and exotic animal medicine."
+        :hero/bear-text "Supporting vets working with wildlife."
+        :hero/bear-btn "Discover"
+        :benefits/title "Why Join UEAVA"
+        :benefits/c1-title "Scientific Journal"
+        :benefits/c1-dis "Access research and publications in exotic animal medicine."
+        :benefits/c2-title "Find-A-Vet Directory"
+        :benefits/c2-dis "Be listed in a nationwide directory of veterinary professionals."
+        :benefits/c3-title "Professional Community"
+        :benefits/c3-dis "Join a professional network of veterinary experts across Ukraine."
+        :cta/title "Join the Professional Community Advancing Exotic Animal Medicine"
+        :cta/dis "Become part of Ukrainian Exotic Animal Veterinary Association — a veterinary association uniting professionals in exotic animal."
+        :cta/button "Join UEAVA"
+        :footer/logo "UEAVA is a professional community advancing exotic animal veterinary medicine through education, collaboration, and expertise."
+        :footer/nav-title "Navigation"
+        :footer/res-title "Resources"
+        :footer/news-title "Newsletter"
+        :footer/news-text "Subscribe to receive updates and news."
+        :footer/news-button "Subscribe"
+        }
+
+   :uk {
+        :topb/lang " En " ;; эту строку не нужно переводить она должна быть на английском 
+        :header/cta "Знайти спеціаліста"
+        :hlist/Home "На головну"
+        :hlist/About "Про нас"
+        :hlist/Resources "Ресурси"
+        :hlist/Membership "Членство"
+        :hlist/Conferences "Конференції"
+        :hero/title "Чому вам потрібен ветеринар?"
+        :hero/chameleon "Досліджуйте світ медицини рептилій та амфібій разом із нами"
+        :hero/chameleon-text "Спеціалізований догляд за екзотичними тваринами."
+        :hero/chameleon-btn "Стати учасником"
+        :hero/owl-text "Підтримка спеціалістів з птахівництва в усьому світі."
+        :hero/owl-btn "Дізнатися більше"
+        :hero/owl "Робимо медицину птахів зрозумілою, доступною та дійсно практичною."
+        :hero/rabbit "Підвищуйте свій рівень експертності в медицині дрібних ссавців."
+        :hero/rabbit-text "Удосконалюйте свої навички в медицині кролів та гризунів."
+        :hero/rabbit-btn "Приєднатися до UEAVA"
+        :hero/bear "Зробіть свій внесок у розвиток медицини диких та екзотичних тварин."
+        :hero/bear-text "Підтримка ветеринарів, які працюють з дикими тваринами."
+        :hero/bear-btn "Докладніше"
+        :benefits/title "Що ви отримуєте з UEAVA"
+        :benefits/c1-title "Науковий журнал"
+        :benefits/c1-dis "Отримуйте доступ до актуальних досліджень і публікацій у сфері медицини екзотичних тварин."
+        :benefits/c2-title "Всеукраїнський каталог ветеринарних лікарів"
+        :benefits/c2-dis "Будьте представлені у всеукраїнському каталозі ветеринарних лікарів і підвищуйте свою професійну видимість."
+        :benefits/c3-title "Професійна спільнота"
+        :benefits/c3-dis "Долучайтеся до професійної спільноти ветеринарних фахівців з усієї України."
+        :cta/title "Долучайтеся до професійної спільноти, що формує майбутнє медицини екзотичних тварин."
+        :cta/dis "Українська асоціація ветеринарної медицини екзотичних тварин — це простір для розвитку, співпраці та професійного зростання лікарів, які працюють з екзотичними тваринами."
+        :cta/button "Станьте частиною UEAVA"
+        :footer/logo "UEAVA — професійна спільнота, яка розвиває ветеринарну медицину екзотичних тварин, об’єднуючи освіту, співпрацю та експертні знання."
+        :footer/nav-title "Навігація"
+        :footer/res-title "Ресурси"
+        :footer/news-title "Інформаційний бюлетень"
+        :footer/news-text "Підпишіться, щоб отримувати оновлення та новини."
+        :footer/news-button "Підписатися"
+        }})
+
+(defn t [k]
+  (get-in dict [@lang k]))
+
+;; (defn toggle-lang []
+;;   (swap! lang {:en :uk :uk :en}))
+(defn toggle-lang []
+  (let [new-lang ({:en :uk :uk :en} @lang)]
+    (reset! lang new-lang)
+    (.setItem js/localStorage
+              "lang"
+              (name new-lang))))
+
+(defn button-toggle-lang []
+ [:button
+    {:on-click toggle-lang}
+    "🌍 "
+    (t :topb/lang)])
+```
+
+src/ueava/components/navigation_menu_list.cljs
+```
+(ns ueava.components.navigation-menu-list
+  (:require
+    [ueava.components.lang :refer [t]]
+    [ueava.router :refer [navigate!]]))
+
+(defn navigation-items []
+  [ {:title (t :hlist/Home)        :href "#/home"}
+    {:title (t :hlist/About)       :href "#/about"}
+    {:title (t :hlist/Resources)   :href "#/Resources"}
+    {:title (t :hlist/Membership)  :href "#/membership"}
+    {:title (t :hlist/Conferences) :href "#/Conferences"}])
+
+(defn navigation-menu-list []
+  (for [{:keys [title href]} (navigation-items)]
+    [:a {:key title
+          :on-click (fn [e]
+                  (.preventDefault e)
+                      (navigate! href)
+                      )
+          :class "hover:text-ueava-sand"}
+        title]))
+```
+
+src/ueava/components/navigation_menu.cljs
+```
+(ns ueava.components.navigation-menu
+  (:require
+    ;; [ueava.components.navigation-cta :refer [navigation-cta]]
+    [ueava.router :refer [navigate!]]
+    [ueava.components.navigation-menu-list :refer [navigation-menu-list navigation-items]]))
+
+(defn navigation-menu[]
+
+  (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+    (navigation-menu-list)))
+
+        ;; navigation
+   ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}
+   ;;        [navigation-menu-list]])
+  ;; (into
+  ;;  [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+  ;;         [navigation-menu-list]))
+
+  ;; (into [:nav {:class "hidden md:flex space-x-8 font-medium"}]
+  ;;   (for [{:keys [title href]} (navigation-items)]
+  ;;     [:a {;; :href href
+  ;;         :key title
+  ;;         :on-click (fn [e]
+  ;;                     (.preventDefault e)
+  ;;                     (navigate! href))
+  ;;         :class "hover:text-ueava-sand"}
+  ;;           title])))
+
+  
+        ;; [:nav {:class "hidden md:flex space-x-8 font-medium"}
+        ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Home"]
+        ;; [:a {:href "#" :class "hover:text-ueava-sand"} "About"]
+        ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Resources"]
+        ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Membership"]
+        ;; [:a {:href "#" :class "hover:text-ueava-sand"} "Conferences"]
+        ;;  ]
+
+        ;; CTA
+        ;; [navigation-cta "md:flex"]
+  ;; )
+```
+
+src/ueava/router.cljs
+```
+(ns ueava.router
+  (:require [reagent.core :as r]))
+
+(defonce route (r/atom :home))
+
+(def routes
+  {""             :home
+   "#"            :home
+   "#/"           :home
+   "#/home"       :home
+   "#/about"      :about
+   "#/membership" :membership})
+
+(defn current-route []
+  (get routes
+       (.-hash js/location)
+       :home))
+
+(defn sync-route! []
+  (reset! route (current-route)))
+
+(defn init-router! []
+  (sync-route!)
+  (.addEventListener
+   js/window
+   "hashchange"
+   sync-route!))
+
+(defn navigate! [url]
+  (set! (.-hash js/location) url))
+```
+
+src/ueava/components/hero.cljs
+```
+(ns ueava.components.hero
+  (:require
+    [ueava.components.lang :refer [t]]
+    [reagent.core :as r]))
+
+;; ----------------------------
+;; state
+;; ----------------------------
+
+(defonce state
+  (r/atom {:current 0
+           :prev nil
+           :dir :right
+           :anim :idle
+           :duration 700 ;; dynamic animation duration
+           :last-ts 0})) ;; last interaction timestamp
+
+(defonce timer-id (atom nil))
+
+;; ----------------------------
+;; data
+;; ----------------------------
+
+(defn slides []
+  [{:key :chameleon
+    :img "img/Hero_Slide_1_chameleon.jpg"
+    :title (t :hero/chameleon)
+    :text (t :hero/chameleon-text)
+    :btn (t :hero/chameleon-btn)}
+
+   {:key :owl
+    :img "img/Hero_Slide_2_owl.jpg"
+    :title (t :hero/owl)
+    :text (t :hero/owl-text)
+    :btn (t :hero/owl-btn)}
+
+   {:key :rabbit
+    :img "img/Hero_Slide_3_rabbit.jpg"
+    :title (t :hero/rabbit)
+    :text (t :hero/rabbit-text)
+    :btn (t :hero/rabbit-btn)}
+
+   {:key :bear
+    :img "img/Hero_Slide_4_bear.jpg"
+    :title (t :hero/bear)
+    :text (t :hero/bear-text)
+    :btn (t :hero/bear-btn)}])
+
+(def slide-count (count (slides)))
+
+;; ----------------------------
+;; helpers
+;; ----------------------------
+
+(defn now [] (.now js/Date))
+
+(defn next-random [current]
+  (let [idx (rand-int slide-count)]
+    (if (= idx current)
+      (mod (inc idx) slide-count)
+      idx)))
+
+(defn random-delay []
+  (+ 7000 (rand-int 13000)))
+
+;; (defn clamp [x min max]
+;;   (-> x (max min) (min max)))
+
+;; (defn lerp [a b t]
+;;   (+ a (* (- b a) t)))
+
+;; (defn ease-out [t]
+;;   (- 1 (* (- 1 t) (- 1 t))))
+
+;; (defn compute-duration [last-ts]
+;;   (let [dt (- (now) last-ts)
+;;         min-dt 1000
+;;         max-dt 3000
+;;         min-duration 100
+;;         max-duration 700
+;;         ;; normalize dt to 0..1
+;;         t (-> (/ (- dt min-dt)
+;;                  (- max-dt min-dt))
+;;               (clamp 0 1))]
+;;     (js/Math.round
+;;      ;; (lerp min-duration max-duration t))))
+;;       (lerp min-duration max-duration (ease-out t)))))
+
+;; velocity-based duration
+
+(defn compute-duration [last-ts]
+  (let [dt (- (now) last-ts)]
+    ;; faster interaction → shorter animation
+    (cond
+      (< dt 1000) 100
+      (< dt 2000) 400
+      :else 700)))
+
+;; ----------------------------
+;; transition
+;; ----------------------------
+
+(defn go! [idx dir]
+  (let [{:keys [current anim last-ts]} @state]
+    (when (and (not= idx current)
+               (= anim :idle))
+      (let [duration (compute-duration last-ts)]
+        ;; step 1: instant logical switch
+        (swap! state assoc
+               :prev current
+               :current idx
+               :dir dir
+               :anim :prepare
+               :duration duration
+               :last-ts (now))
+        ;; step 2: start animation
+        (js/requestAnimationFrame
+         (fn []
+           (swap! state assoc :anim :run)))
+        ;; step 3: cleanup
+        (js/setTimeout
+         (fn []
+           (swap! state assoc
+                  :prev nil
+                  :anim :idle))
+         duration)))))
+
+;; ----------------------------
+;; auto loop
+;; ----------------------------
+
+(defn schedule! []
+  (when @timer-id
+    (js/clearTimeout @timer-id))
+
+  (reset! timer-id
+          (js/setTimeout
+           (fn []
+             (let [{:keys [current anim]} @state]
+               (when (= anim :idle)
+                 (go! (next-random current) :right)))
+             (schedule!))
+           (random-delay))))
+
+;; ----------------------------
+;; styles
+;; ----------------------------
+
+(defn bg-style [img transform duration]
+  {:background-image (str "url('" img "')")
+   :transform transform
+   :transition (str "transform " duration "ms cubic-bezier(0.22, 1, 0.36, 1)")})
+
+(defn enter-transform [dir]
+  (if (= dir :right)
+    "translateX(100%)"
+    "translateX(-100%)"))
+
+(defn leave-transform [dir]
+  (if (= dir :right)
+    "translateX(-100%)"
+    "translateX(100%)"))
+
+;; ----------------------------
+;; background
+;; ----------------------------
+
+(defn background []
+  (let [{:keys [current prev dir anim duration]} @state
+        curr (nth (slides) current)
+        prev-slide (when prev (nth (slides) prev))]
+    [:div {:class "absolute inset-0 overflow-hidden"}
+     ;; previous
+     (when prev-slide
+       [:div
+        {:key (str "prev-" prev)
+         :class "absolute inset-0 bg-cover bg-center z-10"
+         :style (bg-style
+                 (:img prev-slide)
+                 (if (= anim :run)
+                   (leave-transform dir)
+                   "translateX(0%)")
+                 duration)}])
+     ;; current
+     [:div
+      {:key (str "curr-" current)
+       :class "absolute inset-0 bg-cover bg-center z-20"
+       :style (bg-style
+               (:img curr)
+               (cond
+                 (= anim :prepare) (enter-transform dir)
+                 (= anim :run) "translateX(0%)"
+                 :else "translateX(0%)")
+               duration)}]]))
+
+;; ----------------------------
+;; content
+;; ----------------------------
+
+(defn content []
+  (let [{:keys [current]} @state
+        {:keys [title text btn]} (nth (slides) current)]
+    [:div {:class "relative z-40 text-white text-center max-w-2xl"}
+     [:h1 {:class "text-5xl font-bold mb-4"} title]
+     [:p {:class "text-xl mb-6"} text]
+     [:button {:class "bg-white text-ueava-brown px-6 py-3 rounded-lg hover:bg-ueava-brown-100"} btn]]))
+     ;; [:button {:class "bg-ueava-brown-600 hover:bg-ueava-brown-700 text-white px-8 py-3 rounded"} btn]]))
+
+;; ----------------------------
+;; navigation
+;; ----------------------------
+
+(defn nav-item [idx {:keys [img]}]
+  (let [{:keys [current]} @state
+        trigger! (fn[]
+                   (go! idx :right)
+                   (schedule!))]
+    [:div
+     {:key idx
+      :class (str
+              "w-16 h-16 bg-cover bg-center cursor-pointer border transition "
+              (if (= idx current)
+                "border-white scale-110"
+                "border-transparent opacity-70"))
+      :style {:background-image (str "url('" img "')")}
+      ;; hover
+      :on-mouse-enter trigger!
+      ;; click
+      :on-click trigger!}]))
+
+(defn navigation []
+  [:div {:class "absolute bottom-6 right-6 grid grid-cols-2 gap-2 z-50"}
+   (doall (map-indexed nav-item (slides)))])
+
+;; ----------------------------
+;; main
+;; ----------------------------
+
+(defn hero []
+  (r/create-class
+   {:component-did-mount
+    (fn [] (schedule!))
+
+    :component-will-unmount
+    (fn []
+      (when @timer-id
+        (js/clearTimeout @timer-id)))
+
+    :reagent-render
+    (fn []
+      [:section {:class "relative h-screen flex items-center justify-center overflow-hidden"}
+       [background]
+       [:div {:class "absolute inset-0 bg-black/40 z-30"}]
+       [content]
+       [:div {:class "absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-40"}
+        [:span {:class "text-white text-2xl"} "↓"]]
+       [navigation]])}))
+```
+
+
+
+Just tell me how to edit the files to make the changes.
+Don't give me back entire files.
+Just show me the edits I need to make.
+
+
+
+** Про нас
+Про нас, я скину наше фото і текст скоріш за все скопіпізжу з ІГ.
+*** ru
+Darina Haos, [28.05.2026 21:31]
+Привіт, це я з ідеями тексту і т.п по посиланняи переходам
+
+Darina Haos, [28.05.2026 21:31]
+
+
+Darina Haos, [28.05.2026 21:32]
+От тут хочу щоб переходило на сторінку з якимось фоном і нашими фотками загальними і по одному
+
+Darina Haos, [28.05.2026 21:33]
+Текст про нас бачу ось такий приблизно:
+Про нас
+
+UEAVA — це професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин. Ми об’єднуємо фахівців з різних регіонів України для розвитку сучасної, доказової та доступної ветеринарної медицини для птахів, рептилій, гризунів, кролів, тхорів та інших екзотичних видів.
+
+Наша асоціація створена для підтримки ветеринарних лікарів, обміну досвідом, професійного навчання та популяризації високих стандартів лікування екзотичних тварин в Україні.
+
+Ми прагнемо:
+
+- розвивати професійну ветеринарну спільноту;
+- підтримувати безперервне навчання лікарів;
+- поширювати сучасні наукові знання та клінічні протоколи;
+- створювати платформу для комунікації, співпраці та обміну досвідом;
+- популяризувати доказову ветеринарну медицину;
+- підвищувати якість ветеринарної допомоги екзотичним тваринам.
+
+UEAVA організовує освітні заходи, лекції, конференції, клінічні обговорення та професійні проєкти, спрямовані на розвиток ветеринарної медицини екзотичних тварин в Україні.
+
+Ми віримо, що сильна професійна спільнота, науковий підхід і співпраця між лікарями є основою розвитку сучасної ветеринарної медицини.
+
+Darina Haos, [28.05.2026 21:34]
+Там же підпункт "президія":
+Скину фотки Софії, Свою, Віце.
+Членів засновників фотки також з ПІП
+
+*** Тепер те саме англійською
+Darina Haos, [28.05.2026 21:55]
+Тепер те саме англійською
+
+Darina Haos, [28.05.2026 21:55]
+UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species.
+
+Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine.
+
+We strive to:
+
+- develop a strong professional veterinary community;
+- support lifelong learning and professional growth for veterinarians;
+- promote modern scientific knowledge and clinical protocols;
+- create a platform for communication, collaboration, and exchange of experience;
+- popularize evidence-based veterinary medicine;
+- improve the quality of veterinary care for exotic animals.
+
+UEAVA organizes educational events, lectures, conferences, clinical discussions, and professional projects aimed at advancing exotic animal medicine in Ukraine.
+
+We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development.
+** DONE довай сделаем хороший дезаин
+вмести заглушки.
+начичинатся должно или с переключюшихся фото с произвольным количеством фото, как вариант. По аналогии с хиро. но тублатом снизу аля галерея.
+либо с тёмного блока градиента, поверх которо будет читабелным белый текст, из прозраного хедера.
+ну и видемо отображаюший текст учитывая выбраный язык
+** DONE Мне кажется, ты сейчас уже вышел из стадии "сделать роутер" и перешёл в стадию "спроектировать контент страницы".
+
+И тут я бы сначала определился с UX страницы "About", а потом уже писал код.
+
+Из того что описала Дарина, я вижу примерно такую структуру:
+
+---
+
+# Вариант 1 (мой фаворит)
+
+## Hero секция
+
+Во весь экран.
+
+Фон:
+
+- общая фотография команды
+- лёгкое затемнение
+- градиент сверху вниз
+
+```text
+██████████████████
+██              ██
+██   About Us   ██
+██              ██
+██  текст ...   ██
+██              ██
+██████████████████
+```
+
+Поверх:
+
+```text
+About UEAVA
+
+UEAVA is a professional community...
+```
+
+Белый текст.
+
+Как сейчас на Hero.
+
+---
+
+## Основной текст
+
+После Hero.
+
+Не на всю ширину.
+
+Например:
+
+```text
+┌─────────────────────┐
+│                     │
+│    About text       │
+│                     │
+└─────────────────────┘
+```
+
+`max-w-4xl`
+
+или
+
+`max-w-5xl`
+
+чтобы было удобно читать.
+
+---
+
+## "We strive to"
+
+Красивые карточки.
+
+Вместо списка:
+
+```text
+✓ develop community
+✓ lifelong learning
+✓ evidence based medicine
+```
+
+Сделать:
+
+```text
+┌──────┐ ┌──────┐ ┌──────┐
+│ icon │ │ icon │ │ icon │
+│ text │ │ text │ │ text │
+└──────┘ └──────┘ └──────┘
+```
+
+3+3 карточки.
+
+Это визуально разобьёт простыню текста.
+
+---
+
+## Президія
+
+Тут начинается самое интересное.
+
+---
+
+### Вариант А
+
+Большие карточки.
+
+```text
+ ┌─────────────┐
+ │             │
+ │   PHOTO     │
+ │             │
+ └─────────────┘
+
+ Софія ...
+ President
+```
+
+Потом рядом:
+
+```text
+Darina ...
+Vice President
+```
+
+---
+
+### Вариант Б
+
+Мне нравится больше.
+
+Сначала:
+
+```text
+Presidium
+```
+
+Потом:
+
+```text
+○ ○ ○
+```
+
+Круглые фотографии.
+
+Как у команд стартапов.
+
+---
+
+## Засновники
+
+Отдельный блок.
+
+Можно уже меньшими карточками.
+
+---
+
+# Что касается галереи сверху
+
+Я бы НЕ делал второй Hero.
+
+То есть не копировал существующий Hero один в один.
+
+Сейчас Hero работает потому что:
+
+```text
+картинка
+заголовок
+кнопка
+```
+
+---
+
+Для About пользователь пришёл читать.
+
+Если сверху начнёт каждые 10 секунд ездить:
+
+```text
+Фото 1
+Фото 2
+Фото 3
+Фото 4
+```
+
+это начинает отвлекать.
+
+---
+
+Я бы сделал так:
+
+### Hero
+
+Статичная лучшая фотография команды.
+
+---
+
+Ниже отдельный блок:
+
+```text
+Gallery
+```
+
+И уже там:
+
+```text
+┌──┐ ┌──┐ ┌──┐
+│  │ │  │ │  │
+└──┘ └──┘ └──┘
+```
+
+или
+
+```text
+◀ photo ▶
+```
+
+если хочется карусель.
+
+---
+
+# По переводам
+
+Для этой страницы я бы НЕ добавлял весь этот текст в `lang.cljs`.
+
+Он уже начинает разрастаться.
+
+Создай прямо внутри:
+
+```text
+pages/about.cljs
+```
+
+что-то вроде:
+
+```clojure
+(def about-content
+  {:en {...}
+   :uk {...}})
+```
+
+и бери текст оттуда.
+
+Общие переводы:
+
+```clojure
+:hlist/About
+:header/cta
+```
+
+оставь в `lang.cljs`.
+
+Тексты страницы — рядом со страницей.
+
+---
+
+Если бы я делал UEAVA дальше, то структура была бы примерно такой:
+
+```text
+pages/
+  home.cljs
+  about.cljs
+  membership.cljs
+  conferences.cljs
+  resources.cljs
+
+components/
+  hero.cljs
+  topbar.cljs
+  footer.cljs
+  navigation.cljs
+
+router.cljs
+
+components/lang.cljs
+```
+
+А страницу About я бы строил по схеме:
+
+```text
+Hero photo
+    ↓
+About text
+    ↓
+Mission cards
+    ↓
+Presidium
+    ↓
+Founders
+    ↓
+Gallery
+```
+
+Так она будет выглядеть как полноценная страница организации, а не как ещё один слайдер поверх текста.
+** DONE Звучит неплохо
+
+(ns ueava.pages.about)
+
+(defn about-page []
+  [:main
+   [:div {:class "container mx-auto py-16"}
+    [:h1 "About UEAVA"]
+    [:p " Lorem ipsum..."]]])
+
+дай полней текст страницы. Посомотрим как оно вышлядит.
+вместо изображенией замени блоками свг с текстом описываюгими что та мдолжно быть.
+** DONE ну верста смотрится неплохо, но
+вот как сделать это не гряхно хоть бы сдвумя языками, не очевидно для меня.
+и не понятно как это будет выгляить с изображением.
+допустим довай возмёт изображение
+    :img "img/Hero_Slide_1_chameleon.jpg"
+и встаим его
+и сдвумя языкаим.
+сделай поный пример, с полным текстом файла.
+** DONE Я бы сделал не через огромный `lang.cljs`, а через локальный словарь страницы.
+
+Тогда `about.cljs` становится полностью самодостаточным.
+
+Примерно так:
+
+```clojure
+(ns ueava.pages.about
+  (:require
+   [ueava.components.lang :refer [lang]]))
+
+(def about-content
+  {:en
+   {:title "About UEAVA"
+
+    :subtitle
+    "Professional community advancing exotic animal medicine in Ukraine."
+
+    :p1
+    "UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species."
+
+    :p2
+    "Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine."
+
+    :p3
+    "We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development."
+
+    :mission-title "Our Mission"
+
+    :mission-1
+    "Develop a strong professional veterinary community."
+
+    :mission-2
+    "Support lifelong learning and professional growth for veterinarians."
+
+    :mission-3
+    "Promote modern scientific knowledge and clinical protocols."
+
+    :mission-4
+    "Create a platform for communication, collaboration, and exchange of experience."
+
+    :mission-5
+    "Popularize evidence-based veterinary medicine."
+
+    :mission-6
+    "Improve the quality of veterinary care for exotic animals."
+
+    :presidium "Presidium"
+
+    :president "President"
+    :vice-president "Vice President"
+    :board-member "Board Member"}
+
+   :uk
+   {:title "Про UEAVA"
+
+    :subtitle
+    "Професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин."
+
+    :p1
+    "UEAVA — це професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин. Ми об’єднуємо фахівців з різних регіонів України для розвитку сучасної, доказової та доступної ветеринарної медицини для птахів, рептилій, гризунів, кролів, тхорів та інших екзотичних видів."
+
+    :p2
+    "Наша асоціація створена для підтримки ветеринарних лікарів, обміну досвідом, професійного навчання та популяризації високих стандартів лікування екзотичних тварин в Україні."
+
+    :p3
+    "Ми віримо, що сильна професійна спільнота, науковий підхід і співпраця між лікарями є основою розвитку сучасної ветеринарної медицини."
+
+    :mission-title "Наша місія"
+
+    :mission-1
+    "Розвивати професійну ветеринарну спільноту."
+
+    :mission-2
+    "Підтримувати безперервне навчання лікарів."
+
+    :mission-3
+    "Поширювати сучасні наукові знання та клінічні протоколи."
+
+    :mission-4
+    "Створювати платформу для комунікації та співпраці."
+
+    :mission-5
+    "Популяризувати доказову ветеринарну медицину."
+
+    :mission-6
+    "Підвищувати якість ветеринарної допомоги екзотичним тваринам."
+
+    :presidium "Президія"
+
+    :president "Президент"
+    :vice-president "Віцепрезидент"
+    :board-member "Член президії"}})
+
+(defn tr [k]
+  (get-in about-content [@lang k]))
+
+(defn about-page []
+  [:main
+
+   ;; Hero
+
+   [:section
+    {:class "relative h-[70vh] flex items-center justify-center overflow-hidden"}
+
+    [:div
+     {:class "absolute inset-0 bg-cover bg-center"
+      :style {:background-image
+              "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+
+    [:div
+     {:class "absolute inset-0 bg-black/60"}]
+
+    [:div
+     {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+
+     [:h1
+      {:class "text-5xl md:text-7xl font-bold mb-6"}
+      (tr :title)]
+
+     [:p
+      {:class "text-xl md:text-2xl"}
+      (tr :subtitle)]]]
+
+   ;; About text
+
+   [:section
+    {:class "py-20"}
+
+    [:div
+     {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
+
+     [:p (tr :p1)]
+     [:p (tr :p2)]
+     [:p (tr :p3)]]]
+
+   ;; Mission
+
+   [:section
+    {:class "bg-gray-50 py-20"}
+
+    [:div
+     {:class "max-w-6xl mx-auto px-8"}
+
+     [:h2
+      {:class "text-4xl font-bold text-center mb-12"}
+      (tr :mission-title)]
+
+     [:div
+      {:class "grid md:grid-cols-3 gap-6"}
+
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-1)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-2)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-3)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-4)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-5)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-6)]]]]
+
+   ;; Presidium
+
+   [:section
+    {:class "py-20"}
+
+    [:div
+     {:class "max-w-6xl mx-auto px-8"}
+
+     [:h2
+      {:class "text-4xl font-bold text-center mb-12"}
+      (tr :presidium)]
+
+     [:div
+      {:class "grid md:grid-cols-3 gap-10"}
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :president)]
+       [:p "Name"]]
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :vice-president)]
+       [:p "Name"]]
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :board-member)]
+       [:p "Name"]]]]]])
+```
+
+Обрати внимание на важный момент:
+
+```clojure
+(def about-content
+  {:en {...}
+   :uk {...}})
+```
+
+лежит рядом со страницей.
+
+А общий файл `lang.cljs` содержит только то, что используется во многих местах:
+
+```clojure
+:hlist/About
+:hlist/Home
+:header/cta
+:footer/logo
+```
+
+В результате через полгода у тебя не будет одного монстра на 1500 строк переводов, а каждая страница будет хранить собственный контент рядом со своей разметкой. Это обычно намного проще поддерживать.
+** DONE arhiv
+
+(ns ueava.pages.about)
+
+(defn about-page []
+[:main
+
+;; --------------------------------------------------
+;; HERO
+;; --------------------------------------------------
+
+[:section
+{:class "relative min-h-screen flex items-center justify-center overflow-hidden"}
+
+;; Placeholder background image
+[:div
+{:class "absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 flex items-center justify-center"}
+
+[:div
+{:class "text-center text-white/50"}
+
+[:svg {:width "240" :height "240"}
+ [:rect {:x "10" :y "10"
+         :width "220"
+         :height "220"
+         :fill "none"
+         :stroke "currentColor"}]
+ [:text {:x "120"
+         :y "120"
+         :text-anchor "middle"}
+  "TEAM PHOTO"]]]]
+
+[:div {:class "absolute inset-0 bg-black/50"}]
+
+[:div
+{:class "relative z-10 text-center text-white max-w-4xl px-8"}
+
+[:h1
+{:class "text-5xl md:text-7xl font-bold mb-8"}
+"About UEAVA"]
+
+[:p
+{:class "text-xl md:text-2xl leading-relaxed"}
+"Professional community advancing exotic animal medicine in Ukraine."]]]
+
+;; --------------------------------------------------
+;; ABOUT
+;; --------------------------------------------------
+
+[:section
+{:class "py-24"}
+
+[:div
+{:class "max-w-5xl mx-auto px-8"}
+
+[:h2
+{:class "text-4xl font-bold mb-12 text-center"}
+"Who We Are"]
+
+[:div
+{:class "space-y-8 text-lg leading-relaxed text-gray-700"}
+
+[:p
+ "UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species."]
+
+[:p
+ "Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine."]
+
+[:p
+ "We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development."]]]]
+
+;; --------------------------------------------------
+;; MISSION
+;; --------------------------------------------------
+
+[:section
+{:class "bg-gray-50 py-24"}
+
+[:div
+{:class "max-w-6xl mx-auto px-8"}
+
+[:h2
+{:class "text-4xl font-bold text-center mb-16"}
+"Our Mission"]
+
+[:div
+{:class "grid md:grid-cols-3 gap-8"}
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Professional Community"]
+ [:p
+  "Develop a strong network of veterinary professionals."]]
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Education"]
+ [:p
+  "Support lifelong learning and professional growth."]]
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Science"]
+ [:p
+  "Promote modern scientific knowledge and evidence-based medicine."]]
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Communication"]
+ [:p
+  "Create a platform for collaboration and exchange of experience."]]
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Standards"]
+ [:p
+  "Promote high clinical standards and protocols."]]
+
+[:div {:class "bg-white rounded-xl p-8 shadow"}
+ [:h3 {:class "font-bold text-xl mb-4"}
+  "Animal Welfare"]
+ [:p
+  "Improve veterinary care for exotic animals throughout Ukraine."]]]]]
+
+;; --------------------------------------------------
+;; PRESIDIUM
+;; --------------------------------------------------
+
+[:section
+{:class "py-24"}
+
+[:div
+{:class "max-w-7xl mx-auto px-8"}
+
+[:h2
+{:class "text-4xl font-bold text-center mb-16"}
+"Presidium"]
+
+[:div
+{:class "grid md:grid-cols-3 gap-12"}
+
+[:div {:class "text-center"}
+
+ [:svg {:width "220" :height "220"
+        :class "mx-auto mb-6"}
+  [:circle {:cx "110" :cy "110"
+            :r "100"
+            :fill "#ddd"}]
+  [:text {:x "110"
+          :y "115"
+          :text-anchor "middle"}
+   "PHOTO"]]
+
+ [:h3 {:class "font-bold text-xl"}
+  "President"]
+
+ [:p {:class "text-gray-500"}
+  "Name Placeholder"]]
+
+[:div {:class "text-center"}
+
+ [:svg {:width "220" :height "220"
+        :class "mx-auto mb-6"}
+  [:circle {:cx "110" :cy "110"
+            :r "100"
+            :fill "#ddd"}]
+  [:text {:x "110"
+          :y "115"
+          :text-anchor "middle"}
+   "PHOTO"]]
+
+ [:h3 {:class "font-bold text-xl"}
+  "Vice President"]
+
+ [:p {:class "text-gray-500"}
+  "Name Placeholder"]]
+
+[:div {:class "text-center"}
+
+ [:svg {:width "220" :height "220"
+        :class "mx-auto mb-6"}
+  [:circle {:cx "110" :cy "110"
+            :r "100"
+            :fill "#ddd"}]
+  [:text {:x "110"
+          :y "115"
+          :text-anchor "middle"}
+   "PHOTO"]]
+
+ [:h3 {:class "font-bold text-xl"}
+  "Board Member"]
+
+ [:p {:class "text-gray-500"}
+  "Name Placeholder"]]]]]
+
+;; --------------------------------------------------
+;; FOUNDERS
+;; --------------------------------------------------
+
+[:section
+{:class "bg-gray-50 py-24"}
+
+[:div
+{:class "max-w-7xl mx-auto px-8"}
+
+[:h2
+{:class "text-4xl font-bold text-center mb-16"}
+"Founding Members"]
+
+[:div
+{:class "grid md:grid-cols-4 gap-8"}
+
+;; repeated cards
+[:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+ [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+  "PHOTO"]
+ [:h3 {:class "font-semibold"}
+  "Founder Name"]]
+
+[:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+ [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+  "PHOTO"]
+ [:h3 {:class "font-semibold"}
+  "Founder Name"]]
+
+[:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+ [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+  "PHOTO"]
+ [:h3 {:class "font-semibold"}
+  "Founder Name"]]
+
+[:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+ [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+  "PHOTO"]
+ [:h3 {:class "font-semibold"}
+  "Founder Name"]]]]]
+
+;; --------------------------------------------------
+;; GALLERY
+;; --------------------------------------------------
+
+[:section
+{:class "py-24"}
+
+[:div
+{:class "max-w-7xl mx-auto px-8"}
+
+[:h2
+{:class "text-4xl font-bold text-center mb-16"}
+"Gallery"]
+
+[:div
+{:class "grid md:grid-cols-3 gap-8"}
+
+[:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+ "EVENT PHOTO"]
+
+[:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+ "LECTURE PHOTO"]
+
+[:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+ "CONFERENCE PHOTO"]]]]]
+
+  )
+** DONE да стало понятней
+но новерное не стоит это всё одним куском делать.
+пологаю лучше разбить на секции.
+и потом уже обеденять их вмест?
+** CANCELED arhiv
+*** (presidium-section-old)
+
+ ;; Presidium
+(defn presidium-section-old []
+   [:section
+    {:class "py-20"}
+
+    [:div
+     {:class "max-w-6xl mx-auto px-8"}
+
+     [:h2
+      {:class "text-4xl font-bold text-center mb-12"}
+      (tr :presidium)]
+
+     [:div
+      {:class "grid md:grid-cols-3 gap-10"}
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :president)]
+       [:p "Name"]]
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :vice-president)]
+       [:p "Name"]]
+
+      [:div {:class "text-center"}
+
+       [:div
+        {:class "aspect-square rounded-full bg-gray-200 flex items-center justify-center mb-4"}
+        "PHOTO"]
+
+       [:h3 {:class "font-bold"} (tr :board-member)]
+
+       [:p "Name"]]]]])
+
+* DONE отчёт
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-10 Ср 05:29
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** заполнил страницу "о нас"
+так как я её вижу.
+изображение сверху под текстом предлогаю заменить на фото всей команды. Ну или какое небуть определюшее Вас.
+https://buyn.github.io/grom.org/#/about
+** проверяй коментирую.
