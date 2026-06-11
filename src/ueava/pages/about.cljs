@@ -37,7 +37,7 @@
     :vice-president "Vice President"
     :vice-president-name "Vice President"
     :secretary "Cекретар"
-    :secretary-name "Софія Дащенко"
+    :secretary-name "сестричка Луй"
     :board-member "Board Member"}
 
    :uk
@@ -73,7 +73,7 @@
     :president-name "Баранник Дарина Олександрівна"
     :vice-president "Віцепрезидент"
     :secretary "secretary"
-    :secretary-name "сестричка Луй"
+    :secretary-name "Софія Дащенко"
     :board-member "Член президії"
     :board-member-name "сестричка Луй"
     }})
