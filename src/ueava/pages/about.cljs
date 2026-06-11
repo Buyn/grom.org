@@ -37,9 +37,11 @@
     :vice-president "Vice President"
     :vice-president-name "Vice President"
     :secretary "Cекретар"
-    :secretary-name "сестричка Луй"
+    :secretary-name "сестричка Луй" ;; Dashchenko Sofiia
     :board-member "Board Member"
-    :board-member-name "Владислав Мирный"}
+    :board-member-name "Владислав Мирный"
+
+    :founding-members "Founding Members"}
 
    :uk
    {:title "Про UEAVA"
@@ -77,6 +79,8 @@
     :secretary-name "Софія Дащенко"
     :board-member "Член президії"
     :board-member-name "Владислав Мирный"
+
+    :founding-members "Співзасновники" ;; Члены-учредители  Співзасновники
     }})
 
 (defn tr [k]
@@ -202,7 +206,7 @@
       {:class "max-w-7xl mx-auto px-8"}
       [:h2
         {:class "text-4xl font-bold text-center mb-16"}
-        "Founding Members"]
+        (tr :founding-members)]
       [:div
         {:class "grid md:grid-cols-4 gap-8"}
         ;; repeated cards

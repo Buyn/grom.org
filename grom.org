@@ -468,609 +468,6 @@ tailwind стили как у arav
 * Kanban
 ** urgent 
 ** in progress
-*** TODO foonders and prisid
-**** Darina Haos, [07.06.2026 11:23]
-
-
-Darina Haos, [07.06.2026 11:23]
-Вот фото членов ГО
-
-Darina Haos, [07.06.2026 12:05]
-Президент:
-Баранник Дарина Олександрівна
-
-Darina Haos, [07.06.2026 12:12]
-Співзасновник (член організації):
-Руденко Олександра Михайлівна
-
-Darina Haos, [07.06.2026 12:13]
-Співзасновник(член організації):
-Хвалюн Владислава Олександрівна
-
-Darina Haos, [07.06.2026 12:14]
-Співзасновник(член організації): Коновалова-Надєл Аліна Олександрівна
-
-Darina Haos, [07.06.2026 12:20]
-Єдине думаю може і для президії зробити квадратні рамки, бо круглі такі маленькі
-
-
-Darina Haos, [08.06.2026 20:33]
-Я тобі транслітерацію скину
-
-Darina Haos, [08.06.2026 20:33]
-Моя Daryna Barannyk
-
-Darina Haos, [08.06.2026 20:33]
-Я думаю на англійській версії можна без по-батькових
-
-София, [08.06.2026 21:46]
-А я сестричка Луй
-
-София, [08.06.2026 21:46]
-Dashchenko Sofiia
-
-
-
-Darina Haos, [09.06.2026 21:11]
-
-
-Darina Haos, [09.06.2026 21:12]
-В президії у нас я, віце-президент Шабульдо, Софія секретар, і мирний Спів.Засновник
-
-Darina Haos, [09.06.2026 21:13]
-Можна ще приємну відмітку зробити для Владислави Хвалюн - медіа-кріетор
-**** DONE да
-и довай новерное вынесем в отдельну функцию карточки основателей.
-как пример для изображения "img/ueava-about-peaceful.webp"
-
-Владислав Мирный
-ueava-about-peaceful
-
-
-
-Да, это уже тот момент, когда компонент начинает окупаться.
-
-Добавь рядом с `person-card` ещё один компонент для основателей.
-
-```clojure
-(defn founder-card [photo name]
-  [:div {:class "bg-white rounded-xl p-6 shadow text-center
-                  hover:shadow-xl transition"}
-
-   [:img
-    {:src photo
-     :alt name
-     :class "w-40 h-40 mx-auto mb-4
-             rounded-full
-             object-cover"}]
-
-   [:h3 {:class "font-semibold text-lg"}
-    name]])
-```
-
-Тогда твой `founders-section` станет примерно таким:
-
-```clojure
-[:div
- {:class "grid md:grid-cols-4 gap-8"}
-
- [founder-card
-  "img/ueava-about-peaceful.webp"
-  "Founder Name"]
-
- [founder-card
-  "img/ueava-about-peaceful.webp"
-  "Founder Name"]
-
- [founder-card
-  "img/ueava-about-peaceful.webp"
-  "Founder Name"]
-
- [founder-card
-  "img/ueava-about-peaceful.webp"
-  "Founder Name"]]
-```
-
-Или ещё лучше — через данные:
-
-```clojure
-(def founders
-  [{:name "Founder 1"
-    :photo "img/ueava-about-peaceful.webp"}
-
-   {:name "Founder 2"
-    :photo "img/ueava-about-peaceful.webp"}
-
-   {:name "Founder 3"
-    :photo "img/ueava-about-peaceful.webp"}
-
-   {:name "Founder 4"
-    :photo "img/ueava-about-peaceful.webp"}])
-```
-
-И рендер:
-
-```clojure
-[:div
- {:class "grid md:grid-cols-4 gap-8"}
-
- (for [{:keys [name photo]} founders]
-   ^{:key name}
-   [founder-card photo name])]
-```
-
-Преимущество второго варианта в том, что когда Дарина пришлёт ещё 7 фотографий основателей, ты просто допишешь элементы в вектор:
-
-```clojure
-{:name "..."}
-{:name "..."}
-{:name "..."}
-```
-
-а верстку вообще не трогаешь.
-**** DONE ^{:key name}
-"^" а что делает?
-**** path
-
-/home/buyn/Documents/Work/freelans/grom/IMG_20260607_112252.jpg
-
-/home/buyn/Documents/Work/freelans/grom
-/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-23-58.jpg
-/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-09.jpg
-/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-25.jpg
-/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-32.jpg
-
-**** DONE 
-(ns ueava.pages.about
-  (:require
-   [ueava.components.lang :refer [lang]]))
-
-(def about-content
-  {:en
-   {:title "About UEAVA"
-
-    :subtitle
-    "Professional community advancing exotic animal medicine in Ukraine."
-
-    :p1
-    "UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species."
-
-    :p2
-    "Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine."
-
-    :p3
-    "UEAVA organizes educational events, lectures, conferences, clinical discussions, and professional projects aimed at advancing exotic animal medicine in Ukraine."
-
-    :p4
-    "We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development."
-
-    :mission-title "Our Mission"
-
-    :mission-1
-    "Develop a strong professional veterinary community."
-
-    :mission-2
-    "Support lifelong learning and professional growth for veterinarians."
-
-    :mission-3
-    "Promote modern scientific knowledge and clinical protocols."
-
-    :mission-4
-    "Create a platform for communication, collaboration, and exchange of experience."
-
-    :mission-5
-    "Popularize evidence-based veterinary medicine."
-
-    :mission-6
-    "Improve the quality of veterinary care for exotic animals."
-
-    :presidium "Presidium"
-
-    :president "President"
-    :president-name "Daryna Barannyk"
-    :vice-president "Vice President"
-    :board-member "Board Member"}
-
-   :uk
-   {:title "Про UEAVA"
-
-    :subtitle
-    "Професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин."
-
-    :p1
-    "UEAVA — це професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин. Ми об’єднуємо фахівців з різних регіонів України для розвитку сучасної, доказової та доступної ветеринарної медицини для птахів, рептилій, гризунів, кролів, тхорів та інших екзотичних видів."
-
-    :p2
-    "Наша асоціація створена для підтримки ветеринарних лікарів, обміну досвідом, професійного навчання та популяризації високих стандартів лікування екзотичних тварин в Україні."
-
-    :p3
-    "UEAVA організовує освітні заходи, лекції, конференції, клінічні обговорення та професійні проєкти, спрямовані на розвиток ветеринарної медицини екзотичних тварин в Україні."
-
-    :p4
-    "Ми віримо, що сильна професійна спільнота, науковий підхід і співпраця між лікарями є основою розвитку сучасної ветеринарної медицини."
-
-    :mission-title "Наша місія"
-
-    :mission-1
-    "Розвивати професійну ветеринарну спільноту."
-
-    :mission-2
-    "Підтримувати безперервне навчання лікарів."
-
-    :mission-3
-    "Поширювати сучасні наукові знання та клінічні протоколи."
-
-    :mission-4
-    "Створювати платформу для комунікації та співпраці."
-
-    :mission-5
-    "Популяризувати доказову ветеринарну медицину."
-
-    :mission-6
-    "Підвищувати якість ветеринарної допомоги екзотичним тваринам."
-
-    :presidium "Президія"
-
-    :president "Президент"
-    :president-name "Баранник Дарина Олександрівна"
-
-    :vice-president "Віцепрезидент"
-    :board-member "Член президії"}})
-
-(defn tr [k]
-  (get-in about-content [@lang k]))
-
-(defn hero-section []
-   [:section
-    {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
-
-    [:div
-     {:class "absolute inset-0 bg-cover bg-center"
-      :style {:background-image
-              ;; "url('img/Hero_Slide_1_chameleon.jpg')"}}]
-              "url('img/ueava-about-team.webp')"}}]
-
-    [:div
-     {:class "absolute inset-0 bg-black/60"}]
-
-    [:div
-     {:class "relative z-10 max-w-4xl text-center text-white px-8"}
-
-     [:h1
-      {:class "text-5xl md:text-7xl font-bold mb-6"}
-      (tr :title)]
-
-     [:p
-      {:class "text-xl md:text-2xl"}
-      (tr :subtitle)]]])
-
-(defn about-text-section []
-   [:section
-    {:class "py-20"}
-    [:div
-      {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
-      [:p (tr :p1)]
-      [:p (tr :p2)]
-      [:p (tr :p3)]
-      [:p (tr :p4)]]])
-
-  (defn mission-section []
-   [:section
-    {:class "bg-gray-50 py-20"}
-    [:div
-     {:class "max-w-6xl mx-auto px-8"}
-     [:h2
-      {:class "text-4xl font-bold text-center mb-12"}
-      (tr :mission-title)]
-     [:div
-      {:class "grid md:grid-cols-3 gap-6"}
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-1)]
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-2)]
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-3)]
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-4)]
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-5)]
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-6)]]]])
-
-
-(defn presidium-section []
-  [:section
-    {:class "py-20"}
-    [:div
-    {:class "max-w-7xl mx-auto px-8"}
-    [:h2
-      {:class "text-4xl font-bold text-center mb-16"}
-      (tr :presidium)]
-    [:div
-      {:class "grid md:grid-cols-3 gap-12"}
-      [:div {:class "text-center"}
-        [:svg {:width "220" :height "220"
-                :class "mx-auto mb-6"}
-          [:circle {:cx "110" :cy "110"
-                    :r "100"
-                    :fill "#ddd"}]
-          [:text {:x "110"
-                  :y "115"
-                  :text-anchor "middle"}
-          "PHOTO"]]
-        [:h3 {:class "font-bold text-xl"}
-          (tr :president)]
-        [:p {:class "text-gray-500"}
-         (tr :president-name)]]
-
-      [:div {:class "text-center"}
-        [:svg {:width "220" :height "220"
-                :class "mx-auto mb-6"}
-          [:circle {:cx "110" :cy "110"
-                    :r "100"
-                    :fill "#ddd"}]
-          [:text {:x "110"
-                  :y "115"
-                  :text-anchor "middle"}
-          "PHOTO"]]
-        [:h3 {:class "font-bold text-xl"}
-          (tr :vice-president)]
-        [:p {:class "text-gray-500"}
-          "Name Placeholder"]]
-
-      [:div {:class "text-center"}
-        [:svg {:width "220" :height "220"
-                :class "mx-auto mb-6"}
-          [:circle {:cx "110" :cy "110"
-                    :r "100"
-                    :fill "#ddd"}]
-          [:text {:x "110"
-                  :y "115"
-                  :text-anchor "middle"}
-          "PHOTO"]]
-
-        [:h3 {:class "font-bold text-xl"}
-          (tr :board-member)]
-
-        [:p {:class "text-gray-500"}
-          "Name Placeholder"]]]]])
-
-(defn founders-section []
-  [:section
-    {:class "bg-gray-50 py-24"}
-
-    [:div
-      {:class "max-w-7xl mx-auto px-8"}
-
-      [:h2
-        {:class "text-4xl font-bold text-center mb-16"}
-        "Founding Members"]
-
-      [:div
-        {:class "grid md:grid-cols-4 gap-8"}
-
-      ;; repeated cards
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]
-
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]
-
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]
-
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]]]])
-
-(defn gallery-section []
-  [:section
-    {:class "py-24"}
-    [:div
-      {:class "max-w-7xl mx-auto px-8"}
-      [:h2
-        {:class "text-4xl font-bold text-center mb-16"}
-        "Gallery"]
-
-      [:div
-        {:class "grid md:grid-cols-3 gap-8"}
-        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
-        "EVENT PHOTO"]
-        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
-        "LECTURE PHOTO"]
-        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
-        "CONFERENCE PHOTO"]]]])
-
-
-(defn about-page []
-  [:main
-   (hero-section)
-   (about-text-section)
-   (mission-section)
-   (presidium-section)
-   (founders-section)
-   (gallery-section)
-   ])
-
-
-**** DONE Я сделал таким образом, 
-но как в этот круг для изобрежения
-
-    [:div
-      {:class "grid md:grid-cols-3 gap-12"}
-      [:div {:class "text-center"}
-        [:svg {:width "220" :height "220"
-                :class "mx-auto mb-6"}
-          [:circle {:cx "110" :cy "110"
-                    :r "100"
-                    :fill "#ddd"}]
-          [:text {:x "110"
-                  :y "115"
-                  :text-anchor "middle"}
-          "PHOTO"]]
-        [:h3 {:class "font-bold text-xl"}
-          (tr :president)]
-        [:p {:class "text-gray-500"}
-         (tr :president-name)]]
-
-поместить изображение?
-так чтоб она стало круглым?
-
-**** DONE 
-
-Даже проще. SVG тебе уже не нужен.
-
-Вместо этого блока:
-
-```clojure
-[:svg {:width "220" :height "220"
-       :class "mx-auto mb-6"}
- [:circle {:cx "110" :cy "110"
-           :r "100"
-           :fill "#ddd"}]
- [:text {:x "110"
-         :y "115"
-         :text-anchor "middle"}
-  "PHOTO"]]
-```
-
-используй обычный `img`:
-
-```clojure
-[:img
- {:src "img/daryna.jpg"
-  :alt "Daryna Barannyk"
-  :class "w-56 h-56 mx-auto mb-6 rounded-full object-cover shadow-lg"}]
-```
-
-Что делает каждая часть:
-
-```clojure
-w-56 h-56
-```
-
-фиксированный квадрат.
-
-```clojure
-rounded-full
-```
-
-делает круг.
-
-```clojure
-object-cover
-```
-
-самое важное — обрезает изображение по кругу без искажений.
-
-```clojure
-shadow-lg
-```
-
-небольшая тень.
-
----
-
-Если хочется красивее, можно добавить рамку:
-
-```clojure
-[:img
- {:src "img/daryna.jpg"
-  :alt "Daryna Barannyk"
-  :class "w-56 h-56 mx-auto mb-6
-           rounded-full
-           object-cover
-           border-4 border-white
-           shadow-xl"}]
-```
-
----
-
-Если фотография прямоугольная:
-
-```text
-┌──────────────┐
-│              │
-│     photo    │
-│              │
-└──────────────┘
-```
-
-то `object-cover` возьмёт центральную часть и автоматически превратит её в круг:
-
-```text
-     ◯
-   photo
-```
-
-что обычно выглядит лучше всего для президиума, команды и основателей.
-
----
-
-Я бы ещё вынес карточку человека в отдельный компонент:
-
-```clojure
-(defn person-card [photo role name]
-  [:div {:class "text-center"}
-   [:img
-    {:src photo
-     :class "w-56 h-56 mx-auto mb-6 rounded-full object-cover shadow-lg"}]
-   [:h3 {:class "font-bold text-xl"} role]
-   [:p {:class "text-gray-500"} name]])
-```
-
-тогда президиум превращается в:
-
-```clojure
-[:div {:class "grid md:grid-cols-3 gap-12"}
-
- [person-card
-  "img/daryna.jpg"
-  (tr :president)
-  (tr :president-name)]
-
- [person-card
-  "img/vice-president.jpg"
-  (tr :vice-president)
-  "Name"]
-
- [person-card
-  "img/member.jpg"
-  (tr :board-member)
-  "Name"]]
-```
-
-и когда президиум вырастет до 5–10 человек, код останется аккуратным.
-
-
-**** переделать все изображения
-***** скрипт
-
-**** CANCELED спросить ии
-***** мне поставили задачу надеюсь на твою помощь.
-людям не нравится изображения в кружочках и квадратные.
-хотят прямоуголные.
-вот думаю как изменить чтоб всётаки всё выглядело професинально и красиво
-*** DONE отчёт
-  Изображения которые Ты мне передала - уже и так квадратные. Если с дизайнерской рамкой и текстом.
-потому самый простойстой способ использовать их если нечего не менять.
-  Мне несовсем нравится поскольку лицо мальенькое, есть текс, фон немного выподает из стиля. Но терпимо.
-  Что можно сделать:
-1. Отредактировать данные изображения. сделать прямоуголными отрезав всё лишнее.
-2. Взять Оригенальные подогнаные, у того кто делал то, что мне передали.
-3. Оставить как есть. Как минимум пока. Есть и боле важное. Пока главное по быстрее выложить сайт.
-Посмотрите на компютере и на телефоне.
-*** DONE Отменяется!
-оказывается они не разу не квадратные, и очень разные.
-куча работы по их нормализации, проще уже начальные резать.
-Вообщем предлогаю пока вернутся к начальным квадратным без изменений.
-Посмотри, когда появится время, получилось ли преемлемо.
-Я пока добавлю всех кто есть. Потом уже будем долавливать блох.
 ** dezine
 ** TODO
 *** Про Конференції
@@ -1237,6 +634,8 @@ https://arav.org/about/who-we-are/
 явно лишний фаил и в одном замечетально будут жить
 
 ** backlog
+*** заменить систричку лисичку
+    :secretary-name "сестричка Луй" ;; Dashchenko Sofiia
 *** Для президиума я бы сделал точно так же:
 
 ```clojure
@@ -1976,6 +1375,611 @@ expected: (= (navigation-menu) [:nav {:class "hidden md:flex space-x-8 font-medi
 *** DONE отчёт
 я сохраню нам в чат как выглядило, чтоб было с чем сравнивать
 
+*** DONE foonders and prisid
+**** Darina Haos, [07.06.2026 11:23]
+
+
+Darina Haos, [07.06.2026 11:23]
+Вот фото членов ГО
+
+Darina Haos, [07.06.2026 12:05]
+Президент:
+Баранник Дарина Олександрівна
+
+Darina Haos, [07.06.2026 12:12]
+Співзасновник (член організації):
+Руденко Олександра Михайлівна
+
+Darina Haos, [07.06.2026 12:13]
+Співзасновник(член організації):
+Хвалюн Владислава Олександрівна
+
+Darina Haos, [07.06.2026 12:14]
+Співзасновник(член організації): Коновалова-Надєл Аліна Олександрівна
+
+Darina Haos, [07.06.2026 12:20]
+Єдине думаю може і для президії зробити квадратні рамки, бо круглі такі маленькі
+
+
+Darina Haos, [08.06.2026 20:33]
+Я тобі транслітерацію скину
+
+Darina Haos, [08.06.2026 20:33]
+Моя Daryna Barannyk
+
+Darina Haos, [08.06.2026 20:33]
+Я думаю на англійській версії можна без по-батькових
+
+София, [08.06.2026 21:46]
+А я сестричка Луй
+
+София, [08.06.2026 21:46]
+Dashchenko Sofiia
+
+
+
+Darina Haos, [09.06.2026 21:11]
+
+
+Darina Haos, [09.06.2026 21:12]
+В президії у нас я, віце-президент Шабульдо, Софія секретар, і мирний Спів.Засновник
+
+Darina Haos, [09.06.2026 21:13]
+Можна ще приємну відмітку зробити для Владислави Хвалюн - медіа-кріетор
+**** DONE да
+и довай новерное вынесем в отдельну функцию карточки основателей.
+как пример для изображения "img/ueava-about-peaceful.webp"
+
+Владислав Мирный
+ueava-about-peaceful
+
+
+
+Да, это уже тот момент, когда компонент начинает окупаться.
+
+Добавь рядом с `person-card` ещё один компонент для основателей.
+
+```clojure
+(defn founder-card [photo name]
+  [:div {:class "bg-white rounded-xl p-6 shadow text-center
+                  hover:shadow-xl transition"}
+
+   [:img
+    {:src photo
+     :alt name
+     :class "w-40 h-40 mx-auto mb-4
+             rounded-full
+             object-cover"}]
+
+   [:h3 {:class "font-semibold text-lg"}
+    name]])
+```
+
+Тогда твой `founders-section` станет примерно таким:
+
+```clojure
+[:div
+ {:class "grid md:grid-cols-4 gap-8"}
+
+ [founder-card
+  "img/ueava-about-peaceful.webp"
+  "Founder Name"]
+
+ [founder-card
+  "img/ueava-about-peaceful.webp"
+  "Founder Name"]
+
+ [founder-card
+  "img/ueava-about-peaceful.webp"
+  "Founder Name"]
+
+ [founder-card
+  "img/ueava-about-peaceful.webp"
+  "Founder Name"]]
+```
+
+Или ещё лучше — через данные:
+
+```clojure
+(def founders
+  [{:name "Founder 1"
+    :photo "img/ueava-about-peaceful.webp"}
+
+   {:name "Founder 2"
+    :photo "img/ueava-about-peaceful.webp"}
+
+   {:name "Founder 3"
+    :photo "img/ueava-about-peaceful.webp"}
+
+   {:name "Founder 4"
+    :photo "img/ueava-about-peaceful.webp"}])
+```
+
+И рендер:
+
+```clojure
+[:div
+ {:class "grid md:grid-cols-4 gap-8"}
+
+ (for [{:keys [name photo]} founders]
+   ^{:key name}
+   [founder-card photo name])]
+```
+
+Преимущество второго варианта в том, что когда Дарина пришлёт ещё 7 фотографий основателей, ты просто допишешь элементы в вектор:
+
+```clojure
+{:name "..."}
+{:name "..."}
+{:name "..."}
+```
+
+а верстку вообще не трогаешь.
+**** DONE ^{:key name}
+"^" а что делает?
+**** path
+
+/home/buyn/Documents/Work/freelans/grom/IMG_20260607_112252.jpg
+
+/home/buyn/Documents/Work/freelans/grom
+/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-23-58.jpg
+/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-09.jpg
+/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-25.jpg
+/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-32.jpg
+
+**** DONE 
+(ns ueava.pages.about
+  (:require
+   [ueava.components.lang :refer [lang]]))
+
+(def about-content
+  {:en
+   {:title "About UEAVA"
+
+    :subtitle
+    "Professional community advancing exotic animal medicine in Ukraine."
+
+    :p1
+    "UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species."
+
+    :p2
+    "Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine."
+
+    :p3
+    "UEAVA organizes educational events, lectures, conferences, clinical discussions, and professional projects aimed at advancing exotic animal medicine in Ukraine."
+
+    :p4
+    "We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development."
+
+    :mission-title "Our Mission"
+
+    :mission-1
+    "Develop a strong professional veterinary community."
+
+    :mission-2
+    "Support lifelong learning and professional growth for veterinarians."
+
+    :mission-3
+    "Promote modern scientific knowledge and clinical protocols."
+
+    :mission-4
+    "Create a platform for communication, collaboration, and exchange of experience."
+
+    :mission-5
+    "Popularize evidence-based veterinary medicine."
+
+    :mission-6
+    "Improve the quality of veterinary care for exotic animals."
+
+    :presidium "Presidium"
+
+    :president "President"
+    :president-name "Daryna Barannyk"
+    :vice-president "Vice President"
+    :board-member "Board Member"}
+
+   :uk
+   {:title "Про UEAVA"
+
+    :subtitle
+    "Професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин."
+
+    :p1
+    "UEAVA — це професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин. Ми об’єднуємо фахівців з різних регіонів України для розвитку сучасної, доказової та доступної ветеринарної медицини для птахів, рептилій, гризунів, кролів, тхорів та інших екзотичних видів."
+
+    :p2
+    "Наша асоціація створена для підтримки ветеринарних лікарів, обміну досвідом, професійного навчання та популяризації високих стандартів лікування екзотичних тварин в Україні."
+
+    :p3
+    "UEAVA організовує освітні заходи, лекції, конференції, клінічні обговорення та професійні проєкти, спрямовані на розвиток ветеринарної медицини екзотичних тварин в Україні."
+
+    :p4
+    "Ми віримо, що сильна професійна спільнота, науковий підхід і співпраця між лікарями є основою розвитку сучасної ветеринарної медицини."
+
+    :mission-title "Наша місія"
+
+    :mission-1
+    "Розвивати професійну ветеринарну спільноту."
+
+    :mission-2
+    "Підтримувати безперервне навчання лікарів."
+
+    :mission-3
+    "Поширювати сучасні наукові знання та клінічні протоколи."
+
+    :mission-4
+    "Створювати платформу для комунікації та співпраці."
+
+    :mission-5
+    "Популяризувати доказову ветеринарну медицину."
+
+    :mission-6
+    "Підвищувати якість ветеринарної допомоги екзотичним тваринам."
+
+    :presidium "Президія"
+
+    :president "Президент"
+    :president-name "Баранник Дарина Олександрівна"
+
+    :vice-president "Віцепрезидент"
+    :board-member "Член президії"}})
+
+(defn tr [k]
+  (get-in about-content [@lang k]))
+
+(defn hero-section []
+   [:section
+    {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
+
+    [:div
+     {:class "absolute inset-0 bg-cover bg-center"
+      :style {:background-image
+              ;; "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+              "url('img/ueava-about-team.webp')"}}]
+
+    [:div
+     {:class "absolute inset-0 bg-black/60"}]
+
+    [:div
+     {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+
+     [:h1
+      {:class "text-5xl md:text-7xl font-bold mb-6"}
+      (tr :title)]
+
+     [:p
+      {:class "text-xl md:text-2xl"}
+      (tr :subtitle)]]])
+
+(defn about-text-section []
+   [:section
+    {:class "py-20"}
+    [:div
+      {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
+      [:p (tr :p1)]
+      [:p (tr :p2)]
+      [:p (tr :p3)]
+      [:p (tr :p4)]]])
+
+  (defn mission-section []
+   [:section
+    {:class "bg-gray-50 py-20"}
+    [:div
+     {:class "max-w-6xl mx-auto px-8"}
+     [:h2
+      {:class "text-4xl font-bold text-center mb-12"}
+      (tr :mission-title)]
+     [:div
+      {:class "grid md:grid-cols-3 gap-6"}
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-1)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-2)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-3)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-4)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-5)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-6)]]]])
+
+
+(defn presidium-section []
+  [:section
+    {:class "py-20"}
+    [:div
+    {:class "max-w-7xl mx-auto px-8"}
+    [:h2
+      {:class "text-4xl font-bold text-center mb-16"}
+      (tr :presidium)]
+    [:div
+      {:class "grid md:grid-cols-3 gap-12"}
+      [:div {:class "text-center"}
+        [:svg {:width "220" :height "220"
+                :class "mx-auto mb-6"}
+          [:circle {:cx "110" :cy "110"
+                    :r "100"
+                    :fill "#ddd"}]
+          [:text {:x "110"
+                  :y "115"
+                  :text-anchor "middle"}
+          "PHOTO"]]
+        [:h3 {:class "font-bold text-xl"}
+          (tr :president)]
+        [:p {:class "text-gray-500"}
+         (tr :president-name)]]
+
+      [:div {:class "text-center"}
+        [:svg {:width "220" :height "220"
+                :class "mx-auto mb-6"}
+          [:circle {:cx "110" :cy "110"
+                    :r "100"
+                    :fill "#ddd"}]
+          [:text {:x "110"
+                  :y "115"
+                  :text-anchor "middle"}
+          "PHOTO"]]
+        [:h3 {:class "font-bold text-xl"}
+          (tr :vice-president)]
+        [:p {:class "text-gray-500"}
+          "Name Placeholder"]]
+
+      [:div {:class "text-center"}
+        [:svg {:width "220" :height "220"
+                :class "mx-auto mb-6"}
+          [:circle {:cx "110" :cy "110"
+                    :r "100"
+                    :fill "#ddd"}]
+          [:text {:x "110"
+                  :y "115"
+                  :text-anchor "middle"}
+          "PHOTO"]]
+
+        [:h3 {:class "font-bold text-xl"}
+          (tr :board-member)]
+
+        [:p {:class "text-gray-500"}
+          "Name Placeholder"]]]]])
+
+(defn founders-section []
+  [:section
+    {:class "bg-gray-50 py-24"}
+
+    [:div
+      {:class "max-w-7xl mx-auto px-8"}
+
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        "Founding Members"]
+
+      [:div
+        {:class "grid md:grid-cols-4 gap-8"}
+
+      ;; repeated cards
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]
+
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]
+
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]
+
+        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
+          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
+            "PHOTO"]
+          [:h3 {:class "font-semibold"}
+            "Founder Name"]]]]])
+
+(defn gallery-section []
+  [:section
+    {:class "py-24"}
+    [:div
+      {:class "max-w-7xl mx-auto px-8"}
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        "Gallery"]
+
+      [:div
+        {:class "grid md:grid-cols-3 gap-8"}
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "EVENT PHOTO"]
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "LECTURE PHOTO"]
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "CONFERENCE PHOTO"]]]])
+
+
+(defn about-page []
+  [:main
+   (hero-section)
+   (about-text-section)
+   (mission-section)
+   (presidium-section)
+   (founders-section)
+   (gallery-section)
+   ])
+
+
+**** DONE Я сделал таким образом, 
+но как в этот круг для изобрежения
+
+    [:div
+      {:class "grid md:grid-cols-3 gap-12"}
+      [:div {:class "text-center"}
+        [:svg {:width "220" :height "220"
+                :class "mx-auto mb-6"}
+          [:circle {:cx "110" :cy "110"
+                    :r "100"
+                    :fill "#ddd"}]
+          [:text {:x "110"
+                  :y "115"
+                  :text-anchor "middle"}
+          "PHOTO"]]
+        [:h3 {:class "font-bold text-xl"}
+          (tr :president)]
+        [:p {:class "text-gray-500"}
+         (tr :president-name)]]
+
+поместить изображение?
+так чтоб она стало круглым?
+
+**** DONE 
+
+Даже проще. SVG тебе уже не нужен.
+
+Вместо этого блока:
+
+```clojure
+[:svg {:width "220" :height "220"
+       :class "mx-auto mb-6"}
+ [:circle {:cx "110" :cy "110"
+           :r "100"
+           :fill "#ddd"}]
+ [:text {:x "110"
+         :y "115"
+         :text-anchor "middle"}
+  "PHOTO"]]
+```
+
+используй обычный `img`:
+
+```clojure
+[:img
+ {:src "img/daryna.jpg"
+  :alt "Daryna Barannyk"
+  :class "w-56 h-56 mx-auto mb-6 rounded-full object-cover shadow-lg"}]
+```
+
+Что делает каждая часть:
+
+```clojure
+w-56 h-56
+```
+
+фиксированный квадрат.
+
+```clojure
+rounded-full
+```
+
+делает круг.
+
+```clojure
+object-cover
+```
+
+самое важное — обрезает изображение по кругу без искажений.
+
+```clojure
+shadow-lg
+```
+
+небольшая тень.
+
+---
+
+Если хочется красивее, можно добавить рамку:
+
+```clojure
+[:img
+ {:src "img/daryna.jpg"
+  :alt "Daryna Barannyk"
+  :class "w-56 h-56 mx-auto mb-6
+           rounded-full
+           object-cover
+           border-4 border-white
+           shadow-xl"}]
+```
+
+---
+
+Если фотография прямоугольная:
+
+```text
+┌──────────────┐
+│              │
+│     photo    │
+│              │
+└──────────────┘
+```
+
+то `object-cover` возьмёт центральную часть и автоматически превратит её в круг:
+
+```text
+     ◯
+   photo
+```
+
+что обычно выглядит лучше всего для президиума, команды и основателей.
+
+---
+
+Я бы ещё вынес карточку человека в отдельный компонент:
+
+```clojure
+(defn person-card [photo role name]
+  [:div {:class "text-center"}
+   [:img
+    {:src photo
+     :class "w-56 h-56 mx-auto mb-6 rounded-full object-cover shadow-lg"}]
+   [:h3 {:class "font-bold text-xl"} role]
+   [:p {:class "text-gray-500"} name]])
+```
+
+тогда президиум превращается в:
+
+```clojure
+[:div {:class "grid md:grid-cols-3 gap-12"}
+
+ [person-card
+  "img/daryna.jpg"
+  (tr :president)
+  (tr :president-name)]
+
+ [person-card
+  "img/vice-president.jpg"
+  (tr :vice-president)
+  "Name"]
+
+ [person-card
+  "img/member.jpg"
+  (tr :board-member)
+  "Name"]]
+```
+
+и когда президиум вырастет до 5–10 человек, код останется аккуратным.
+
+
+**** переделать все изображения
+***** скрипт
+
+**** CANCELED спросить ии
+***** мне поставили задачу надеюсь на твою помощь.
+людям не нравится изображения в кружочках и квадратные.
+хотят прямоуголные.
+вот думаю как изменить чтоб всётаки всё выглядело професинально и красиво
+*** DONE отчёт
+  Изображения которые Ты мне передала - уже и так квадратные. Если с дизайнерской рамкой и текстом.
+потому самый простойстой способ использовать их если нечего не менять.
+  Мне несовсем нравится поскольку лицо мальенькое, есть текс, фон немного выподает из стиля. Но терпимо.
+  Что можно сделать:
+1. Отредактировать данные изображения. сделать прямоуголными отрезав всё лишнее.
+2. Взять Оригенальные подогнаные, у того кто делал то, что мне передали.
+3. Оставить как есть. Как минимум пока. Есть и боле важное. Пока главное по быстрее выложить сайт.
+Посмотрите на компютере и на телефоне.
+*** DONE Отменяется!
+оказывается они не разу не квадратные, и очень разные.
+куча работы по их нормализации, проще уже начальные резать.
+Вообщем предлогаю пока вернутся к начальным квадратным без изменений.
+Посмотри, когда появится время, получилось ли преемлемо.
+Я пока добавлю всех кто есть. Потом уже будем долавливать блох.
+*** DONE закончил добовлять всех ково передали.
+перевёл только Тебя и Софию.
 * project comands
 :PROPERTIES:
 :header-args: :tangle no
