@@ -5,94 +5,78 @@
 (def about-content
   {:en
    {:title "About UEAVA"
-
     :subtitle
     "Professional community advancing exotic animal medicine in Ukraine."
 
     :p1
     "UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species."
-
     :p2
     "Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine."
-
     :p3
     "UEAVA organizes educational events, lectures, conferences, clinical discussions, and professional projects aimed at advancing exotic animal medicine in Ukraine."
-
     :p4
     "We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development."
 
     :mission-title "Our Mission"
-
     :mission-1
     "Develop a strong professional veterinary community."
-
     :mission-2
     "Support lifelong learning and professional growth for veterinarians."
-
     :mission-3
     "Promote modern scientific knowledge and clinical protocols."
-
     :mission-4
     "Create a platform for communication, collaboration, and exchange of experience."
-
     :mission-5
     "Popularize evidence-based veterinary medicine."
-
     :mission-6
     "Improve the quality of veterinary care for exotic animals."
 
     :presidium "Presidium"
-
     :president "President"
     :president-name "Daryna Barannyk"
     :vice-president "Vice President"
+    :vice-president-name "Vice President"
+    :secretary "Cекретар"
+    :secretary-name "Софія Дащенко"
     :board-member "Board Member"}
 
    :uk
    {:title "Про UEAVA"
-
     :subtitle
     "Професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин."
 
     :p1
     "UEAVA — це професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин. Ми об’єднуємо фахівців з різних регіонів України для розвитку сучасної, доказової та доступної ветеринарної медицини для птахів, рептилій, гризунів, кролів, тхорів та інших екзотичних видів."
-
     :p2
     "Наша асоціація створена для підтримки ветеринарних лікарів, обміну досвідом, професійного навчання та популяризації високих стандартів лікування екзотичних тварин в Україні."
-
     :p3
     "UEAVA організовує освітні заходи, лекції, конференції, клінічні обговорення та професійні проєкти, спрямовані на розвиток ветеринарної медицини екзотичних тварин в Україні."
-
     :p4
     "Ми віримо, що сильна професійна спільнота, науковий підхід і співпраця між лікарями є основою розвитку сучасної ветеринарної медицини."
 
     :mission-title "Наша місія"
-
     :mission-1
     "Розвивати професійну ветеринарну спільноту."
-
     :mission-2
     "Підтримувати безперервне навчання лікарів."
-
     :mission-3
     "Поширювати сучасні наукові знання та клінічні протоколи."
-
     :mission-4
     "Створювати платформу для комунікації та співпраці."
-
     :mission-5
     "Популяризувати доказову ветеринарну медицину."
-
     :mission-6
     "Підвищувати якість ветеринарної допомоги екзотичним тваринам."
 
     :presidium "Президія"
-
     :president "Президент"
     :president-name "Баранник Дарина Олександрівна"
-
     :vice-president "Віцепрезидент"
-    :board-member "Член президії"}})
+    :secretary "secretary"
+    :secretary-name "сестричка Луй"
+    :board-member "Член президії"
+    :board-member-name "сестричка Луй"
+    }})
 
 (defn tr [k]
   (get-in about-content [@lang k]))
@@ -179,12 +163,9 @@
         (tr :presidium)]
     [:div
       {:class "grid md:grid-cols-3 gap-12"}
-      [presidium-card "img/ueava-about-darina.webp" (tr :president) (tr :president-name)]
-      [presidium-card "img/ueava-about-shabuldo.webp" "віце-президент" "Катерина Шабульдо"]
-      [presidium-card "img/ueava-about-luy.webp" "секретар" "Софія Дащенко"]
-      [presidium-r-card "img/ueava-about-darina2.webp" (tr :board-member) "сестричка Луй"]
-      [presidium-r-card "img/ueava-about-darina.webp" (tr :board-member) "сестричка Луй"]
-      [presidium-r-card "img/ueava-about-luy.webp" (tr :board-member) "сестричка Луй"]
+      [presidium-r-card "img/ueava-about-darina.webp" (tr :president) (tr :president-name)]
+      [presidium-r-card "img/ueava-about-shabuldo.webp" "віце-президент" "Катерина Шабульдо"]
+      [presidium-r-card "img/ueava-about-luy.webp" (tr :secretary) (tr :secretary-name)]
      ]]])
 
 (defn founder-card [photo name]
@@ -200,13 +181,10 @@
 (def founders
   [{:name "Владислав Мирный"
     :photo "img/ueava-about-peaceful.webp"}
-
    {:name "Руденко Олександра Михайлівна"
     :photo "img/ueava-about-rudenko.webp"}
-
    {:name "Хвалюн Владислава Олександрівна - медіа-кріетор"
     :photo "img/ueava-about-khvalyun.webp"}
-
    {:name "Коновалова-Надєл Аліна Олександрівна"
     :photo "img/ueava-about-konoval.webp"}])
 

@@ -85,21 +85,16 @@
 (defn hero-section []
   [:section
    {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
-
    [:div
     {:class "absolute inset-0 bg-cover bg-center"
      :style {:background-image
              "url('img/ueava-about-team.webp')"}}]
-
    [:div {:class "absolute inset-0 bg-black/60"}]
-
    [:div
     {:class "relative z-10 text-center text-white max-w-4xl px-8"}
-
     [:h1
      {:class "text-5xl md:text-7xl font-bold mb-6"}
      (tr :title)]
-
     [:p
      {:class "text-xl md:text-2xl"}
      (tr :subtitle)]]])
@@ -108,17 +103,13 @@
   [:div
    {:class "bg-white rounded-xl p-8 shadow
             hover:shadow-xl transition"}
-
    [:div {:class "text-4xl mb-4"} "📄"]
-
    [:h3
     {:class "text-xl font-bold mb-3"}
     title]
-
    [:p
     {:class "text-gray-600 mb-6"}
     desc]
-
    [:a
     {:href href
      :target "_blank"
@@ -128,17 +119,13 @@
 (defn coming-card [title desc]
   [:div
    {:class "bg-white rounded-xl p-8 shadow"}
-
    [:div {:class "text-4xl mb-4"} "📁"]
-
    [:h3
     {:class "text-xl font-bold mb-3"}
     title]
-
    [:p
     {:class "text-gray-600 mb-6"}
     desc]
-
    [:span
     {:class "inline-block px-4 py-2 rounded bg-gray-200 text-gray-700"}
     (tr :soon)]])
@@ -146,26 +133,20 @@
 (defn documents-section []
   [:section
    {:class "py-24"}
-
    [:div
     {:class "max-w-7xl mx-auto px-8"}
-
     [:h2
      {:class "text-4xl font-bold text-center mb-12"}
      (tr :documents)]
-
     [:div
      {:class "grid md:grid-cols-3 gap-8"}
-
      [document-card
       (tr :statute-title)
       (tr :statute-desc)
       "res/statut.pdf"]
-
      [coming-card
       (tr :protocols-title)
       (tr :protocols-desc)]
-
      [coming-card
       (tr :circulars-title)
       (tr :circulars-desc)]]]])
@@ -174,15 +155,12 @@
   [:div
    {:class "bg-white rounded-xl p-8 shadow
             hover:shadow-xl transition"}
-
    [:h3
     {:class "text-xl font-bold mb-3"}
     title]
-
    [:p
     {:class "text-gray-600 mb-6"}
     desc]
-
    [:span
     {:class "inline-block px-4 py-2 rounded bg-gray-200 text-gray-700"}
     (tr :soon)]])
@@ -190,55 +168,35 @@
 (defn library-section []
   [:section
    {:class "bg-gray-50 py-24"}
-
    [:div
     {:class "max-w-7xl mx-auto px-8"}
-
     [:h2
      {:class "text-4xl font-bold text-center mb-12"}
      (tr :library)]
-
     [:div
      {:class "grid md:grid-cols-2 lg:grid-cols-4 gap-8"}
-
-     [library-card
-      (tr :books-title)
-      (tr :books-desc)]
-
-     [library-card
-      (tr :webinars-title)
-      (tr :webinars-desc)]
-
-     [library-card
-      (tr :articles-title)
-      (tr :articles-desc)]
-
-     [library-card
-      (tr :conference-title)
-      (tr :conference-desc)]]]])
+     [library-card (tr :books-title) (tr :books-desc)]
+     [library-card (tr :webinars-title) (tr :webinars-desc)]
+     [library-card (tr :articles-title) (tr :articles-desc)]
+     [library-card (tr :conference-title) (tr :conference-desc)]]]])
 
 (defn member-section []
   [:section
    {:class "py-24"}
-
    [:div
     {:class
      "max-w-5xl mx-auto px-8"}
-
     [:div
      {:class
       "rounded-3xl bg-gradient-to-r
        from-orange-500 to-orange-700
        text-white p-12 text-center"}
-
      [:h2
       {:class "text-4xl font-bold mb-6"}
       (tr :members-title)]
-
      [:p
       {:class "text-xl mb-8"}
       (tr :members-desc)]
-
      [:button
       {:class
        "bg-white text-orange-600

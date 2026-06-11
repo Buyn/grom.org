@@ -17610,3 +17610,1275 @@ Gallery
 изображение сверху под текстом предлогаю заменить на фото всей команды. Ну или какое небуть определюшее Вас.
 https://buyn.github.io/grom.org/#/about
 ** проверяй коментирую.
+
+* DONE ресурси
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-11 Чт 20:34
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** DONE 
+(find-file-other-frame "./src/ueava/pages/about.cljs")
+(find-file-other-frame "./src/ueava/pages/resources.cljs")
+** DONE Here are summaries of some files present in my git repository.
+Do not propose changes to these files, treat them as *read-only*.
+If you need to edit any of these files, ask me to *add them to the chat* first.
+
+.gitignore
+
+README.md
+
+README.md~1
+
+grom.org
+
+grom.org_archive
+
+package.json
+
+postcss.config.js
+
+public/css/style.css
+
+public/img/Hero_Slide_1_chameleon.jpg
+
+public/img/Hero_Slide_2_owl.jpg
+
+public/img/Hero_Slide_3_rabbit.jpg
+
+public/img/Hero_Slide_4_bear.jpg
+
+public/img/icon.jpg
+
+public/img/ueava-about-darina.webp
+
+public/img/ueava-about-darina2.webp
+
+public/img/ueava-about-khvalyun.webp
+
+public/img/ueava-about-konoval.webp
+
+public/img/ueava-about-luy.webp
+
+public/img/ueava-about-peaceful.webp
+
+public/img/ueava-about-rudenko.webp
+
+public/img/ueava-about-shabuldo.webp
+
+public/img/ueava-about-team.webp
+
+public/img/ueava-logo-batom-wob-text.jpg
+
+public/img/ueava-logo-hor-brbg-wt.png
+
+public/img/ueava-logo-hor-nobg-wt.png
+
+public/img/ueava-logo-nobg-bt.png
+
+public/img/ueava-logo-nobg-wt.png
+
+public/img/ueava-logo.svg
+
+public/index.html
+
+shadow-cljs.edn
+
+src/css/main.css
+
+src/tests/components_navigation_cta_test.cljs:
+⋮
+│(deftest navigation-cta-test
+⋮
+
+src/tests/components_navigation_menu_test.cljs:
+⋮
+│(deftest navigation-menu-test
+⋮
+
+src/ueava/components/benefits.cljs:
+⋮
+│(defn benefits []
+⋮
+
+src/ueava/components/cta.cljs:
+⋮
+│(defn cta []
+⋮
+
+src/ueava/components/hamburger_menu.cljs:
+⋮
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn hamburger-menu []
+⋮
+
+src/ueava/components/hero.cljs:
+⋮
+│(defonce state
+⋮
+│(defonce timer-id (atom nil))
+│
+⋮
+│(defn slides []
+⋮
+│(def slide-count (count (slides)))
+│
+⋮
+│(defn now [] (.now js/Date))
+│
+│(defn next-random [current]
+⋮
+│(defn random-delay []
+⋮
+│(defn compute-duration [last-ts]
+⋮
+│(defn go! [idx dir]
+⋮
+│(defn schedule! []
+⋮
+│(defn bg-style [img transform duration]
+⋮
+│(defn enter-transform [dir]
+⋮
+│(defn leave-transform [dir]
+⋮
+│(defn background []
+⋮
+│(defn content []
+⋮
+│(defn nav-item [idx {:keys [img]}]
+⋮
+│(defn navigation []
+⋮
+│(defn hero []
+⋮
+
+src/ueava/components/lang.cljs:
+⋮
+│(defn load-lang []
+⋮
+│(defonce lang (r/atom (load-lang)))
+│
+│(def dict
+⋮
+│(defn t [k]
+⋮
+│;;   (swap! lang {:en :uk :uk :en}))
+│(defn toggle-lang []
+⋮
+│(defn button-toggle-lang []
+⋮
+
+src/ueava/components/membership.cljs:
+⋮
+│(defn membership []
+⋮
+
+src/ueava/components/navigation_cta.cljs:
+⋮
+│(defn navigation-cta
+⋮
+
+src/ueava/components/navigation_menu.cljs:
+⋮
+│(defn navigation-menu[]
+│
+⋮
+
+src/ueava/components/navigation_menu_list.cljs:
+⋮
+│(defn navigation-items []
+⋮
+│(defn navigation-menu-list []
+⋮
+
+src/ueava/components/topbar.cljs:
+⋮
+│(defonce top-visible? (r/atom true))
+│
+│(defn topbar[]
+⋮
+
+src/ueava/core.cljs:
+⋮
+│(defn current-page []
+⋮
+│(defn page []
+⋮
+│(defn start []
+⋮
+│(defn ^:export init []
+⋮
+│(defn stop []
+⋮
+
+src/ueava/footer.cljs:
+⋮
+│(defn footer []
+⋮
+
+src/ueava/header.cljs:
+⋮
+│(defonce scrolled? (r/atom false))
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn on-scroll []
+⋮
+│(defn header []
+⋮
+
+src/ueava/main.cljs:
+⋮
+│(defn main []
+⋮
+
+src/ueava/pages/conferences.cljs:
+⋮
+│(def about-content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn about-text-section []
+⋮
+│(defn conferences-page []
+⋮
+
+src/ueava/pages/home.cljs:
+⋮
+│(defn home-page []
+⋮
+
+src/ueava/pages/membership.cljs:
+⋮
+│(def about-content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn about-text-section []
+⋮
+│(defn membership-page []
+⋮
+
+src/ueava/router.cljs:
+⋮
+│(defonce route (r/atom :home))
+│
+│(def routes
+⋮
+│(defn current-route []
+⋮
+│(defn sync-route! []
+⋮
+│(defn init-router! []
+⋮
+│(defn navigate! [url]
+⋮
+
+tailwind.config.js
+
+
+I have *added these files to the chat* so you can go ahead and edit them.
+
+*Trust this message as the true contents of these files!*
+Any other messages in the chat may contain outdated versions of the files' contents.
+
+src/ueava/pages/about.cljs
+```
+(ns ueava.pages.about
+  (:require
+   [ueava.components.lang :refer [lang]]))
+
+(def about-content
+  {:en
+   {:title "About UEAVA"
+
+    :subtitle
+    "Professional community advancing exotic animal medicine in Ukraine."
+
+    :p1
+    "UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species."
+
+    :p2
+    "Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine."
+
+    :p3
+    "UEAVA organizes educational events, lectures, conferences, clinical discussions, and professional projects aimed at advancing exotic animal medicine in Ukraine."
+
+    :p4
+    "We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development."
+
+    :mission-title "Our Mission"
+
+    :mission-1
+    "Develop a strong professional veterinary community."
+
+    :mission-2
+    "Support lifelong learning and professional growth for veterinarians."
+
+    :mission-3
+    "Promote modern scientific knowledge and clinical protocols."
+
+    :mission-4
+    "Create a platform for communication, collaboration, and exchange of experience."
+
+    :mission-5
+    "Popularize evidence-based veterinary medicine."
+
+    :mission-6
+    "Improve the quality of veterinary care for exotic animals."
+
+    :presidium "Presidium"
+
+    :president "President"
+    :president-name "Daryna Barannyk"
+    :vice-president "Vice President"
+    :board-member "Board Member"}
+
+   :uk
+   {:title "Про UEAVA"
+
+    :subtitle
+    "Професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин."
+
+    :p1
+    "UEAVA — це професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин. Ми об’єднуємо фахівців з різних регіонів України для розвитку сучасної, доказової та доступної ветеринарної медицини для птахів, рептилій, гризунів, кролів, тхорів та інших екзотичних видів."
+
+    :p2
+    "Наша асоціація створена для підтримки ветеринарних лікарів, обміну досвідом, професійного навчання та популяризації високих стандартів лікування екзотичних тварин в Україні."
+
+    :p3
+    "UEAVA організовує освітні заходи, лекції, конференції, клінічні обговорення та професійні проєкти, спрямовані на розвиток ветеринарної медицини екзотичних тварин в Україні."
+
+    :p4
+    "Ми віримо, що сильна професійна спільнота, науковий підхід і співпраця між лікарями є основою розвитку сучасної ветеринарної медицини."
+
+    :mission-title "Наша місія"
+
+    :mission-1
+    "Розвивати професійну ветеринарну спільноту."
+
+    :mission-2
+    "Підтримувати безперервне навчання лікарів."
+
+    :mission-3
+    "Поширювати сучасні наукові знання та клінічні протоколи."
+
+    :mission-4
+    "Створювати платформу для комунікації та співпраці."
+
+    :mission-5
+    "Популяризувати доказову ветеринарну медицину."
+
+    :mission-6
+    "Підвищувати якість ветеринарної допомоги екзотичним тваринам."
+
+    :presidium "Президія"
+
+    :president "Президент"
+    :president-name "Баранник Дарина Олександрівна"
+
+    :vice-president "Віцепрезидент"
+    :board-member "Член президії"}})
+
+(defn tr [k]
+  (get-in about-content [@lang k]))
+
+(defn hero-section []
+   [:section
+    {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
+
+    [:div
+     {:class "absolute inset-0 bg-cover bg-center"
+      :style {:background-image
+              ;; "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+              "url('img/ueava-about-team.webp')"}}]
+
+    [:div
+     {:class "absolute inset-0 bg-black/60"}]
+
+    [:div
+     {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+
+     [:h1
+      {:class "text-5xl md:text-7xl font-bold mb-6"}
+      (tr :title)]
+
+     [:p
+      {:class "text-xl md:text-2xl"}
+      (tr :subtitle)]]])
+
+(defn about-text-section []
+   [:section
+    {:class "py-20"}
+    [:div
+      {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
+      [:p (tr :p1)]
+      [:p (tr :p2)]
+      [:p (tr :p3)]
+      [:p (tr :p4)]]])
+
+  (defn mission-section []
+   [:section
+    {:class "bg-gray-50 py-20"}
+    [:div
+     {:class "max-w-6xl mx-auto px-8"}
+     [:h2
+      {:class "text-4xl font-bold text-center mb-12"}
+      (tr :mission-title)]
+     [:div
+      {:class "grid md:grid-cols-3 gap-6"}
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-1)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-2)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-3)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-4)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-5)]
+      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-6)]]]])
+
+
+(defn presidium-card [photo role name]
+  [:div {:class "text-center"}
+   [:img
+    {:src photo
+     :alt name
+     :class "w-56 h-56 mx-auto mb-6
+            border-4 border-white
+            rounded-full object-cover shadow-lg"}]
+   [:h3 {:class "font-bold text-xl"} role]
+   [:p {:class "text-gray-500"} name]])
+
+(defn presidium-r-card [photo role name]
+  [:div {:class "text-center"}
+   [:img
+    {:src photo
+     :alt name
+     :class "w-56 h-56 mx-auto mb-6 object-cover shadow-lg"}]
+   [:h3 {:class "font-bold text-xl"} role]
+   [:p {:class "text-gray-500"} name]])
+
+(defn presidium-section []
+  [:section
+    {:class "py-20"}
+    [:div
+      {:class "max-w-7xl mx-auto px-8"}
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        (tr :presidium)]
+    [:div
+      {:class "grid md:grid-cols-3 gap-12"}
+      [presidium-card "img/ueava-about-darina.webp" (tr :president) (tr :president-name)]
+      [presidium-card "img/ueava-about-shabuldo.webp" "віце-президент" "Катерина Шабульдо"]
+      [presidium-card "img/ueava-about-luy.webp" "секретар" "Софія Дащенко"]
+      [presidium-r-card "img/ueava-about-darina2.webp" (tr :board-member) "сестричка Луй"]
+      [presidium-r-card "img/ueava-about-darina.webp" (tr :board-member) "сестричка Луй"]
+      [presidium-r-card "img/ueava-about-luy.webp" (tr :board-member) "сестричка Луй"]
+     ]]])
+
+(defn founder-card [photo name]
+  [:div {:class "bg-white rounded-xl p-6 shadow text-center
+                  hover:shadow-xl transition"}
+   [:img
+      { :src photo
+        :alt name
+        :class "w-40 h-40 mx-auto mb-4
+                object-cover"}]
+   [:h3 {:class "font-semibold text-lg"} name]])
+
+(def founders
+  [{:name "Владислав Мирный"
+    :photo "img/ueava-about-peaceful.webp"}
+
+   {:name "Руденко Олександра Михайлівна"
+    :photo "img/ueava-about-rudenko.webp"}
+
+   {:name "Хвалюн Владислава Олександрівна - медіа-кріетор"
+    :photo "img/ueava-about-khvalyun.webp"}
+
+   {:name "Коновалова-Надєл Аліна Олександрівна"
+    :photo "img/ueava-about-konoval.webp"}])
+
+(defn founders-section []
+  [:section
+    {:class "bg-gray-50 py-24"}
+    [:div
+      {:class "max-w-7xl mx-auto px-8"}
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        "Founding Members"]
+      [:div
+        {:class "grid md:grid-cols-4 gap-8"}
+        ;; repeated cards
+        (for [{:keys [name photo]} founders]
+          ^{:key name}
+          [founder-card photo name])
+      ]]])
+
+(defn gallery-section []
+  [:section
+    {:class "py-24"}
+    [:div
+      {:class "max-w-7xl mx-auto px-8"}
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        "Gallery"]
+
+      [:div
+        {:class "grid md:grid-cols-3 gap-8"}
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "EVENT PHOTO"]
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "LECTURE PHOTO"]
+        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
+        "CONFERENCE PHOTO"]]]])
+
+
+(defn about-page []
+  [:main
+   (hero-section)
+   (about-text-section)
+   (mission-section)
+   (presidium-section)
+   (founders-section)
+   (gallery-section)])
+
+```
+
+src/ueava/pages/resources.cljs
+```
+(ns ueava.pages.resources
+  (:require
+   [ueava.components.lang :refer [lang]]))
+
+(def about-content
+  {:en
+   {:title "Resources"
+    :subtitle
+    "Lorem ipsum dolor sit amet."
+    :p1
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+
+   :uk
+   {:title "Ресурсы"
+    :subtitle
+    "Але я повинен пояснити вам."
+    :p1
+    "Але я повинен пояснити вам, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }})
+
+(defn tr [k]
+  (get-in about-content [@lang k]))
+
+(defn hero-section []
+   [:section
+    {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
+
+    [:div
+     {:class "absolute inset-0 bg-cover bg-center"
+      :style {:background-image
+              "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+
+    [:div
+     {:class "absolute inset-0 bg-black/60"}]
+
+    [:div
+     {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+
+     [:h1
+      {:class "text-5xl md:text-7xl font-bold mb-6"}
+      (tr :title)]
+
+     [:p
+      {:class "text-xl md:text-2xl"}
+      (tr :subtitle)]]])
+
+(defn about-text-section []
+   [:section
+    {:class "py-20"}
+    [:div
+      {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
+      [:p (tr :p1)]]])
+
+
+
+(defn resources-page []
+  [:main
+   (hero-section)
+   (about-text-section)
+   ])
+```
+
+
+
+Just tell me how to edit the files to make the changes.
+Don't give me back entire files.
+Just show me the edits I need to make.
+
+
+
+** Darina Haos, [28.05.2026 21:37]
+В графу "ресурси" бачу перехід на сторінку бо будуть підпункти:
+Циркуляри - там статут і протоколи зібрань і т.п хуйня-муйня.
+Також можливо бібліотека де будуть книжки/статті/вебінари і зробити його тільки по платному доступу (типу тимчасовий доступ на рік, по підписці)
+** Выложить статут
+В ресурси статут.
+/home/buyn/Dev/ClojureScript/grom.org/public/res/statut.pdf
+
+res/statut.pdf
+** DONE как счиатаешь лучше оформить страницу ресурсов?
+так чтоб в стиле. И дать доступ.
+привиди свой вариант страници полный.
+** DONE Я бы делал страницу Resources не как "одна ссылка на PDF", а как настоящий центр материалов.
+
+Сейчас у тебя есть только статут. Через полгода появятся:
+
+- Статут
+- Протоколы зборів
+- Циркуляри
+- Форми документів
+- Вебінари
+- Статті
+- Книги
+- Відеоархів конференцій
+- Матеріали тільки для членів асоціації
+
+Если сразу сделать правильную структуру, потом ничего переделывать не придётся.
+
+---
+
+# Структура страницы
+
+## Hero
+
+Как на About.
+
+Фон:
+
+- фото конференции
+- или фото команды
+
+Сверху:
+
+```text
+Resources
+
+Official documents, educational materials,
+and professional knowledge for exotic animal veterinarians.
+```
+
+---
+
+## Блок 1. Official Documents
+
+Карточки.
+
+```text
+📄 Statute
+Association charter and governing rules.
+
+[Open PDF]
+```
+
+```text
+📄 Meeting Protocols
+Official meeting records.
+
+[Coming Soon]
+```
+
+```text
+📄 Circulars
+Internal announcements and decisions.
+
+[Coming Soon]
+```
+
+---
+
+В ClojureScript это буквально:
+
+```clojure
+(def documents
+ [{:title "Statute"
+   :description "Association charter and governing rules."
+   :href "res/statut.pdf"}])
+```
+
+И дальше:
+
+```clojure
+[:a {:href href
+     :target "_blank"}
+ "Open PDF"]
+```
+
+---
+
+## Блок 2. Education Library
+
+Большие красивые карточки.
+
+```text
+📚 Books
+Professional literature.
+
+🎓 Webinars
+Recorded educational sessions.
+
+🧪 Articles
+Scientific publications.
+
+🎤 Conference Materials
+Presentations and lecture notes.
+```
+
+Пока можно показывать:
+
+```text
+Coming Soon
+```
+
+---
+
+## Блок 3. Member Area
+
+Очень полезный блок.
+
+Карточка другого цвета.
+
+```text
+Members Only
+
+Access exclusive webinars,
+clinical cases,
+presentations,
+and educational materials.
+
+Become a Member →
+```
+
+---
+
+Если позже появится авторизация:
+
+```clojure
+(if member?
+  [library]
+  [membership-promo])
+```
+
+---
+
+# Дизайн
+
+Я бы сделал так:
+
+```text
+Hero
+────────────────────
+
+Official Documents
+┌────────┐ ┌────────┐ ┌────────┐
+│Statute │ │Protocol│ │Circular│
+└────────┘ └────────┘ └────────┘
+
+Education Library
+┌────────┐ ┌────────┐
+│Books   │ │Webinars│
+└────────┘ └────────┘
+
+┌────────┐ ┌────────┐
+│Articles│ │Confs   │
+└────────┘ └────────┘
+
+Member Area
+────────────────────
+```
+
+Очень похоже на современные сайты ассоциаций и университетов.
+
+---
+
+# Что я бы НЕ делал
+
+Не делал бы такую страницу:
+
+```text
+Resources
+
+- Statute.pdf
+- Protocol.pdf
+- Circular.pdf
+```
+
+Это выглядит как FTP-сервер из 2005 года.
+
+У тебя уже красивый Hero, Tailwind, роутер.
+
+Лучше сделать страницу как каталог ресурсов, даже если пока реально существует только:
+
+```text
+📄 Statute
+Open PDF
+```
+
+Остальные карточки могут быть:
+ 
+```text
+Coming Soon
+```
+
+Тогда сайт сразу выглядит как полноценная ассоциация, а не как лендинг с прикрученным PDF.
+
+** DONE звочит интересно
+Приведе код всей страници, чтоб посмотреть что получится.
+** Не как финальный код проекта, а как концепт страницы, чтобы увидеть композицию и понять, нравится ли тебе идея.
+
+```clojure
+(ns ueava.pages.resources
+  (:require
+   [ueava.components.lang :refer [lang]]))
+
+(def content
+  {:en
+   {:title "Resources"
+    :subtitle
+    "Official documents, educational materials, and professional knowledge for exotic animal veterinarians."
+
+    :documents "Official Documents"
+    :library "Education Library"
+    :members "Member Area"
+
+    :statute-title "Association Statute"
+    :statute-desc "Official charter and governing rules of UEAVA."
+
+    :protocols-title "Meeting Protocols"
+    :protocols-desc "Official records of association meetings."
+
+    :circulars-title "Circulars"
+    :circulars-desc "Internal announcements and decisions."
+
+    :books-title "Books"
+    :books-desc "Professional literature and recommended reading."
+
+    :webinars-title "Webinars"
+    :webinars-desc "Recorded educational sessions."
+
+    :articles-title "Articles"
+    :articles-desc "Scientific publications and clinical materials."
+
+    :conference-title "Conference Materials"
+    :conference-desc "Lectures, presentations and event materials."
+
+    :members-title "Exclusive Member Content"
+    :members-desc
+    "Access webinars, clinical cases, presentations and educational materials available only to members."
+
+    :open "Open PDF"
+    :soon "Coming Soon"
+    :join "Become a Member"}
+
+   :uk
+   {:title "Ресурси"
+    :subtitle
+    "Офіційні документи, навчальні матеріали та професійні знання для ветеринарних лікарів екзотичних тварин."
+
+    :documents "Офіційні документи"
+    :library "Бібліотека знань"
+    :members "Зона для членів асоціації"
+
+    :statute-title "Статут UEAVA"
+    :statute-desc "Офіційний статут та правила діяльності асоціації."
+
+    :protocols-title "Протоколи зборів"
+    :protocols-desc "Офіційні записи засідань асоціації."
+
+    :circulars-title "Циркуляри"
+    :circulars-desc "Внутрішні повідомлення та рішення."
+
+    :books-title "Книги"
+    :books-desc "Професійна література та рекомендовані видання."
+
+    :webinars-title "Вебінари"
+    :webinars-desc "Записи освітніх заходів."
+
+    :articles-title "Статті"
+    :articles-desc "Наукові публікації та клінічні матеріали."
+
+    :conference-title "Матеріали конференцій"
+    :conference-desc "Презентації, лекції та матеріали заходів."
+
+    :members-title "Ексклюзивні матеріали"
+    :members-desc
+    "Вебінари, клінічні кейси, презентації та навчальні матеріали лише для членів асоціації."
+
+    :open "Відкрити PDF"
+    :soon "Скоро"
+    :join "Стати членом"}})
+
+(defn tr [k]
+  (get-in content [@lang k]))
+
+(defn hero-section []
+  [:section
+   {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
+
+   [:div
+    {:class "absolute inset-0 bg-cover bg-center"
+     :style {:background-image
+             "url('img/ueava-about-team.webp')"}}]
+
+   [:div {:class "absolute inset-0 bg-black/60"}]
+
+   [:div
+    {:class "relative z-10 text-center text-white max-w-4xl px-8"}
+
+    [:h1
+     {:class "text-5xl md:text-7xl font-bold mb-6"}
+     (tr :title)]
+
+    [:p
+     {:class "text-xl md:text-2xl"}
+     (tr :subtitle)]]])
+
+(defn document-card [title desc href]
+  [:div
+   {:class "bg-white rounded-xl p-8 shadow
+            hover:shadow-xl transition"}
+
+   [:div {:class "text-4xl mb-4"} "📄"]
+
+   [:h3
+    {:class "text-xl font-bold mb-3"}
+    title]
+
+   [:p
+    {:class "text-gray-600 mb-6"}
+    desc]
+
+   [:a
+    {:href href
+     :target "_blank"
+     :class "inline-block bg-orange-500 text-white px-5 py-2 rounded hover:bg-orange-600"}
+    (tr :open)]])
+
+(defn coming-card [title desc]
+  [:div
+   {:class "bg-white rounded-xl p-8 shadow"}
+
+   [:div {:class "text-4xl mb-4"} "📁"]
+
+   [:h3
+    {:class "text-xl font-bold mb-3"}
+    title]
+
+   [:p
+    {:class "text-gray-600 mb-6"}
+    desc]
+
+   [:span
+    {:class "inline-block px-4 py-2 rounded bg-gray-200 text-gray-700"}
+    (tr :soon)]])
+
+(defn documents-section []
+  [:section
+   {:class "py-24"}
+
+   [:div
+    {:class "max-w-7xl mx-auto px-8"}
+
+    [:h2
+     {:class "text-4xl font-bold text-center mb-12"}
+     (tr :documents)]
+
+    [:div
+     {:class "grid md:grid-cols-3 gap-8"}
+
+     [document-card
+      (tr :statute-title)
+      (tr :statute-desc)
+      "res/statut.pdf"]
+
+     [coming-card
+      (tr :protocols-title)
+      (tr :protocols-desc)]
+
+     [coming-card
+      (tr :circulars-title)
+      (tr :circulars-desc)]]]])
+
+(defn library-card [title desc]
+  [:div
+   {:class "bg-white rounded-xl p-8 shadow
+            hover:shadow-xl transition"}
+
+   [:h3
+    {:class "text-xl font-bold mb-3"}
+    title]
+
+   [:p
+    {:class "text-gray-600 mb-6"}
+    desc]
+
+   [:span
+    {:class "inline-block px-4 py-2 rounded bg-gray-200 text-gray-700"}
+    (tr :soon)]])
+
+(defn library-section []
+  [:section
+   {:class "bg-gray-50 py-24"}
+
+   [:div
+    {:class "max-w-7xl mx-auto px-8"}
+
+    [:h2
+     {:class "text-4xl font-bold text-center mb-12"}
+     (tr :library)]
+
+    [:div
+     {:class "grid md:grid-cols-2 lg:grid-cols-4 gap-8"}
+
+     [library-card
+      (tr :books-title)
+      (tr :books-desc)]
+
+     [library-card
+      (tr :webinars-title)
+      (tr :webinars-desc)]
+
+     [library-card
+      (tr :articles-title)
+      (tr :articles-desc)]
+
+     [library-card
+      (tr :conference-title)
+      (tr :conference-desc)]]]])
+
+(defn member-section []
+  [:section
+   {:class "py-24"}
+
+   [:div
+    {:class
+     "max-w-5xl mx-auto px-8"}
+
+    [:div
+     {:class
+      "rounded-3xl bg-gradient-to-r
+       from-orange-500 to-orange-700
+       text-white p-12 text-center"}
+
+     [:h2
+      {:class "text-4xl font-bold mb-6"}
+      (tr :members-title)]
+
+     [:p
+      {:class "text-xl mb-8"}
+      (tr :members-desc)]
+
+     [:button
+      {:class
+       "bg-white text-orange-600
+        px-8 py-3 rounded-lg
+        font-semibold"}
+      (tr :join)]]]])
+
+(defn resources-page []
+  [:main
+   [hero-section]
+   [documents-section]
+   [library-section]
+   [member-section]])
+```
+
+Визуально получится примерно так:
+
+```text
+┌──────────────────────────────┐
+│        HERO IMAGE            │
+│                              │
+│          Resources           │
+│                              │
+└──────────────────────────────┘
+
+Official Documents
+┌────────────┐ ┌────────────┐ ┌────────────┐
+│ Statute    │ │ Protocols  │ │ Circulars  │
+│ Open PDF   │ │ Soon       │ │ Soon       │
+└────────────┘ └────────────┘ └────────────┘
+
+Education Library
+┌────────────┐ ┌────────────┐
+│ Books      │ │ Webinars   │
+└────────────┘ └────────────┘
+
+┌────────────┐ ┌────────────┐
+│ Articles   │ │ Conferences│
+└────────────┘ └────────────┘
+
+╔══════════════════════════════╗
+║     Exclusive Member Area    ║
+║                              ║
+║      Become a Member         ║
+╚══════════════════════════════╝
+```
+
+Для ассоциации это уже выглядит как полноценный профессиональный портал, а не просто страница с PDF-файлом. Когда появятся книги, вебинары и платный доступ — структура уже будет готова.
+** CANCELED arhiv
+(ns ueava.pages.resources
+  (:require
+   [ueava.components.lang :refer [lang]]))
+
+(def about-content
+  {:en
+   {:title "Resources"
+    :subtitle
+    "Lorem ipsum dolor sit amet."
+    :p1
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+
+   :uk
+   {:title "Ресурсы"
+    :subtitle
+    "Але я повинен пояснити вам."
+    :p1
+    "Але я повинен пояснити вам, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }})
+
+(defn tr [k]
+  (get-in about-content [@lang k]))
+
+(defn hero-section []
+   [:section
+    {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
+
+    [:div
+     {:class "absolute inset-0 bg-cover bg-center"
+      :style {:background-image
+              "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+
+    [:div
+     {:class "absolute inset-0 bg-black/60"}]
+
+    [:div
+     {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+
+     [:h1
+      {:class "text-5xl md:text-7xl font-bold mb-6"}
+      (tr :title)]
+
+     [:p
+      {:class "text-xl md:text-2xl"}
+      (tr :subtitle)]]])
+
+(defn about-text-section []
+   [:section
+    {:class "py-20"}
+    [:div
+      {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
+      [:p (tr :p1)]]])
+
+
+
+(defn resources-page []
+  [:main
+   (hero-section)
+   (about-text-section)
+   ])
+
+* DONE отчёт
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-11 Чт 20:34
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** добавил ресурсы предварительный дизайн
+добавил туда статут. (должен открватся в браузере)
+сгенерил перевод
+проверяте повозможно и на компютере
+https://buyn.github.io/grom.org/#/resources
+** для продолжения "о нас"
+жду фото и желательные названия специальностей на украинском и английском
+ну и желательные траскрипции ФИО.
+
+* DONE если у Тебя есть определёное видень как Ты хочешь чтоб выглядила "о нас"
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-11 Чт 20:34
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+есть готовый пример "как у ковото",
+то пришли, так и сделаем, это проще чем выдумывать.
+
+* DONE отчёт
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-11 Чт 20:34
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** добавил что понял
+https://buyn.github.io/grom.org/#/about
+плюс варианты чтоб Вы определилась как лучше
+круглые для призидиума(мне так кажется лучше\профисиональней, позволяет визольно отделить смысловые секции) карточки для основателей
+нужность отображать животных - ну незнаю. Красиво, каваи, личностно, но немного теряется професиональность. может если сделать отдельные страници для каждого то там бы это было уместно. или всплываюшая подсказка при наведении с полноростным фото.
+** добавил два варианат - если призидия не круглая
+но квадратная 
+** мне делать фотографии не квадратными?
+отрезать тольео текст с фотографий?
+** остальные фото, что сними делать?
+добавить все в фоундры?
+взять ФИО с фото?
+** жду переводов если что
+пока в переводе только презедент.
+Повозмоности и должностей(чтоб небыло сюрпризов).
+** если возможно просмотри ещё и на компютере\ноуте
+
+
+* DONE заглушки для страниц
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-11 Чт 20:34
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** 
+** повозможности
+по аналогии с о нас
+тоесть изображение сверху
+и участок с переводом
+
+и возможно с карточками
+
+но точно с разделение на секции
+
+* DONE отчёт
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-11 Чт 20:34
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** добавил заглушки остальных страниц.
