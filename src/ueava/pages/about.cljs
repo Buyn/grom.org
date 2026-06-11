@@ -38,7 +38,8 @@
     :vice-president-name "Vice President"
     :secretary "Cекретар"
     :secretary-name "сестричка Луй"
-    :board-member "Board Member"}
+    :board-member "Board Member"
+    :board-member-name "Владислав Мирный"}
 
    :uk
    {:title "Про UEAVA"
@@ -75,7 +76,7 @@
     :secretary "secretary"
     :secretary-name "Софія Дащенко"
     :board-member "Член президії"
-    :board-member-name "сестричка Луй"
+    :board-member-name "Владислав Мирный"
     }})
 
 (defn tr [k]
@@ -84,23 +85,18 @@
 (defn hero-section []
    [:section
     {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
-
     [:div
      {:class "absolute inset-0 bg-cover bg-center"
       :style {:background-image
               ;; "url('img/Hero_Slide_1_chameleon.jpg')"}}]
               "url('img/ueava-about-team.webp')"}}]
-
     [:div
      {:class "absolute inset-0 bg-black/60"}]
-
     [:div
      {:class "relative z-10 max-w-4xl text-center text-white px-8"}
-
      [:h1
       {:class "text-5xl md:text-7xl font-bold mb-6"}
       (tr :title)]
-
      [:p
       {:class "text-xl md:text-2xl"}
       (tr :subtitle)]]])
@@ -166,6 +162,7 @@
       [presidium-r-card "img/ueava-about-darina.webp" (tr :president) (tr :president-name)]
       [presidium-r-card "img/ueava-about-shabuldo.webp" "віце-президент" "Катерина Шабульдо"]
       [presidium-r-card "img/ueava-about-luy.webp" (tr :secretary) (tr :secretary-name)]
+      [presidium-r-card "img/ueava-about-peaceful.webp" (tr :board-member) (tr :board-member-name)]
      ]]])
 
 (defn founder-card [photo name]
@@ -179,8 +176,18 @@
    [:h3 {:class "font-semibold text-lg"} name]])
 
 (def founders
-  [{:name "Владислав Мирный"
-    :photo "img/ueava-about-peaceful.webp"}
+  [{:name "Константин Подольний"
+    :photo "img/ueava-about-podoliy.webp"}
+   {:name "Олександра Ванiна"
+    :photo "img/ueava-about-vanina.webp"}
+   {:name "Тетяна Домнiч"
+    :photo "img/ueava-about-domnich.webp"}
+   {:name "Анастасiя Антоненко"
+    :photo "img/ueava-about-antonenko.webp"}
+   {:name "Анастасiя Доманська"
+    :photo "img/ueava-about-domanska.webp"}
+   {:name "Ася Черненко"
+    :photo "img/ueava-about-chernenko.webp"}
    {:name "Руденко Олександра Михайлівна"
     :photo "img/ueava-about-rudenko.webp"}
    {:name "Хвалюн Владислава Олександрівна - медіа-кріетор"
