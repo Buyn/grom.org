@@ -11,9 +11,6 @@
 (find-file-other-frame "./grom.org")
 (find-file-other-frame "postcss.config.js")
 (find-file-other-frame "tailwind.config.js")
-*** public
-(find-file-other-frame "./public/css/style.css")
-(find-file-other-frame "./public/index.html")
 *** src
 **** core
 (find-file-other-frame "./src/ueava/core.cljs")
@@ -43,6 +40,9 @@
 (find-file-other-frame "./src/ueava/components/lang.cljs")
 **** css
 (find-file-other-frame "./src/css/main.css")
+*** public
+(find-file-other-frame "./public/css/style.css")
+(find-file-other-frame "./public/index.html")
 ** pathes
 *** resuses 
 /home/buyn/Pictures/Work/freelance/projects/grom/portrets//
@@ -472,6 +472,12 @@ tailwind стили как у arav
 **** TODO todo
 ***** DONE сделать страницу
 ***** TODO перенести на страницу из другово варианта
+***** переделать бенефится
+ближе к тексту
+оставит тайтл ка есть
+а текст привести без изменений
+***** переместить кнопки из хиро
+вниз повозможности на центр пустого пространства
 ***** Сделать гугл акаунт
 ***** сделать анкету
 ***** сделать сылку на анкету со страницы
