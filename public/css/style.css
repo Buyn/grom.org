@@ -663,6 +663,18 @@ video {
   margin-top: 0.75rem;
 }
 
+.mb-auto {
+  margin-bottom: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
 .inline-block {
   display: inline-block;
 }
@@ -723,6 +735,10 @@ video {
   height: 100vh;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .w-16 {
   width: 4rem;
 }
@@ -765,6 +781,10 @@ video {
 
 .shrink-0 {
   flex-shrink: 0;
+}
+
+.grow {
+  flex-grow: 1;
 }
 
 .-translate-x-1\/2 {
@@ -1177,6 +1197,10 @@ video {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .leading-relaxed {

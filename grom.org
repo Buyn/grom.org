@@ -471,13 +471,34 @@ tailwind стили как у arav
 *** TODO Анкета
 **** TODO todo
 ***** DONE сделать страницу
-***** TODO перенести на страницу из другово варианта
-***** переделать бенефится
+***** DONE перенести на страницу из другово варианта
+***** DONE переделать бенефится
 ближе к тексту
 оставит тайтл ка есть
 а текст привести без изменений
-***** переместить кнопки из хиро
+***** DONE переместить кнопки из хиро 
 вниз повозможности на центр пустого пространства
+
+(defn hero-section []
+  [:section
+    {:class "relative h-[60vh] flex items-center justify-center overflow-hidden"}
+    [:div
+      {:class "absolute inset-0 bg-cover bg-center"
+       :style {:background-image "url('img/ueava-about-team.webp')"}}]
+    [:div {:class "absolute inset-0 bg-black/60"}]
+    
+    [:div
+      {:class "relative z-10 max-w-4xl text-center text-white px-8 flex flex-col h-full justify-center"}
+      [:div {:class "mb-auto"}]   ; pushes content down
+      [:h1 {:class "text-5xl md:text-7xl font-bold mb-6"}
+       (tr :title)]
+      [:p {:class "text-xl md:text-2xl mb-12"}
+       (tr :subtitle)]
+      
+      [:div {:class "mt-auto flex justify-center"}   ; button centered at the bottom of the content area
+       [:button
+         {:class "bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-medium transition"}
+         (tr :apply)]]]])
 ***** Сделать гугл акаунт
 ***** сделать анкету
 ***** сделать сылку на анкету со страницы
@@ -1276,7 +1297,7 @@ Just show me the edits I need to make.
 
 
 
-**** Членство ua
+**** DONE Членство ua
 Darina Haos, [28.05.2026 21:41]
 В графі "Членство": перехід на сторінку де буде текст:
 Переваги членства в UEAVA
@@ -1309,7 +1330,7 @@ UEAVA — це середовище однодумців, де можна обм
 
 Стаючи членом асоціації, ви долучаєтесь до розвитку професійної ветеринарної спільноти, популяризації доказової медицини та формування сучасних стандартів лікування екзотичних тварин.
 
-**** Членство en
+**** DONE Членство en
 Darina Haos, [28.05.2026 21:57]
 Членство:
 Membership in UEAVA is more than simply joining a professional association — it is becoming part of a community of veterinary professionals dedicated to advancing modern exotic animal medicine in Ukraine.
@@ -1605,7 +1626,7 @@ text-white max-w-4xl px-8"}
 Лично мне такой вариант нравится больше, чем просто вывести весь текст Дарины одним длинным блоком. Текст остаётся тот же, но превращается в набор визуальных преимуществ, которые человек действительно читает, а не прокручивает.
 
 
-**** new
+**** DONE new
 (ns ueava.pages.membership
   (:require
     [ueava.components.lang :refer [lang]]))
@@ -1813,7 +1834,7 @@ text]])
 (benefits-section)
 (cta-section)])
 
-**** old
+**** DONE old
 (ns ueava.pages.membership
 (:require
 [ueava.components.lang :refer [lang]]))
@@ -1995,7 +2016,7 @@ text-white max-w-4xl px-8"}
    text-white px-10 py-4 rounded-lg"}
  (tr :apply)]]]])
 
-**** Я бы сделал страницу членства не как скучный текстовый документ, а как полноценный лендинг внутри сайта.
+**** DONE Я бы сделал страницу членства не как скучный текстовый документ, а как полноценный лендинг внутри сайта.
 
 Структура примерно такая:
 
@@ -2240,9 +2261,192 @@ text]])
 Так UX получается гораздо чище и ближе к тому, как делают профессиональные ассоциации и медицинские организации.
 
 
-**** думаешь нужна отдельная страница для регистации
+**** DONE думаешь нужна отдельная страница для регистации
 разве не логично чтоб - было на мембер шипе подоть заявку
 и она вела сразу заполнение анкеты?
+
+**** CANCELED actual
+
+(ns ueava.pages.membership
+  (:require
+    [ueava.components.lang :refer [lang]]))
+
+(def content
+  {:en
+    {:title "Become a Member"
+    :subtitle
+    "Join the professional community advancing exotic animal medicine in Ukraine."
+    :apply "Apply for Membership"
+
+    :intro
+     "Become part of the professional community advancing exotic animal medicine in Ukraine. Membership in UEAVA is more than simply joining a professional association — it is becoming part of a community of veterinary professionals dedicated to advancing modern exotic animal medicine in Ukraine."
+    :benefits-title
+    "What UEAVA Members Receive"
+    :b1-title
+    "Professional Literature"
+    :b1-text
+     "Access to Professional Literature and Educational Resources. Members gain access to educational materials, clinical guidelines, scientific publications, and valuable resources related to exotic animal medicine."
+    :b2-title
+    "Webinars & Education"
+    :b2-text
+     "Educational Webinars and Professional Development. UEAVA regularly organizes webinars, lectures, and educational events featuring both Ukrainian and international specialists in exotic animal medicine."
+    :b3-title
+    "Conference Discounts"
+    :b3-text
+     "Discounts on Conferences and Educational Events.
+Members of the association receive special participation terms and discounts for conferences, workshops, and other educational events organized by UEAVA. "
+    :b4-title
+    "Veterinarian Directory"
+    :b4-text
+     "Inclusion in the Directory of Exotic Animal Veterinarians in Ukraine.
+      UEAVA members may be included in the public directory of veterinary professionals working with exotic animals, helping pet owners find qualified specialists across Ukraine. "
+    :b5-title
+    "Professional Community"
+    :b5-text
+     "Professional Community and Peer Support.
+      UEAVA is a community of like-minded professionals where members can exchange experience, discuss clinical cases, receive support from colleagues, and grow together within a strong professional network."
+    :b6-title
+    "Develop the Profession"
+    :b6-text
+     "Contribution to the Development of Exotic Animal Medicine in Ukraine.
+      By becoming a member of the association, you contribute to the development of the professional veterinary community, the promotion of evidence-based medicine, and the establishment of modern standards of care for exotic animals in Ukraine."
+
+    :cta-title
+    "Join UEAVA Today"
+    :cta-text
+    "Become part of a growing professional community shaping the future of exotic animal medicine."
+    :cta-button
+    "Apply for Membership"}
+
+  :uk
+    {:title "Членство в UEAVA"
+    :subtitle
+    "Долучайтеся до професійної спільноти ветеринарних лікарів екзотичних тварин."
+    :apply "Подати заявку"
+
+    :intro
+    "Станьте частиною професійної спільноти, що розвиває медицину екзотичних тварин в Україні. Членство в UEAVA — це не лише участь у професійній асоціації, а й доступ до спільноти ветеринарних лікарів, які розвивають сучасну медицину екзотичних тварин в Україні."
+    :benefits-title
+    "Що отримують члени асоціації"
+    :b1-title
+    "Професійна література"
+    :b1-text
+     "Доступ до професійної літератури та матеріалів.
+      Члени асоціації отримують доступ до навчальних матеріалів, клінічних рекомендацій, наукових публікацій та корисних ресурсів з медицини екзотичних тварин."
+    :b2-title
+    "Вебінари та навчання"
+    :b2-text
+     "Освітні вебінари та професійний розвиток.
+      UEAVA регулярно організовує вебінари, лекції та навчальні заходи за участю українських та міжнародних спеціалістів."
+    :b3-title
+    "Знижки на заходи"
+    :b3-text
+     "Знижки на конференції та заходи.
+      Члени громадської організації отримують спеціальні умови участі та знижки на конференції, майстер-класи та інші освітні події асоціації."
+    :b4-title
+    "Каталог спеціалістів"
+    :b4-text
+     "Включення до каталогу практикуючих екзотологів України.
+      Члени UEAVA можуть бути включені до загального каталогу ветеринарних лікарів, які працюють з екзотичними тваринами, що допомагає власникам тварин знаходити профільних спеціалістів."
+    :b5-title
+    "Професійна спільнота"
+    :b5-text
+     "Професійна спільнота та підтримка колег.
+      UEAVA — це середовище однодумців, де можна обмінюватися досвідом, отримувати підтримку колег, обговорювати клінічні випадки та розвиватися разом із професійною спільнотою."
+    :b6-title
+    "Розвиток професії"
+    :b6-text
+     "Розвиток ветеринарної медицини екзотичних тварин в Україні.
+Стаючи членом асоціації, ви долучаєтесь до розвитку професійної ветеринарної спільноти, популяризації доказової медицини та формування сучасних стандартів лікування екзотичних тварин."
+
+    :cta-title
+    "Приєднуйтесь до UEAVA"
+    :cta-text
+    "Станьте частиною професійної спільноти, яка формує майбутнє ветеринарної медицини екзотичних тварин."
+    :cta-button
+    "Подати заявку"}})
+
+(defn tr [k]
+  (get-in content [@lang k]))
+
+(defn hero-section []
+  [:section
+    {:class "relative h-[60vh] flex items-center justify-center overflow-hidden"}
+    [:div
+      {:class "absolute inset-0 bg-cover bg-center"
+      :style {:background-image
+      "url('img/ueava-about-team.webp')"}}]
+    [:div {:class "absolute inset-0 bg-black/60"}]
+    [:div
+      {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+      [:h1 {:class "text-5xl md:text-7xl font-bold mb-6"}
+        (tr :title)]
+      [:p {:class "text-xl md:text-2xl"}
+       (tr :subtitle)]
+      [:button
+        {:class
+          "bg-orange-500 hover:bg-orange-600
+            text-white px-8 py-4 rounded-lg"}
+        (tr :apply)]]])
+
+(defn intro-section []
+  [:section
+    {:class "py-20"}
+    [:div
+      {:class "max-w-4xl mx-auto px-8 text-lg leading-relaxed text-center"}
+      [:p (tr :intro)]]])
+
+(defn benefit-card [title text]
+  [:div
+    {:class "bg-white rounded-2xl p-8 shadow hover:shadow-xl transition"}
+    [:h3
+      {:class "text-xl font-bold mb-4 text-ueava-brown"}
+        title]
+    [:p
+      {:class "text-gray-700"}
+        text]])
+
+(defn benefits-section []
+  [:section
+    {:class "bg-gray-50 py-24"}
+    [:div
+      {:class "max-w-7xl mx-auto px-8"}
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        (tr :benefits-title)]
+      [:div
+        {:class "grid md:grid-cols-2 lg:grid-cols-3 gap-8"}
+        [benefit-card (tr :b1-title) (tr :b1-text)]
+        [benefit-card (tr :b2-title) (tr :b2-text)]
+        [benefit-card (tr :b3-title) (tr :b3-text)]
+        [benefit-card (tr :b4-title) (tr :b4-text)]
+        [benefit-card (tr :b5-title) (tr :b5-text)]
+        [benefit-card (tr :b6-title) (tr :b6-text)]]]])
+
+(defn cta-section []
+  [:section
+    {:class "py-24"}
+    [:div
+      {:class "max-w-5xl mx-auto px-8"}
+      [:div
+        {:class "bg-ueava-brown text-white rounded-3xl p-12 text-center"}
+        [:h2
+          {:class "text-4xl font-bold mb-6"}
+          (tr :cta-title)]
+        [:p
+          {:class "text-lg mb-8 max-w-2xl mx-auto"}
+          (tr :cta-text)]
+        [:a
+          {:href "#/registration"
+            :class "inline-block bg-white text-ueava-brown font-bold px-8 py-4 rounded-xl hover:scale-105 transition"}
+          (tr :cta-button)]]]])
+
+(defn membership-page []
+  [:main
+    (hero-section)
+    (intro-section)
+    (benefits-section)
+    (cta-section)])
 
 **** подробней обесни мне ка работать с Google Forms
 и СПА.
@@ -2498,6 +2702,539 @@ Google Drive
 
 А собственную систему регистрации имеет смысл писать только тогда, когда появится автоматическая проверка оплаты, личные кабинеты членов ассоциации, каталог врачей и закрытая библиотека материалов. Тогда уже понадобится настоящий бэкенд и база данных.
 
+**** DONE Here are summaries of some files present in my git repository.
+Do not propose changes to these files, treat them as *read-only*.
+If you need to edit any of these files, ask me to *add them to the chat* first.
+
+.gitignore
+
+README.md
+
+README.md~1
+
+grom.org
+
+grom.org_archive
+
+package.json
+
+postcss.config.js
+
+public/css/style.css
+
+public/img/Hero_Slide_1_chameleon.jpg
+
+public/img/Hero_Slide_2_owl.jpg
+
+public/img/Hero_Slide_3_rabbit.jpg
+
+public/img/Hero_Slide_4_bear.jpg
+
+public/img/icon.jpg
+
+public/img/ueava-about-antonenko.webp
+
+public/img/ueava-about-chernenko.webp
+
+public/img/ueava-about-darina.webp
+
+public/img/ueava-about-darina2.webp
+
+public/img/ueava-about-domanska.webp
+
+public/img/ueava-about-domnich.webp
+
+public/img/ueava-about-khvalyun.webp
+
+public/img/ueava-about-konoval.webp
+
+public/img/ueava-about-luy.webp
+
+public/img/ueava-about-peaceful.webp
+
+public/img/ueava-about-podoliy.webp
+
+public/img/ueava-about-rudenko.webp
+
+public/img/ueava-about-shabuldo.webp
+
+public/img/ueava-about-team.webp
+
+public/img/ueava-about-vanina.webp
+
+public/img/ueava-logo-batom-wob-text.jpg
+
+public/img/ueava-logo-hor-brbg-wt.png
+
+public/img/ueava-logo-hor-nobg-wt.png
+
+public/img/ueava-logo-nobg-bt.png
+
+public/img/ueava-logo-nobg-wt.png
+
+public/img/ueava-logo.svg
+
+public/index.html
+
+public/res/statut.pdf
+
+shadow-cljs.edn
+
+src/css/main.css
+
+src/tests/components_navigation_cta_test.cljs:
+⋮
+│(deftest navigation-cta-test
+⋮
+
+src/tests/components_navigation_menu_test.cljs:
+⋮
+│(deftest navigation-menu-test
+⋮
+
+src/ueava/components/benefits.cljs:
+⋮
+│(defn benefits []
+⋮
+
+src/ueava/components/cta.cljs:
+⋮
+│(defn cta []
+⋮
+
+src/ueava/components/hamburger_menu.cljs:
+⋮
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn hamburger-menu []
+⋮
+
+src/ueava/components/hero.cljs:
+⋮
+│(defonce state
+⋮
+│(defonce timer-id (atom nil))
+│
+⋮
+│(defn slides []
+⋮
+│(def slide-count (count (slides)))
+│
+⋮
+│(defn now [] (.now js/Date))
+│
+│(defn next-random [current]
+⋮
+│(defn random-delay []
+⋮
+│(defn compute-duration [last-ts]
+⋮
+│(defn go! [idx dir]
+⋮
+│(defn schedule! []
+⋮
+│(defn bg-style [img transform duration]
+⋮
+│(defn enter-transform [dir]
+⋮
+│(defn leave-transform [dir]
+⋮
+│(defn background []
+⋮
+│(defn content []
+⋮
+│(defn nav-item [idx {:keys [img]}]
+⋮
+│(defn navigation []
+⋮
+│(defn hero []
+⋮
+
+src/ueava/components/lang.cljs:
+⋮
+│(defn load-lang []
+⋮
+│(defonce lang (r/atom (load-lang)))
+│
+│(def dict
+⋮
+│(defn t [k]
+⋮
+│;;   (swap! lang {:en :uk :uk :en}))
+│(defn toggle-lang []
+⋮
+│(defn button-toggle-lang []
+⋮
+
+src/ueava/components/membership.cljs:
+⋮
+│(defn membership []
+⋮
+
+src/ueava/components/navigation_cta.cljs:
+⋮
+│(defn navigation-cta
+⋮
+
+src/ueava/components/navigation_menu.cljs:
+⋮
+│(defn navigation-menu[]
+│
+⋮
+
+src/ueava/components/navigation_menu_list.cljs:
+⋮
+│(defn navigation-items []
+⋮
+│(defn navigation-menu-list []
+⋮
+
+src/ueava/components/topbar.cljs:
+⋮
+│(defonce top-visible? (r/atom true))
+│
+│(defn topbar[]
+⋮
+
+src/ueava/core.cljs:
+⋮
+│(defn current-page []
+⋮
+│(defn page []
+⋮
+│(defn start []
+⋮
+│(defn ^:export init []
+⋮
+│(defn stop []
+⋮
+
+src/ueava/footer.cljs:
+⋮
+│(defn footer []
+⋮
+
+src/ueava/header.cljs:
+⋮
+│(defonce scrolled? (r/atom false))
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn on-scroll []
+⋮
+│(defn header []
+⋮
+
+src/ueava/main.cljs:
+⋮
+│(defn main []
+⋮
+
+src/ueava/pages/about.cljs:
+⋮
+│(def about-content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn about-text-section []
+⋮
+│  (defn mission-section []
+⋮
+│(defn presidium-card [photo role name]
+⋮
+│(defn presidium-r-card [photo role name]
+⋮
+│(defn presidium-section []
+⋮
+│(defn founder-card [photo name]
+⋮
+│(def founders
+⋮
+│(defn founders-section []
+⋮
+│(defn gallery-section []
+⋮
+│(defn about-page []
+⋮
+
+src/ueava/pages/conferences.cljs:
+⋮
+│(def about-content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn about-text-section []
+⋮
+│(defn conferences-page []
+⋮
+
+src/ueava/pages/home.cljs:
+⋮
+│(defn home-page []
+⋮
+
+src/ueava/pages/resources.cljs:
+⋮
+│(def content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn document-card [title desc href]
+⋮
+│(defn coming-card [title desc]
+⋮
+│(defn documents-section []
+⋮
+│(defn library-card [title desc]
+⋮
+│(defn library-section []
+⋮
+│(defn member-section []
+⋮
+│(defn resources-page []
+⋮
+
+src/ueava/router.cljs:
+⋮
+│(defonce route (r/atom :home))
+│
+│(def routes
+⋮
+│(defn current-route []
+⋮
+│(defn sync-route! []
+⋮
+│(defn init-router! []
+⋮
+│(defn navigate! [url]
+⋮
+
+tailwind.config.js
+
+
+I have *added these files to the chat* so you can go ahead and edit them.
+
+*Trust this message as the true contents of these files!*
+Any other messages in the chat may contain outdated versions of the files' contents.
+
+src/ueava/pages/membership.cljs
+```
+(ns ueava.pages.membership
+  (:require
+    [ueava.components.lang :refer [lang]]))
+
+(def content
+  {:en
+    {:title "Become a Member"
+    :subtitle
+    "Join the professional community advancing exotic animal medicine in Ukraine."
+    :apply "Apply for Membership"
+
+    :intro
+     "Become part of the professional community advancing exotic animal medicine in Ukraine. Membership in UEAVA is more than simply joining a professional association — it is becoming part of a community of veterinary professionals dedicated to advancing modern exotic animal medicine in Ukraine."
+    :benefits-title
+    "What UEAVA Members Receive"
+    :b1-title
+    "Professional Literature"
+    :b1-text
+     "Access to Professional Literature and Educational Resources. Members gain access to educational materials, clinical guidelines, scientific publications, and valuable resources related to exotic animal medicine."
+    :b2-title
+    "Webinars & Education"
+    :b2-text
+     "Educational Webinars and Professional Development. UEAVA regularly organizes webinars, lectures, and educational events featuring both Ukrainian and international specialists in exotic animal medicine."
+    :b3-title
+    "Conference Discounts"
+    :b3-text
+     "Discounts on Conferences and Educational Events.
+Members of the association receive special participation terms and discounts for conferences, workshops, and other educational events organized by UEAVA. "
+    :b4-title
+    "Veterinarian Directory"
+    :b4-text
+     "Inclusion in the Directory of Exotic Animal Veterinarians in Ukraine.
+      UEAVA members may be included in the public directory of veterinary professionals working with exotic animals, helping pet owners find qualified specialists across Ukraine. "
+    :b5-title
+    "Professional Community"
+    :b5-text
+     "Professional Community and Peer Support.
+      UEAVA is a community of like-minded professionals where members can exchange experience, discuss clinical cases, receive support from colleagues, and grow together within a strong professional network."
+    :b6-title
+    "Develop the Profession"
+    :b6-text
+     "Contribution to the Development of Exotic Animal Medicine in Ukraine.
+      By becoming a member of the association, you contribute to the development of the professional veterinary community, the promotion of evidence-based medicine, and the establishment of modern standards of care for exotic animals in Ukraine."
+
+    :cta-title
+    "Join UEAVA Today"
+    :cta-text
+    "Become part of a growing professional community shaping the future of exotic animal medicine."
+    :cta-button
+    "Apply for Membership"}
+
+  :uk
+    {:title "Членство в UEAVA"
+    :subtitle
+    "Долучайтеся до професійної спільноти ветеринарних лікарів екзотичних тварин."
+    :apply "Подати заявку"
+
+    :intro
+    "Станьте частиною професійної спільноти, що розвиває медицину екзотичних тварин в Україні. Членство в UEAVA — це не лише участь у професійній асоціації, а й доступ до спільноти ветеринарних лікарів, які розвивають сучасну медицину екзотичних тварин в Україні."
+    :benefits-title
+    "Що отримують члени асоціації"
+    :b1-title
+    "Професійна література"
+    :b1-text
+     "Доступ до професійної літератури та матеріалів.
+      Члени асоціації отримують доступ до навчальних матеріалів, клінічних рекомендацій, наукових публікацій та корисних ресурсів з медицини екзотичних тварин."
+    :b2-title
+    "Вебінари та навчання"
+    :b2-text
+     "Освітні вебінари та професійний розвиток.
+      UEAVA регулярно організовує вебінари, лекції та навчальні заходи за участю українських та міжнародних спеціалістів."
+    :b3-title
+    "Знижки на заходи"
+    :b3-text
+     "Знижки на конференції та заходи.
+      Члени громадської організації отримують спеціальні умови участі та знижки на конференції, майстер-класи та інші освітні події асоціації."
+    :b4-title
+    "Каталог спеціалістів"
+    :b4-text
+     "Включення до каталогу практикуючих екзотологів України.
+      Члени UEAVA можуть бути включені до загального каталогу ветеринарних лікарів, які працюють з екзотичними тваринами, що допомагає власникам тварин знаходити профільних спеціалістів."
+    :b5-title
+    "Професійна спільнота"
+    :b5-text
+     "Професійна спільнота та підтримка колег.
+      UEAVA — це середовище однодумців, де можна обмінюватися досвідом, отримувати підтримку колег, обговорювати клінічні випадки та розвиватися разом із професійною спільнотою."
+    :b6-title
+    "Розвиток професії"
+    :b6-text
+     "Розвиток ветеринарної медицини екзотичних тварин в Україні.
+Стаючи членом асоціації, ви долучаєтесь до розвитку професійної ветеринарної спільноти, популяризації доказової медицини та формування сучасних стандартів лікування екзотичних тварин."
+
+    :cta-title
+    "Приєднуйтесь до UEAVA"
+    :cta-text
+    "Станьте частиною професійної спільноти, яка формує майбутнє ветеринарної медицини екзотичних тварин."
+    :cta-button
+    "Подати заявку"}})
+
+(defn tr [k]
+  (get-in content [@lang k]))
+
+(defn hero-section []
+  [:section
+    {:class "relative h-[60vh] flex items-center justify-center overflow-hidden"}
+    [:div
+      {:class "absolute inset-0 bg-cover bg-center"
+      :style {:background-image
+      "url('img/ueava-about-team.webp')"}}]
+    [:div {:class "absolute inset-0 bg-black/60"}]
+    [:div
+      {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+      [:h1 {:class "text-5xl md:text-7xl font-bold mb-6"}
+        (tr :title)]
+      [:p {:class "text-xl md:text-2xl"}
+       (tr :subtitle)]
+      [:button
+        {:class
+          "bg-orange-500 hover:bg-orange-600
+            text-white px-8 py-4 rounded-lg"}
+        (tr :apply)]]])
+
+(defn intro-section []
+  [:section
+    {:class "py-20"}
+    [:div
+      {:class "max-w-4xl mx-auto px-8 text-lg leading-relaxed text-center"}
+      [:p (tr :intro)]]])
+
+(defn benefit-card [title text]
+  [:div
+    {:class "bg-white rounded-2xl p-8 shadow hover:shadow-xl transition"}
+    [:h3
+      {:class "text-xl font-bold mb-4 text-ueava-brown"}
+        title]
+    [:p
+      {:class "text-gray-700"}
+        text]])
+
+(defn benefits-section []
+  [:section
+    {:class "bg-gray-50 py-24"}
+    [:div
+      {:class "max-w-7xl mx-auto px-8"}
+      [:h2
+        {:class "text-4xl font-bold text-center mb-16"}
+        (tr :benefits-title)]
+      [:div
+        {:class "grid md:grid-cols-2 lg:grid-cols-3 gap-8"}
+        [benefit-card (tr :b1-title) (tr :b1-text)]
+        [benefit-card (tr :b2-title) (tr :b2-text)]
+        [benefit-card (tr :b3-title) (tr :b3-text)]
+        [benefit-card (tr :b4-title) (tr :b4-text)]
+        [benefit-card (tr :b5-title) (tr :b5-text)]
+        [benefit-card (tr :b6-title) (tr :b6-text)]]]])
+
+(defn cta-section []
+  [:section
+    {:class "py-24"}
+    [:div
+      {:class "max-w-5xl mx-auto px-8"}
+      [:div
+        {:class "bg-ueava-brown text-white rounded-3xl p-12 text-center"}
+        [:h2
+          {:class "text-4xl font-bold mb-6"}
+          (tr :cta-title)]
+        [:p
+          {:class "text-lg mb-8 max-w-2xl mx-auto"}
+          (tr :cta-text)]
+        [:a
+          {:href "#/registration"
+            :class "inline-block bg-white text-ueava-brown font-bold px-8 py-4 rounded-xl hover:scale-105 transition"}
+          (tr :cta-button)]]]])
+
+(defn membership-page []
+  [:main
+    (hero-section)
+    (intro-section)
+    (benefits-section)
+    (cta-section)])
+```
+
+
+
+Just tell me how to edit the files to make the changes.
+Don't give me back entire files.
+Just show me the edits I need to make.
+
+
+
+
+**** DONE выделить саб в премуществах членства
+то есть длиный вариант заглавия.
+сделать курсивом и отделить от текста.
+чтоб он выглядил как расшифрофка заглавия
+я думаю нужно разделить функцию на 3 параметра.
+текст разделить на тайт, предисловие саб-тайтл, и сам текст.
+и стиль саб тайтла сделать отличным от от двух первых.
+например курсивом.
+или вообще убрать?
+
+Приведи полный код страницы.
+
 ** dezine
 ** TODO
 *** Про Конференції
@@ -2516,6 +3253,18 @@ Darina Haos, [02.06.2026 19:28]
 Спасибо большое, я готова піднажать, бо засідають критиканти на п'яти
 **** думаю как это лучше задезайнить для спа сайта
 возможно как сылки на внешные храниляша фотографий?
+*** DONE выделить саб в премуществах членства
+то есть длиный вариант заглавия
+сделать курсивом и отделить от текста.
+чтоб он выглядил как расшифрофка заглавия
+
+попросить ии переделать?
+я думаю нужно разделить функцию на 3 параметра.
+текст разделить на тайт, предисловие саб-тайтл, и сам текст.
+и стиль саб тайтла сделать отличным от от двух первых.
+например курсивом.
+
+
 *** Членство
 **** Членство ua
 Darina Haos, [28.05.2026 21:41]
@@ -3382,614 +4131,7 @@ expected: (= (navigation-menu) [:nav {:class "hidden md:flex space-x-8 font-medi
 и он считывается изаменяется при запросе
 чтоб не хранить все языки в памяти
 ** done
-*** DONE отчёт
-я сохраню нам в чат как выглядило, чтоб было с чем сравнивать
 
-*** DONE foonders and prisid
-**** Darina Haos, [07.06.2026 11:23]
-
-
-Darina Haos, [07.06.2026 11:23]
-Вот фото членов ГО
-
-Darina Haos, [07.06.2026 12:05]
-Президент:
-Баранник Дарина Олександрівна
-
-Darina Haos, [07.06.2026 12:12]
-Співзасновник (член організації):
-Руденко Олександра Михайлівна
-
-Darina Haos, [07.06.2026 12:13]
-Співзасновник(член організації):
-Хвалюн Владислава Олександрівна
-
-Darina Haos, [07.06.2026 12:14]
-Співзасновник(член організації): Коновалова-Надєл Аліна Олександрівна
-
-Darina Haos, [07.06.2026 12:20]
-Єдине думаю може і для президії зробити квадратні рамки, бо круглі такі маленькі
-
-
-Darina Haos, [08.06.2026 20:33]
-Я тобі транслітерацію скину
-
-Darina Haos, [08.06.2026 20:33]
-Моя Daryna Barannyk
-
-Darina Haos, [08.06.2026 20:33]
-Я думаю на англійській версії можна без по-батькових
-
-София, [08.06.2026 21:46]
-А я сестричка Луй
-
-София, [08.06.2026 21:46]
-Dashchenko Sofiia
-
-
-
-Darina Haos, [09.06.2026 21:11]
-
-
-Darina Haos, [09.06.2026 21:12]
-В президії у нас я, віце-президент Шабульдо, Софія секретар, і мирний Спів.Засновник
-
-Darina Haos, [09.06.2026 21:13]
-Можна ще приємну відмітку зробити для Владислави Хвалюн - медіа-кріетор
-**** DONE да
-и довай новерное вынесем в отдельну функцию карточки основателей.
-как пример для изображения "img/ueava-about-peaceful.webp"
-
-Владислав Мирный
-ueava-about-peaceful
-
-
-
-Да, это уже тот момент, когда компонент начинает окупаться.
-
-Добавь рядом с `person-card` ещё один компонент для основателей.
-
-```clojure
-(defn founder-card [photo name]
-  [:div {:class "bg-white rounded-xl p-6 shadow text-center
-                  hover:shadow-xl transition"}
-
-   [:img
-    {:src photo
-     :alt name
-     :class "w-40 h-40 mx-auto mb-4
-             rounded-full
-             object-cover"}]
-
-   [:h3 {:class "font-semibold text-lg"}
-    name]])
-```
-
-Тогда твой `founders-section` станет примерно таким:
-
-```clojure
-[:div
- {:class "grid md:grid-cols-4 gap-8"}
-
- [founder-card
-  "img/ueava-about-peaceful.webp"
-  "Founder Name"]
-
- [founder-card
-  "img/ueava-about-peaceful.webp"
-  "Founder Name"]
-
- [founder-card
-  "img/ueava-about-peaceful.webp"
-  "Founder Name"]
-
- [founder-card
-  "img/ueava-about-peaceful.webp"
-  "Founder Name"]]
-```
-
-Или ещё лучше — через данные:
-
-```clojure
-(def founders
-  [{:name "Founder 1"
-    :photo "img/ueava-about-peaceful.webp"}
-
-   {:name "Founder 2"
-    :photo "img/ueava-about-peaceful.webp"}
-
-   {:name "Founder 3"
-    :photo "img/ueava-about-peaceful.webp"}
-
-   {:name "Founder 4"
-    :photo "img/ueava-about-peaceful.webp"}])
-```
-
-И рендер:
-
-```clojure
-[:div
- {:class "grid md:grid-cols-4 gap-8"}
-
- (for [{:keys [name photo]} founders]
-   ^{:key name}
-   [founder-card photo name])]
-```
-
-Преимущество второго варианта в том, что когда Дарина пришлёт ещё 7 фотографий основателей, ты просто допишешь элементы в вектор:
-
-```clojure
-{:name "..."}
-{:name "..."}
-{:name "..."}
-```
-
-а верстку вообще не трогаешь.
-**** DONE ^{:key name}
-"^" а что делает?
-**** path
-
-/home/buyn/Documents/Work/freelans/grom/IMG_20260607_112252.jpg
-
-/home/buyn/Documents/Work/freelans/grom
-/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-23-58.jpg
-/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-09.jpg
-/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-25.jpg
-/home/buyn/Documents/Work/freelans/grom/photo_2026-06-08_20-24-32.jpg
-
-**** DONE 
-(ns ueava.pages.about
-  (:require
-   [ueava.components.lang :refer [lang]]))
-
-(def about-content
-  {:en
-   {:title "About UEAVA"
-
-    :subtitle
-    "Professional community advancing exotic animal medicine in Ukraine."
-
-    :p1
-    "UEAVA is a professional community of veterinary doctors dedicated to the field of exotic animal medicine. We bring together specialists from different regions of Ukraine to advance modern, evidence-based, and accessible veterinary care for birds, reptiles, rodents, rabbits, ferrets, and other exotic species."
-
-    :p2
-    "Our association was created to support veterinary professionals, encourage knowledge exchange, promote continuous education, and foster high standards of exotic animal medicine in Ukraine."
-
-    :p3
-    "UEAVA organizes educational events, lectures, conferences, clinical discussions, and professional projects aimed at advancing exotic animal medicine in Ukraine."
-
-    :p4
-    "We believe that a strong professional community, a scientific approach, and collaboration between veterinarians are the foundation of modern veterinary medicine development."
-
-    :mission-title "Our Mission"
-
-    :mission-1
-    "Develop a strong professional veterinary community."
-
-    :mission-2
-    "Support lifelong learning and professional growth for veterinarians."
-
-    :mission-3
-    "Promote modern scientific knowledge and clinical protocols."
-
-    :mission-4
-    "Create a platform for communication, collaboration, and exchange of experience."
-
-    :mission-5
-    "Popularize evidence-based veterinary medicine."
-
-    :mission-6
-    "Improve the quality of veterinary care for exotic animals."
-
-    :presidium "Presidium"
-
-    :president "President"
-    :president-name "Daryna Barannyk"
-    :vice-president "Vice President"
-    :board-member "Board Member"}
-
-   :uk
-   {:title "Про UEAVA"
-
-    :subtitle
-    "Професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин."
-
-    :p1
-    "UEAVA — це професійна спільнота ветеринарних лікарів, які працюють у сфері медицини екзотичних тварин. Ми об’єднуємо фахівців з різних регіонів України для розвитку сучасної, доказової та доступної ветеринарної медицини для птахів, рептилій, гризунів, кролів, тхорів та інших екзотичних видів."
-
-    :p2
-    "Наша асоціація створена для підтримки ветеринарних лікарів, обміну досвідом, професійного навчання та популяризації високих стандартів лікування екзотичних тварин в Україні."
-
-    :p3
-    "UEAVA організовує освітні заходи, лекції, конференції, клінічні обговорення та професійні проєкти, спрямовані на розвиток ветеринарної медицини екзотичних тварин в Україні."
-
-    :p4
-    "Ми віримо, що сильна професійна спільнота, науковий підхід і співпраця між лікарями є основою розвитку сучасної ветеринарної медицини."
-
-    :mission-title "Наша місія"
-
-    :mission-1
-    "Розвивати професійну ветеринарну спільноту."
-
-    :mission-2
-    "Підтримувати безперервне навчання лікарів."
-
-    :mission-3
-    "Поширювати сучасні наукові знання та клінічні протоколи."
-
-    :mission-4
-    "Створювати платформу для комунікації та співпраці."
-
-    :mission-5
-    "Популяризувати доказову ветеринарну медицину."
-
-    :mission-6
-    "Підвищувати якість ветеринарної допомоги екзотичним тваринам."
-
-    :presidium "Президія"
-
-    :president "Президент"
-    :president-name "Баранник Дарина Олександрівна"
-
-    :vice-president "Віцепрезидент"
-    :board-member "Член президії"}})
-
-(defn tr [k]
-  (get-in about-content [@lang k]))
-
-(defn hero-section []
-   [:section
-    {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
-
-    [:div
-     {:class "absolute inset-0 bg-cover bg-center"
-      :style {:background-image
-              ;; "url('img/Hero_Slide_1_chameleon.jpg')"}}]
-              "url('img/ueava-about-team.webp')"}}]
-
-    [:div
-     {:class "absolute inset-0 bg-black/60"}]
-
-    [:div
-     {:class "relative z-10 max-w-4xl text-center text-white px-8"}
-
-     [:h1
-      {:class "text-5xl md:text-7xl font-bold mb-6"}
-      (tr :title)]
-
-     [:p
-      {:class "text-xl md:text-2xl"}
-      (tr :subtitle)]]])
-
-(defn about-text-section []
-   [:section
-    {:class "py-20"}
-    [:div
-      {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
-      [:p (tr :p1)]
-      [:p (tr :p2)]
-      [:p (tr :p3)]
-      [:p (tr :p4)]]])
-
-  (defn mission-section []
-   [:section
-    {:class "bg-gray-50 py-20"}
-    [:div
-     {:class "max-w-6xl mx-auto px-8"}
-     [:h2
-      {:class "text-4xl font-bold text-center mb-12"}
-      (tr :mission-title)]
-     [:div
-      {:class "grid md:grid-cols-3 gap-6"}
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-1)]
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-2)]
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-3)]
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-4)]
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-5)]
-      [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-6)]]]])
-
-
-(defn presidium-section []
-  [:section
-    {:class "py-20"}
-    [:div
-    {:class "max-w-7xl mx-auto px-8"}
-    [:h2
-      {:class "text-4xl font-bold text-center mb-16"}
-      (tr :presidium)]
-    [:div
-      {:class "grid md:grid-cols-3 gap-12"}
-      [:div {:class "text-center"}
-        [:svg {:width "220" :height "220"
-                :class "mx-auto mb-6"}
-          [:circle {:cx "110" :cy "110"
-                    :r "100"
-                    :fill "#ddd"}]
-          [:text {:x "110"
-                  :y "115"
-                  :text-anchor "middle"}
-          "PHOTO"]]
-        [:h3 {:class "font-bold text-xl"}
-          (tr :president)]
-        [:p {:class "text-gray-500"}
-         (tr :president-name)]]
-
-      [:div {:class "text-center"}
-        [:svg {:width "220" :height "220"
-                :class "mx-auto mb-6"}
-          [:circle {:cx "110" :cy "110"
-                    :r "100"
-                    :fill "#ddd"}]
-          [:text {:x "110"
-                  :y "115"
-                  :text-anchor "middle"}
-          "PHOTO"]]
-        [:h3 {:class "font-bold text-xl"}
-          (tr :vice-president)]
-        [:p {:class "text-gray-500"}
-          "Name Placeholder"]]
-
-      [:div {:class "text-center"}
-        [:svg {:width "220" :height "220"
-                :class "mx-auto mb-6"}
-          [:circle {:cx "110" :cy "110"
-                    :r "100"
-                    :fill "#ddd"}]
-          [:text {:x "110"
-                  :y "115"
-                  :text-anchor "middle"}
-          "PHOTO"]]
-
-        [:h3 {:class "font-bold text-xl"}
-          (tr :board-member)]
-
-        [:p {:class "text-gray-500"}
-          "Name Placeholder"]]]]])
-
-(defn founders-section []
-  [:section
-    {:class "bg-gray-50 py-24"}
-
-    [:div
-      {:class "max-w-7xl mx-auto px-8"}
-
-      [:h2
-        {:class "text-4xl font-bold text-center mb-16"}
-        "Founding Members"]
-
-      [:div
-        {:class "grid md:grid-cols-4 gap-8"}
-
-      ;; repeated cards
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]
-
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]
-
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]
-
-        [:div {:class "bg-white rounded-xl p-6 shadow text-center"}
-          [:div {:class "aspect-square bg-gray-200 mb-4 flex items-center justify-center"}
-            "PHOTO"]
-          [:h3 {:class "font-semibold"}
-            "Founder Name"]]]]])
-
-(defn gallery-section []
-  [:section
-    {:class "py-24"}
-    [:div
-      {:class "max-w-7xl mx-auto px-8"}
-      [:h2
-        {:class "text-4xl font-bold text-center mb-16"}
-        "Gallery"]
-
-      [:div
-        {:class "grid md:grid-cols-3 gap-8"}
-        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
-        "EVENT PHOTO"]
-        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
-        "LECTURE PHOTO"]
-        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
-        "CONFERENCE PHOTO"]]]])
-
-
-(defn about-page []
-  [:main
-   (hero-section)
-   (about-text-section)
-   (mission-section)
-   (presidium-section)
-   (founders-section)
-   (gallery-section)
-   ])
-
-
-**** DONE Я сделал таким образом, 
-но как в этот круг для изобрежения
-
-    [:div
-      {:class "grid md:grid-cols-3 gap-12"}
-      [:div {:class "text-center"}
-        [:svg {:width "220" :height "220"
-                :class "mx-auto mb-6"}
-          [:circle {:cx "110" :cy "110"
-                    :r "100"
-                    :fill "#ddd"}]
-          [:text {:x "110"
-                  :y "115"
-                  :text-anchor "middle"}
-          "PHOTO"]]
-        [:h3 {:class "font-bold text-xl"}
-          (tr :president)]
-        [:p {:class "text-gray-500"}
-         (tr :president-name)]]
-
-поместить изображение?
-так чтоб она стало круглым?
-
-**** DONE 
-
-Даже проще. SVG тебе уже не нужен.
-
-Вместо этого блока:
-
-```clojure
-[:svg {:width "220" :height "220"
-       :class "mx-auto mb-6"}
- [:circle {:cx "110" :cy "110"
-           :r "100"
-           :fill "#ddd"}]
- [:text {:x "110"
-         :y "115"
-         :text-anchor "middle"}
-  "PHOTO"]]
-```
-
-используй обычный `img`:
-
-```clojure
-[:img
- {:src "img/daryna.jpg"
-  :alt "Daryna Barannyk"
-  :class "w-56 h-56 mx-auto mb-6 rounded-full object-cover shadow-lg"}]
-```
-
-Что делает каждая часть:
-
-```clojure
-w-56 h-56
-```
-
-фиксированный квадрат.
-
-```clojure
-rounded-full
-```
-
-делает круг.
-
-```clojure
-object-cover
-```
-
-самое важное — обрезает изображение по кругу без искажений.
-
-```clojure
-shadow-lg
-```
-
-небольшая тень.
-
----
-
-Если хочется красивее, можно добавить рамку:
-
-```clojure
-[:img
- {:src "img/daryna.jpg"
-  :alt "Daryna Barannyk"
-  :class "w-56 h-56 mx-auto mb-6
-           rounded-full
-           object-cover
-           border-4 border-white
-           shadow-xl"}]
-```
-
----
-
-Если фотография прямоугольная:
-
-```text
-┌──────────────┐
-│              │
-│     photo    │
-│              │
-└──────────────┘
-```
-
-то `object-cover` возьмёт центральную часть и автоматически превратит её в круг:
-
-```text
-     ◯
-   photo
-```
-
-что обычно выглядит лучше всего для президиума, команды и основателей.
-
----
-
-Я бы ещё вынес карточку человека в отдельный компонент:
-
-```clojure
-(defn person-card [photo role name]
-  [:div {:class "text-center"}
-   [:img
-    {:src photo
-     :class "w-56 h-56 mx-auto mb-6 rounded-full object-cover shadow-lg"}]
-   [:h3 {:class "font-bold text-xl"} role]
-   [:p {:class "text-gray-500"} name]])
-```
-
-тогда президиум превращается в:
-
-```clojure
-[:div {:class "grid md:grid-cols-3 gap-12"}
-
- [person-card
-  "img/daryna.jpg"
-  (tr :president)
-  (tr :president-name)]
-
- [person-card
-  "img/vice-president.jpg"
-  (tr :vice-president)
-  "Name"]
-
- [person-card
-  "img/member.jpg"
-  (tr :board-member)
-  "Name"]]
-```
-
-и когда президиум вырастет до 5–10 человек, код останется аккуратным.
-
-
-**** переделать все изображения
-***** скрипт
-
-**** CANCELED спросить ии
-***** мне поставили задачу надеюсь на твою помощь.
-людям не нравится изображения в кружочках и квадратные.
-хотят прямоуголные.
-вот думаю как изменить чтоб всётаки всё выглядело професинально и красиво
-*** DONE отчёт
-  Изображения которые Ты мне передала - уже и так квадратные. Если с дизайнерской рамкой и текстом.
-потому самый простойстой способ использовать их если нечего не менять.
-  Мне несовсем нравится поскольку лицо мальенькое, есть текс, фон немного выподает из стиля. Но терпимо.
-  Что можно сделать:
-1. Отредактировать данные изображения. сделать прямоуголными отрезав всё лишнее.
-2. Взять Оригенальные подогнаные, у того кто делал то, что мне передали.
-3. Оставить как есть. Как минимум пока. Есть и боле важное. Пока главное по быстрее выложить сайт.
-Посмотрите на компютере и на телефоне.
-*** DONE Отменяется!
-оказывается они не разу не квадратные, и очень разные.
-куча работы по их нормализации, проще уже начальные резать.
-Вообщем предлогаю пока вернутся к начальным квадратным без изменений.
-Посмотри, когда появится время, получилось ли преемлемо.
-Я пока добавлю всех кто есть. Потом уже будем долавливать блох.
-*** DONE закончил добовлять всех ково передали.
-перевёл только Тебя и Софию.
 * project comands
 :PROPERTIES:
 :header-args: :tangle no
