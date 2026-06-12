@@ -468,39 +468,809 @@ tailwind стили как у arav
 * Kanban
 ** urgent 
 ** in progress
-** dezine
-** TODO
-*** Про Конференції
-Про Конференції : фото 9 конференції і про те що відбувалося напишу текст
-**** "Конференції"
-Darina Haos, [28.05.2026 21:53]
-Графа "Конференції", я думаю зробити альбомами поки що з конкордії, типу папку з фото файлами. @Witch_stitch якщо є ідеї як краще було б, то пиши, це поки те що в голову прийшло
-**** посилання на фото з конференції
-Darina Haos, [28.05.2026 22:39]
-https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy
+*** TODO Анкета
+**** TODO todo
+***** DONE сделать страницу
+***** TODO перенести на страницу из другово варианта
+***** Сделать гугл акаунт
+***** сделать анкету
+***** сделать сылку на анкету со страницы
+***** убедится что прилитают вложения
+проверить как кним получить доступ итд.
+понять можно ли указать папку куда они сохраняются
+можно ли указать фаил екселя для сохранения
+***** сделать сылку на сайт
+***** запостить сайт
+***** дать доступ
+соне и дарине
+***** отчёт
+сообшить о сделаном экоунте
+о пороле к нему
+указать сылку на анкету
+сылку на результируюший эксель фаил
+сылка на страницу с инструкцие использования
 
-Darina Haos, [28.05.2026 22:39]
-Це посилання на фото з конференції
+**** Анкета я думаю должна выглядеть таким образом:
+Имя, фамилия
+Страна, Город, место работы/учебы, должность (лікар, технік, асистент, науковий співробітник).
+Номер телефону 
+Мейл
 
-Darina Haos, [02.06.2026 19:28]
-Спасибо большое, я готова піднажать, бо засідають критиканти на п'яти
+София, [30.04.2026 12:01]
+Ще треба номер диплому
 
-*** понять используется ли часть мобильная
-и понять можно ли их обеденить
-(find-file-other-frame "./src/ueava/header.cljs")
-         (into [:div
-                {:class "flex flex-col items-center text-center p-6 space-y-4"}
-                ]
+София, [30.04.2026 12:02]
+Або скрін
 
-                (for [{:keys [title href]} (navigation-items)]
-                  [:a {:href href
-                      :key title
-                      :class "text-lg font-medium hover:text-ueava-sand transition"}
-                        title]))
+София, [30.04.2026 12:02]
+Краще скрін
 
-*** перевести мембершип бенефит
-*** доперевести футер
-*** Членство
+
+Darina Haos, [30.04.2026 12:18]
+Студенти у нас є
+
+Darina Haos, [30.04.2026 12:18]
+Там тоді не тільки диплом, а студентський, і питання теж, якщо студент потім став лікарем як оновити статус?
+Я тому думала про це, але не написала.
+**** анкети на реєстрацію
+Darina Haos, [28.05.2026 21:41]
+І далі перехід до анкети на реєстрацію
+
+**** думаю как это лучше задезайнить для спа сайта
+нужно ли делать отдельную страницу
+или лучше использовать гуг анкету?
+
+На старте я бы вообще **не делал свою анкету**.
+
+Сделал бы так:
+
+```text
+Membership
+    ↓
+Join UEAVA
+    ↓
+Google Form
+```
+
+Причина очень простая.
+
+Сейчас у вас ассоциация только запускается.
+
+Вам нужно:
+
+- собирать заявки;
+- смотреть кто регистрируется;
+- иногда писать людям;
+- иногда менять вопросы;
+- иногда добавлять новые поля.
+
+Google Forms это всё уже умеет.
+
+---
+
+## Что будет если делать свою форму
+
+Сразу появляются вопросы:
+
+### Загрузка документов
+
+Для диплома нужно:
+
+```text
+Upload diploma
+Upload student card
+```
+
+А значит нужен:
+
+- backend
+- хранилище файлов
+- защита данных
+- резервные копии
+
+Это уже отдельный проект.
+
+---
+
+### Спам
+
+Нужны:
+
+- captcha
+- защита от ботов
+- валидация
+
+---
+
+### Хранение персональных данных
+
+У вас будут:
+
+- имя
+- телефон
+- email
+- место работы
+- диплом
+
+Это уже персональные данные.
+
+---
+
+### Админка
+
+Через месяц появится вопрос:
+
+```text
+Сколько у нас членов?
+
+Кто из Польши?
+
+Кто студент?
+
+Кто оплатил?
+```
+
+И понадобится админка.
+
+---
+
+Google Forms + Google Sheets решают это за 5 минут.
+
+---
+
+# Как бы я сделал UX
+
+Не сразу открывать форму.
+
+Сделать красивую Membership страницу.
+
+---
+
+Hero:
+
+```text
+Become a Member of UEAVA
+```
+
+---
+
+Преимущества:
+
+```text
+✓ Professional Community
+
+✓ Educational Events
+
+✓ Access to Resources
+
+✓ Future Member Library
+
+✓ Networking
+```
+
+---
+
+Ниже:
+
+```text
+Membership Categories
+```
+
+Карточки.
+
+---
+
+### Veterinarian
+
+```text
+Licensed veterinarian
+```
+
+---
+
+### Student
+
+```text
+Veterinary student
+```
+
+---
+
+### Veterinary Technician
+
+```text
+Technician / assistant
+```
+
+---
+
+### Researcher
+
+```text
+Academic or scientific staff
+```
+
+---
+
+После этого:
+
+```text
+Ready to Join?
+```
+
+Кнопка:
+
+```text
+Apply for Membership
+```
+
+И только она ведёт на Google Form.
+
+---
+
+# По анкете
+
+Я бы сделал условные поля.
+
+---
+
+Сначала:
+
+```text
+Status
+
+○ Veterinarian
+○ Student
+○ Technician
+○ Researcher
+```
+
+---
+
+Если Veterinarian:
+
+```text
+Upload diploma
+```
+
+---
+
+Если Student:
+
+```text
+Upload student card
+```
+
+---
+
+Дальше общие поля:
+
+```text
+First Name
+Last Name
+
+Country
+City
+
+Workplace / University
+
+Position
+
+Phone
+
+Email
+```
+
+---
+
+Дополнительно:
+
+```text
+Areas of Interest
+
+□ Birds
+□ Reptiles
+□ Rabbits
+□ Rodents
+□ Wildlife
+□ Amphibians
+□ Other
+```
+
+Это потом пригодится для конференций и рассылок.
+
+---
+
+# Что бы делал я на вашем этапе
+
+Сейчас:
+
+```text
+SPA
+ └── Membership Page
+         └── Google Form
+```
+
+Через год:
+
+```text
+SPA
+ └── Membership Page
+         └── собственная регистрация
+         └── личный кабинет
+         └── библиотека
+```
+
+То есть не начинать с технически сложной системы.
+
+Сначала собрать первых 50–100 членов ассоциации и понять, какие процессы реально нужны. Очень часто оказывается, что 80% задач прекрасно живут на Google Forms + Google Sheets гораздо дольше, чем ожидалось.
+
+**** CANCELED (ns ueava.pages.membership
+  (:require
+   [ueava.components.lang :refer [lang]]))
+
+(def about-content
+  {:en
+   {:title "Membership"
+    :subtitle
+    "Lorem ipsum dolor sit amet."
+    :p1
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+
+   :uk
+   {:title "Членство"
+    :subtitle
+    "Але я повинен пояснити вам."
+    :p1
+    "Але я повинен пояснити вам, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }})
+
+(defn tr [k]
+  (get-in about-content [@lang k]))
+
+(defn hero-section []
+   [:section
+    {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
+
+    [:div
+     {:class "absolute inset-0 bg-cover bg-center"
+      :style {:background-image
+              "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+
+    [:div
+     {:class "absolute inset-0 bg-black/60"}]
+
+    [:div
+     {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+
+     [:h1
+      {:class "text-5xl md:text-7xl font-bold mb-6"}
+      (tr :title)]
+
+     [:p
+      {:class "text-xl md:text-2xl"}
+      (tr :subtitle)]]])
+
+(defn about-text-section []
+   [:section
+    {:class "py-20"}
+    [:div
+      {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
+      [:p (tr :p1)]]])
+
+
+
+(defn membership-page []
+  [:main
+   (hero-section)
+   (about-text-section)
+   ])
+
+**** DONE Here are summaries of some files present in my git repository.
+Do not propose changes to these files, treat them as *read-only*.
+If you need to edit any of these files, ask me to *add them to the chat* first.
+
+.gitignore
+
+README.md
+
+README.md~1
+
+grom.org
+
+grom.org_archive
+
+package.json
+
+postcss.config.js
+
+public/css/style.css
+
+public/img/Hero_Slide_1_chameleon.jpg
+
+public/img/Hero_Slide_2_owl.jpg
+
+public/img/Hero_Slide_3_rabbit.jpg
+
+public/img/Hero_Slide_4_bear.jpg
+
+public/img/icon.jpg
+
+public/img/ueava-about-antonenko.webp
+
+public/img/ueava-about-chernenko.webp
+
+public/img/ueava-about-darina.webp
+
+public/img/ueava-about-darina2.webp
+
+public/img/ueava-about-domanska.webp
+
+public/img/ueava-about-domnich.webp
+
+public/img/ueava-about-khvalyun.webp
+
+public/img/ueava-about-konoval.webp
+
+public/img/ueava-about-luy.webp
+
+public/img/ueava-about-peaceful.webp
+
+public/img/ueava-about-podoliy.webp
+
+public/img/ueava-about-rudenko.webp
+
+public/img/ueava-about-shabuldo.webp
+
+public/img/ueava-about-team.webp
+
+public/img/ueava-about-vanina.webp
+
+public/img/ueava-logo-batom-wob-text.jpg
+
+public/img/ueava-logo-hor-brbg-wt.png
+
+public/img/ueava-logo-hor-nobg-wt.png
+
+public/img/ueava-logo-nobg-bt.png
+
+public/img/ueava-logo-nobg-wt.png
+
+public/img/ueava-logo.svg
+
+public/index.html
+
+public/res/statut.pdf
+
+shadow-cljs.edn
+
+src/css/main.css
+
+src/tests/components_navigation_cta_test.cljs:
+⋮
+│(deftest navigation-cta-test
+⋮
+
+src/tests/components_navigation_menu_test.cljs:
+⋮
+│(deftest navigation-menu-test
+⋮
+
+src/ueava/components/benefits.cljs:
+⋮
+│(defn benefits []
+⋮
+
+src/ueava/components/cta.cljs:
+⋮
+│(defn cta []
+⋮
+
+src/ueava/components/hamburger_menu.cljs:
+⋮
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn hamburger-menu []
+⋮
+
+src/ueava/components/hero.cljs:
+⋮
+│(defonce state
+⋮
+│(defonce timer-id (atom nil))
+│
+⋮
+│(defn slides []
+⋮
+│(def slide-count (count (slides)))
+│
+⋮
+│(defn now [] (.now js/Date))
+│
+│(defn next-random [current]
+⋮
+│(defn random-delay []
+⋮
+│(defn compute-duration [last-ts]
+⋮
+│(defn go! [idx dir]
+⋮
+│(defn schedule! []
+⋮
+│(defn bg-style [img transform duration]
+⋮
+│(defn enter-transform [dir]
+⋮
+│(defn leave-transform [dir]
+⋮
+│(defn background []
+⋮
+│(defn content []
+⋮
+│(defn nav-item [idx {:keys [img]}]
+⋮
+│(defn navigation []
+⋮
+│(defn hero []
+⋮
+
+src/ueava/components/lang.cljs:
+⋮
+│(defn load-lang []
+⋮
+│(defonce lang (r/atom (load-lang)))
+│
+│(def dict
+⋮
+│(defn t [k]
+⋮
+│;;   (swap! lang {:en :uk :uk :en}))
+│(defn toggle-lang []
+⋮
+│(defn button-toggle-lang []
+⋮
+
+src/ueava/components/membership.cljs:
+⋮
+│(defn membership []
+⋮
+
+src/ueava/components/navigation_cta.cljs:
+⋮
+│(defn navigation-cta
+⋮
+
+src/ueava/components/navigation_menu.cljs:
+⋮
+│(defn navigation-menu[]
+│
+⋮
+
+src/ueava/components/navigation_menu_list.cljs:
+⋮
+│(defn navigation-items []
+⋮
+│(defn navigation-menu-list []
+⋮
+
+src/ueava/components/topbar.cljs:
+⋮
+│(defonce top-visible? (r/atom true))
+│
+│(defn topbar[]
+⋮
+
+src/ueava/core.cljs:
+⋮
+│(defn current-page []
+⋮
+│(defn page []
+⋮
+│(defn start []
+⋮
+│(defn ^:export init []
+⋮
+│(defn stop []
+⋮
+
+src/ueava/footer.cljs:
+⋮
+│(defn footer []
+⋮
+
+src/ueava/header.cljs:
+⋮
+│(defonce scrolled? (r/atom false))
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn on-scroll []
+⋮
+│(defn header []
+⋮
+
+src/ueava/main.cljs:
+⋮
+│(defn main []
+⋮
+
+src/ueava/pages/about.cljs:
+⋮
+│(def about-content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn about-text-section []
+⋮
+│  (defn mission-section []
+⋮
+│(defn presidium-card [photo role name]
+⋮
+│(defn presidium-r-card [photo role name]
+⋮
+│(defn presidium-section []
+⋮
+│(defn founder-card [photo name]
+⋮
+│(def founders
+⋮
+│(defn founders-section []
+⋮
+│(defn gallery-section []
+⋮
+│(defn about-page []
+⋮
+
+src/ueava/pages/conferences.cljs:
+⋮
+│(def about-content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn about-text-section []
+⋮
+│(defn conferences-page []
+⋮
+
+src/ueava/pages/home.cljs:
+⋮
+│(defn home-page []
+⋮
+
+src/ueava/pages/resources.cljs:
+⋮
+│(def content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn document-card [title desc href]
+⋮
+│(defn coming-card [title desc]
+⋮
+│(defn documents-section []
+⋮
+│(defn library-card [title desc]
+⋮
+│(defn library-section []
+⋮
+│(defn member-section []
+⋮
+│(defn resources-page []
+⋮
+
+src/ueava/router.cljs:
+⋮
+│(defonce route (r/atom :home))
+│
+│(def routes
+⋮
+│(defn current-route []
+⋮
+│(defn sync-route! []
+⋮
+│(defn init-router! []
+⋮
+│(defn navigate! [url]
+⋮
+
+tailwind.config.js
+
+
+I have *added these files to the chat* so you can go ahead and edit them.
+
+*Trust this message as the true contents of these files!*
+Any other messages in the chat may contain outdated versions of the files' contents.
+
+src/ueava/pages/membership.cljs
+```
+(ns ueava.pages.membership
+  (:require
+   [ueava.components.lang :refer [lang]]))
+
+(def about-content
+  {:en
+   {:title "Membership"
+    :subtitle
+    "Lorem ipsum dolor sit amet."
+    :p1
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+
+   :uk
+   {:title "Членство"
+    :subtitle
+    "Але я повинен пояснити вам."
+    :p1
+    "Але я повинен пояснити вам, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }})
+
+(defn tr [k]
+  (get-in about-content [@lang k]))
+
+(defn hero-section []
+   [:section
+    {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
+
+    [:div
+     {:class "absolute inset-0 bg-cover bg-center"
+      :style {:background-image
+              "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+
+    [:div
+     {:class "absolute inset-0 bg-black/60"}]
+
+    [:div
+     {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+
+     [:h1
+      {:class "text-5xl md:text-7xl font-bold mb-6"}
+      (tr :title)]
+
+     [:p
+      {:class "text-xl md:text-2xl"}
+      (tr :subtitle)]]])
+
+(defn about-text-section []
+   [:section
+    {:class "py-20"}
+    [:div
+      {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
+      [:p (tr :p1)]]])
+
+
+
+(defn membership-page []
+  [:main
+   (hero-section)
+   (about-text-section)
+   ])
+
+```
+
+
+
+Just tell me how to edit the files to make the changes.
+Don't give me back entire files.
+Just show me the edits I need to make.
+
+
+
+
+**** Членство ua
 Darina Haos, [28.05.2026 21:41]
 В графі "Членство": перехід на сторінку де буде текст:
 Переваги членства в UEAVA
@@ -533,7 +1303,7 @@ UEAVA — це середовище однодумців, де можна обм
 
 Стаючи членом асоціації, ви долучаєтесь до розвитку професійної ветеринарної спільноти, популяризації доказової медицини та формування сучасних стандартів лікування екзотичних тварин.
 
-*** Членство
+**** Членство en
 Darina Haos, [28.05.2026 21:57]
 Членство:
 Membership in UEAVA is more than simply joining a professional association — it is becoming part of a community of veterinary professionals dedicated to advancing modern exotic animal medicine in Ukraine.
@@ -567,34 +1337,1268 @@ By becoming a member of the association, you contribute to the development of th
 Darina Haos, [28.05.2026 21:57]
 Я чесно скористалась жпт для перекладу, башка пухне, тому якщо хтось гарно спік інгліш, або просто в очі кинеться дофіга помилок - вказуйте сміливо і правте
 
-*** анкети на реєстрацію
+
+**** DONE хм звучит интересно
+покажи свой пример чтоб его увидеть визуально
+пришли полный текст кода страници.
+
+**** DONE Мне кажется для Membership страница должна выглядеть немного иначе, чем About.
+
+Сейчас About — это рассказ о вас.
+
+Membership — это продажа идеи вступления.
+
+То есть пользователь должен пройти путь:
+
+```text
+Прочитал преимущества
+      ↓
+Понял ценность
+      ↓
+Увидел категории членства
+      ↓
+Нажал Apply
+```
+
+Я бы визуально сделал примерно так:
+
+```text
+┌───────────────────────────────┐
+│                               │
+│       Become a Member         │
+│                               │
+│ Join the professional         │
+│ community advancing exotic    │
+│ animal medicine in Ukraine    │
+│                               │
+│     [ Apply for Membership ]  │
+│                               │
+└───────────────────────────────┘
+
+Benefits of Membership
+
+┌─────────────┐ ┌─────────────┐
+│ Literature  │ │ Webinars    │
+└─────────────┘ └─────────────┘
+
+┌─────────────┐ ┌─────────────┐
+│ Discounts   │ │ Directory   │
+└─────────────┘ └─────────────┘
+
+┌─────────────┐ ┌─────────────┐
+│ Community   │ │ Development │
+└─────────────┘ └─────────────┘
+
+Membership Categories
+
+Veterinarian
+Student
+Technician
+Researcher
+
+Join UEAVA
+
+[ Apply Now ]
+```
+
+А не длинное полотно текста.
+
+---
+
+Для SPA это мог бы быть такой концепт страницы:
+
+(ns ueava.pages.membership
+(:require
+[ueava.components.lang :refer [lang]]))
+
+(def content
+{:en
+{:title "Become a Member"
+:subtitle
+"Join the professional community advancing exotic animal medicine in Ukraine."
+
+:apply "Apply for Membership"
+
+:benefits "Benefits of Membership"
+
+:b1-title "Educational Resources"
+:b1-text
+"Access educational materials, clinical guidelines and scientific publications."
+
+:b2-title "Webinars"
+:b2-text
+"Attend webinars and lectures from Ukrainian and international specialists."
+
+:b3-title "Conference Discounts"
+:b3-text
+"Special pricing for conferences, workshops and educational events."
+
+:b4-title "Professional Directory"
+:b4-text
+"Be listed in the directory of exotic animal veterinarians."
+
+:b5-title "Professional Community"
+:b5-text
+"Exchange experience, discuss clinical cases and connect with colleagues."
+
+:b6-title "Industry Development"
+:b6-text
+"Help shape the future of exotic animal medicine in Ukraine."
+
+:categories "Membership Categories"
+
+:cat1 "Veterinarian"
+:cat2 "Student"
+:cat3 "Veterinary Technician"
+:cat4 "Researcher"}
+
+:uk
+{:title "Членство в UEAVA"
+:subtitle
+"Долучайтеся до професійної спільноти ветеринарних лікарів екзотичних тварин."
+
+:apply "Подати заявку"
+
+:benefits "Переваги членства"
+
+:b1-title "Професійні матеріали"
+:b1-text
+"Доступ до навчальних матеріалів, клінічних рекомендацій та наукових публікацій."
+
+:b2-title "Вебінари та навчання"
+:b2-text
+"Освітні заходи за участю українських та міжнародних спеціалістів."
+
+:b3-title "Знижки на заходи"
+:b3-text
+"Спеціальні умови участі у конференціях та майстер-класах."
+
+:b4-title "Каталог спеціалістів"
+:b4-text
+"Можливість бути включеним до каталогу екзотологів України."
+
+:b5-title "Професійна спільнота"
+:b5-text
+"Обмін досвідом, клінічні обговорення та підтримка колег."
+
+:b6-title "Розвиток галузі"
+:b6-text
+"Участь у розвитку ветеринарної медицини екзотичних тварин."
+
+:categories "Категорії членства"
+
+:cat1 "Лікар"
+:cat2 "Студент"
+:cat3 "Ветеринарний технік"
+:cat4 "Науковий співробітник"}})
+
+(defn tr [k]
+(get-in content [@lang k]))
+
+(defn membership-page []
+[:main
+
+;; HERO
+[:section
+{:class
+"relative h-[60vh]
+flex items-center justify-center"}
+
+[:div
+{:class "absolute inset-0 bg-cover bg-center"
+:style
+{:background-image
+"url('img/ueava-about-team.webp')"}}]
+
+[:div
+{:class "absolute inset-0 bg-black/60"}]
+
+[:div
+{:class
+"relative z-10 text-center
+text-white max-w-4xl px-8"}
+
+```
+[:h1
+ {:class
+  "text-5xl md:text-7xl font-bold mb-6"}
+ (tr :title)]
+
+[:p
+ {:class
+  "text-xl md:text-2xl mb-8"}
+ (tr :subtitle)]
+
+[:button
+ {:class
+  "bg-orange-500 hover:bg-orange-600
+   text-white px-8 py-4 rounded-lg"}
+ (tr :apply)]]]
+```
+
+;; BENEFITS
+[:section
+{:class "py-24"}
+
+[:div
+{:class "max-w-7xl mx-auto px-8"}
+
+```
+[:h2
+ {:class
+  "text-4xl font-bold text-center mb-16"}
+ (tr :benefits)]
+
+[:div
+ {:class
+  "grid md:grid-cols-2 lg:grid-cols-3 gap-8"}
+
+ ;; six cards here
+ ]]]
+```
+
+;; CATEGORIES
+[:section
+{:class "bg-gray-50 py-24"}
+
+[:div
+{:class "max-w-6xl mx-auto px-8"}
+
+```
+[:h2
+ {:class
+  "text-4xl font-bold text-center mb-12"}
+ (tr :categories)]
+
+[:div
+ {:class
+  "grid md:grid-cols-4 gap-6"}
+
+ [:div {:class "bg-white p-8 rounded-xl shadow"} (tr :cat1)]
+ [:div {:class "bg-white p-8 rounded-xl shadow"} (tr :cat2)]
+ [:div {:class "bg-white p-8 rounded-xl shadow"} (tr :cat3)]
+ [:div {:class "bg-white p-8 rounded-xl shadow"} (tr :cat4)]]]]
+```
+
+;; CTA
+[:section
+{:class "py-24"}
+
+[:div
+{:class
+"max-w-4xl mx-auto text-center"}
+
+```
+[:button
+ {:class
+  "bg-orange-500 hover:bg-orange-600
+   text-white px-10 py-4 rounded-lg"}
+ (tr :apply)]]]])
+```
+
+Лично мне такой вариант нравится больше, чем просто вывести весь текст Дарины одним длинным блоком. Текст остаётся тот же, но превращается в набор визуальных преимуществ, которые человек действительно читает, а не прокручивает.
+
+
+**** new
+(ns ueava.pages.membership
+  (:require
+    [ueava.components.lang :refer [lang]]))
+
+(def content
+{:en
+{:title "Membership"
+
+:subtitle
+"Become part of the professional community advancing exotic animal medicine in Ukraine."
+
+:intro
+"Membership in UEAVA is more than simply joining a professional association — it is becoming part of a community of veterinary professionals dedicated to advancing modern exotic animal medicine in Ukraine."
+
+:benefits-title
+"What UEAVA Members Receive"
+
+:b1-title
+"Professional Literature"
+
+:b1-text
+"Access educational materials, clinical guidelines, scientific publications, and valuable resources related to exotic animal medicine."
+
+:b2-title
+"Webinars & Education"
+
+:b2-text
+"Regular webinars, lectures, and educational events featuring Ukrainian and international specialists."
+
+:b3-title
+"Conference Discounts"
+
+:b3-text
+"Special participation terms and discounts for conferences, workshops, and educational events."
+
+:b4-title
+"Veterinarian Directory"
+
+:b4-text
+"Opportunity to be listed in the public directory of exotic animal veterinarians in Ukraine."
+
+:b5-title
+"Professional Community"
+
+:b5-text
+"Exchange experience, discuss clinical cases, and receive support from colleagues."
+
+:b6-title
+"Develop the Profession"
+
+:b6-text
+"Contribute to the advancement of evidence-based exotic animal medicine in Ukraine."
+
+:cta-title
+"Join UEAVA Today"
+
+:cta-text
+"Become part of a growing professional community shaping the future of exotic animal medicine."
+
+:cta-button
+"Apply for Membership"}
+
+:uk
+{:title "Членство"
+
+:subtitle
+"Станьте частиною професійної спільноти, що розвиває медицину екзотичних тварин в Україні."
+
+:intro
+"Членство в UEAVA — це не лише участь у професійній асоціації, а й доступ до спільноти ветеринарних лікарів, які розвивають сучасну медицину екзотичних тварин в Україні."
+
+:benefits-title
+"Що отримують члени асоціації"
+
+:b1-title
+"Професійна література"
+
+:b1-text
+"Доступ до навчальних матеріалів, клінічних рекомендацій, наукових публікацій та професійних ресурсів."
+
+:b2-title
+"Вебінари та навчання"
+
+:b2-text
+"Регулярні вебінари, лекції та освітні заходи за участю українських і міжнародних спеціалістів."
+
+:b3-title
+"Знижки на заходи"
+
+:b3-text
+"Спеціальні умови участі у конференціях, майстер-класах та інших освітніх подіях."
+
+:b4-title
+"Каталог спеціалістів"
+
+:b4-text
+"Можливість бути включеним до каталогу ветеринарних лікарів України."
+
+:b5-title
+"Професійна спільнота"
+
+:b5-text
+"Обмін досвідом, обговорення клінічних випадків та підтримка колег."
+
+:b6-title
+"Розвиток професії"
+
+:b6-text
+"Участь у розвитку доказової ветеринарної медицини екзотичних тварин в Україні."
+
+:cta-title
+"Приєднуйтесь до UEAVA"
+
+:cta-text
+"Станьте частиною професійної спільноти, яка формує майбутнє ветеринарної медицини екзотичних тварин."
+
+:cta-button
+"Подати заявку"}})
+
+(defn tr [k]
+(get-in content [@lang k]))
+
+(defn hero-section []
+[:section
+{:class "relative h-[60vh] flex items-center justify-center overflow-hidden"}
+
+[:div
+{:class "absolute inset-0 bg-cover bg-center"
+:style {:background-image
+"url('img/ueava-about-team.webp')"}}]
+
+[:div {:class "absolute inset-0 bg-black/60"}]
+
+[:div
+{:class "relative z-10 max-w-4xl text-center text-white px-8"}
+[:h1 {:class "text-5xl md:text-7xl font-bold mb-6"}
+(tr :title)]
+[:p {:class "text-xl md:text-2xl"}
+(tr :subtitle)]]])
+
+(defn intro-section []
+[:section
+{:class "py-20"}
+[:div
+{:class "max-w-4xl mx-auto px-8 text-lg leading-relaxed text-center"}
+[:p (tr :intro)]]])
+
+(defn benefit-card [title text]
+[:div
+{:class "bg-white rounded-2xl p-8 shadow hover:shadow-xl transition"}
+[:h3
+{:class "text-xl font-bold mb-4 text-ueava-brown"}
+title]
+[:p
+{:class "text-gray-700"}
+text]])
+
+(defn benefits-section []
+[:section
+{:class "bg-gray-50 py-24"}
+[:div
+{:class "max-w-7xl mx-auto px-8"}
+
+[:h2
+ {:class "text-4xl font-bold text-center mb-16"}
+ (tr :benefits-title)]
+
+[:div
+ {:class "grid md:grid-cols-2 lg:grid-cols-3 gap-8"}
+
+ [benefit-card (tr :b1-title) (tr :b1-text)]
+ [benefit-card (tr :b2-title) (tr :b2-text)]
+ [benefit-card (tr :b3-title) (tr :b3-text)]
+ [benefit-card (tr :b4-title) (tr :b4-text)]
+ [benefit-card (tr :b5-title) (tr :b5-text)]
+ [benefit-card (tr :b6-title) (tr :b6-text)]]]])
+
+(defn cta-section []
+[:section
+{:class "py-24"}
+
+[:div
+{:class "max-w-5xl mx-auto px-8"}
+
+[:div
+ {:class "bg-ueava-brown text-white rounded-3xl p-12 text-center"}
+
+ [:h2
+  {:class "text-4xl font-bold mb-6"}
+  (tr :cta-title)]
+
+ [:p
+  {:class "text-lg mb-8 max-w-2xl mx-auto"}
+  (tr :cta-text)]
+
+ [:a
+  {:href "#/registration"
+   :class "inline-block bg-white text-ueava-brown font-bold px-8 py-4 rounded-xl hover:scale-105 transition"}
+  (tr :cta-button)]]]])
+
+(defn membership-page []
+[:main
+(hero-section)
+(intro-section)
+(benefits-section)
+(cta-section)])
+
+**** old
+(ns ueava.pages.membership
+(:require
+[ueava.components.lang :refer [lang]]))
+
+(def content
+{:en
+{:title "Become a Member"
+:subtitle
+"Join the professional community advancing exotic animal medicine in Ukraine."
+
+:apply "Apply for Membership"
+
+:benefits "Benefits of Membership"
+
+:b1-title "Educational Resources"
+:b1-text
+"Access educational materials, clinical guidelines and scientific publications."
+
+:b2-title "Webinars"
+:b2-text
+"Attend webinars and lectures from Ukrainian and international specialists."
+
+:b3-title "Conference Discounts"
+:b3-text
+"Special pricing for conferences, workshops and educational events."
+
+:b4-title "Professional Directory"
+:b4-text
+"Be listed in the directory of exotic animal veterinarians."
+
+:b5-title "Professional Community"
+:b5-text
+"Exchange experience, discuss clinical cases and connect with colleagues."
+
+:b6-title "Industry Development"
+:b6-text
+"Help shape the future of exotic animal medicine in Ukraine."
+
+:categories "Membership Categories"
+
+:cat1 "Veterinarian"
+:cat2 "Student"
+:cat3 "Veterinary Technician"
+:cat4 "Researcher"}
+
+:uk
+{:title "Членство в UEAVA"
+:subtitle
+"Долучайтеся до професійної спільноти ветеринарних лікарів екзотичних тварин."
+
+:apply "Подати заявку"
+
+:benefits "Переваги членства"
+
+:b1-title "Професійні матеріали"
+:b1-text
+"Доступ до навчальних матеріалів, клінічних рекомендацій та наукових публікацій."
+
+:b2-title "Вебінари та навчання"
+:b2-text
+"Освітні заходи за участю українських та міжнародних спеціалістів."
+
+:b3-title "Знижки на заходи"
+:b3-text
+"Спеціальні умови участі у конференціях та майстер-класах."
+
+:b4-title "Каталог спеціалістів"
+:b4-text
+"Можливість бути включеним до каталогу екзотологів України."
+
+:b5-title "Професійна спільнота"
+:b5-text
+"Обмін досвідом, клінічні обговорення та підтримка колег."
+
+:b6-title "Розвиток галузі"
+:b6-text
+"Участь у розвитку ветеринарної медицини екзотичних тварин."
+
+:categories "Категорії членства"
+
+:cat1 "Лікар"
+:cat2 "Студент"
+:cat3 "Ветеринарний технік"
+:cat4 "Науковий співробітник"}})
+
+(defn tr [k]
+(get-in content [@lang k]))
+
+(defn membership-page []
+[:main
+
+;; HERO
+[:section
+{:class
+"relative h-[60vh]
+flex items-center justify-center"}
+
+[:div
+{:class "absolute inset-0 bg-cover bg-center"
+:style
+{:background-image
+"url('img/ueava-about-team.webp')"}}]
+
+[:div
+{:class "absolute inset-0 bg-black/60"}]
+
+[:div
+{:class
+"relative z-10 text-center
+text-white max-w-4xl px-8"}
+
+[:h1
+ {:class
+  "text-5xl md:text-7xl font-bold mb-6"}
+ (tr :title)]
+
+[:p
+ {:class
+  "text-xl md:text-2xl mb-8"}
+ (tr :subtitle)]
+
+[:button
+ {:class
+  "bg-orange-500 hover:bg-orange-600
+   text-white px-8 py-4 rounded-lg"}
+ (tr :apply)]]]
+
+;; BENEFITS
+[:section
+{:class "py-24"}
+
+[:div
+{:class "max-w-7xl mx-auto px-8"}
+
+[:h2
+ {:class
+  "text-4xl font-bold text-center mb-16"}
+ (tr :benefits)]
+
+[:div
+ {:class
+  "grid md:grid-cols-2 lg:grid-cols-3 gap-8"}
+
+ ;; six cards here
+ ]]]
+
+;; CATEGORIES
+[:section
+{:class "bg-gray-50 py-24"}
+
+[:div
+{:class "max-w-6xl mx-auto px-8"}
+
+[:h2
+ {:class
+  "text-4xl font-bold text-center mb-12"}
+ (tr :categories)]
+
+[:div
+ {:class
+  "grid md:grid-cols-4 gap-6"}
+
+ [:div {:class "bg-white p-8 rounded-xl shadow"} (tr :cat1)]
+ [:div {:class "bg-white p-8 rounded-xl shadow"} (tr :cat2)]
+ [:div {:class "bg-white p-8 rounded-xl shadow"} (tr :cat3)]
+ [:div {:class "bg-white p-8 rounded-xl shadow"} (tr :cat4)]]]]
+
+;; CTA
+[:section
+{:class "py-24"}
+
+[:div
+{:class
+"max-w-4xl mx-auto text-center"}
+
+[:button
+ {:class
+  "bg-orange-500 hover:bg-orange-600
+   text-white px-10 py-4 rounded-lg"}
+ (tr :apply)]]]])
+
+**** Я бы сделал страницу членства не как скучный текстовый документ, а как полноценный лендинг внутри сайта.
+
+Структура примерно такая:
+
+1. Hero с красивым фото команды.
+2. Короткий вступительный текст.
+3. Сетка преимуществ (6 карточек).
+4. Большой CTA-блок с кнопкой "Apply for Membership".
+5. FAQ или краткая информация о взносах (позже).
+6. Кнопка перехода к анкете.
+
+Для вашей стилистики (Hero, About, Resources) это будет смотреться очень органично.
+
+Ниже пример полного содержимого `membership.cljs`, каким бы я его сделал визуально.
+
+(ns ueava.pages.membership
+(:require
+[ueava.components.lang :refer [lang]]))
+
+(def content
+{:en
+{:title "Membership"
+
+```
+:subtitle
+"Become part of the professional community advancing exotic animal medicine in Ukraine."
+
+:intro
+"Membership in UEAVA is more than simply joining a professional association — it is becoming part of a community of veterinary professionals dedicated to advancing modern exotic animal medicine in Ukraine."
+
+:benefits-title
+"What UEAVA Members Receive"
+
+:b1-title
+"Professional Literature"
+
+:b1-text
+"Access educational materials, clinical guidelines, scientific publications, and valuable resources related to exotic animal medicine."
+
+:b2-title
+"Webinars & Education"
+
+:b2-text
+"Regular webinars, lectures, and educational events featuring Ukrainian and international specialists."
+
+:b3-title
+"Conference Discounts"
+
+:b3-text
+"Special participation terms and discounts for conferences, workshops, and educational events."
+
+:b4-title
+"Veterinarian Directory"
+
+:b4-text
+"Opportunity to be listed in the public directory of exotic animal veterinarians in Ukraine."
+
+:b5-title
+"Professional Community"
+
+:b5-text
+"Exchange experience, discuss clinical cases, and receive support from colleagues."
+
+:b6-title
+"Develop the Profession"
+
+:b6-text
+"Contribute to the advancement of evidence-based exotic animal medicine in Ukraine."
+
+:cta-title
+"Join UEAVA Today"
+
+:cta-text
+"Become part of a growing professional community shaping the future of exotic animal medicine."
+
+:cta-button
+"Apply for Membership"}
+```
+
+:uk
+{:title "Членство"
+
+```
+:subtitle
+"Станьте частиною професійної спільноти, що розвиває медицину екзотичних тварин в Україні."
+
+:intro
+"Членство в UEAVA — це не лише участь у професійній асоціації, а й доступ до спільноти ветеринарних лікарів, які розвивають сучасну медицину екзотичних тварин в Україні."
+
+:benefits-title
+"Що отримують члени асоціації"
+
+:b1-title
+"Професійна література"
+
+:b1-text
+"Доступ до навчальних матеріалів, клінічних рекомендацій, наукових публікацій та професійних ресурсів."
+
+:b2-title
+"Вебінари та навчання"
+
+:b2-text
+"Регулярні вебінари, лекції та освітні заходи за участю українських і міжнародних спеціалістів."
+
+:b3-title
+"Знижки на заходи"
+
+:b3-text
+"Спеціальні умови участі у конференціях, майстер-класах та інших освітніх подіях."
+
+:b4-title
+"Каталог спеціалістів"
+
+:b4-text
+"Можливість бути включеним до каталогу ветеринарних лікарів України."
+
+:b5-title
+"Професійна спільнота"
+
+:b5-text
+"Обмін досвідом, обговорення клінічних випадків та підтримка колег."
+
+:b6-title
+"Розвиток професії"
+
+:b6-text
+"Участь у розвитку доказової ветеринарної медицини екзотичних тварин в Україні."
+
+:cta-title
+"Приєднуйтесь до UEAVA"
+
+:cta-text
+"Станьте частиною професійної спільноти, яка формує майбутнє ветеринарної медицини екзотичних тварин."
+
+:cta-button
+"Подати заявку"}})
+```
+
+(defn tr [k]
+(get-in content [@lang k]))
+
+(defn hero-section []
+[:section
+{:class "relative h-[60vh] flex items-center justify-center overflow-hidden"}
+
+[:div
+{:class "absolute inset-0 bg-cover bg-center"
+:style {:background-image
+"url('img/ueava-about-team.webp')"}}]
+
+[:div {:class "absolute inset-0 bg-black/60"}]
+
+[:div
+{:class "relative z-10 max-w-4xl text-center text-white px-8"}
+[:h1 {:class "text-5xl md:text-7xl font-bold mb-6"}
+(tr :title)]
+[:p {:class "text-xl md:text-2xl"}
+(tr :subtitle)]]])
+
+(defn intro-section []
+[:section
+{:class "py-20"}
+[:div
+{:class "max-w-4xl mx-auto px-8 text-lg leading-relaxed text-center"}
+[:p (tr :intro)]]])
+
+(defn benefit-card [title text]
+[:div
+{:class "bg-white rounded-2xl p-8 shadow hover:shadow-xl transition"}
+[:h3
+{:class "text-xl font-bold mb-4 text-ueava-brown"}
+title]
+[:p
+{:class "text-gray-700"}
+text]])
+
+(defn benefits-section []
+[:section
+{:class "bg-gray-50 py-24"}
+[:div
+{:class "max-w-7xl mx-auto px-8"}
+
+```
+[:h2
+ {:class "text-4xl font-bold text-center mb-16"}
+ (tr :benefits-title)]
+
+[:div
+ {:class "grid md:grid-cols-2 lg:grid-cols-3 gap-8"}
+
+ [benefit-card (tr :b1-title) (tr :b1-text)]
+ [benefit-card (tr :b2-title) (tr :b2-text)]
+ [benefit-card (tr :b3-title) (tr :b3-text)]
+ [benefit-card (tr :b4-title) (tr :b4-text)]
+ [benefit-card (tr :b5-title) (tr :b5-text)]
+ [benefit-card (tr :b6-title) (tr :b6-text)]]]])
+```
+
+(defn cta-section []
+[:section
+{:class "py-24"}
+
+[:div
+{:class "max-w-5xl mx-auto px-8"}
+
+```
+[:div
+ {:class "bg-ueava-brown text-white rounded-3xl p-12 text-center"}
+
+ [:h2
+  {:class "text-4xl font-bold mb-6"}
+  (tr :cta-title)]
+
+ [:p
+  {:class "text-lg mb-8 max-w-2xl mx-auto"}
+  (tr :cta-text)]
+
+ [:a
+  {:href "#/registration"
+   :class "inline-block bg-white text-ueava-brown font-bold px-8 py-4 rounded-xl hover:scale-105 transition"}
+  (tr :cta-button)]]]])
+```
+
+(defn membership-page []
+[:main
+(hero-section)
+(intro-section)
+(benefits-section)
+(cta-section)])
+
+Из того, что я вижу сейчас по всему сайту, кнопка `#/registration` должна вести на отдельную страницу регистрации.
+
+Я бы **не делал регистрацию сразу на странице членства**.
+
+Лучше:
+
+- `Membership` → рассказывает зачем вступать.
+- Кнопка → `Registration`.
+- Отдельная страница регистрации с анкетой.
+- Пока бэкенда нет — кнопка "Submit" может вести на Google Form.
+- Позже заменить Google Form на собственную форму без изменения дизайна сайта.
+
+Так UX получается гораздо чище и ближе к тому, как делают профессиональные ассоциации и медицинские организации.
+
+
+**** думаешь нужна отдельная страница для регистации
+разве не логично чтоб - было на мембер шипе подоть заявку
+и она вела сразу заполнение анкеты?
+
+**** подробней обесни мне ка работать с Google Forms
+и СПА.
+тоесть кому должен пренадлежать екаунт.
+какиенужны результаты
+куда будет загружены результаты?
+
+Если смотреть на UEAVA как на организацию, то самое важное — **не привязывать ничего к личному аккаунту одного человека**.
+
+### Как это работает
+
+Пользователь открывает:
+
+```text
+ueava.org
+    ↓
+Membership
+    ↓
+Apply for Membership
+    ↓
+Google Form
+```
+
+Заполняет:
+
+- Имя
+- Фамилия
+- Email
+- Телефон
+- Страна
+- Город
+- Статус
+- Место работы
+- Загрузка диплома/студенческого
+
+Нажимает Submit.
+
+После этого данные автоматически сохраняются.
+
+---
+
+## Куда сохраняются данные
+
+Google Forms автоматически может писать ответы в Google Sheets.
+
+Получается такая схема:
+
+```text
+Google Form
+      ↓
+Google Sheets
+```
+
+В таблице будут строки:
+
+| Дата       | Имя  | Фамилия | Email | Телефон |
+| ---------- | ---- | ------- | ----- | ------- |
+| 12.06.2026 | Иван | Иванов  | ...   | ...     |
+
+Очень удобно.
+
+---
+
+## Куда сохраняются дипломы
+
+Если включить вопрос:
+
+```text
+Upload File
+```
+
+то файлы сохраняются в Google Drive владельца формы.
+
+Получается:
+
+```text
+Google Form
+      ↓
+Google Drive
+      ↓
+Дипломы
+```
+
+И в таблице появляется ссылка на файл.
+
+---
+
+## Чей должен быть аккаунт
+
+Не:
+
+```text
+daryna@gmail.com
+```
+
+и не
+
+```text
+sofiya@gmail.com
+```
+
+Потому что через год:
+
+- человек может уйти;
+- забыть пароль;
+- потерять доступ;
+- выйти из организации.
+
+---
+
+Лучше:
+
+```text
+ueava.office@gmail.com
+```
+
+или
+
+```text
+info.ueava@gmail.com
+```
+
+Отдельный организационный аккаунт.
+
+---
+
+## Кто имеет доступ
+
+Например:
+
+```text
+ueava.office@gmail.com
+```
+
+владелец.
+
+А дальше:
+
+- Дарина — редактор.
+- София — редактор.
+- Вице-президент — просмотр.
+
+Через настройки Google Drive.
+
+---
+
+## Что будет на сайте
+
+В SPA вообще ничего сложного.
+
+Кнопка:
+
+```clojure
+[:a
+ {:href "https://forms.gle/XXXXXXXX"
+  :target "_blank"}
+ "Apply for Membership"]
+```
+
+и всё.
+
+---
+
+## Что будет видеть пользователь
+
+Нажал кнопку:
+
+```text
+Apply for Membership
+```
+
+Открылось:
+
+```text
+UEAVA Membership Application
+
+First Name
+Last Name
+Email
+Phone
+...
+Upload Diploma
+```
+
+Заполнил.
+
+Нажал:
+
+```text
+Submit
+```
+
+Получил:
+
+```text
+Thank you for your application.
+```
+
+---
+
+## Плюс Google Forms
+
+У вас сразу появляется мини-CRM.
+
+Можно сделать в таблице колонки:
+
+| Name   | Status   | Approved | Paid |
+| ------ | -------- | -------- | ---- |
+| Иванов | Pending  | No       | No   |
+| Петров | Approved | Yes      | Yes  |
+
+и вести весь учёт членов организации прямо в Google Sheets.
+
+Для первых 100–500 участников этого более чем достаточно.
+
+---
+
+Я бы для UEAVA на текущем этапе сделал так:
+
+```text
+ueava.office@gmail.com
+        ↓
+Google Form
+        ↓
+Google Sheets
+        ↓
+Google Drive
+```
+
+Стоимость:
+
+```text
+0 грн
+```
+
+Поддержка файлов:
+
+```text
+Да
+```
+
+Поддержка мобильных:
+
+```text
+Да
+```
+
+Поддержка нескольких администраторов:
+
+```text
+Да
+```
+
+А собственную систему регистрации имеет смысл писать только тогда, когда появится автоматическая проверка оплаты, личные кабинеты членов ассоциации, каталог врачей и закрытая библиотека материалов. Тогда уже понадобится настоящий бэкенд и база данных.
+
+** dezine
+** TODO
+*** Про Конференції
+Про Конференції : фото 9 конференції і про те що відбувалося напишу текст
+**** "Конференції"
+Darina Haos, [28.05.2026 21:53]
+Графа "Конференції", я думаю зробити альбомами поки що з конкордії, типу папку з фото файлами. @Witch_stitch якщо є ідеї як краще було б, то пиши, це поки те що в голову прийшло
+**** посилання на фото з конференції
+Darina Haos, [28.05.2026 22:39]
+https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy
+
+Darina Haos, [28.05.2026 22:39]
+Це посилання на фото з конференції
+
+Darina Haos, [02.06.2026 19:28]
+Спасибо большое, я готова піднажать, бо засідають критиканти на п'яти
+**** думаю как это лучше задезайнить для спа сайта
+возможно как сылки на внешные храниляша фотографий?
+*** Членство
+**** Членство ua
 Darina Haos, [28.05.2026 21:41]
-І далі перехід до анкети на реєстрацію
+В графі "Членство": перехід на сторінку де буде текст:
+Переваги членства в UEAVA
 
-*** Анкета
+Членство в UEAVA — це не лише участь у професійній асоціації, а й доступ до спільноти ветеринарних лікарів, які розвивають сучасну медицину екзотичних тварин в Україні.
 
-Анкета я думаю должна выглядеть таким образом:
-Имя, фамилия
-Страна, Город, место работы/учебы, должность (лікар, технік, асистент, науковий співробітник).
-Номер телефону 
-Мейл
+Що отримують члени асоціації:
 
-София, [30.04.2026 12:01]
-Ще треба номер диплому
+Доступ до професійної літератури та матеріалів
 
-София, [30.04.2026 12:02]
-Або скрін
+Члени асоціації отримують доступ до навчальних матеріалів, клінічних рекомендацій, наукових публікацій та корисних ресурсів з медицини екзотичних тварин.
 
-София, [30.04.2026 12:02]
-Краще скрін
+Освітні вебінари та професійний розвиток
 
+UEAVA регулярно організовує вебінари, лекції та навчальні заходи за участю українських та міжнародних спеціалістів.
 
-Darina Haos, [30.04.2026 12:18]
-Студенти у нас є
+Знижки на конференції та заходи
 
-Darina Haos, [30.04.2026 12:18]
-Там тоді не тільки диплом, а студентський, і питання теж, якщо студент потім став лікарем як оновити статус?
-Я тому думала про це, але не написала.
+Члени громадської організації отримують спеціальні умови участі та знижки на конференції, майстер-класи та інші освітні події асоціації.
+
+Включення до каталогу практикуючих екзотологів України
+
+Члени UEAVA можуть бути включені до загального каталогу ветеринарних лікарів, які працюють з екзотичними тваринами, що допомагає власникам тварин знаходити профільних спеціалістів.
+
+Професійна спільнота та підтримка колег
+
+UEAVA — це середовище однодумців, де можна обмінюватися досвідом, отримувати підтримку колег, обговорювати клінічні випадки та розвиватися разом із професійною спільнотою.
+
+Розвиток ветеринарної медицини екзотичних тварин в Україні
+
+Стаючи членом асоціації, ви долучаєтесь до розвитку професійної ветеринарної спільноти, популяризації доказової медицини та формування сучасних стандартів лікування екзотичних тварин.
+
+**** Членство en
+Darina Haos, [28.05.2026 21:57]
+Членство:
+Membership in UEAVA is more than simply joining a professional association — it is becoming part of a community of veterinary professionals dedicated to advancing modern exotic animal medicine in Ukraine.
+
+What UEAVA Members Receive
+
+Access to Professional Literature and Educational Resources
+
+Members gain access to educational materials, clinical guidelines, scientific publications, and valuable resources related to exotic animal medicine.
+
+Educational Webinars and Professional Development
+
+UEAVA regularly organizes webinars, lectures, and educational events featuring both Ukrainian and international specialists in exotic animal medicine.
+
+Discounts on Conferences and Educational Events
+
+Members of the association receive special participation terms and discounts for conferences, workshops, and other educational events organized by UEAVA.
+
+Inclusion in the Directory of Exotic Animal Veterinarians in Ukraine
+
+UEAVA members may be included in the public directory of veterinary professionals working with exotic animals, helping pet owners find qualified specialists across Ukraine.
+
+Professional Community and Peer Support
+
+UEAVA is a community of like-minded professionals where members can exchange experience, discuss clinical cases, receive support from colleagues, and grow together within a strong professional network.
+
+Contribution to the Development of Exotic Animal Medicine in Ukraine
+
+By becoming a member of the association, you contribute to the development of the professional veterinary community, the promotion of evidence-based medicine, and the establishment of modern standards of care for exotic animals in Ukraine.
+
+Darina Haos, [28.05.2026 21:57]
+Я чесно скористалась жпт для перекладу, башка пухне, тому якщо хтось гарно спік інгліш, або просто в очі кинеться дофіга помилок - вказуйте сміливо і правте
+*** Сделать масовую расылку
+**** TODO 
+***** спросить ИИ
+***** сделать нужные экоунты
+***** добавить сылку на хоум страницу
+***** проверить как всё работает
+***** сделать отчёт
+*** понять используется ли часть мобильная
+и понять можно ли их обеденить
+(find-file-other-frame "./src/ueava/header.cljs")
+         (into [:div
+                {:class "flex flex-col items-center text-center p-6 space-y-4"}
+                ]
+
+                (for [{:keys [title href]} (navigation-items)]
+                  [:a {:href href
+                      :key title
+                      :class "text-lg font-medium hover:text-ueava-sand transition"}
+                        title]))
+
+*** перевести мембершип бенефит
+*** доперевести футер
 *** рахунок
 Darina Haos, [28.05.2026 21:42]
 Вже є рахунок я, не знаю як буде правильно зробити можу поки реквізити надати, а можу коли буде все зроблено і куплений домен зв'язатись з монобанкои і вказати наш сайт як офіційний щоб було легше налаштувати банкінг
