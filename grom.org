@@ -43,6 +43,13 @@
 *** public
 (find-file-other-frame "./public/css/style.css")
 (find-file-other-frame "./public/index.html")
+*** resurses
+**** forms
+https://docs.google.com/forms/d/e/1FAIpQLSc2pYrPf7goC92oB5-IFkte5MIXu95Bl6UjhE9g5tOIxWt98w/viewform?usp=header
+https://docs.google.com/spreadsheets/d/1QkVeyzQGzCXjUkisQN6Xkef24xp5sPezL190RY_gETg/edit?usp=sharing
+
+https://docs.google.com/forms/d/1uBdfoJOPmOJzM9jIfH2i3K9yWIo0tDDVJyLTmfdX5Fw/edit
+https://docs.google.com/spreadsheets/d/1QkVeyzQGzCXjUkisQN6Xkef24xp5sPezL190RY_gETg/edit?resourcekey=&gid=196635824#gid=196635824
 ** pathes
 *** resuses 
 /home/buyn/Pictures/Work/freelance/projects/grom/portrets//
@@ -499,14 +506,95 @@ tailwind стили как у arav
        [:button
          {:class "bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-medium transition"}
          (tr :apply)]]]])
-***** Сделать гугл акаунт
-***** сделать анкету
-***** сделать сылку на анкету со страницы
+***** CANCELED Сделать гугл акаунт
+***** DONE сделать анкету
+***** DONE сделать сылку на анкету со страницы
 ***** убедится что прилитают вложения
 проверить как кним получить доступ итд.
 понять можно ли указать папку куда они сохраняются
 можно ли указать фаил екселя для сохранения
 ***** сделать сылку на сайт
+
+      [:button
+        {:class "bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg"}
+       (tr :apply)]
+
+https://docs.google.com/forms/d/e/1FAIpQLSc2pYrPf7goC92oB5-IFkte5MIXu95Bl6UjhE9g5tOIxWt98w/viewform?usp=header
+теперь как мне в кнопку добавить чтоб она отправляла на анкету?
+
+Если это кнопка внутри Reagent/Hiccup, проще всего заменить `:button` на ссылку `:a`.
+
+Было:
+
+```clojure
+[:button
+ {:class "bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg"}
+ (tr :apply)]
+```
+
+Сделай так:
+
+```clojure
+[:a
+ {:href "https://docs.google.com/forms/d/e/1FAIpQLSc2pYrPf7goC92oB5-IFkte5MIXu95Bl6UjhE9g5tOIxWt98w/viewform?usp=header"
+  :target "_blank"
+  :rel "noopener noreferrer"
+  :class "inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg"}
+ (tr :apply)]
+```
+
+Что это даёт:
+
+- `:href` — ссылка на Google Form.
+- `:target "_blank"` — открывает форму в новой вкладке.
+- `:rel "noopener noreferrer"` — хорошая практика безопасности.
+- `inline-block` нужен, чтобы ссылка выглядела как кнопка.
+
+Если принципиально оставить именно `:button`, то:
+
+```clojure
+[:button
+ {:class "bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg"
+  :on-click #(js/window.open
+               "https://docs.google.com/forms/d/e/1FAIpQLSc2pYrPf7goC92oB5-IFkte5MIXu95Bl6UjhE9g5tOIxWt98w/viewform?usp=header"
+               "_blank")}
+ (tr :apply)]
+```
+
+Но для перехода на внешнюю страницу вариант с `:a` считается более правильным.
+***** а если переход на внутренюю?
+Если переход внутри твоего SPA (через роутер), тогда использовать `:a` с обычным `:href` не стоит — страница перезагрузится.
+
+Для внутренних переходов нужно вызывать твой роутер через `navigate!`.
+
+Например, если у тебя есть маршрут:
+
+```clojure id="j4wni6" "#/membership" ```
+
+то кнопка будет такой:
+
+```clojure id="m68kic" [:button {:class "bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg" :on-click #(navigate! "#/membership")} (tr :apply)] ```
+
+или как ссылка без перезагрузки:
+
+```clojure id="ldx5a0" [:a {:on-click (fn [e] (.preventDefault e) (navigate! "#/membership")) :class "inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg"} (tr :apply)] ```
+
+Главное:
+
+### Внешний переход
+
+Используй:
+
+- `:href`.
+
+### Внутренний переход в SPA
+
+Используй:
+
+- `navigate!`.
+
+Тогда всё будет работать без полной перезагрузки страницы, и состояние приложения сохранится.
+
 ***** запостить сайт
 ***** дать доступ
 соне и дарине
@@ -542,8 +630,55 @@ Darina Haos, [30.04.2026 12:18]
 **** анкети на реєстрацію
 Darina Haos, [28.05.2026 21:41]
 І далі перехід до анкети на реєстрацію
+**** DONE как лучше с вариантом гугл формс реализовать форму для разныех языков?
+там есть опция выборы азыка? ли нужно сделать две формы для каждого языка?
+а потом резулятат может отправится в один эксель фаил? или нужно чтоб был разные эксель файлы и они будут не совместимы из за разных названий колонок?
+**** 
+First Name / Ім'я *
+Last Name / Прізвище *
 
-**** думаю как это лучше задезайнить для спа сайта
+Country / Країна *
+City / Місто *
+
+Email *
+Phone Number *
+
+Professional Status *
+  Veterinarian
+  Student
+  Technician
+  Assistant
+  Researcher
+  Other
+
+Place of Work / Study *
+
+Areas of Interest
+  Birds
+  Reptiles
+  Amphibians
+  Rabbits
+  Rodents
+  Ferrets
+  Wildlife
+  Other
+
+Upload Diploma / Student ID
+
+Additional Comments
+**** CANCELED ахив
+      ;; {:class "relative z-10 max-w-4xl text-center text-white px-8 flex flex-col h-full justify-center"}
+      ;; [:div {:class "mb-auto"}]   ; pushes content down
+      ;; [:p {:class "text-xl md:text-2xl"}
+      ;; [:div {:class "mt-auto flex justify-center"}   ; button centered at the bottom of the content area
+      ;;   [:button
+      ;;     {:class "bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-medium transition"}
+      ;;     (tr :apply)]]
+
+**** DONE да мне нравится твой вариант с двумя языками в одной форме
+Помоги сделать анкету на гугл формс
+дай полный текст и перечень виджетов в который его вставить.
+**** DONE думаю как это лучше задезайнить для спа сайта
 нужно ли делать отдельную страницу
 или лучше использовать гуг анкету?
 
@@ -831,6 +966,274 @@ SPA
 То есть не начинать с технически сложной системы.
 
 Сначала собрать первых 50–100 членов ассоциации и понять, какие процессы реально нужны. Очень часто оказывается, что 80% задач прекрасно живут на Google Forms + Google Sheets гораздо дольше, чем ожидалось.
+**** DONE Для UEAVA я бы сделал форму максимально профессиональной, но короткой. Если форма длинная, люди начинают её бросать на середине.
+
+### Название формы
+
+```text
+UEAVA Membership Application
+Заявка на членство в UEAVA
+```
+
+### Описание формы
+
+```text
+Thank you for your interest in joining the Ukrainian Exotic Animal Veterinary Association (UEAVA).
+
+Please complete this application form. The information provided will be used solely for membership administration and communication purposes.
+
+Дякуємо за ваш інтерес до Української асоціації ветеринарної медицини екзотичних тварин (UEAVA).
+
+Будь ласка, заповніть анкету. Надана інформація використовується виключно для адміністрування членства та комунікації з учасниками асоціації.
+```
+
+---
+
+# Раздел 1. Personal Information
+
+### Short Answer
+
+```text
+First Name / Ім'я *
+```
+
+Обязательное поле.
+
+---
+
+### Short Answer
+
+```text
+Last Name / Прізвище *
+```
+
+Обязательное поле.
+
+---
+
+### Short Answer
+
+```text
+Email Address / Електронна пошта *
+```
+
+Включить проверку:
+
+```text
+Text → Email address
+```
+
+---
+
+### Short Answer
+
+```text
+Phone Number / Номер телефону *
+```
+
+---
+
+### Short Answer
+
+```text
+Country / Країна *
+```
+
+---
+
+### Short Answer
+
+```text
+City / Місто *
+```
+
+---
+
+# Раздел 2. Professional Information
+
+### Multiple Choice
+
+```text
+Professional Status / Професійний статус *
+```
+
+Варианты:
+
+```text
+Veterinarian / Ветеринарний лікар
+
+Veterinary Student / Студент ветеринарної медицини
+
+Veterinary Technician / Ветеринарний технік
+
+Veterinary Assistant / Асистент ветеринарного лікаря
+
+Researcher / Науковий співробітник
+
+Other / Інше
+```
+
+---
+
+### Short Answer
+
+```text
+Place of Work or Study / Місце роботи або навчання *
+```
+
+---
+
+### Short Answer
+
+```text
+Position / Посада *
+```
+
+Примеры в описании:
+
+```text
+Veterinarian, Intern, Technician, Assistant, Lecturer, Researcher etc.
+Лікар, інтерн, технік, асистент, викладач, науковий співробітник тощо.
+```
+
+---
+
+# Раздел 3. Professional Interests
+
+### Checkboxes
+
+```text
+Professional Interests / Професійні інтереси
+```
+
+Варианты:
+
+```text
+Birds / Птахи
+Reptiles / Рептилії
+Amphibians / Амфібії
+Rabbits / Кролі
+Rodents / Гризуни
+Ferrets / Тхори
+Wildlife / Дикі тварини
+Zoo Medicine / Зоопаркова медицина
+Other / Інше
+```
+
+---
+
+# Раздел 4. Verification
+
+### File Upload
+
+```text
+Professional Verification Document
+Підтверджуючий документ
+```
+
+Описание:
+
+```text
+Please upload ONE of the following:
+
+• Diploma
+• Veterinary license
+• Student ID
+• Certificate confirming professional status
+
+Будь ласка, завантажте ОДИН із документів:
+
+• Диплом
+• Ліцензія
+• Студентський квиток
+• Інший документ, що підтверджує професійний статус
+```
+
+Настройки:
+
+```text
+Accept:
+PDF
+JPG
+PNG
+
+Maximum files:
+1
+```
+
+---
+
+# Раздел 5. Additional Information
+
+### Paragraph
+
+```text
+Additional Comments
+Додаткова інформація
+```
+
+Необязательно.
+
+---
+
+# Раздел 6. Consent
+
+### Checkboxes
+
+Вопрос:
+
+```text
+Consent / Згода *
+```
+
+Единственный вариант:
+
+```text
+I agree to the processing of my personal data for membership administration purposes.
+
+Я погоджуюся на обробку моїх персональних даних з метою адміністрування членства в асоціації.
+```
+
+Сделать обязательным.
+
+---
+
+# Последний экран после отправки
+
+В настройках формы:
+
+```text
+Thank you for your application.
+
+Your submission has been received and will be reviewed by the UEAVA team.
+
+Дякуємо за подання заявки.
+
+Вашу анкету отримано та буде розглянуто командою UEAVA.
+```
+
+---
+
+### Какие виджеты Google Forms использовать
+
+| Поле                | Виджет          |
+| ------------------- | --------------- |
+| Имя                 | Short answer    |
+| Фамилия             | Short answer    |
+| Email               | Short answer    |
+| Телефон             | Short answer    |
+| Страна              | Short answer    |
+| Город               | Short answer    |
+| Статус              | Multiple choice |
+| Место работы/учёбы  | Short answer    |
+| Должность           | Short answer    |
+| Интересы            | Checkboxes      |
+| Диплом/студенческий | File Upload     |
+| Комментарий         | Paragraph       |
+| Согласие            | Checkboxes      |
+
+В результате получится очень аккуратная форма на 2–3 минуты заполнения, которая одинаково хорошо выглядит и для украинских врачей, и для иностранных специалистов. И все ответы будут собираться в одну Google Sheet, без необходимости поддерживать две отдельные формы.
+
 
 **** CANCELED (ns ueava.pages.membership
   (:require

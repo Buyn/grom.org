@@ -1,5 +1,6 @@
 (ns ueava.components.cta
   (:require
+    [ueava.router :refer [navigate!]]
     [ueava.components.lang :refer [t]]))
 
 (defn cta []
@@ -13,5 +14,6 @@
     [:p {:class "mb-8 text-lg"}
      (t :cta/dis)]
 
-    [:button {:class "bg-white text-ueava-brown px-8 py-3 rounded font-semibold hover:bg-gray-100"}
+    [:button {:class "bg-white text-ueava-brown px-8 py-3 rounded font-semibold hover:bg-gray-100"
+              :on-click #(navigate! "#/membership")}
      (t :cta/button)]]])

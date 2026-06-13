@@ -76,22 +76,17 @@
       :style {:background-image "url('img/ueava-about-team.webp')"}}]
     [:div {:class "absolute inset-0 bg-black/60"}]
     [:div
-      ;; {:class "relative z-10 max-w-4xl text-center text-white px-8 flex flex-col h-full justify-center"}
      {:class "relative z-10 max-w-4xl text-center text-white px-8"}
-      ;; [:div {:class "mb-auto"}]   ; pushes content down
       [:h1 {:class "text-5xl md:text-7xl font-bold mb-6"}
         (tr :title)]
-      ;; [:p {:class "text-xl md:text-2xl"}
       [:p {:class "text-xl md:text-2xl mb-12"}
        (tr :subtitle)]
-      ;; [:div {:class "mt-auto flex justify-center"}   ; button centered at the bottom of the content area
-      ;;   [:button
-      ;;     {:class "bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-medium transition"}
-      ;;     (tr :apply)]]
-      [:button
-        {:class "bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg"}
-       (tr :apply)]
-     ]])
+      [:a
+        { :href "https://docs.google.com/forms/d/e/1FAIpQLSc2pYrPf7goC92oB5-IFkte5MIXu95Bl6UjhE9g5tOIxWt98w/viewform?usp=header"
+          :target "_blank"
+          :rel "noopener noreferrer"
+          :class "inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg"}
+        (tr :apply)]]])
 
 (defn intro-section []
   [:section
@@ -130,8 +125,11 @@
         {:class "bg-ueava-brown text-white rounded-3xl p-12 text-center"}
         [:h2 {:class "text-4xl font-bold mb-6"} (tr :cta-title)]
         [:p {:class "text-lg mb-8 max-w-2xl mx-auto"} (tr :cta-text)]
-        [:a {:href "#/registration" :class "inline-block bg-white text-ueava-brown font-bold px-8 py-4 rounded-xl hover:scale-105 transition"}
-         (tr :cta-button)]]]])
+        [:a { :href "https://docs.google.com/forms/d/e/1FAIpQLSc2pYrPf7goC92oB5-IFkte5MIXu95Bl6UjhE9g5tOIxWt98w/viewform?usp=header"
+              :target "_blank"
+              :rel "noopener noreferrer"
+              :class "inline-block bg-white text-ueava-brown font-bold px-8 py-4 rounded-xl hover:scale-105 transition"}
+          (tr :cta-button)]]]])
 
 (defn membership-page []
   [:main
