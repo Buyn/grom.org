@@ -25,21 +25,21 @@
      [:h3 {:class "text-white font-semibold mb-4"} (t :footer/nav-title)]
 
      [:ul {:class "space-y-2"}
-      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Home)]]
-      [:li [:a {:href "/about" :class "hover:text-white"} (t :hlist/About)]]
-      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Resources)]]
-      [:li [:a {:href "/membership" :class "hover:text-white"} (t :hlist/Membership)]]
-      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Conferences)]]]]
+      [:li [:a {:href "#/home" :class "hover:text-white"} (t :hlist/Home)]]
+      [:li [:a {:href "#/about" :class "hover:text-white"} (t :hlist/About)]]
+      [:li [:a {:href "#/home" :class "hover:text-white"} (t :hlist/Resources)]]
+      [:li [:a {:href "#/membership" :class "hover:text-white"} (t :hlist/Membership)]]
+      [:li [:a {:href "#/conferences" :class "hover:text-white"} (t :hlist/Conferences)]]]]
 
     ;; RESOURCES
     [:div
      [:h3 {:class "text-white font-semibold mb-4"} (t :footer/res-title)]
 
      [:ul {:class "space-y-2"}
-      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
-      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
+      [:li [:a {:href "#/resources" :class "hover:text-white"} "Journal"]]
+      [:li [:a {:href "#/resources" :class "hover:text-white"} "Find-A-Vet"]]
+      [:li [:a {:href "#/resources" :class "hover:text-white"} "Publications"]]
+      [:li [:a {:href "#/resources" :class "hover:text-white"} "Events"]]]]
 
     ;; NEWSLETTER
     [:div
@@ -48,20 +48,10 @@
      [:p {:class "text-sm mb-4"}
       (t :footer/news-text)]
 
-     ;; [:div {:class "flex"} items-center items-start
-     [:div {:class "flex flex-col items-end self-center"}
-      [:input {:type "email"
-               :placeholder "Email"
-               :class "w-full px-3 py-2
-                       rounded-l
-                       bg-gray-800
-                       border border-gray-700
-                       focus:outline-none"}]
-;; px-4 
-      [:button  {:class "bg-white text-ueava-brown
-                        rounded-r
-                        hover:bg-ueava-brown-100"}
-                (t :footer/news-button)]]]]
+      [:div
+        {:class "ml-embedded"
+          :data-form "JHURKh"}]
+     ]]
 
    ;; bottom
    [:div {:class "border-t border-gray-800"}

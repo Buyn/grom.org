@@ -12,7 +12,7 @@
 
 (defn navigation-menu-list []
   (for [{:keys [title href]} (navigation-items)]
-    [:a {:key title
+    [:a { :key title
           :on-click (fn [e]
                   (.preventDefault e)
                       (navigate! href)
