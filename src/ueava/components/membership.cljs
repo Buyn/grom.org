@@ -1,5 +1,7 @@
 (ns ueava.components.membership)
 
+(def link "https://docs.google.com/forms/d/e/1FAIpQLSfrWpfQhDZGyt__qvFb3HmuyEVLPbKvnkWwNbacc7BTk7dXcg/viewform?usp=header")
+
 (defn membership []
   [:section {:class "py-20"}
 

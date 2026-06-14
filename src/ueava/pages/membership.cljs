@@ -1,6 +1,7 @@
 (ns ueava.pages.membership
   (:require
-    [ueava.components.lang :refer [lang]]))
+    [ueava.components.lang :refer [lang]]
+    [ueava.components.membership :refer [link]]))
 
 (def content
   {:en
@@ -82,7 +83,7 @@
       [:p {:class "text-xl md:text-2xl mb-12"}
        (tr :subtitle)]
       [:a
-        { :href "https://docs.google.com/forms/d/e/1FAIpQLSc2pYrPf7goC92oB5-IFkte5MIXu95Bl6UjhE9g5tOIxWt98w/viewform?usp=header"
+        { :href link
           :target "_blank"
           :rel "noopener noreferrer"
           :class "inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg"}
@@ -125,7 +126,7 @@
         {:class "bg-ueava-brown text-white rounded-3xl p-12 text-center"}
         [:h2 {:class "text-4xl font-bold mb-6"} (tr :cta-title)]
         [:p {:class "text-lg mb-8 max-w-2xl mx-auto"} (tr :cta-text)]
-        [:a { :href "https://docs.google.com/forms/d/e/1FAIpQLSc2pYrPf7goC92oB5-IFkte5MIXu95Bl6UjhE9g5tOIxWt98w/viewform?usp=header"
+        [:a { :href link
               :target "_blank"
               :rel "noopener noreferrer"
               :class "inline-block bg-white text-ueava-brown font-bold px-8 py-4 rounded-xl hover:scale-105 transition"}

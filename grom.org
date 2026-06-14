@@ -45,6 +45,13 @@
 (find-file-other-frame "./public/index.html")
 *** resurses
 **** forms
+***** new
+https://docs.google.com/forms/d/1GPoM5B71O1IeG8opjnkx0ojJXUqGdbm3fnjMk8cGx-Q/edit
+https://docs.google.com/spreadsheets/d/1JMmqypASqhjF0AhFQmBI7egH-qcGvLYEkE28HJoRZ54/edit?usp=sharing
+
+
+сылка для респондента
+https://docs.google.com/forms/d/e/1FAIpQLSfrWpfQhDZGyt__qvFb3HmuyEVLPbKvnkWwNbacc7BTk7dXcg/viewform?usp=header
 ***** олд
 https://docs.google.com/forms/d/e/1FAIpQLSc2pYrPf7goC92oB5-IFkte5MIXu95Bl6UjhE9g5tOIxWt98w/viewform?usp=header
 https://docs.google.com/spreadsheets/d/1QkVeyzQGzCXjUkisQN6Xkef24xp5sPezL190RY_gETg/edit?usp=sharing
@@ -480,9 +487,14 @@ tailwind стили как у arav
 * Kanban
 ** urgent 
 ** in progress
-*** TODO Сделать масовую расылку
-**** TODO 
-***** сделать нужные экоунты
+*** TODO зайти в фирменый гугл экоунт
+**** TODO сделать папку для формы
+**** сделать пустой шит
+**** перенсти форму
+**** подключить к форме шит
+*** DONE Сделать масовую расылку
+**** DONE 
+***** DONE сделать нужные экоунты
 зарегодся 
 посмотреть получу ли я код для добовления на страницу
 ***** DONE пердупредить
@@ -491,11 +503,20 @@ tailwind стили как у arav
 если увас нет другово сервиса который закроет подписку на новости и email-рассылки.
 бесплатного плана хвати на несколько сотен подписчиков.
 
-***** добавить код на хоум страницу
+***** DONE добавить код на хоум страницу
 ***** проверить как всё работает
 ***** сделать отчёт
-**** спросить ИИ
-***** Here are summaries of some files present in my git repository.
+****** ок
+теперь эта часть тоже работает.
+все кто подписываются поподают в https://dashboard.mailerlite.com/dashboard
+там на них можно слать на всех обшие расылки или делить на групы. например отдельные расыылки для членов. 
+нужно ещё много настравать, там можно задать обший стиль с нашим логотипом. и тогда все письма или формы опросов, даже чат, будут выглядить в общем брендовом стиле.
+но это уже потом! и надеюсь не мной! А специально обученым для этого человеком.
+Но зато это уже готовый рабочий инструмент.
+
+
+**** DONE спросить ИИ
+***** DONE Here are summaries of some files present in my git repository.
 Do not propose changes to these files, treat them as *read-only*.
 If you need to edit any of these files, ask me to *add them to the chat* first.
 
@@ -925,7 +946,7 @@ src/ueava/footer.cljs
 Just tell me how to edit the files to make the changes.
 Don't give me back entire files.
 Just show me the edits I need to make.
-***** 
+***** DONE 
 [:div
      [:h3 {:class "text-white font-semibold mb-4"} (t :footer/news-title)]
 
@@ -949,7 +970,7 @@ Just show me the edits I need to make.
 допустим уменя есть такой кусок кода.
 по логике он должен принимать емейлы и подписовать пользователя на рассылку кпримеру на MailerLite.
 что я должен сделать чтоб это заработало так как я себе вижу?
-***** хм на сайте есть форма для добовления почти пользователя для рассылки.
+***** DONE хм на сайте есть форма для добовления почти пользователя для рассылки.
 я понимаю как организовать сбор емейлов.
 что я понимаю как организовать автоматизированую расылку подписавшимся для СПА.
 и вот я думаю как это можно былобы организовать для СПА. И вообще можно ли?
@@ -1148,7 +1169,7 @@ Brevo
 если они сами пока не выбрали Brevo то новерное в этом направлении пока недумали и нет смысла им его предлогать?
 
 
-***** чем они отличаются
+***** DONE чем они отличаются
 - [Brevo](https://www.brevo.com?utm_source=chatgpt.com)
 - [MailerLite](https://www.mailerlite.com?utm_source=chatgpt.com)
 - [Mailchimp](https://mailchimp.com?utm_source=chatgpt.com)
@@ -1203,7 +1224,7 @@ Brevo
 - Большой бренд + интеграции → **Mailchimp**.
 
 Хотите более детальное сравнение под вашу задачу (например, по количеству подписчиков или нужным функциям) — напишите детали! Все сервисы имеют пробные периоды или бесплатные аккаунты для теста.
-***** Допустим понятно.
+***** DONE Допустим понятно.
 Более конкретный вопрос.
 Уменя СПА сайт было бы важно автоматизировать процес подписки.
 Тоесть что для этого нужно что потерживался какойто апи? Или там есть другие механики?
@@ -1319,20 +1340,7 @@ async function subscribe(email) {
 4. Для Next.js/Vue есть готовые примеры и SDK.
 
 Нужно пример кода под конкретный фреймворк (React, Vue, Next.js и т.д.) или помощь с backend-прокси — скажите, помогу детальнее!
-***** CANCELED хм уменя трудность!
-уменя в коде
-               :class "w-full px-3 py-2
-                       rounded-l
-                       bg-gray-800
-                       border border-gray-700
-                       focus:outline-none"}]
-;; px-4 
-      [:button  {:class "bg-white text-ueava-brown
-                        rounded-r
-                        hover:bg-ueava-brown-100"}
-но делая форму на mailerlite.com/dashboard
-я должен подобрать цвета для формы как на сайте. Но где мне зять точные значения того что получилось на сайте чтоб они совпали с формой?
-***** ладно сдела форму
+***** DONE ладно сдела форму
 оно выводит варианты как его добавить, но я несовсем понимаю что мне из это вставлять.
 ****** Show on clic
  In order to embed this form on your website as a button, simply copy and paste one of the codes provided below, wherever you want the form to appear.
@@ -2387,11 +2395,6 @@ https://dashboard.mailerlite.com/dashboard
 
 ** dezine
 ** TODO
-*** зайти в фирменый гугл экоунт
-**** сделать папку для формы
-**** сделать пустой шит
-**** перенсти форму
-**** подключить к форме шит
 *** удалить меин
 
 (find-file-other-frame "./src/ueava/main.cljs") возможно нужо будет удалить современем
@@ -2469,6 +2472,22 @@ https://arav.org/about/who-we-are/
 явно лишний фаил и в одном замечетально будут жить
 
 ** backlog
+*** донастроить mailerlite.com
+https://dashboard.mailerlite.com/dashboard
+**** CANCELED хм уменя трудность!
+уменя в коде
+               :class "w-full px-3 py-2
+                       rounded-l
+                       bg-gray-800
+                       border border-gray-700
+                       focus:outline-none"}]
+;; px-4 
+      [:button  {:class "bg-white text-ueava-brown
+                        rounded-r
+                        hover:bg-ueava-brown-100"}
+но делая форму на mailerlite.com/dashboard
+я должен подобрать цвета для формы как на сайте. Но где мне зять точные значения того что получилось на сайте чтоб они совпали с формой?
+
 *** заменить систричку лисичку
     :secretary-name "сестричка Луй" ;; Dashchenko Sofiia
 *** Для президиума я бы сделал точно так же:
