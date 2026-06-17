@@ -9,13 +9,16 @@
     :p1 "UEAVA conferences bring together veterinary professionals, researchers, educators and students to exchange experience, discuss current challenges in veterinary medicine and present new scientific and practical developments. This section contains reports, conference materials and photo archives from past events."
     :pdf-report "PDF Report"
     :photo-album "Photo Album"
+    :archive "Conference Archive"
     }
+
    :uk
    {:title "Конференції"
     :subtitle "Професійні заходи, звіти та матеріали конференцій"
     :p1 "Конференції UEAVA об'єднують ветеринарних лікарів, науковців, викладачів та студентів для обміну досвідом, обговорення актуальних питань ветеринарної медицини та представлення нових наукових і практичних напрацювань. У цьому розділі зібрані матеріали попередніх заходів, підсумкові звіти та фотоархіви конференцій."
     :pdf-report "Звіт PDF"
     :photo-album "Фотоальбом"
+    :archive "Архів конференцій"
     }})
 
 (defn tr [k]
@@ -102,8 +105,7 @@
   [:section {:class "py-20 bg-gray-50"}
    [:div {:class "max-w-6xl mx-auto px-8"}
     [:h2 {:class "text-4xl font-bold text-center mb-12 text-ueava-brown"}
-     (if (= @lang :uk) "Архів конференцій" "Conference Archive")]
-    
+     (tr :archive)]
     [:div {:class "grid md:grid-cols-2 lg:grid-cols-3 gap-8"}
      (for [conf conferences]
        ^{:key (:year conf)}
