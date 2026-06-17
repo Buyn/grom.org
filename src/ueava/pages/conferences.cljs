@@ -6,11 +6,17 @@
   {:en
    {:title "Conferences"
     :subtitle "Professional events, reports and conference materials"
-    :p1 "UEAVA conferences bring together veterinary professionals, researchers, educators and students to exchange experience, discuss current challenges in veterinary medicine and present new scientific and practical developments. This section contains reports, conference materials and photo archives from past events."}
+    :p1 "UEAVA conferences bring together veterinary professionals, researchers, educators and students to exchange experience, discuss current challenges in veterinary medicine and present new scientific and practical developments. This section contains reports, conference materials and photo archives from past events."
+    :pdf-report "PDF Report"
+    :photo-album "Photo Album"
+    }
    :uk
    {:title "Конференції"
     :subtitle "Професійні заходи, звіти та матеріали конференцій"
-    :p1 "Конференції UEAVA об'єднують ветеринарних лікарів, науковців, викладачів та студентів для обміну досвідом, обговорення актуальних питань ветеринарної медицини та представлення нових наукових і практичних напрацювань. У цьому розділі зібрані матеріали попередніх заходів, підсумкові звіти та фотоархіви конференцій."}})
+    :p1 "Конференції UEAVA об'єднують ветеринарних лікарів, науковців, викладачів та студентів для обміну досвідом, обговорення актуальних питань ветеринарної медицини та представлення нових наукових і практичних напрацювань. У цьому розділі зібрані матеріали попередніх заходів, підсумкові звіти та фотоархіви конференцій."
+    :pdf-report "Звіт PDF"
+    :photo-album "Фотоальбом"
+    }})
 
 (defn tr [k]
   (get-in about-content [@lang k]))
@@ -25,7 +31,10 @@
     :title-en "IX UEAVA Conference"
     :text-uk "Конференція, присвячена сучасним підходам у ветеринарній медицині, безперервному професійному розвитку та співпраці фахівців."
     :text-en "Conference dedicated to modern approaches in veterinary medicine, continuing education and professional collaboration."
-    :report "Короткий звіт тут (300-500 слів) – Даріна напише скоро..."  ;; placeholder for latest
+    :title {:en "IX UEAVA Conference"
+            :uk "IX Конференція UEAVA"}
+    :text {:en "Conference dedicated to modern approaches in veterinary medicine, continuing education and professional collaboration."
+           :uk "Конференція, присвячена сучасним підходам у ветеринарній медицині, безперервному професійному розвитку та співпраці фахівців."}
     :pdf "#"  ;; replace with real PDF when ready
     :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}
    {:year "2025"
@@ -34,6 +43,10 @@
     :title-foto "url('img/ueava-about-team.webp')"
     :title-uk "VIII Конференція UEAVA"
     :title-en "VIII UEAVA Conference"
+    :title {:en "VIII UEAVA Conference"
+            :uk "VIII Конференція UEAVA"}
+    :text {:en "Annual gathering of veterinary professionals focused on practical experience and current industry challenges."
+           :uk "Щорічна зустріч ветеринарних фахівців, присвячена обміну практичним досвідом та сучасним викликам галузі."}
     :text-uk "Щорічна зустріч ветеринарних фахівців, присвячена обміну практичним досвідом та сучасним викликам галузі."
     :text-en "Annual gathering of veterinary professionals focused on practical experience and current industry challenges."
     :pdf "#"
@@ -44,20 +57,24 @@
     :title-foto "url('img/ueava-about-team.webp')"
     :title-uk "VII Конференція UEAVA"
     :title-en "VII UEAVA Conference"
+    :title {:en "VII UEAVA Conference"
+            :uk "VII Конференція UEAVA"}
+    :text {:en "Presentations, discussions and educational sessions for veterinary practitioners."
+           :uk "Доповіді, дискусії та освітні заходи для практикуючих ветеринарних лікарів."}
     :text-uk "Доповіді, дискусії та освітні заходи для практикуючих ветеринарних лікарів."
     :text-en "Presentations, discussions and educational sessions for veterinary practitioners."
     :pdf "#"
     :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}])
 
 (defn conference-card [conf]
-  (let [is-latest (= (:year conf) "2026")
-        title (if (= @lang :uk) (:title-uk conf) (:title-en conf))
+  (let [t #(@lang (% conf))
+       title (if (= @lang :uk) (:title-uk conf) (:title-en conf))
         text (if (= @lang :uk) (:text-uk conf) (:text-en conf))]
     [:div
      {:class "group relative bg-white rounded-3xl shadow-xl overflow-hidden h-full flex flex-col hover:-translate-y-1 transition-all duration-300"}
      ;; Photo background with dark overlay
      [:div {:class "relative h-56 bg-cover bg-center"
-            :style {:background-image (str "url('img/ueava-about-team.webp')")}}  ;; replace with real conf photo later
+            :style {:background-image (str (:title-foto conf))}}
       [:div {:class "absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"}]]
      [:div {:class "p-8 flex-1 flex flex-col"}
       [:div {:class "text-sm uppercase tracking-widest text-ueava-brown-700 mb-3"}
@@ -66,18 +83,19 @@
        title]
       [:p {:class "text-gray-700 leading-relaxed mb-6 flex-1"}
        text]
-      (when is-latest
-        [:div {:class "mb-6 text-sm text-gray-600 italic border-l-4 border-ueava-brown-300 pl-4"}
-         (:report conf)])
       [:div {:class "flex flex-wrap gap-3 mt-auto pt-4"}
        [:a {:href (:photos conf)
             :target "_blank"
-            :class "flex-1 text-center px-6 py-3 rounded-2xl bg-ueava-brown-900 text-white hover:bg-ueava-brown-800 transition font-medium"}
-        (if (= @lang :uk) "Фотоальбом" "Photo Album")]
+            :class "flex-1 text-center px-6 py-3 rounded-2xl
+                    bg-ueava-brown-900 text-white hover:bg-ueava-brown-800
+                    transition font-medium"}
+        (tr :photo-album)]
        [:a {:href (:pdf conf)
             :target "_blank"
-            :class "flex-1 text-center px-6 py-3 rounded-2xl border border-ueava-brown-900 text-ueava-brown-900 hover:bg-ueava-brown-50 transition font-medium"}
-        (if (= @lang :uk) "Звіт PDF" "PDF Report")]]]]))
+            :class "flex-1 text-center px-6 py-3 rounded-2xl border
+                    border-ueava-brown-900 text-ueava-brown-900 hover:bg-ueava-brown-50
+                    transition font-medium"}
+        (tr :pdf-report)]]]]))
 
 (defn hero-section []
   [:section
