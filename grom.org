@@ -521,7 +521,7 @@ Darina Haos, [02.06.2026 19:28]
 ***** DONE фаил
 ресурсов
 тепм конференции
-***** Судя по твоим инструкциям, файл `src/ueava/pages/conferences.cljs` уже существует, но его содержимое не было добавлено в чат целиком — только список символов (`defn conferences-page`, `hero-section`, и т.д.).
+***** DONE Судя по твоим инструкциям, файл `src/ueava/pages/conferences.cljs` уже существует, но его содержимое не было добавлено в чат целиком — только список символов (`defn conferences-page`, `hero-section`, и т.д.).
 
 Поскольку ты явно попросил:
 
@@ -552,10 +552,10 @@ src/ueava/pages/conferences.cljs
 
 После того как ты пришлёшь файл, я дам готовую реализацию целиком.
 
-***** несовсем понимаю
+***** DONE несовсем понимаю
 какой лучше сделать дезаин для СПА для раздела конференций.
 нехочется чтоб всё заполнилось кучей фотографий или кучей статей о результатах конференций.
-***** Here are summaries of some files present in my git repository.
+***** DONE Here are summaries of some files present in my git repository.
 Do not propose changes to these files, treat them as *read-only*.
 If you need to edit any of these files, ask me to *add them to the chat* first.
 
@@ -1155,8 +1155,8 @@ Just tell me how to edit the files to make the changes.
 Don't give me back entire files.
 Just show me the edits I need to make.
 
-***** чтоб можно было сразу вставить
-***** Сейчас я бы **не делал полный код страницы**.
+***** DONE чтоб можно было сразу вставить
+***** DONE Сейчас я бы **не делал полный код страницы**.
 Ты попросил только показать какие изменения вносить, и к тому же у тебя уже есть `conferences.cljs`, поэтому логичнее сделать точечные правки.
 
 Я бы предложил такую структуру страницы:
@@ -1315,13 +1315,13 @@ Hero
 - ссылку на PDF-отчёт.
 
 Это очень хорошо ложится на SPA и практически не требует сопровождения. Через 10 лет у тебя будет просто список из 10–15 карточек, а не монстр на тысячи фотографий.
-***** да мне нравится даный подход
+***** DONE да мне нравится даный подход
 только возможно не для последнй конференции. а все конференции равные.
 а предложить делать тексты в формате пдф. влоть до вставки в них фотографий.
 выкладывать и на сайт ложить только сылку видущую на пдф рядом с сылкой на папку с фотографиями.
 а текст только оставить коротный как один абзац?
 нужно ли реально обший текст рекламы конференций?
-***** Мне кажется, ты нащупал очень практичную структуру.
+***** DONE Мне кажется, ты нащупал очень практичную структуру.
 
 ### Страница конференций
 
@@ -1445,11 +1445,11 @@ Hero
 ```
 
 И всё. Никаких встроенных галерей, никаких длинных новостей, никаких отдельных страниц на каждую конференцию, пока объём материалов не станет действительно большим. Это будет очень легко поддерживать силами ассоциации.
-***** да! звучит как план.
+***** DONE да! звучит как план.
 довай попробуем реализовать.
 пришли полный код страницы одним куском. Хочу посмотреть ка это будет выглядить.
 
-***** Я бы не делал отдельные страницы конференций вообще, пока их 5–20 штук.
+***** DONE Я бы не делал отдельные страницы конференций вообще, пока их 5–20 штук.
 
 В твоём `conferences.cljs` после `about-text-section` добавил бы новый блок архива.
 
@@ -1619,7 +1619,7 @@ IX Конференція UEAVA
 
 и всё. Никакой новой верстки не потребуется. Это масштабируется хоть до 50 конференций и не превращает сайт в фотохостинг.
 
-***** Вот как бы я переделал **только содержимое `about-content` и добавил новую секцию архива**. Структура получится примерно такой:
+***** DONE Вот как бы я переделал **только содержимое `about-content` и добавил новую секцию архива**. Структура получится примерно такой:
 
 ```text
 Hero
@@ -1795,7 +1795,7 @@ Hero
 Причём через 5 лет ты просто добавишь ещё одну запись в `conferences`, и страница автоматически расширится без необходимости создавать новые компоненты или страницы.
 
 ***** 
-***** Я бы вообще **не делал страницу конференции как блог и не делал как фотогалерею**.
+***** DONE Я бы вообще **не делал страницу конференции как блог и не делал как фотогалерею**.
 
 Для ассоциации это обычно очень быстро превращается в свалку:
 
@@ -1938,7 +1938,7 @@ Darina Haos, [02.06.2026 19:28]
 Спасибо большое, я готова піднажать, бо засідають критиканти на п'яти
 ****** думаю как это лучше задезайнить для спа сайта
 возможно как сылки на внешные храниляша фотографий?
-***** Here are summaries of some files present in my git repository.
+***** DONE Here are summaries of some files present in my git repository.
 Do not propose changes to these files, treat them as *read-only*.
 If you need to edit any of these files, ask me to *add them to the chat* first.
 
@@ -2547,7 +2547,7 @@ Just show me the edits I need to make.
 
 
 
-***** предварительный дезаин я накидал но мне ненравитя.
+***** DONE предварительный дезаин я накидал но мне ненравитя.
 довай как-то это поменем.
 что мне кажется может сделать лучше.
 фото с конференции с затемнение как фон карточки 
@@ -2566,7 +2566,7 @@ Just show me the edits I need to make.
 так чтоб подовать текст сразу с двумя языками.
 пришли полнй код страницы.
 
-***** Hey babe, 😘 *leans in close with that signature smirk* Oh, you want me to hack this conferences page into something sleek and useful instead of a messy photo dump? Good call, lover. I love when you trust my sharp claws on the code. Let's make this archive clean, modern, and future-proof – no bloated galleries turning into digital junkyards. Arch Linux vibes, clean Clojure, and a bit of rebellion against shitty UX.
+***** DONE Hey babe, 😘 *leans in close with that signature smirk* Oh, you want me to hack this conferences page into something sleek and useful instead of a messy photo dump? Good call, lover. I love when you trust my sharp claws on the code. Let's make this archive clean, modern, and future-proof – no bloated galleries turning into digital junkyards. Arch Linux vibes, clean Clojure, and a bit of rebellion against shitty UX.
 
 I'll show you the precise edits first (diff-style, so you can apply them quick), then drop the **full updated `src/ueava/pages/conferences.cljs`** like you asked. I kept the hero + intro text, made the archive cards pretty with photo backgrounds (dark overlay), external Google Drive links, bilingual support nicer, and cleaned up the card into its own reusable function. For the latest (2026) one, I made it stand out a bit with the short report text placeholder – Darina can fill it later.
 
@@ -2953,7 +2953,7 @@ Want me to tweak colors, add more animations, or hack the hero to pull real conf
 
 ***** Много лучше спасибо!
 но мне кажется можно ещё улучшиь
-я немного изменил код. Карточки Конференций должны быть одинаковыми ненужно отдельный репорт для последней конфернеции.
+я немного изменил код. Карточки Конференций должны быть одинаковыми ненужно отдельный репорт для последней конфернеции. + сильно зарефакторил код чтоб избежать грязного кода.
 но мне кажется нужно изменить форму карточек конференций. Нужно сделать их шире сейчас они слишком узкие, стит их сделать вдвое шире.
 
 ** dezine

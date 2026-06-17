@@ -27,10 +27,6 @@
     :city "Київ"
     ;; :city {:en "Kyiv" :uk "Київ"}
     :title-foto "url('img/ueava-about-team.webp')"
-    :title-uk "IX Конференція UEAVA"
-    :title-en "IX UEAVA Conference"
-    :text-uk "Конференція, присвячена сучасним підходам у ветеринарній медицині, безперервному професійному розвитку та співпраці фахівців."
-    :text-en "Conference dedicated to modern approaches in veterinary medicine, continuing education and professional collaboration."
     :title {:en "IX UEAVA Conference"
             :uk "IX Конференція UEAVA"}
     :text {:en "Conference dedicated to modern approaches in veterinary medicine, continuing education and professional collaboration."
@@ -41,35 +37,25 @@
     :city "Львів"
     ;; :city {:en "Lviv" :uk "Львів"}
     :title-foto "url('img/ueava-about-team.webp')"
-    :title-uk "VIII Конференція UEAVA"
-    :title-en "VIII UEAVA Conference"
     :title {:en "VIII UEAVA Conference"
             :uk "VIII Конференція UEAVA"}
     :text {:en "Annual gathering of veterinary professionals focused on practical experience and current industry challenges."
            :uk "Щорічна зустріч ветеринарних фахівців, присвячена обміну практичним досвідом та сучасним викликам галузі."}
-    :text-uk "Щорічна зустріч ветеринарних фахівців, присвячена обміну практичним досвідом та сучасним викликам галузі."
-    :text-en "Annual gathering of veterinary professionals focused on practical experience and current industry challenges."
     :pdf "#"
     :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}  ;; same folder or separate
    {:year "2024"
     :city "Дніпро"
     ;; :city {:en "Lviv" :uk "Дніпро"}
     :title-foto "url('img/ueava-about-team.webp')"
-    :title-uk "VII Конференція UEAVA"
-    :title-en "VII UEAVA Conference"
     :title {:en "VII UEAVA Conference"
             :uk "VII Конференція UEAVA"}
     :text {:en "Presentations, discussions and educational sessions for veterinary practitioners."
            :uk "Доповіді, дискусії та освітні заходи для практикуючих ветеринарних лікарів."}
-    :text-uk "Доповіді, дискусії та освітні заходи для практикуючих ветеринарних лікарів."
-    :text-en "Presentations, discussions and educational sessions for veterinary practitioners."
     :pdf "#"
     :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}])
 
 (defn conference-card [conf]
-  (let [t #(@lang (% conf))
-       title (if (= @lang :uk) (:title-uk conf) (:title-en conf))
-        text (if (= @lang :uk) (:text-uk conf) (:text-en conf))]
+  (let [t #(@lang (% conf))]
     [:div
      {:class "group relative bg-white rounded-3xl shadow-xl overflow-hidden h-full flex flex-col hover:-translate-y-1 transition-all duration-300"}
      ;; Photo background with dark overlay
@@ -80,9 +66,9 @@
       [:div {:class "text-sm uppercase tracking-widest text-ueava-brown-700 mb-3"}
        (str (:city conf) " • " (:year conf))]
       [:h3 {:class "text-2xl font-bold mb-4 text-ueava-brown"}
-       title]
+       (t :title)]
       [:p {:class "text-gray-700 leading-relaxed mb-6 flex-1"}
-       text]
+       (t :text)]
       [:div {:class "flex flex-wrap gap-3 mt-auto pt-4"}
        [:a {:href (:photos conf)
             :target "_blank"
