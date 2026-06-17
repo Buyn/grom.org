@@ -21,11 +21,9 @@
 (defn tr [k]
   (get-in about-content [@lang k]))
 
-;; Updated conferences data - easy to extend
 (def conferences
   [{:year "2026"
-    :city "Київ"
-    ;; :city {:en "Kyiv" :uk "Київ"}
+    :city {:en "Kyiv" :uk "Київ"}
     :title-foto "url('img/ueava-about-team.webp')"
     :title {:en "IX UEAVA Conference"
             :uk "IX Конференція UEAVA"}
@@ -33,9 +31,9 @@
            :uk "Конференція, присвячена сучасним підходам у ветеринарній медицині, безперервному професійному розвитку та співпраці фахівців."}
     :pdf "#"  ;; replace with real PDF when ready
     :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}
+
    {:year "2025"
-    :city "Львів"
-    ;; :city {:en "Lviv" :uk "Львів"}
+    :city {:en "Lviv" :uk "Львів"}
     :title-foto "url('img/ueava-about-team.webp')"
     :title {:en "VIII UEAVA Conference"
             :uk "VIII Конференція UEAVA"}
@@ -43,9 +41,9 @@
            :uk "Щорічна зустріч ветеринарних фахівців, присвячена обміну практичним досвідом та сучасним викликам галузі."}
     :pdf "#"
     :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}  ;; same folder or separate
+
    {:year "2024"
-    :city "Дніпро"
-    ;; :city {:en "Lviv" :uk "Дніпро"}
+    :city {:en "Dnipro" :uk "Дніпро"}
     :title-foto "url('img/ueava-about-team.webp')"
     :title {:en "VII UEAVA Conference"
             :uk "VII Конференція UEAVA"}
@@ -64,7 +62,7 @@
       [:div {:class "absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"}]]
      [:div {:class "p-8 flex-1 flex flex-col"}
       [:div {:class "text-sm uppercase tracking-widest text-ueava-brown-700 mb-3"}
-       (str (:city conf) " • " (:year conf))]
+       (str (t :city) " • " (:year conf))]
       [:h3 {:class "text-2xl font-bold mb-4 text-ueava-brown"}
        (t :title)]
       [:p {:class "text-gray-700 leading-relaxed mb-6 flex-1"}
