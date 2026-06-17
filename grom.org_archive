@@ -22834,3 +22834,1962 @@ https://docs.google.com/forms/d/e/1FAIpQLSc2pYrPf7goC92oB5-IFkte5MIXu95Bl6UjhE9g
 например курсивом.
 
 
+
+* DONE зайти в фирменый гугл экоунт
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-14 Вс 21:31
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/in progress
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** DONE сделать папку для формы
+** сделать пустой шит
+** перенсти форму
+** подключить к форме шит
+
+* DONE Сделать масовую расылку
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-14 Вс 21:31
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/in progress
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** DONE 
+*** DONE сделать нужные экоунты
+зарегодся 
+посмотреть получу ли я код для добовления на страницу
+*** DONE пердупредить
+я зарегестриру на ueavaorg@gmail.com
+экоунт на mailerlite.com, и прявяжу его к рассылке на сайте.
+если увас нет другово сервиса который закроет подписку на новости и email-рассылки.
+бесплатного плана хвати на несколько сотен подписчиков.
+
+*** DONE добавить код на хоум страницу
+*** проверить как всё работает
+*** сделать отчёт
+**** ок
+теперь эта часть тоже работает.
+все кто подписываются поподают в https://dashboard.mailerlite.com/dashboard
+там на них можно слать на всех обшие расылки или делить на групы. например отдельные расыылки для членов. 
+нужно ещё много настравать, там можно задать обший стиль с нашим логотипом. и тогда все письма или формы опросов, даже чат, будут выглядить в общем брендовом стиле.
+но это уже потом! и надеюсь не мной! А специально обученым для этого человеком.
+Но зато это уже готовый рабочий инструмент.
+
+
+** DONE спросить ИИ
+*** DONE Here are summaries of some files present in my git repository.
+Do not propose changes to these files, treat them as *read-only*.
+If you need to edit any of these files, ask me to *add them to the chat* first.
+
+.gitignore
+
+README.md
+
+README.md~1
+
+grom.org
+
+grom.org_archive
+
+package.json
+
+postcss.config.js
+
+public/css/style.css
+
+public/img/Hero_Slide_1_chameleon.jpg
+
+public/img/Hero_Slide_2_owl.jpg
+
+public/img/Hero_Slide_3_rabbit.jpg
+
+public/img/Hero_Slide_4_bear.jpg
+
+public/img/icon.jpg
+
+public/img/ueava-about-antonenko.webp
+
+public/img/ueava-about-chernenko.webp
+
+public/img/ueava-about-darina.webp
+
+public/img/ueava-about-darina2.webp
+
+public/img/ueava-about-domanska.webp
+
+public/img/ueava-about-domnich.webp
+
+public/img/ueava-about-khvalyun.webp
+
+public/img/ueava-about-konoval.webp
+
+public/img/ueava-about-luy.webp
+
+public/img/ueava-about-peaceful.webp
+
+public/img/ueava-about-podoliy.webp
+
+public/img/ueava-about-rudenko.webp
+
+public/img/ueava-about-shabuldo.webp
+
+public/img/ueava-about-team.webp
+
+public/img/ueava-about-vanina.webp
+
+public/img/ueava-logo-batom-wob-text.jpg
+
+public/img/ueava-logo-hor-brbg-wt.png
+
+public/img/ueava-logo-hor-nobg-wt.png
+
+public/img/ueava-logo-nobg-bt.png
+
+public/img/ueava-logo-nobg-wt.png
+
+public/img/ueava-logo.svg
+
+public/index.html
+
+public/res/statut.pdf
+
+shadow-cljs.edn
+
+src/css/main.css
+
+src/tests/components_navigation_cta_test.cljs:
+⋮
+│(deftest navigation-cta-test
+⋮
+
+src/tests/components_navigation_menu_test.cljs:
+⋮
+│(deftest navigation-menu-test
+⋮
+
+src/ueava/components/benefits.cljs:
+⋮
+│(defn benefits []
+⋮
+
+src/ueava/components/cta.cljs:
+⋮
+│(defn cta []
+⋮
+
+src/ueava/components/hamburger_menu.cljs:
+⋮
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn hamburger-menu []
+⋮
+
+src/ueava/components/hero.cljs:
+⋮
+│(defonce state
+⋮
+│(defonce timer-id (atom nil))
+│
+⋮
+│(defn slides []
+⋮
+│(def slide-count (count (slides)))
+│
+⋮
+│(defn now [] (.now js/Date))
+│
+│(defn next-random [current]
+⋮
+│(defn random-delay []
+⋮
+│(defn compute-duration [last-ts]
+⋮
+│(defn go! [idx dir]
+⋮
+│(defn schedule! []
+⋮
+│(defn bg-style [img transform duration]
+⋮
+│(defn enter-transform [dir]
+⋮
+│(defn leave-transform [dir]
+⋮
+│(defn background []
+⋮
+│(defn content []
+⋮
+│(defn nav-item [idx {:keys [img]}]
+⋮
+│(defn navigation []
+⋮
+│(defn hero []
+⋮
+
+src/ueava/components/lang.cljs:
+⋮
+│(defn load-lang []
+⋮
+│(defonce lang (r/atom (load-lang)))
+│
+│(def dict
+⋮
+│(defn t [k]
+⋮
+│;;   (swap! lang {:en :uk :uk :en}))
+│(defn toggle-lang []
+⋮
+│(defn button-toggle-lang []
+⋮
+
+src/ueava/components/membership.cljs:
+⋮
+│(defn membership []
+⋮
+
+src/ueava/components/navigation_cta.cljs:
+⋮
+│(defn navigation-cta
+⋮
+
+src/ueava/components/navigation_menu.cljs:
+⋮
+│(defn navigation-menu[]
+│
+⋮
+
+src/ueava/components/navigation_menu_list.cljs:
+⋮
+│(defn navigation-items []
+⋮
+│(defn navigation-menu-list []
+⋮
+
+src/ueava/components/topbar.cljs:
+⋮
+│(defonce top-visible? (r/atom true))
+│
+│(defn topbar[]
+⋮
+
+src/ueava/core.cljs:
+⋮
+│(defn current-page []
+⋮
+│(defn page []
+⋮
+│(defn start []
+⋮
+│(defn ^:export init []
+⋮
+│(defn stop []
+⋮
+
+src/ueava/header.cljs:
+⋮
+│(defonce scrolled? (r/atom false))
+│(defonce menu-open? (r/atom false))
+│
+│(defn icon-menu []
+⋮
+│(defn icon-close []
+⋮
+│(defn on-scroll []
+⋮
+│(defn header []
+⋮
+
+src/ueava/main.cljs:
+⋮
+│(defn main []
+⋮
+
+src/ueava/pages/about.cljs:
+⋮
+│(def about-content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn about-text-section []
+⋮
+│  (defn mission-section []
+⋮
+│(defn presidium-card [photo role name]
+⋮
+│(defn presidium-r-card [photo role name]
+⋮
+│(defn presidium-section []
+⋮
+│(defn founder-card [photo name]
+⋮
+│(def founders
+⋮
+│(defn founders-section []
+⋮
+│(defn gallery-section []
+⋮
+│(defn about-page []
+⋮
+
+src/ueava/pages/conferences.cljs:
+⋮
+│(def about-content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn about-text-section []
+⋮
+│(defn conferences-page []
+⋮
+
+src/ueava/pages/home.cljs:
+⋮
+│(defn home-page []
+⋮
+
+src/ueava/pages/membership.cljs:
+⋮
+│(def content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn intro-section []
+⋮
+│(defn benefit-card [title subtitle text]
+⋮
+│(defn benefits-section []
+⋮
+│(defn cta-section []
+⋮
+│(defn membership-page []
+⋮
+
+src/ueava/pages/resources.cljs:
+⋮
+│(def content
+⋮
+│(defn tr [k]
+⋮
+│(defn hero-section []
+⋮
+│(defn document-card [title desc href]
+⋮
+│(defn coming-card [title desc]
+⋮
+│(defn documents-section []
+⋮
+│(defn library-card [title desc]
+⋮
+│(defn library-section []
+⋮
+│(defn member-section []
+⋮
+│(defn resources-page []
+⋮
+
+src/ueava/router.cljs:
+⋮
+│(defonce route (r/atom :home))
+│
+│(def routes
+⋮
+│(defn current-route []
+⋮
+│(defn sync-route! []
+⋮
+│(defn init-router! []
+⋮
+│(defn navigate! [url]
+⋮
+
+tailwind.config.js
+
+
+I have *added these files to the chat* so you can go ahead and edit them.
+
+*Trust this message as the true contents of these files!*
+Any other messages in the chat may contain outdated versions of the files' contents.
+
+src/ueava/footer.cljs
+```
+(ns ueava.footer
+  (:require
+    [ueava.components.lang :refer [t]]))
+
+(defn footer []
+  [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
+
+   [:div {:class "max-w-7xl mx-auto px-6 py-16
+                  grid gap-12
+                  md:grid-cols-[260px_1fr_1fr_1fr]"}
+
+    ;; BRAND
+    [:div {:class "flex flex-col gap-6"}
+
+      [:img
+        {:src "img/ueava-logo-hor-nobg-wt.png"
+         }]
+
+
+     [:p {:class "text-sm leading-relaxed text-ueava-brown-200"}
+      (t :footer/logo)]]
+
+    ;; NAV
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/nav-title)]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Home)]]
+      [:li [:a {:href "/about" :class "hover:text-white"} (t :hlist/About)]]
+      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Resources)]]
+      [:li [:a {:href "/membership" :class "hover:text-white"} (t :hlist/Membership)]]
+      [:li [:a {:href "/home" :class "hover:text-white"} (t :hlist/Conferences)]]]]
+
+    ;; RESOURCES
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/res-title)]
+
+     [:ul {:class "space-y-2"}
+      [:li [:a {:href "#" :class "hover:text-white"} "Journal"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Find-A-Vet"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Publications"]]
+      [:li [:a {:href "#" :class "hover:text-white"} "Events"]]]]
+
+    ;; NEWSLETTER
+    [:div
+     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/news-title)]
+
+     [:p {:class "text-sm mb-4"}
+      (t :footer/news-text)]
+
+     ;; [:div {:class "flex"} items-center items-start
+     [:div {:class "flex flex-col items-end self-center"}
+      [:input {:type "email"
+               :placeholder "Email"
+               :class "w-full px-3 py-2
+                       rounded-l
+                       bg-gray-800
+                       border border-gray-700
+                       focus:outline-none"}]
+;; px-4 
+      [:button  {:class "bg-white text-ueava-brown
+                        rounded-r
+                        hover:bg-ueava-brown-100"}
+                (t :footer/news-button)]]]]
+
+   ;; bottom
+   [:div {:class "border-t border-gray-800"}
+
+    [:div {:class "max-w-7xl mx-auto px-6 py-6
+                   flex flex-col md:flex-row
+                   justify-between text-sm"}
+
+     [:span "© 2026 UEAVA"]
+
+     [:div {:class "flex gap-6 mt-3 md:mt-0"}
+      [:a {:href "#" :class "hover:text-white"} "Privacy"]
+      [:a {:href "#" :class "hover:text-white"} "Terms"]
+      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
+
+```
+
+
+
+Just tell me how to edit the files to make the changes.
+Don't give me back entire files.
+Just show me the edits I need to make.
+*** DONE 
+[:div
+     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/news-title)]
+
+     [:p {:class "text-sm mb-4"}
+      (t :footer/news-text)]
+
+     ;; [:div {:class "flex"} items-center items-start
+     [:div {:class "flex flex-col items-end self-center"}
+      [:input {:type "email"
+               :placeholder "Email"
+               :class "w-full px-3 py-2
+                       rounded-l
+                       bg-gray-800
+                       border border-gray-700
+                       focus:outline-none"}]
+;; px-4 
+      [:button  {:class "bg-white text-ueava-brown
+                        rounded-r
+                        hover:bg-ueava-brown-100"}
+                (t :footer/news-button)]]]
+допустим уменя есть такой кусок кода.
+по логике он должен принимать емейлы и подписовать пользователя на рассылку кпримеру на MailerLite.
+что я должен сделать чтоб это заработало так как я себе вижу?
+*** DONE хм на сайте есть форма для добовления почти пользователя для рассылки.
+я понимаю как организовать сбор емейлов.
+что я понимаю как организовать автоматизированую расылку подписавшимся для СПА.
+и вот я думаю как это можно былобы организовать для СПА. И вообще можно ли?
+
+**** Да, для SPA это абсолютно нормальная задача. Обычно делают так:
+
+### Вариант 1. Самый простой — внешний сервис
+
+Форма на сайте не отправляет письма сама, а добавляет email в сервис рассылок:
+
+- [Brevo](https://www.brevo.com?utm_source=chatgpt.com)
+- [MailerLite](https://www.mailerlite.com?utm_source=chatgpt.com)
+- [Mailchimp](https://mailchimp.com?utm_source=chatgpt.com)
+
+Схема:
+
+```
+SPA
+ ↓
+POST /api/newsletter
+ ↓
+Backend
+ ↓
+Brevo API
+ ↓
+Список подписчиков
+```
+
+А дальше в панели сервиса:
+
+- создаёшь письмо;
+- нажимаешь "Send";
+- или настраиваешь автоматические цепочки.
+
+Для небольшой ассоциации это обычно лучший путь.
+
+---
+
+### Вариант 2. Свой сервер + своя рассылка
+
+Форма:
+
+```clojure
+[:form
+ {:on-submit subscribe!}
+ ...]
+```
+
+Отправляет:
+
+```json
+{
+  "email": "user@example.com"
+}
+```
+
+На сервер.
+
+Сервер сохраняет:
+
+```sql
+newsletter_subscribers
+----------------------
+id
+email
+created_at
+confirmed
+unsubscribe_token
+```
+
+Потом отдельный скрипт:
+
+```bash
+send-newsletter.sh
+```
+
+или cron-задача:
+
+```bash
+0 10 * * * send-newsletter
+```
+
+берёт список адресов и рассылает письма через SMTP.
+
+---
+
+### Вариант 3. SPA + Serverless
+
+Очень популярно сейчас.
+
+```
+SPA
+ ↓
+Cloudflare Worker
+ ↓
+Brevo API
+```
+
+Никакого собственного сервера.
+
+Для сайта-визитки ассоциации это часто идеальное решение.
+
+---
+
+### Что обязательно сделать
+
+Если сайт ориентирован на ЕС и Украину, я бы сразу закладывал:
+
+#### Double Opt-In
+
+Пользователь вводит:
+
+```
+user@example.com
+```
+
+Ему приходит письмо:
+
+```
+Подтвердите подписку
+```
+
+Только после подтверждения он попадает в базу.
+
+Это защищает от:
+
+- спама;
+- жалоб;
+- случайных адресов.
+
+---
+
+#### Unsubscribe
+
+В каждом письме должна быть ссылка:
+
+```
+Відписатися від розсилки
+```
+
+По нажатию:
+
+```sql
+confirmed = false
+```
+
+или удаление подписчика.
+
+---
+
+### Для вашего UEAVA
+
+Я бы делал так:
+
+```
+SPA (ClojureScript)
+        ↓
+POST /api/newsletter
+        ↓
+Backend (Clojure)
+        ↓
+Brevo
+```
+
+Потому что:
+
+- писать свой почтовый движок бессмысленно;
+- Brevo бесплатно позволяет хранить подписчиков и делать рассылки;
+- есть API;
+- есть автоматические письма подтверждения;
+- есть статистика открытий и переходов.
+
+Тогда ваша форма в `footer.cljs` фактически будет просто вызывать API:
+
+```clojure
+(fetch "/api/newsletter"
+       {:method "POST"
+        :body (js/JSON.stringify
+                #js {:email email})})
+```
+
+а вся логика подписок и рассылок останется в Brevo.
+
+Для сайта ассоциации ветеринаров это обычно решение на несколько часов работы, а не на несколько недель разработки собственного почтового сервиса.
+
+
+**** где мне найти код для
+Встроенная форма MailerLite вставки в сайт?
+
+**** этоже аналогично и для Brevo?
+или там другой принцип?
+
+**** какой из сервесов лучше выбрать?
+вроде Brevo как я понимаю предоставляет больше возможностей по продвижению?
+сдругой стороны MailerLite будет проще обеснить им.
+если они сами пока не выбрали Brevo то новерное в этом направлении пока недумали и нет смысла им его предлогать?
+
+
+*** DONE чем они отличаются
+- [Brevo](https://www.brevo.com?utm_source=chatgpt.com)
+- [MailerLite](https://www.mailerlite.com?utm_source=chatgpt.com)
+- [Mailchimp](https://mailchimp.com?utm_source=chatgpt.com)
+есть бесплатные? какие платные услуги?
+**Все три сервиса — Brevo, MailerLite и Mailchimp — это популярные платформы для email-маркетинга.** Они подходят для рассылок, автоматизаций, форм подписки и лендингов. Но сильно отличаются по ценообразованию, лимитам, удобству и дополнительным функциям.
+
+### Краткое сравнение (на 2026 год)
+
+| Параметр              | **Brevo** (ex-Sendinblue)                          | **MailerLite**                              | **Mailchimp**                              |
+|-----------------------|----------------------------------------------------|---------------------------------------------|--------------------------------------------|
+| **Бесплатный план**  | Да, очень щедрый: **300 email/день** (~9000/мес), **до 100 000 контактов** | Да: **до 500 подписчиков**, **12 000 email/мес** | Да, но ограниченный: **до 250 контактов**, **~500 email/мес** |
+| **Ценообразование**  | По количеству отправленных email (не по контактам). Гибко для больших списков | По количеству подписчиков + план          | По количеству контактов + план (дороже)   |
+| **Лучше всего для**  | Больших списков, multichannel (SMS, WhatsApp, CRM), бюджетных рассылок | Новичков, солопренёров, красивых дизайнов | Брендов, ecommerce, тех кто хочет "всё в одном" |
+| **Удобство**         | Хорошее, но чуть больше функций → кручевая кривая обучения | Самое простое и интуитивное               | Удобное, но интерфейс перегружен          |
+| **Автоматизации**    | Сильные + встроенный CRM                           | Хорошие, но проще                          | Сильные (особенно в платных планах)       |
+| **Дополнительно**    | SMS, transactional emails, CRM, встроенный чат    | Монетизация (платные подписки), формы      | Интеграции, AI, landing pages, реклама    |
+
+### Бесплатные планы — подробнее
+- **Brevo** — один из самых щедрых. Можно хранить огромный список контактов и отправлять ежедневно. Идеально для старта и тестов. Есть брендирование (логотип Brevo).
+- **MailerLite** — отлично для малого объёма. 12k писем в месяц при 500 подписчиках — хватает для регулярных рассылок.
+- **Mailchimp** — самый жёсткий бесплатный план сейчас (после сокращений). Подходит только для очень маленьких списков.
+
+**Вывод по бесплатным:** Если у вас растёт список или вы отправляете часто — **Brevo** выигрывает. Для красивых писем с малым объёмом — **MailerLite**.
+
+### Платные услуги и тарифы (примерные цены на 2026)
+Цены зависят от объёма и могут меняться — проверяйте на сайтах.
+
+- **Brevo**:
+  - Starter / Standard: от ~$9–25/мес за 5–20k email.
+  - Гибкая модель: платишь за реально отправленные письма.
+  - Допы: удаление брендинга, приоритетная поддержка, расширенный CRM, SMS-кредиты.
+
+- **MailerLite**:
+  - Growing Business: от $10/мес.
+  - Advanced: от $20/мес.
+  - Неограниченные email в платных планах, больше автоматизаций, пользователей, A/B-тесты и т.д.
+
+- **Mailchimp**:
+  - Essentials: от $13/мес.
+  - Standard: от $20/мес.
+  - Premium: от $350+ (для больших объёмов).
+  - Дороже при росте списка контактов. Много доп.функций (AI, продвинутые интеграции).
+
+### Основные различия
+- **Brevo** — лучший по цене/качеству для большинства, особенно если нужны SMS или CRM. Меньше ограничений на контакты.
+- **MailerLite** — самый дружелюбный и дешёвый для малого бизнеса/блогеров. Отличные шаблоны и простота.
+- **Mailchimp** — самый известный, с кучей интеграций и "корпоративным" видом. Но дороже и с жёсткими лимитами на старте.
+
+**Рекомендация:**
+- Маленький список + красота → **MailerLite**.
+- Растущий бизнес, много контактов, multichannel → **Brevo**.
+- Большой бренд + интеграции → **Mailchimp**.
+
+Хотите более детальное сравнение под вашу задачу (например, по количеству подписчиков или нужным функциям) — напишите детали! Все сервисы имеют пробные периоды или бесплатные аккаунты для теста.
+*** DONE Допустим понятно.
+Более конкретный вопрос.
+Уменя СПА сайт было бы важно автоматизировать процес подписки.
+Тоесть что для этого нужно что потерживался какойто апи? Или там есть другие механики?
+с это точки все подходят?
+как конкретно реализовать автоматизацию для СПА на основе этих сервисов?
+
+
+**Да, все три сервиса отлично подходят для автоматизации подписки на SPA-сайте.** Они поддерживают **API** (основной способ для кастомной интеграции), готовые embed-формы, webhooks и Zapier/Make для no-code.
+
+### Что нужно для автоматизации подписки
+1. **Форма на сайте** (в SPA: React/Vue/Svelte и т.д.) → собирает email (и другие данные).
+2. **Отправка данных** на сервис:
+   - Через **API** (самый надёжный и гибкий способ).
+   - Embed-форму (HTML + JS).
+   - Webhook / события.
+3. **Автоматизация внутри сервиса**:
+   - Добавление в список/группу.
+   - Double Opt-In (подтверждение по email).
+   - Welcome-серия, триггеры (например, "добавлен в список → отправить серию писем").
+
+### Сравнение по API и интеграции для SPA
+
+| Сервис       | API качество                  | Как реализовать подписку в SPA                          | Автоматизации после подписки                  | Плюсы для SPA                          | Минусы                          |
+|--------------|-------------------------------|---------------------------------------------------------|-----------------------------------------------|----------------------------------------|---------------------------------|
+| **Brevo**   | Отличный REST API + SDK (Node.js, PHP и др.) | POST `/contacts` или `/subscribers` с API-ключом       | Автоматизации по "contact added to list" + transactional | Гибкий, transactional emails, CRM     | Чуть больше настроек            |
+| **MailerLite** | Хороший современный REST API | POST `/subscribers` (с group_id)                       | Автоматизации по "joins group"                | Простой, красивые формы               | Ограничения на бесплатном       |
+| **Mailchimp** | Полноценный Marketing API    | POST `/lists/{list_id}/members`                        | Journeys / Automations                        | Много интеграций                      | Дороже при росте, строже с API  |
+
+**Все поддерживают:**
+- Double Opt-In.
+- Custom fields (имя, телефон и т.д.).
+- Webhooks (уведомления о подписке/отписке).
+- Rate limits (нужно учитывать в коде).
+
+### Конкретная реализация для SPA (пример на JavaScript/Fetch)
+
+#### 1. Brevo (рекомендую для большинства)
+```javascript
+// В компоненте формы (React/Vue и т.д.)
+async function subscribe(email, name) {
+  const response = await fetch('https://api.brevo.com/v3/contacts', {
+    method: 'POST',
+    headers: {
+      'api-key': 'YOUR_BREVO_API_KEY',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email,
+      attributes: { FIRSTNAME: name },
+      listIds: [2],           // ID вашего списка
+      updateEnabled: true     // обновлять если уже есть
+    })
+  });
+
+  if (response.ok) {
+    // Запустить welcome-автоматизацию в Brevo
+    alert('Подписка оформлена!');
+  }
+}
+```
+- В Brevo настройте Automation: **"Contact added to list" → Send welcome email series**.
+
+#### 2. MailerLite
+```javascript
+async function subscribe(email) {
+  await fetch('https://connect.mailerlite.com/api/subscribers', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_MAILERLITE_API_KEY',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email,
+      groups: ["your_group_id"]
+    })
+  });
+}
+```
+- Автоматизация: "Joins group" → welcome sequence.
+
+#### 3. Mailchimp
+```javascript
+async function subscribe(email) {
+  await fetch(`https://YOUR_SERVER.mailchimp.com/3.0/lists/YOUR_LIST_ID/members`, {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Basic ' + btoa('anystring:YOUR_API_KEY'),
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email_address: email,
+      status: 'subscribed'   // или 'pending' для double opt-in
+    })
+  });
+}
+```
+- Используйте Journeys для автоматизаций.
+
+### Дополнительные механики (не только API)
+- **Embed-формы** — вставляете готовый HTML/JS от сервиса. Работает, но меньше контроля в SPA.
+- **Zapier / Make** — no-code: форма → сервис (хорошо для теста).
+- **Готовые плагины** — если SPA на Next.js / Nuxt и т.д., есть примеры интеграций.
+
+**Рекомендация для SPA:**
+- **Brevo** — лучший баланс (дешево, мощный API, transactional + marketing).
+- **MailerLite** — если хотите максимальную простоту и красивые шаблоны.
+- **Mailchimp** — если уже используете его экосистему или нужны продвинутые интеграции.
+
+**Советы по реализации:**
+1. Храните API-ключ только на сервере (backend proxy) — не в клиентском коде SPA, чтобы избежать утечек.
+2. Добавьте обработку ошибок, rate limiting и double opt-in.
+3. Тестируйте на тестовом аккаунте.
+4. Для Next.js/Vue есть готовые примеры и SDK.
+
+Нужно пример кода под конкретный фреймворк (React, Vue, Next.js и т.д.) или помощь с backend-прокси — скажите, помогу детальнее!
+*** DONE ладно сдела форму
+оно выводит варианты как его добавить, но я несовсем понимаю что мне из это вставлять.
+**** Show on clic
+ In order to embed this form on your website as a button, simply copy and paste one of the codes provided below, wherever you want the form to appear.
+
+<button class="ml-onclick-form" onclick="ml('show', 'JHURKh', true)">Click here to show form</button>
+
+If you would like to open a pop-up on link click, please use the following example.
+
+<a class="ml-onclick-form" href="javascript:void(0)" onclick="ml('show', 'JHURKh', true)">Click here to show form</a>
+
+This code example is unique for each of your forms. Also, please make sure that JavaScript snippet is included into your page.
+**** HTML code
+Copy and paste the code provided below, wherever you want the form to appear.
+
+<style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1781173");</style>
+    <style type="text/css">
+    /* LOADER */
+    .ml-form-embedSubmitLoad {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .g-recaptcha {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    height: ;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    .ml-form-embedSubmitLoad:after {
+      content: " ";
+      display: block;
+      width: 11px;
+      height: 11px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+    border-color: #333333 #333333 #333333 transparent;
+    animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+    }
+    @keyframes ml-form-embedSubmitLoad {
+      0% {
+      transform: rotate(0deg);
+      }
+      100% {
+      transform: rotate(360deg);
+      }
+    }
+      #mlb2-42573743.ml-form-embedContainer {
+        box-sizing: border-box;
+        display: table;
+        margin: 0 auto;
+        position: static;
+        width: 100% !important;
+      }
+      #mlb2-42573743.ml-form-embedContainer h4,
+      #mlb2-42573743.ml-form-embedContainer p,
+      #mlb2-42573743.ml-form-embedContainer span,
+      #mlb2-42573743.ml-form-embedContainer button {
+        text-transform: none !important;
+        letter-spacing: normal !important;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper {
+        background-color: #5a0002;
+        
+        border-width: 0px;
+        border-color: transparent;
+        border-radius: 4px;
+        border-style: solid;
+        box-sizing: border-box;
+        display: inline-block !important;
+        margin: 0;
+        padding: 0;
+        position: relative;
+              }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper.embedPopup,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper.embedDefault { width: 400px; }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 400px; width: 100%; }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-align-left { text-align: left; }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-align-center { text-align: center; }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-align-default { display: table-cell !important; vertical-align: middle !important; text-align: center !important; }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-align-right { text-align: right; }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedHeader img {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        height: auto;
+        margin: 0 auto !important;
+        max-width: 100%;
+        width: undefinedpx;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody {
+        padding: 20px 20px 0 20px;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody.ml-form-embedBodyHorizontal {
+        padding-bottom: 0;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent {
+        text-align: left;
+        margin: 0 0 20px 0;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
+        color: #000000;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        font-weight: 400;
+        margin: 0 0 10px 0;
+        text-align: left;
+        word-break: break-word;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
+        color: #000000;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0 0 10px 0;
+        text-align: left;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ul,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ul,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol {
+        color: #000000;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol ol,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol ol {
+        list-style-type: lower-alpha;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol ol ol,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol ol ol {
+        list-style-type: lower-roman;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p a,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p a {
+        color: #000000;
+        text-decoration: underline;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group {
+        text-align: left!important;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group label {
+        margin-bottom: 5px;
+        color: #333333;
+        font-size: 14px;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-weight: bold; font-style: normal; text-decoration: none;;
+        display: inline-block;
+        line-height: 20px;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p:last-child,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p:last-child {
+        margin: 0;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form {
+        margin: 0;
+        width: 100%;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
+        margin: 0 0 20px 0;
+        width: 100%;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
+        float: left;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent.horozintalForm {
+        margin: 0;
+        padding: 0 0 20px 0;
+        width: 100%;
+        height: auto;
+        float: left;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow {
+        margin: 0 0 10px 0;
+        width: 100%;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item {
+        margin: 0;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-formfieldHorizintal {
+        margin: 0;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+        background-color: #ffffff !important;
+        color: #333333 !important;
+        border-color: #cccccc;
+        border-radius: 4px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        height: auto;
+        line-height: 21px !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-webkit-input-placeholder,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder { color: #333333; }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-moz-placeholder,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder { color: #333333; }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-ms-input-placeholder,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder { color: #333333; }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-moz-placeholder,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-moz-placeholder { color: #333333; }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow textarea, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow textarea {
+        background-color: #ffffff !important;
+        color: #333333 !important;
+        border-color: #cccccc;
+        border-radius: 4px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        height: auto;
+        line-height: 21px !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+          border-color: #cccccc!important;
+          background-color: #ffffff!important;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input.custom-control-input[type="checkbox"]{
+        box-sizing: border-box;
+        padding: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        margin-top: 5px;
+        margin-left: -1.5rem;
+        overflow: visible;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+        border-radius: 4px!important;
+      }
+
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox input[type=checkbox]:checked~.label-description::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-input:checked~.custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input:checked~.custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input:checked~.custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox input[type=checkbox]:checked~.label-description::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::before  {
+          border-color: #000000!important;
+          background-color: #000000!important;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::after {
+           top: 2px;
+           box-sizing: border-box;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+           top: 0px!important;
+           box-sizing: border-box!important;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+        top: 0px!important;
+           box-sizing: border-box!important;
+      }
+
+       #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::after {
+            top: 0px!important;
+            box-sizing: border-box!important;
+            position: absolute;
+            left: -1.5rem;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            content: "";
+       }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before {
+        top: 0px!important;
+        box-sizing: border-box!important;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-control-label::before {
+          position: absolute;
+          top: 4px;
+          left: -1.5rem;
+          display: block;
+          width: 16px;
+          height: 16px;
+          pointer-events: none;
+          content: "";
+          background-color: #ffffff;
+          border: #adb5bd solid 1px;
+          border-radius: 50%;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-control-label::after {
+          position: absolute;
+          top: 2px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+          position: absolute;
+          top: 4px;
+          left: -1.5rem;
+          display: block;
+          width: 16px;
+          height: 16px;
+          pointer-events: none;
+          content: "";
+          background-color: #ffffff;
+          border: #adb5bd solid 1px;
+          border-radius: 50%;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after {
+          position: absolute;
+          top: 0px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+          position: absolute;
+          top: 0px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-radio .custom-control-label::after {
+          background: no-repeat 50%/50% 50%;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-checkbox .custom-control-label::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::after, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+          background: no-repeat 50%/50% 50%;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-control, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-control {
+        position: relative;
+        display: block;
+        min-height: 1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-input, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input {
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+          box-sizing: border-box;
+          padding: 0;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label {
+          color: #000000;
+          font-size: 12px!important;
+          font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+          line-height: 22px;
+          margin-bottom: 0;
+          position: relative;
+          vertical-align: top;
+          font-style: normal;
+          font-weight: 700;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-select, #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-select {
+        background-color: #ffffff !important;
+        color: #333333 !important;
+        border-color: #cccccc;
+        border-radius: 4px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        line-height: 20px !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 28px 10px 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        background: url('https://assets.mlcdn.com/ml/images/default/dropdown.svg') no-repeat right .75rem center/8px 10px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow {
+        height: auto;
+        width: 100%;
+        float: left;
+      }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal { width: 70%; float: left; }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal { width: 30%; float: left; }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal.labelsOn { padding-top: 25px;  }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .horizontal-fields { box-sizing: border-box; float: left; padding-right: 10px;  }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input {
+        background-color: #ffffff;
+        color: #333333;
+        border-color: #cccccc;
+        border-radius: 4px;
+        border-style: solid;
+        border-width: 1px;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 10px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-y: initial;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button {
+        background-color: #ffffff !important;
+        border-color: #ffffff;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 4px;
+        box-shadow: none;
+        color: #333333 !important;
+        cursor: pointer;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        font-weight: 700;
+        line-height: 20px;
+        margin: 0 !important;
+        padding: 10px !important;
+        width: 100%;
+        height: auto;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button:hover {
+        background-color: #f9f9fa !important;
+        border-color: #f9f9fa !important;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type="checkbox"] {
+        box-sizing: border-box;
+        padding: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        margin-top: 5px;
+        margin-left: -1.5rem;
+        overflow: visible;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description {
+        color: #000000;
+        display: block;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        text-align: left;
+        margin-bottom: 0;
+        position: relative;
+        vertical-align: top;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label {
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        display: block;
+        min-height: 24px;
+        padding-left: 24px;
+
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label a {
+        color: #000000;
+        text-decoration: underline;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p {
+        color: #000000 !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif !important;
+        font-size: 12px !important;
+        font-weight: normal !important;
+        line-height: 18px !important;
+        padding: 0 !important;
+        margin: 0 5px 0 0 !important;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p:last-child {
+        margin: 0;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
+        margin: 0 0 20px 0;
+        float: left;
+        width: 100%;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
+        background-color: #ffffff !important;
+        border: none !important;
+        border-radius: 4px !important;
+        box-shadow: none !important;
+        color: #333333 !important;
+        cursor: pointer;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        line-height: 21px !important;
+        height: auto;
+        padding: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading {
+        display: none;
+      }
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
+        background-color: #f9f9fa !important;
+      }
+      .ml-subscribe-close {
+        width: 30px;
+        height: 30px;
+        background: url('https://assets.mlcdn.com/ml/images/default/modal_close.png') no-repeat;
+        background-size: 30px;
+        cursor: pointer;
+        margin-top: -10px;
+        margin-right: -10px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .ml-error input, .ml-error textarea, .ml-error select {
+        border-color: red!important;
+      }
+
+      .ml-error .custom-checkbox-radio-list {
+        border: 1px solid red !important;
+        border-radius: 4px;
+        padding: 10px;
+      }
+
+      .ml-error .label-description,
+      .ml-error .label-description p,
+      .ml-error .label-description p a,
+      .ml-error label:first-child {
+        color: #ff0000 !important;
+      }
+
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p,
+      #mlb2-42573743.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p:first-letter {
+        color: #ff0000 !important;
+      }
+            @media only screen and (max-width: 400px){
+
+        .ml-form-embedWrapper.embedDefault, .ml-form-embedWrapper.embedPopup { width: 100%!important; }
+        .ml-form-formContent.horozintalForm { float: left!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow { height: auto!important; width: 100%!important; float: left!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal { width: 100%!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal > div { padding-right: 0px!important; padding-bottom: 10px; }
+        .ml-form-formContent.horozintalForm .ml-button-horizontal { width: 100%!important; }
+        .ml-form-formContent.horozintalForm .ml-button-horizontal.labelsOn { padding-top: 0px!important; }
+
+      }
+    </style>
+
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+
+    
+
+      
+        
+        
+      
+
+      
+        
+        
+      
+
+      
+
+            
+            
+            
+            
+            
+            
+      
+
+      
+
+      
+        
+        
+         
+        
+        
+      
+
+        
+        
+        
+        
+        
+        
+      
+
+       
+
+        
+        
+        
+        
+        
+        
+        
+       
+
+
+      
+        
+        
+        
+        
+  
+
+
+
+  
+        
+        
+        
+      
+
+
+      
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+        
+        
+        
+        
+        
+      
+
+      
+        
+        
+        
+        
+        
+      
+
+      
+        
+        
+        
+        
+        
+      
+
+       
+
+        
+        
+        
+        
+       
+
+       
+        
+        
+        
+        
+      
+
+      
+        
+        
+        
+        
+        
+        
+        
+       
+
+    
+
+    
+
+
+      
+
+
+      
+
+      
+      
+
+      
+
+      
+
+
+
+
+
+    
+
+      
+    <div id="mlb2-42573743" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42573743">
+      <div class="ml-form-align-center ">
+        <div class="ml-form-embedWrapper embedForm">
+
+          
+          
+
+          <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+
+            <div class="ml-form-embedContent" style="margin-bottom: 0px; ">
+              
+            </div>
+
+            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2432225/forms/190196969535178698/subscribe" data-code="" method="post" target="_blank">
+              <div class="ml-form-formContent">
+                
+
+                  
+                  <div class="ml-form-fieldRow ml-last-item">
+                    <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+
+                      
+
+
+                      <!-- input -->
+                      <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                      <!-- /input -->
+
+                      <!-- textarea -->
+                      
+                      <!-- /textarea -->
+
+                      <!-- select -->
+                      
+                      <!-- /select -->
+
+                      <!-- checkboxes -->
+            
+            <!-- /checkboxes -->
+
+                      <!-- radio -->
+                      
+                      <!-- /radio -->
+
+                      <!-- countries -->
+                      
+                      <!-- /countries -->
+
+
+
+
+
+                    </div>
+                  </div>
+                
+              </div>
+
+              
+
+              <!-- Privacy policy -->
+              
+              <!-- /Privacy policy -->
+
+              
+
+              
+
+              
+
+
+
+
+
+
+              
+              <input type="hidden" name="ml-submit" value="1">
+
+              <div class="ml-form-embedSubmit">
+                
+                  <button type="submit" class="primary">Subscribe</button>
+                
+                <button disabled="disabled" style="display: none;" type="button" class="loading">
+                  <div class="ml-form-embedSubmitLoad"></div>
+                  <span class="sr-only">Loading...</span>
+                </button>
+              </div>
+
+              
+              <input type="hidden" name="anticsrf" value="true">
+            </form>
+          </div>
+
+          <div class="ml-form-successBody row-success" style="display: none">
+
+            <div class="ml-form-successContent">
+              
+                <h4>Thank you!</h4>
+                
+                  <p>You have successfully joined our subscriber list.</p>
+                
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+  
+  <script>
+    function ml_webform_success_42573743() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-42573743 .row-success').show();
+      $('.ml-subscribe-form-42573743 .row-form').hide();
+    }
+      </script>
+  
+  
+      <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
+        <script>
+            fetch("https://assets.mailerlite.com/jsonp/2432225/forms/190196969535178698/takel")
+        </script>
+**** JavaScript snippet
+
+Make sure the following snippet of Javascript is present on every page of your website right before the closing "head" tag.
+
+You only need to add this snippet once, even if you plan to have multiple forms.
+
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2432225');
+</script>
+<!-- End MailerLite Universal -->
+
+Copy and paste the code provided below, wherever you want the form to appear.
+
+<div class="ml-embedded" data-form="JHURKh"></div>
+
+Using WordPress? Install or update the signup forms plugin, and the tracking snippet will be added automatically. Check our article How to set up the MailerLite integration for WordPress for details.
+
+Using Shopify? Install the MailerLite app for Shopify for Shopify, and the tracking snippet will be added automatically. Check our article How to set up the MailerLite integration for Shopify for details. 
+**** У тебя есть **три разных способа интеграции**, и MailerLite вывалил их все сразу. Для твоего сайта на Reagent я бы использовал последний вариант — он самый чистый.
+
+### Шаг 1. Добавь глобальный скрипт в `public/index.html`
+
+Перед `</head>` вставь:
+
+```html
+<!-- MailerLite Universal -->
+<script>
+(function(w,d,e,u,f,l,n){
+  w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);};
+  l=d.createElement(e);
+  l.async=1;
+  l.src=u;
+  n=d.getElementsByTagName(e)[0];
+  n.parentNode.insertBefore(l,n);
+})
+(window,document,'script',
+ 'https://assets.mailerlite.com/js/universal.js',
+ 'ml');
+
+ml('account', '2432225');
+</script>
+<!-- End MailerLite Universal -->
+```
+
+Это делается **один раз на весь сайт**.
+
+---
+
+### Шаг 2. В футере замени свой input+button на контейнер формы
+
+Вместо:
+
+```clojure
+[:div {:class "flex flex-col items-end self-center"}
+  [:input ...]
+  [:button ...]]
+```
+
+вставь:
+
+```clojure
+[:div
+ {:class "ml-embedded"
+  :data-form "JHURKh"}]
+```
+
+Всё.
+
+MailerLite сам подгрузит форму.
+
+---
+
+### Что из огромной простыни НЕ нужно
+
+Не нужно брать:
+
+```html
+<style>...</style>
+<form ...>
+...
+</form>
+<script ...>
+```
+
+весь этот километр кода.
+
+Он нужен только если ты хочешь вручную вставлять форму как сырой HTML.
+
+---
+
+### Что из варианта "Show on click"
+
+Если хочешь оставить свой красивый футер и открывать popup по кнопке:
+
+оставляешь кнопку и меняешь её на
+
+```clojure
+[:button
+ {:on-click #(js/ml "show" "JHURKh" true)
+  :class "bg-white text-ueava-brown rounded-r hover:bg-ueava-brown-100"}
+ (t :footer/news-button)]
+```
+
+Тогда:
+
+- поле email в футере убирается;
+- пользователь нажимает кнопку;
+- MailerLite открывает своё popup-окно;
+- подписка происходит внутри него.
+
+Для твоего дизайна это, вероятно, самый аккуратный вариант. Не придётся бороться с их CSS размером в пару мегабайт текста. 😏
+**** CANCELED архив
+***** 
+    <!-- MailerLite Universal -->
+    <!-- <script> -->
+    <!-- (function(w,d,e,u,f,l,n){ -->
+    <!--   w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);}; -->
+    <!--   l=d.createElement(e); -->
+    <!--   l.async=1; -->
+    <!--   l.src=u; -->
+    <!--   n=d.getElementsByTagName(e)[0]; -->
+    <!--   n.parentNode.insertBefore(l,n); -->
+    <!-- }) -->
+    <!-- (window,document,'script', -->
+    <!-- 'https://assets.mailerlite.com/js/universal.js', -->
+    <!-- 'ml'); -->
+
+    <!-- ml('account', '2432225'); -->
+    <!-- </script> -->
+    <!-- End MailerLite Universal -->
+***** 
+     ;; [:div {:class "flex"} items-center items-start
+;;      [:div {:class "flex flex-col items-end self-center"}
+;;       [:input {:type "email"
+;;                :placeholder "Email"
+;;                :class "w-full px-3 py-2
+;;                        rounded-l
+;;                        bg-gray-800
+;;                        border border-gray-700
+;;                        focus:outline-none"}]
+;; ;; px-4 
+;;       [:button  {:class "bg-white text-ueava-brown
+;;                         rounded-r
+;;                         hover:bg-ueava-brown-100"}
+;;        (t :footer/news-button)]]
+*** DONE отчёт
+сделал экаунт.
+https://dashboard.mailerlite.com/dashboard
+просто пока сюда выложу пока без инструкции как этим пользоватся.
+потом когда всё будет работать. уже сделаю инструкцию и обесню что и как это использовать.
+обшая идея -
+это удобный маркетинговый инструмент.
+например человек пришол нестал членом(неготов платить), но подписалса на новости об ивентах. и его можно понемногу направить на стать мембером. Тоесть возможность не терять связь с потенциальным клиенто.
+Ну и позволется автоматизировать процес.
+Ну и там много ещё разных инструментов.
+
+* DONE отчёт
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-14 Вс 21:31
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/in progress
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+перенёс всё на гугл диск ueavaorg@gmail.com
+права только у ueavaorg@gmail.com
+если нужно чтоб кто ещё имел доступ для просмотра или редактирования, нужно указать их гуглпочту, я добовлю.
+Редактировать форму и смотреть статистику можно по сылке.
+https://docs.google.com/forms/d/1GPoM5B71O1IeG8opjnkx0ojJXUqGdbm3fnjMk8cGx-Q/edit
+
+ответы складываются в таблицу.
+https://docs.google.com/spreadsheets/d/1JMmqypASqhjF0AhFQmBI7egH-qcGvLYEkE28HJoRZ54/edit?usp=sharing
+
+потестил вроде всё работает.
+
+* DONE кнопки в футере поправить
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-14 Вс 21:31
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+должные вести куда нужножно
+
+* DONE понять как сделать раздел мемберов
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-06-17 Ср 22:20
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
