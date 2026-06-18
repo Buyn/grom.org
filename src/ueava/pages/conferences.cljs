@@ -10,6 +10,8 @@
     :pdf-report "PDF Report"
     :photo-album "Photo Album"
     :archive "Conference Archive"
+    :upcoming "Information about upcoming events"
+    :no-upcoming "Information about upcoming events will appear soon. Stay tuned!"
     }
 
    :uk
@@ -19,6 +21,8 @@
     :pdf-report "Звіт PDF"
     :photo-album "Фотоальбом"
     :archive "Архів конференцій"
+    :upcoming "Інформація про майбутні заходи"
+    :no-upcoming "Інформація про наступні заходи з'явиться найближчим часом. Слідкуйте за новинами!"
     }})
 
 (defn tr [k]
@@ -86,27 +90,53 @@
 
 (defn hero-section []
   [:section
-   {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
-   [:div
-    {:class "absolute inset-0 bg-cover bg-center"
-     :style {:background-image "url('img/Hero_Slide_1_chameleon.jpg')"}}]
-   [:div {:class "absolute inset-0 bg-black/60"}]
-   [:div
-    {:class "relative z-10 max-w-4xl text-center text-white px-8"}
-    [:h1 {:class "text-5xl md:text-7xl font-bold mb-6"} (tr :title)]
-    [:p {:class "text-xl md:text-2xl"} (tr :subtitle)]]])
+    {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
+    [:div
+      {:class "absolute inset-0 bg-cover bg-center"
+        :style {:background-image "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+    [:div {:class "absolute inset-0 bg-black/60"}]
+    [:div
+      {:class "relative z-10 max-w-4xl text-center text-white px-8"}
+      [:h1 {:class "text-5xl md:text-7xl font-bold mb-6"} (tr :title)]
+      [:p {:class "text-xl md:text-2xl"} (tr :subtitle)]]])
+
+(def upcoming
+  [{:year "2026"
+    :city {:en "Kyiv" :uk "Київ"}
+    :title-foto "url('img/Hero_Slide_4_bear.jpg')"
+    :title {:en "X UEAVA Conference"
+            :uk "X Конференція UEAVA"}
+    :text {:en "Information about upcoming events will appear soon. Stay tuned!"
+           :uk "Інформація про наступні заходи з'явиться найближчим часом. Слідкуйте за новинами!"}
+    :pdf "#"  ;; replace with real PDF when ready
+    :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}
+   ])
 
 (defn about-text-section []
   [:section {:class "py-20"}
    [:div {:class "max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"}
     [:p (tr :p1)]]])
 
+(defn upcoming-section []
+  [:section {:class "py-20"}
+    [:div {:class "max-w-6xl mx-auto px-8"}
+      [:h2 {:class "text-4xl font-bold text-center mb-12 text-ueava-brown"}
+          (tr :upcoming)]
+
+      (if (= (count upcoming) 0)
+        [:div {:class "max-w-md mx-auto text-center text-gray-600 text-lg"}
+          [:p (tr :no-upcoming)]]
+        [:div {:class "grid md:grid-cols-1 lg:grid-cols-2 gap-10"}
+          (for [conf upcoming]
+            ^{:key (:title conf)}
+            [conference-card conf])])]])
+
 (defn archive-section []
   [:section {:class "py-20 bg-gray-50"}
    [:div {:class "max-w-6xl mx-auto px-8"}
     [:h2 {:class "text-4xl font-bold text-center mb-12 text-ueava-brown"}
      (tr :archive)]
-    [:div {:class "grid md:grid-cols-2 lg:grid-cols-3 gap-8"}
+    [:div {:class "grid md:grid-cols-1 lg:grid-cols-2 gap-10"}
      (for [conf conferences]
        ^{:key (:year conf)}
        [conference-card conf])]]])
@@ -115,4 +145,5 @@
   [:main
    (hero-section)
    (about-text-section)
+   (upcoming-section)
    (archive-section)])
