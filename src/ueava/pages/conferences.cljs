@@ -12,6 +12,8 @@
     :archive "Conference Archive"
     :upcoming "Information about upcoming events"
     :no-upcoming "Information about upcoming events will appear soon. Stay tuned!"
+    :brochure "Brochure"
+    :register "Register"
     }
 
    :uk
@@ -23,6 +25,8 @@
     :archive "Архів конференцій"
     :upcoming "Інформація про майбутні заходи"
     :no-upcoming "Інформація про наступні заходи з'явиться найближчим часом. Слідкуйте за новинами!"
+    :brochure "Брошура"
+    :register "Реєстрація"
     }})
 
 (defn tr [k]
@@ -41,7 +45,7 @@
 
    {:year "2025"
     :city {:en "Lviv" :uk "Львів"}
-    :title-foto "url('img/ueava-about-team.webp')"
+    :title-foto "url('img/ueava-conferences-8.webp')"
     :title {:en "VIII UEAVA Conference"
             :uk "VIII Конференція UEAVA"}
     :text {:en "Annual gathering of veterinary professionals focused on practical experience and current industry challenges."
@@ -51,7 +55,7 @@
 
    {:year "2024"
     :city {:en "Dnipro" :uk "Дніпро"}
-    :title-foto "url('img/ueava-about-team.webp')"
+    :title-foto "url('img/ueava-conferences-7.webp')"
     :title {:en "VII UEAVA Conference"
             :uk "VII Конференція UEAVA"}
     :text {:en "Presentations, discussions and educational sessions for veterinary practitioners."
@@ -82,7 +86,7 @@
                     bg-ueava-brown-900 text-white hover:bg-ueava-brown-800
                     transition font-medium"}
         (if is-upcoming 
-          (if (= @lang :uk) "Реєстрація" "Register")
+          (tr :register)
           (tr :photo-album))]
        [:a {:href (:pdf conf)
             :target "_blank"
@@ -90,7 +94,7 @@
                     border-ueava-brown-900 text-ueava-brown-900 hover:bg-ueava-brown-50
                     transition font-medium"}
         (if is-upcoming 
-          (if (= @lang :uk) "Брошура" "Brochure")
+          (tr :brochure)
           (tr :pdf-report))]]]]))
 
 (defn hero-section []
