@@ -60,7 +60,8 @@
     :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}])
 
 (defn conference-card [conf]
-  (let [t #(@lang (% conf))]
+  (let [t #(@lang (% conf))
+        is-upcoming (contains? conf :upcoming)]
     [:div
      {:class "group relative bg-white rounded-3xl shadow-xl overflow-hidden h-full flex flex-col hover:-translate-y-1 transition-all duration-300"}
      ;; Photo background with dark overlay
@@ -80,13 +81,17 @@
             :class "flex-1 text-center px-6 py-3 rounded-2xl
                     bg-ueava-brown-900 text-white hover:bg-ueava-brown-800
                     transition font-medium"}
-        (tr :photo-album)]
+        (if is-upcoming 
+          (if (= @lang :uk) "Реєстрація" "Register")
+          (tr :photo-album))]
        [:a {:href (:pdf conf)
             :target "_blank"
             :class "flex-1 text-center px-6 py-3 rounded-2xl border
                     border-ueava-brown-900 text-ueava-brown-900 hover:bg-ueava-brown-50
                     transition font-medium"}
-        (tr :pdf-report)]]]]))
+        (if is-upcoming 
+          (if (= @lang :uk) "Брошура" "Brochure")
+          (tr :pdf-report))]]]]))
 
 (defn hero-section []
   [:section
@@ -108,8 +113,9 @@
             :uk "X Конференція UEAVA"}
     :text {:en "Information about upcoming events will appear soon. Stay tuned!"
            :uk "Інформація про наступні заходи з'явиться найближчим часом. Слідкуйте за новинами!"}
+    :upcoming true
     :pdf "#"  ;; replace with real PDF when ready
-    :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}
+    :photos "#"}
    ])
 
 (defn about-text-section []

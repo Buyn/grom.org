@@ -74,7 +74,7 @@
     {:class "relative h-[60vh] flex items-center justify-center overflow-hidden"}
     [:div
       {:class "absolute inset-0 bg-cover bg-center"
-      :style {:background-image "url('img/ueava-about-team.webp')"}}]
+      :style {:background-image "url('img/Hero_Slide_2_owl.jpg')"}}]
     [:div {:class "absolute inset-0 bg-black/60"}]
     [:div
      {:class "relative z-10 max-w-4xl text-center text-white px-8"}

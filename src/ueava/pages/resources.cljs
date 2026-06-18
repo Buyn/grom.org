@@ -88,7 +88,7 @@
    [:div
     {:class "absolute inset-0 bg-cover bg-center"
      :style {:background-image
-             "url('img/ueava-about-team.webp')"}}]
+             "url('img/Hero_Slide_3_rabbit.jpg')"}}]
    [:div {:class "absolute inset-0 bg-black/60"}]
    [:div
     {:class "relative z-10 text-center text-white max-w-4xl px-8"}
