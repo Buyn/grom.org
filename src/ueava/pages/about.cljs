@@ -257,7 +257,8 @@
         "CONFERENCE PHOTO"]]]])
 
 (defn support-section []
-  [:section {:class "py-20 bg-gray-50"}
+  [:section {:class "py-20 bg-gray-50"
+             :id "support"}
    [:div {:class "max-w-4xl mx-auto px-8"}
     [:h2 {:class "text-4xl font-bold text-center mb-10 text-ueava-brown"}
      (tr :support-title)]
