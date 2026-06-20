@@ -208,7 +208,6 @@
                :on-click #(navigate! "#/membership")}
             btn]
      ]))
-     ;; [:button {:class "bg-ueava-brown-600 hover:bg-ueava-brown-700 text-white px-8 py-3 rounded"} btn]]))
 
 ;; ----------------------------
 ;; navigation

@@ -1,6 +1,7 @@
 (ns ueava.pages.resources
   (:require
-   [ueava.components.lang :refer [lang]]))
+    [ueava.router :refer [navigate!]]
+    [ueava.components.lang :refer [lang]]))
 
 (def content
   {:en
@@ -198,10 +199,11 @@
       {:class "text-xl mb-8"}
       (tr :members-desc)]
      [:button
-      {:class
-       "bg-white text-orange-600
-        px-8 py-3 rounded-lg
-        font-semibold"}
+      { :class
+          "bg-white text-orange-600
+            px-8 py-3 rounded-lg
+            font-semibold"
+        :on-click #(navigate! "#/membership")}
       (tr :join)]]]])
 
 (defn resources-page []

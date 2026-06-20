@@ -667,6 +667,14 @@ video {
   margin-top: auto;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .inline-block {
   display: inline-block;
 }
@@ -773,6 +781,10 @@ video {
 
 .max-w-md {
   max-width: 28rem;
+}
+
+.max-w-\[240px\] {
+  max-width: 240px;
 }
 
 .flex-1 {
@@ -904,6 +916,12 @@ video {
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1000,11 +1018,6 @@ video {
   background-color: rgb(74 37 18 / var(--tw-bg-opacity, 1));
 }
 
-.bg-ueava-brown-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(175 95 55 / var(--tw-bg-opacity, 1));
-}
-
 .bg-ueava-brown-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(89 46 23 / var(--tw-bg-opacity, 1));
@@ -1023,6 +1036,11 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
 
 .bg-gradient-to-r {
@@ -1081,6 +1099,14 @@ video {
 
 .p-8 {
   padding: 2rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .px-4 {
@@ -1147,12 +1173,24 @@ video {
   padding-top: 1rem;
 }
 
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
+}
+
 .text-center {
   text-align: center;
 }
 
 .text-right {
   text-align: right;
+}
+
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .text-2xl {
@@ -1371,11 +1409,6 @@ video {
 .hover\:bg-ueava-brown-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(252 241 238 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-ueava-brown-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(146 79 44 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-ueava-brown-800:hover {

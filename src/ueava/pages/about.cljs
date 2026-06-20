@@ -41,7 +41,17 @@
     :board-member "Board Member"
     :board-member-name "Владислав Мирный"
 
-    :founding-members "Founding Members"}
+    :founding-members "Founding Members"
+    :support-title "Support UEAVA"
+    :support-text "Your contribution helps us organize conferences, educational events and develop exotic animal medicine in Ukraine."
+    :donation-annual "Annual membership fee"
+    :donation-voluntary "Voluntary donation"
+    :recipient "Recipient"
+    :iban "IBAN"
+    :edrpou "EDRPOU"
+    :bank "Bank"
+    :mfo "MFO"
+    }
 
    :uk
    {:title "Про UEAVA"
@@ -81,6 +91,18 @@
     :board-member-name "Владислав Мирный"
 
     :founding-members "Співзасновники" ;; Члены-учредители  Співзасновники
+
+
+    :support-title "Підтримати UEAVA"
+    :support-text "Ваш внесок допомагає організовувати конференції, освітні заходи та розвивати медицину екзотичних тварин в Україні."
+    :donation-annual "Щорічний членський внесок"
+    :donation-voluntary "Добровільний внесок"
+    :recipient "Отримувач"
+    :iban "IBAN"
+    :edrpou "ЄДРПОУ"
+    :bank "Банк"
+    :mfo "МФО"
+
     }})
 
 (defn tr [k]
@@ -215,6 +237,7 @@
           [founder-card photo name])
       ]]])
 
+;; not used
 (defn gallery-section []
   [:section
     {:class "py-24"}
@@ -233,6 +256,39 @@
         [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
         "CONFERENCE PHOTO"]]]])
 
+(defn support-section []
+  [:section {:class "py-20 bg-gray-50"}
+   [:div {:class "max-w-4xl mx-auto px-8"}
+    [:h2 {:class "text-4xl font-bold text-center mb-10 text-ueava-brown"}
+     (tr :support-title)]
+    [:p {:class "text-center text-lg text-gray-700 mb-12 max-w-2xl mx-auto"}
+     (tr :support-text)]
+    
+    [:div {:class "bg-white rounded-3xl shadow-xl p-10 max-w-2xl mx-auto"}
+     [:div {:class "space-y-6"}
+      ;; Annual fee
+      [:div
+       [:div {:class "font-semibold text-ueava-brown mb-2"} (tr :donation-annual)]
+       [:div {:class "font-mono text-sm bg-gray-100 p-4 rounded-2xl"} "ГО \"АВЛЕТУ\""]]
+      
+      ;; Voluntary
+      [:div
+       [:div {:class "font-semibold text-ueava-brown mb-2"} (tr :donation-voluntary)]
+       [:div {:class "font-mono text-sm bg-gray-100 p-4 rounded-2xl"} "ГО \"АВЛЕТУ\""]]
+      
+      [:div {:class "pt-6 border-t"}
+       [:p {:class "font-medium mb-4"} (tr :recipient) ": ГО \"АВЛЕТУ\""]
+       [:p {:class "font-mono"} (str (tr :iban) ": UA483220010000026006700003113")]
+       [:p {:class "font-mono"} (str (tr :edrpou) ": 45699124")]
+       [:p {:class "font-mono"} (str (tr :bank) ": АКЦІОНЕРНЕ ТОВАРИСТВО УНІВЕРСАЛ БАНК")]
+       [:p {:class "font-mono"} (str (tr :mfo) ": 322001")]]
+      
+      ;; QR code
+      [:div {:class "text-center pt-8"}
+       [:img {:src "https://bank.gov.ua/qr/QkNECjAwMgoxClVDVAoK0JPQniAi0JDQktCb0JXQotCjIgpVQTQ4MzIyMDAxMDAwMDAyNjAwNjcwMDAwMzExMwoKNDU2OTkxMjQKCgoKCg" 
+              :alt "QR для поповнення"
+              :class "mx-auto rounded-2xl shadow-md max-w-[240px]"}]
+       [:p {:class "text-sm text-gray-500 mt-4"} "Скануйте QR для швидкого внеску"]]]]]])
 
 (defn about-page []
   [:main
@@ -241,5 +297,6 @@
    (mission-section)
    (presidium-section)
    (founders-section)
-   (gallery-section)])
+   (support-section)
+   ])
 

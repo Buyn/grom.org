@@ -1,7 +1,6 @@
 (ns ueava.core
   (:require [reagent.core :as reagent :refer [atom]]
             [ueava.header :refer [header]]
-            [ueava.main :refer [main]]
             [ueava.footer :refer [footer]]
             [ueava.router :refer [route init-router!]]
             [ueava.pages.home :refer [home-page]]
@@ -19,12 +18,6 @@
     :conferences [conferences-page]
     :membership [membership-page]
     [home-page]))
-
-;; (defn page []
-;;   [:div
-;;    [header]
-;;    [main]
-;;    [footer]])
 
 (defn page []
   [:div
