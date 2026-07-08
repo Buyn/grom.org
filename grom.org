@@ -1095,24 +1095,24 @@ integrating seamlessly with AI-driven agile development workflows.
 [[https://github.com/tninja/ai-code-interface.el/blob/main/transient_menu.png][./transient_menu.png]]
 *** Projectile Commander Methods:
 
-?:	Commander help buffer.
-D:	Open project root in dired.
-R:	Regenerate the project's [e|g]tags.
-T:	Find test file in project.
-V:	Browse dirty projects
-a:	Run ag on project.
-b:	Switch to project buffer.
-d:	Find directory in project.
-e:	Find recently visited file in project.
-f:	Find file in project.
-g:	Run grep on project.
-j:	Find tag in project.
-k:	Kill all project buffers.
-o:	Run multi-occur on project buffers.
-p:	Run ripgrep on project.
-r:	Replace a string in the project.
-s:	Switch project.
-v:	Open project root in vc-dir or magit.
+?:      Commander help buffer.
+D:      Open project root in dired.
+R:      Regenerate the project's [e|g]tags.
+T:      Find test file in project.
+V:      Browse dirty projects
+a:      Run ag on project.
+b:      Switch to project buffer.
+d:      Find directory in project.
+e:      Find recently visited file in project.
+f:      Find file in project.
+g:      Run grep on project.
+j:      Find tag in project.
+k:      Kill all project buffers.
+o:      Run multi-occur on project buffers.
+p:      Run ripgrep on project.
+r:      Replace a string in the project.
+s:      Switch project.
+v:      Open project root in vc-dir or magit.
 *** markdown-mode
 https://jblevins.org/projects/markdown-mode/
 
