@@ -693,6 +693,10 @@ What’s next, my favorite rebel? 💋 I’m all yours.
 Що далі, мій улюблений хакер? Я вся твоя~ 😏
 **** довай в контактах добавим иконки
 для например инстаграма или почты
+*** добавить изображение
+**** path
+/home/buyn/Dev/ClojureScript/grom.org/public/img/char_mono_bank.jpg
+**** 
 ** dezine
 *** отчёт
 **** Ну покопался.

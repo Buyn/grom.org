@@ -368,18 +368,19 @@
 
 
 (defn contacts-section []
-  [:section {:class "py-20" :id "contacts"}
+  [:section {:class "py-20 bg-gray-50" :id "contacts"}
    [:div {:class "max-w-4xl mx-auto px-8 text-center"}
     [:h2 {:class "text-4xl font-bold mb-6 text-ueava-brown"} (tr :contacts-title)]
     [:p {:class "text-lg text-gray-700 mb-10"} (tr :contacts-text)]
-    [:div {:class "flex flex-col md:flex-row gap-8 justify-center items-center"}
-     [:a {:href "mailto:ueavaorg@gmail.com"
-          :class "flex items-center gap-3 text-xl hover:text-ueava-brown transition"}
-      "✉️ ueavaorg@gmail.com"]
-     [:a {:href "https://www.instagram.com/_ueava_"
+    [:div
+      {:class "bg-white rounded-3xl shadow-xl p-10 max-w-2xl mx-auto"}
+      [:a {:href "mailto:ueavaorg@gmail.com"
+            :class "flex items-center gap-3 text-xl hover:text-ueava-brown transition"}
+        "email: ✉️ ueavaorg@gmail.com"]
+      [:a {:href "https://www.instagram.com/_ueava_"
           :target "_blank"
           :class "flex items-center gap-3 text-xl hover:text-ueava-brown transition"}
-      "📷 @_ueava_"]]]])
+        "instagram: 📷 @_ueava_"]]]])
 
 (defn payments-section []
   [:section {:class "py-20 bg-gray-50" :id "support"}
@@ -388,7 +389,8 @@
     ;; Regular payments
     [:div {:class "mb-16"}
      [:h3 {:class "text-2xl font-bold mb-8 text-center"} (tr :regular-payments)]
-     [:div {:class "bg-white rounded-3xl shadow-xl p-10 max-w-2xl mx-auto"}
+     [:div
+      {:class "bg-white rounded-3xl shadow-xl p-10 max-w-2xl mx-auto"}
       [:div {:class "font-mono text-sm space-y-4"}
        [:p (str (tr :recipient) ": ГО \"АВЛЕТУ\"")]
        [:p (str (tr :iban) ": UA483220010000026006700003113")]
@@ -402,24 +404,28 @@
      [:div {:class "grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"}
       ;; Universal Bank charity IBAN
       [:div {:class "bg-white rounded-3xl shadow-xl p-8"}
-       [:div {:class "font-semibold text-ueava-brown mb-4"} "Благодійний IBAN"]
-       [:p {:class "font-mono break-all mb-6"} "UA 90 322001 00000 2902 0998 0024 15"]
-       [:div {:class "font-mono text-sm space-y-4"}
-       [:p (str (tr :recipient) ": ГО \"АВЛЕТУ\"")]
-       [:p (str (tr :iban) ": UA483220010000026006700003113")]
-       [:p (str (tr :edrpou) ": 45699124")]
-       [:p (str (tr :bank) ": АКЦІОНЕРНЕ ТОВАРИСТВО УНІВЕРСАЛ БАНК")]
-       [:p (str (tr :mfo) ": 322001")]]]
+        [:div {:class "font-semibold text-ueava-brown mb-4"} "Благодійний IBAN"]
+        [:p {:class "font-mono break-all mb-6"} "UA 9032 2001 00000 29020 99800 2415"]
+        [:div {:class "font-mono text-sm space-y-4"}
+          [:p (str (tr :recipient) ": ГО \"АВЛЕТУ\"")]
+          [:p (str (tr :edrpou) ": 45699124")]
+          [:p (str (tr :bank) ": АКЦІОНЕРНЕ ТОВАРИСТВО УНІВЕРСАЛ БАНК")]
+          [:p (str (tr :mfo) ": 322001")]]]
       
       ;; Monobank jar
-      [:div {:class "bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center justify-center text-center"}
-       [:h4 {:class "font-bold mb-4"} (tr :monobank-jar)]
-       [:a {:href "https://send.monobank.ua/jar/44vwoFdbbA"
-            :target "_blank"
-            :class "block bg-orange-500 hover:bg-orange-600 px-10 py-5
-                    text-white font-medium text-lg
-                    rounded-2xl transition w-full"}
-        "💰 Відкрити банку"]]]]]])
+      [:div {:class " bg-white rounded-3xl shadow-xl p-8 
+                      flex flex-col items-center justify-center 
+                      text-center"}
+        [:h4 {:class "font-bold mb-4"} (tr :monobank-jar)]
+        [:a {:href "https://send.monobank.ua/jar/44vwoFdbbA"
+              :target "_blank"
+              :class "block bg-orange-500 hover:bg-orange-600 px-10 py-5
+                      text-white font-medium text-lg
+                      rounded-2xl transition w-full"}
+        "💰 Відкрити банку"]
+        [:img { :src "img/char_mono_bank.jpg"
+                :alt "monobank QR code"
+         :class "mt-5 rounded-3xl"}]]]]]])
 
 (defn about-page []
   [:main
@@ -428,8 +434,8 @@
    (mission-section)
    (presidium-section)
    (founders-section)
-   (support-section)
-   (support-section-old)
+   ;; (support-section)
+   ;; (support-section-old)
    (contacts-section)
    (payments-section)
    ])
