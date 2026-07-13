@@ -253,119 +253,6 @@
           [founder-card photo name])
       ]]])
 
-;; not used
-(defn gallery-section []
-  [:section
-    {:class "py-24"}
-    [:div
-      {:class "max-w-7xl mx-auto px-8"}
-      [:h2
-        {:class "text-4xl font-bold text-center mb-16"}
-        "Gallery"]
-
-      [:div
-        {:class "grid md:grid-cols-3 gap-8"}
-        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
-        "EVENT PHOTO"]
-        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
-        "LECTURE PHOTO"]
-        [:div {:class "aspect-video bg-gray-300 flex items-center justify-center"}
-        "CONFERENCE PHOTO"]]]])
-
-(defn support-section []
-  [:section {:class "py-20 bg-gray-50" :id "support"}
-   [:div {:class "max-w-4xl mx-auto px-8"}
-    [:h2 {:class "text-4xl font-bold text-center mb-10 text-ueava-brown"}
-     (tr :support-title)]
-    [:p {:class "text-center text-lg text-gray-700 mb-12 max-w-2xl mx-auto"}
-     (tr :support-text)]
-    
-    ;; Contacts block
-    [:div {:class "grid md:grid-cols-2 gap-8 mb-16"}
-     [:div {:class "bg-white rounded-3xl p-8 shadow"}
-      [:h3 {:class "font-bold text-xl mb-6"} (tr :contacts-title)]
-      [:div {:class "space-y-4"}
-       [:a {:href "mailto:ueavaorg@gmail.com"
-            :class "flex items-center gap-3 hover:text-ueava-brown transition"}
-        [:span "✉️"] (tr :email) ": ueavaorg@gmail.com"]
-       [:a {:href "https://www.instagram.com/_ueava_"
-            :target "_blank"
-            :class "flex items-center gap-3 hover:text-ueava-brown transition"}
-        [:span "📷"] (tr :instagram) ": @_ueava_"]]]
-     
-     ;; Monobank quick jar
-     [:div {:class "bg-white rounded-3xl p-8 shadow"}
-      [:h3 {:class "font-bold text-xl mb-4"} (tr :monobank-jar)]
-      [:a {:href "https://send.monobank.ua/jar/44vwoFdbbA"
-           :target "_blank"
-           :class "block bg-orange-500 hover:bg-orange-600 text-white text-center py-4 rounded-2xl font-medium transition"}
-       "💰 Перейти до банки monobank"]]]
-    
-    ;; Bank details
-    [:div {:class "bg-white rounded-3xl shadow-xl p-10"}
-     [:div {:class "space-y-6 text-sm"}
-      [:div
-       [:div {:class "font-semibold text-ueava-brown mb-3"} (tr :donation-annual)]
-       [:div {:class "font-mono bg-gray-100 p-5 rounded-2xl"} "ГО \"АВЛЕТУ\""]]
-      
-      [:div
-       [:div {:class "font-semibold text-ueava-brown mb-3"} (tr :donation-voluntary)]
-       [:div {:class "font-mono bg-gray-100 p-5 rounded-2xl"} "ГО \"АВЛЕТУ\""]]
-      
-      [:div {:class "pt-8 border-t grid gap-3 font-mono text-sm"}
-       [:p (str (tr :recipient) ": ГО \"АВЛЕТУ\"")]
-       [:p (str (tr :iban) ": UA483220010000026006700003113")]
-       [:p (str (tr :edrpou) ": 45699124")]
-       [:p (str (tr :bank) ": АКЦІОНЕРНЕ ТОВАРИСТВО УНІВЕРСАЛ БАНК")]
-       [:p (str (tr :mfo) ": 322001")]]
-      
-      ;; Charity IBAN
-      [:div {:class "pt-6"}
-       [:p {:class "font-semibold text-ueava-brown mb-2"} "Благодійний IBAN"]
-       [:p {:class "font-mono break-all"} "UA 90 322001 00000 2902 0998 0024 15"]]
-      
-      ;; QR
-      [:div {:class "text-center pt-10"}
-       [:img {:src "https://bank.gov.ua/qr/QkNECjAwMgoxClVDVAoK0JPQniAi0JDQktCb0JXQotCjIgpVQTQ4MzIyMDAxMDAwMDAyNjAwNjcwMDAwMzExMwoKNDU2OTkxMjQKCgoKCg"
-              :alt "QR для внеску"
-              :class "mx-auto rounded-2xl shadow-md max-w-[260px]"}]
-       [:p {:class "text-sm text-gray-500 mt-4"} "Скануйте для швидкого платежу"]]]]]])
-
-(defn support-section-old []
-  [:section {:class "py-20 bg-gray-50"
-             :id "support"}
-   [:div {:class "max-w-4xl mx-auto px-8"}
-    [:h2 {:class "text-4xl font-bold text-center mb-10 text-ueava-brown"}
-     (tr :support-title)]
-    [:p {:class "text-center text-lg text-gray-700 mb-12 max-w-2xl mx-auto"}
-     (tr :support-text)]
-    
-    [:div {:class "bg-white rounded-3xl shadow-xl p-10 max-w-2xl mx-auto"}
-     [:div {:class "space-y-6"}
-      ;; Annual fee
-      [:div
-       [:div {:class "font-semibold text-ueava-brown mb-2"} (tr :donation-annual)]
-       [:div {:class "font-mono text-sm bg-gray-100 p-4 rounded-2xl"} "ГО \"АВЛЕТУ\""]]
-      
-      ;; Voluntary
-      [:div
-       [:div {:class "font-semibold text-ueava-brown mb-2"} (tr :donation-voluntary)]
-       [:div {:class "font-mono text-sm bg-gray-100 p-4 rounded-2xl"} "ГО \"АВЛЕТУ\""]]
-      
-      [:div {:class "pt-6 border-t"}
-       [:p {:class "font-medium mb-4"} (tr :recipient) ": ГО \"АВЛЕТУ\""]
-       [:p {:class "font-mono"} (str (tr :iban) ": UA483220010000026006700003113")]
-       [:p {:class "font-mono"} (str (tr :edrpou) ": 45699124")]
-       [:p {:class "font-mono"} (str (tr :bank) ": АКЦІОНЕРНЕ ТОВАРИСТВО УНІВЕРСАЛ БАНК")]
-       [:p {:class "font-mono"} (str (tr :mfo) ": 322001")]]
-      
-      ;; QR code
-      [:div {:class "text-center pt-8"}
-       [:img {:src "https://bank.gov.ua/qr/QkNECjAwMgoxClVDVAoK0JPQniAi0JDQktCb0JXQotCjIgpVQTQ4MzIyMDAxMDAwMDAyNjAwNjcwMDAwMzExMwoKNDU2OTkxMjQKCgoKCg" 
-              :alt "QR для поповнення"
-              :class "mx-auto rounded-2xl shadow-md max-w-[240px]"}]
-       [:p {:class "text-sm text-gray-500 mt-4"} "Скануйте QR для швидкого внеску"]]]]]])
-
 
 (defn contacts-section []
   [:section {:class "py-20 bg-gray-50" :id "contacts"}
@@ -434,8 +321,6 @@
    (mission-section)
    (presidium-section)
    (founders-section)
-   ;; (support-section)
-   ;; (support-section-old)
    (contacts-section)
    (payments-section)
    ])
