@@ -284,7 +284,6 @@
        [:p (str (tr :edrpou) ": 45699124")]
        [:p (str (tr :bank) ": АКЦІОНЕРНЕ ТОВАРИСТВО УНІВЕРСАЛ БАНК")]
        [:p (str (tr :mfo) ": 322001")]]]]
-    
     ;; Charity payments
     [:div
      [:h3 {:class "text-2xl font-bold mb-8 text-center"} (tr :charity-payments)]
@@ -298,7 +297,6 @@
           [:p (str (tr :edrpou) ": 45699124")]
           [:p (str (tr :bank) ": АКЦІОНЕРНЕ ТОВАРИСТВО УНІВЕРСАЛ БАНК")]
           [:p (str (tr :mfo) ": 322001")]]]
-      
       ;; Monobank jar
       [:div {:class " bg-white rounded-3xl shadow-xl p-8 
                       flex flex-col items-center justify-center 
@@ -322,6 +320,5 @@
    (presidium-section)
    (founders-section)
    (contacts-section)
-   (payments-section)
-   ])
+   (payments-section)])
 
