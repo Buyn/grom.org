@@ -128,9 +128,10 @@
    [:section
     {:class "relative h-[50vh] flex items-center justify-center overflow-hidden"}
     [:div
-     {:class "absolute inset-0 bg-cover bg-center"
+     {:class "absolute inset-0 bg-cover bg-center "
       :style {:background-image
               ;; "url('img/Hero_Slide_1_chameleon.jpg')"}}]
+
               "url('img/ueava-about-team.webp')"}}]
     [:div
      {:class "absolute inset-0 bg-black/60"}]
@@ -205,6 +206,7 @@
       [presidium-r-card "img/ueava-about-shabuldo.webp" "віце-президент" "Катерина Шабульдо"]
       [presidium-r-card "img/ueava-about-luy.webp" (tr :secretary) (tr :secretary-name)]
       [presidium-r-card "img/ueava-about-peaceful.webp" (tr :board-member) (tr :board-member-name)]
+      [presidium-r-card "img/ueava-about-khvalyun.webp" (tr :board-member) "Хвалюн Владислава Олександрівна - медіа-кріетор"]
      ]]])
 
 (defn founder-card [photo name]
@@ -232,8 +234,6 @@
     :photo "img/ueava-about-chernenko.webp"}
    {:name "Руденко Олександра Михайлівна"
     :photo "img/ueava-about-rudenko.webp"}
-   {:name "Хвалюн Владислава Олександрівна - медіа-кріетор"
-    :photo "img/ueava-about-khvalyun.webp"}
    {:name "Коновалова-Надєл Аліна Олександрівна"
     :photo "img/ueava-about-konoval.webp"}])
 
@@ -258,7 +258,7 @@
   [:section {:class "py-20 bg-gray-50" :id "contacts"}
    [:div {:class "max-w-4xl mx-auto px-8 text-center"}
     [:h2 {:class "text-4xl font-bold mb-6 text-ueava-brown"} (tr :contacts-title)]
-    [:p {:class "text-lg text-gray-700 mb-10"} (tr :contacts-text)]
+    ;; [:p {:class "text-lg text-gray-700 mb-10"} (tr :contacts-text)]
     [:div
       {:class "bg-white rounded-3xl shadow-xl p-10 max-w-2xl mx-auto"}
       [:a {:href "mailto:ueavaorg@gmail.com"
