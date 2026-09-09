@@ -33,35 +33,36 @@
   (get-in about-content [@lang k]))
 
 (def conferences
-  [{:year "2026"
+  [{:year "23-24.11.2024"
     :city {:en "Kyiv" :uk "Київ"}
     :title-foto "url('img/ueava-about-team.webp')"
-    :title {:en "IX UEAVA Conference"
-            :uk "IX Конференція UEAVA"}
-    :text {:en "Conference dedicated to modern approaches in veterinary medicine, continuing education and professional collaboration."
-           :uk "Конференція, присвячена сучасним підходам у ветеринарній медицині, безперервному професійному розвитку та співпраці фахівців."}
+    :title {:en "I UEV Concordia"
+            :uk "I UEV Concordia"}
+    :text {:en "The conference is dedicated to the development of veterinary medicine for exotic animals, continuous professional development, and collaboration between specialists."
+           :uk "Конференція присвячена розвитку ветеринарної медицини екзотичних тварин, безперервному професійному розвитку та співпраці фахівців."}
     :pdf "#"  ;; replace with real PDF when ready
     :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}
 
-   {:year "2025"
-    :city {:en "Lviv" :uk "Львів"}
-    :title-foto "url('img/ueava-conferences-8.webp')"
-    :title {:en "VIII UEAVA Conference"
-            :uk "VIII Конференція UEAVA"}
-    :text {:en "Annual gathering of veterinary professionals focused on practical experience and current industry challenges."
-           :uk "Щорічна зустріч ветеринарних фахівців, присвячена обміну практичним досвідом та сучасним викликам галузі."}
-    :pdf "#"
-    :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}  ;; same folder or separate
+   ;; {:year "2025"
+   ;;  :city {:en "Lviv" :uk "Львів"}
+   ;;  :title-foto "url('img/ueava-conferences-8.webp')"
+   ;;  :title {:en "VIII UEAVA Conference"
+   ;;          :uk "VIII Конференція UEAVA"}
+   ;;  :text {:en "Annual gathering of veterinary professionals focused on practical experience and current industry challenges."
+   ;;         :uk "Щорічна зустріч ветеринарних фахівців, присвячена обміну практичним досвідом та сучасним викликам галузі."}
+   ;;  :pdf "#"
+   ;;  :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}  ;; same folder or separate
 
-   {:year "2024"
-    :city {:en "Dnipro" :uk "Дніпро"}
-    :title-foto "url('img/ueava-conferences-7.webp')"
-    :title {:en "VII UEAVA Conference"
-            :uk "VII Конференція UEAVA"}
-    :text {:en "Presentations, discussions and educational sessions for veterinary practitioners."
-           :uk "Доповіді, дискусії та освітні заходи для практикуючих ветеринарних лікарів."}
-    :pdf "#"
-    :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}])
+   ;; {:year "2024"
+   ;;  :city {:en "Dnipro" :uk "Дніпро"}
+   ;;  :title-foto "url('img/ueava-conferences-7.webp')"
+   ;;  :title {:en "VII UEAVA Conference"
+   ;;          :uk "VII Конференція UEAVA"}
+   ;;  :text {:en "Presentations, discussions and educational sessions for veterinary practitioners."
+   ;;         :uk "Доповіді, дискусії та освітні заходи для практикуючих ветеринарних лікарів."}
+   ;;  :pdf "#"
+   ;;  :photos "https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"}
+   ])
 
 (defn conference-card [conf]
   (let [t #(@lang (% conf))
@@ -110,11 +111,11 @@
       [:p {:class "text-xl md:text-2xl"} (tr :subtitle)]]])
 
 (def upcoming
-  [{:year "2026"
-    :city {:en "Kyiv" :uk "Київ"}
+  [{:year " "
+    :city {:en " " :uk " "}
     :title-foto "url('img/Hero_Slide_4_bear.jpg')"
-    :title {:en "X UEAVA Conference"
-            :uk "X Конференція UEAVA"}
+    :title {:en "II UEV Concordia"
+            :uk "II UEV Concordia"}
     :text {:en "Information about upcoming events will appear soon. Stay tuned!"
            :uk "Інформація про наступні заходи з'явиться найближчим часом. Слідкуйте за новинами!"}
     :upcoming true

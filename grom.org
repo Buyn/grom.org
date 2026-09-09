@@ -444,179 +444,13 @@ npx shadow-cljs watch app
 ** urgent
 *** используй ф8 для паблишенга!
 ** done
-*** DONE заменитиь иконку фотоапараты в футуре
-**** на иконку инстограма
-сделать иконки больге
-сделать на отдельной строке
-сделать блоком и разрыв между клоками
+*** DONE в конферция
+**** понять на что заменить
 
-и также в она в контактах
-**** 
-
-    ;; RESOURCES / CONTACT BLOCKS WITH BIGGER SEPARATED IG ICON
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/res-title)]
-     [:div {:class "flex flex-col space-y-4"}
-      ;; Email Block
-      [:div
-       [:a {:href "mailto:ueavaorg@gmail.com"
-            :class "inline-flex items-center gap-3 text-base hover:text-white transition-colors"}
-        [:svg {:class "w-6 h-6 shrink-0" :fill "none" :view-box "0 0 24 24" :stroke "currentColor"}
-         [:path {:stroke-linecap "round" :stroke-linejoin "round" :stroke-width "2"
-                 :d "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"}]]
-        "ueavaorg@gmail.com"]]
-      ;; Instagram Block with explicit SVG icon
-      [:div
-       [:a {:href "https://www.instagram.com/_ueava_"
-            :target "_blank"
-            :class "inline-flex items-center gap-3 text-base hover:text-white transition-colors"}
-        [:svg {:class "w-6 h-6 shrink-0" :fill "currentColor" :view-box "0 0 24 24"}
-         [:path {:d "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"}]]
-        "@_ueava_"]]]
-     ]]
-**** ;; RESOURCES
-    [:div
-     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/res-title)]
-     [:ul {:class "space-y-2"}
-      [:a {:href "mailto:ueavaorg@gmail.com"
-            :class "hover:text-white"}
-        "✉️ ueavaorg@gmail.com"]
-      [:a {:href "https://www.instagram.com/_ueava_"
-          :target "_blank"
-          :class "hover:text-white"}
-        "📷 @_ueava_"]
-      ;; [:li [:a {:href "#/resources" :class "hover:text-white"} "Publications"]]
-      ;; [:li [:a {:href "#/resources" :class "hover:text-white"} "Events"]]
-      ]]
-**** 
-
-[:a {:href "https://www.instagram.com/_ueava_"
-            :target "_blank"
-            :class "inline-flex items-center gap-3 text-base hover:text-white transition-colors"}
-        [:svg {:class "w-6 h-6 shrink-0" :fill "currentColor" :view-box "0 0 24 24"}
-         [:path {:d "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"}]]
-        "@_ueava_"]
-**** 
-
-[:div
-     [:h3 {:class "text-white font-semibold mb-4"} (t :footer/res-title)]
-     [:div {:class "flex flex-col space-y-4"}
-      [:a {:href "mailto:ueavaorg@gmail.com"
-           :class "flex items-center gap-3 text-ueava-brown-200 hover:text-white transition-colors text-base"}
-       ;; External mail/envelope icon hotlinked
-       [:img {:src "https://api.iconify.design/lucide:mail.svg?color=%23d1c7bd"
-              :class "w-7 h-7 shrink-0"
-              :alt "Email"}]
-       "ueavaorg@gmail.com"]
-      [:a {:href "https://www.instagram.com/_ueava_"
-           :target "_blank"
-           :class "flex items-center gap-3 text-ueava-brown-200 hover:text-white transition-colors text-base"}
-       ;; External Instagram icon hotlinked from Iconify CDN (clean SVG, color-matched)
-       [:img {:src "https://api.iconify.design/lucide:instagram.svg?color=%23d1c7bd"
-              :class "w-7 h-7 shrink-0"
-              :alt "Instagram"}]
-       "@_ueava_"]]]
-**** 
-*** DONE иконка в эбаут
-**** 
-
-(defn contacts-section []
-  [:section {:class "py-20 bg-gray-50" :id "contacts"}
-   [:div {:class "max-w-4xl mx-auto px-8 text-center"}
-    [:h2 {:class "text-4xl font-bold mb-6 text-ueava-brown"} (tr :contacts-title)]
-    [:p {:class "text-lg text-gray-600 mb-10"} (tr :contacts-text)]
-    [:div
-     {:class "grid md:grid-cols-2 gap-6 max-w-2xl mx-auto"}
-     ;; Email Card
-     [:a {:href "mailto:ueavaorg@gmail.com"
-          :class "bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center justify-center gap-4
-                  hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"}
-      [:div {:class "w-14 h-14 rounded-full bg-ueava-brown/10 flex items-center justify-center 
-                      group-hover:bg-ueava-brown group-hover:text-white transition-colors duration-300 text-ueava-brown"}
-       [:svg {:class "w-7 h-7" :fill "none" :view-box "0 0 24 24" :stroke "currentColor"}
-        [:path {:stroke-linecap "round" :stroke-linejoin "round" :stroke-width "2"
-                :d "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"}]]]
-      [:div
-       [:span {:class "block text-sm text-gray-400 font-medium mb-1"} (tr :email)]
-       [:span {:class "text-lg font-semibold text-gray-800 group-hover:text-ueava-brown transition-colors"} "ueavaorg@gmail.com"]]]
-
-     ;; Instagram Card
-     [:a {:href "https://www.instagram.com/_ueava_"
-          :target "_blank"
-          :class "bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center justify-center gap-4
-                  hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"}
-      [:div {:class "w-14 h-14 rounded-full bg-pink-500/10 flex items-center justify-center 
-                      group-hover:bg-pink-600 group-hover:text-white transition-colors duration-300 text-pink-600"}
-       [:svg {:class "w-7 h-7" :fill "currentColor" :view-box "0 0 24 24"}
-        [:path {:d "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"}]]       ]
-      [:div
-       [:span {:class "block text-sm text-gray-400 font-medium mb-1"} (tr :instagram)]
-       [:span {:class "text-lg font-semibold text-gray-800 group-hover:text-pink-600 transition-colors"} "@_ueava_"]]]]])])
-**** (defn contacts-section []
-  [:section {:class "py-20 bg-gray-50" :id "contacts"}
-   [:div {:class "max-w-4xl mx-auto px-8 text-center"}
-    [:h2 {:class "text-4xl font-bold mb-6 text-ueava-brown"} (tr :contacts-title)]
-    ;; [:p {:class "text-lg text-gray-700 mb-10"} (tr :contacts-text)]
-    [:div
-      {:class "bg-white rounded-3xl shadow-xl p-10 max-w-2xl mx-auto"}
-      [:a {:href "mailto:ueavaorg@gmail.com"
-            :class "flex items-center gap-3 text-xl hover:text-ueava-brown transition"}
-        "email: ✉️ ueavaorg@gmail.com"]
-      [:a {:href "https://www.instagram.com/_ueava_"
-          :target "_blank"
-          :class "flex items-center gap-3 text-xl hover:text-ueava-brown transition"}
-        "instagram: 📷 @_ueava_"]]]])
-**** 
-
-#+begin_src clojure
-(defn contact-card [href title value icon-svg icon-bg-class hover-color-class]
-  [:a {:href href
-       :target (when (= href "#/instagram") "_blank") ;; or external check
-       :class "bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center justify-center gap-4
-               hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"}
-   [:div {:class (str "w-14 h-14 rounded-full flex items-center justify-center transition-colors duration-300 " icon-bg-class)}
-    icon-svg]
-   [:div {:class "text-center"}
-    [:span {:class "block text-sm text-gray-400 font-medium mb-1"} title]
-    [:span {:class (str "text-lg font-semibold text-gray-800 transition-colors " hover-color-class)} value]]])
-
-(defn contacts-section []
-  [:section {:class "py-20 bg-gray-50" :id "contacts"}
-   [:div {:class "max-w-4xl mx-auto px-8 text-center"}
-    [:h2 {:class "text-4xl font-bold mb-6 text-ueava-brown"} (tr :contacts-title)]
-    [:p {:class "text-lg text-gray-600 mb-10"} (tr :contacts-text)]
-    [:div
-     {:class "grid md:grid-cols-2 gap-6 max-w-2xl mx-auto"}
-     ;; Email Card
-     [contact-card
-      "mailto:ueavaorg@gmail.com"
-      (tr :email)
-      "ueavaorg@gmail.com"
-      [:svg {:class "w-7 h-7" :fill "none" :view-box "0 0 24 24" :stroke "currentColor"}
-       [:path {:stroke-linecap "round" :stroke-linejoin "round" :stroke-width "2"
-               :d "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"}]]
-      "bg-ueava-brown/10 text-ueava-brown group-hover:bg-ueava-brown group-hover:text-white"
-      "group-hover:text-ueava-brown"]
-
-     ;; Instagram Card
-     [contact-card
-      "https://www.instagram.com/_ueava_"
-      (tr :instagram)
-      "@_ueava_"
-      [:svg {:class "w-7 h-7" :fill "currentColor" :view-box "0 0 24 24"}
-       [:path {:d "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"}]]
-      "bg-pink-500/10 text-pink-600 group-hover:bg-pink-600 group-hover:text-white"
-      "group-hover:text-pink-600"]]]])
-#+end_src
-
-**** 
-
-** in progress
-*** в конферция
 **** убрать остальрые
 оставить первую сменить текст
 оставить обешание
-**** понять на что заменить
+** in progress
 ** dezine
 ** Pause
 ** TODO
@@ -624,7 +458,100 @@ npx shadow-cljs watch app
 **** в библиотеке
 ***** книги переименовать
 на альманах
+*** Каталог замінити на перелік
+*** София, [04.08.2026 19:17]
+Стаючи членом - оформлюючи членство🍆
+
+Альманах
+
+София, [04.08.2026 19:29]
+Перша конференція гавлета 23-24.11.2024
+
+Darina Haos, [04.08.2026 19:29]
+1 UEV Concordia
+
+София, [04.08.2026 19:31]
+Київ, 23-24.11.2024
+1 UEV Concordia
+Конференція присвячена розвитку ветеринарної медицини екзотичних тварин, безперервному професійному розвитку та співпраці фахівців
+
+Darina Haos, [04.08.2026 19:33]
+2 UEV Concordia слідкуйте за інформацією про час та місце проведення майбутньої конференції
+
+BuYn Max, [04.08.2026 19:33]
+на аглшиском и на украинском
+
+София, [04.08.2026 19:34]
+Спільнота ветеринарів, які працюють з дикими тваринами
+
+BuYn Max, [04.08.2026 19:34]
+тесты
+
+Darina Haos, [04.08.2026 19:34]
+UEV Concordia 2: Stay tuned for further information about the date, time, and venue of the upcoming conference.
+
+BuYn Max, [04.08.2026 19:35]
+
+
+София, [04.08.2026 19:36]
+
+
+София, [04.08.2026 19:36]
+Кролик
+
+BuYn Max, [04.08.2026 19:36]
+
+
+София, [04.08.2026 19:36]
+Сучасна освіта для ветеринарних лікарів, які працюють із дрібними ссавцями
+
+София, [04.08.2026 19:36]
+Кролик
+
+BuYn Max, [04.08.2026 19:37]
+
+
+Darina Haos, [04.08.2026 19:37]
+Modern Education for Veterinarians Working with Small Mammals
+
+BuYn Max, [04.08.2026 19:38]
+
+
+София, [04.08.2026 19:41]
+
+
+BuYn Max, [04.08.2026 19:44]
+
+
+BuYn Max, [04.08.2026 19:46]
+
+
+София, [04.08.2026 19:48]
+Поглиблюйте знання у вет.медицині рептилій та амфібій
+
+София, [04.08.2026 19:49]
+Підтримка спеціалістів, що цікавляться лікуванням птахів
+
+София, [04.08.2026 19:51]
+Всеукраїнський перелік ветеринарних лікарів екзотологів
+
+Darina Haos, [04.08.2026 19:51]
+Advance Your Expertise in Reptile and Amphibian Veterinary Medicine
+
+Darina Haos, [04.08.2026 19:54]
+Supporting Veterinarians Interested in Avian Medicine
+
+София, [04.08.2026 19:54]
+" Професійна" замінити на фахова
+Знижки на заходи замінити на знижки та унікальні пропозиції 
+Знижки на конференції та заходи ----- на знижки на конференції та події
+
+София, [04.08.2026 19:55]
+Стаючи членом - оформлюючи членство🍆
+
 *** футры убрать тери конта и тд
+*** выеснить ли убрать отчества? 
+у всех?
 *** переключатель языка украинский
 на украинском
 *** проверить явлются ли фото png
