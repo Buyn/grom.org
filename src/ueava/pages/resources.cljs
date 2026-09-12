@@ -22,7 +22,7 @@
     :circulars-title "Circulars"
     :circulars-desc "Internal announcements and decisions."
 
-    :books-title "Books"
+    :books-title "Almanacs"
     :books-desc "Professional literature and recommended reading."
 
     :webinars-title "Webinars"
@@ -60,7 +60,7 @@
     :circulars-title "Циркуляри"
     :circulars-desc "Внутрішні повідомлення та рішення."
 
-    :books-title "Книги"
+    :books-title "Альманахи"
     :books-desc "Професійна література та рекомендовані видання."
 
     :webinars-title "Вебінари"
