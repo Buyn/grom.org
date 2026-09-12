@@ -13,7 +13,7 @@
 
 (def dict
   {:en {
-        :topb/lang " Ua"
+        :topb/lang " Укр" ;Ua
         :header/cta "Find A Vet"
         :hlist/Home "Home"
         :hlist/About "About"
