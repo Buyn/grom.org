@@ -29,10 +29,10 @@
       :uk "Знижки на конференції та заходи"}}
    {:title
     { :en "Veterinarian Directory"
-      :uk "Каталог спеціалістів"}
+      :uk "Перелік спеціалістів"}
     :subtitle
     { :en "Inclusion in the Directory of Exotic Animal Veterinarians in Ukraine"
-      :uk "Включення до каталогу практикуючих екзотологів України"}}
+      :uk "Включення до переліку практикуючих екзотологів України"}}
    {:title
     { :en "Professional Community"
       :uk "Професійна спільнота"}

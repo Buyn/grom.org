@@ -5,10 +5,10 @@ return cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(ueava.pages.conferences.ab
 });
 ueava.pages.conferences.conferences = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Keyword(null,"year","year",335913393),"23-24.11.2024",new cljs.core.Keyword(null,"city","city",-393302614),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"en","en",88457073),"Kyiv",new cljs.core.Keyword(null,"uk","uk",1211716117),"\u041A\u0438\u0457\u0432"], null),new cljs.core.Keyword(null,"title-foto","title-foto",1777191675),"url('img/ueava-about-team.webp')",new cljs.core.Keyword(null,"title","title",636505583),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"en","en",88457073),"I UEV Concordia",new cljs.core.Keyword(null,"uk","uk",1211716117),"I UEV Concordia"], null),new cljs.core.Keyword(null,"text","text",-1790561697),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"en","en",88457073),"The conference is dedicated to the development of veterinary medicine for exotic animals, continuous professional development, and collaboration between specialists.",new cljs.core.Keyword(null,"uk","uk",1211716117),"\u041A\u043E\u043D\u0444\u0435\u0440\u0435\u043D\u0446\u0456\u044F \u043F\u0440\u0438\u0441\u0432\u044F\u0447\u0435\u043D\u0430 \u0440\u043E\u0437\u0432\u0438\u0442\u043A\u0443 \u0432\u0435\u0442\u0435\u0440\u0438\u043D\u0430\u0440\u043D\u043E\u0457 \u043C\u0435\u0434\u0438\u0446\u0438\u043D\u0438 \u0435\u043A\u0437\u043E\u0442\u0438\u0447\u043D\u0438\u0445 \u0442\u0432\u0430\u0440\u0438\u043D, \u0431\u0435\u0437\u043F\u0435\u0440\u0435\u0440\u0432\u043D\u043E\u043C\u0443 \u043F\u0440\u043E\u0444\u0435\u0441\u0456\u0439\u043D\u043E\u043C\u0443 \u0440\u043E\u0437\u0432\u0438\u0442\u043A\u0443 \u0442\u0430 \u0441\u043F\u0456\u0432\u043F\u0440\u0430\u0446\u0456 \u0444\u0430\u0445\u0456\u0432\u0446\u0456\u0432."], null),new cljs.core.Keyword(null,"pdf","pdf",1586765132),"#",new cljs.core.Keyword(null,"photos","photos",11691538),"https://drive.google.com/drive/folders/1yuWpPmTBOIGG7n49py9_FpmGBdG1inqy"], null)], null);
 ueava.pages.conferences.conference_card = (function ueava$pages$conferences$conference_card(conf){
-var t = (function (p1__12831_SHARP_){
-var G__12833 = (p1__12831_SHARP_.cljs$core$IFn$_invoke$arity$1 ? p1__12831_SHARP_.cljs$core$IFn$_invoke$arity$1(conf) : p1__12831_SHARP_.call(null,conf));
-var fexpr__12832 = cljs.core.deref(ueava.components.lang.lang);
-return (fexpr__12832.cljs$core$IFn$_invoke$arity$1 ? fexpr__12832.cljs$core$IFn$_invoke$arity$1(G__12833) : fexpr__12832.call(null,G__12833));
+var t = (function (p1__12910_SHARP_){
+var G__12915 = (p1__12910_SHARP_.cljs$core$IFn$_invoke$arity$1 ? p1__12910_SHARP_.cljs$core$IFn$_invoke$arity$1(conf) : p1__12910_SHARP_.call(null,conf));
+var fexpr__12914 = cljs.core.deref(ueava.components.lang.lang);
+return (fexpr__12914.cljs$core$IFn$_invoke$arity$1 ? fexpr__12914.cljs$core$IFn$_invoke$arity$1(G__12915) : fexpr__12914.call(null,G__12915));
 });
 var is_upcoming = cljs.core.contains_QMARK_(conf,new cljs.core.Keyword(null,"upcoming","upcoming",1873315471));
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"group relative bg-white rounded-3xl shadow-xl overflow-hidden h-full flex flex-col hover:-translate-y-1 transition-all duration-300"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),"relative h-56 bg-cover bg-center",new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"background-image","background-image",-1142314704),cljs.core.str.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"title-foto","title-foto",1777191675).cljs$core$IFn$_invoke$arity$1(conf))], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"], null)], null)], null),new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"p-8 flex-1 flex flex-col"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"text-sm uppercase tracking-widest text-ueava-brown-700 mb-3"], null),[cljs.core.str.cljs$core$IFn$_invoke$arity$1(t(new cljs.core.Keyword(null,"city","city",-393302614)))," \u2022 ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"year","year",335913393).cljs$core$IFn$_invoke$arity$1(conf))].join('')], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3","h3",2067611163),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"text-2xl font-bold mb-4 text-ueava-brown"], null),t(new cljs.core.Keyword(null,"title","title",636505583))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"text-gray-700 leading-relaxed mb-6 flex-1"], null),t(new cljs.core.Keyword(null,"text","text",-1790561697))], null),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"flex flex-wrap gap-3 mt-auto pt-4"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"a","a",-2123407586),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"href","href",-793805698),new cljs.core.Keyword(null,"photos","photos",11691538).cljs$core$IFn$_invoke$arity$1(conf),new cljs.core.Keyword(null,"target","target",253001721),"_blank",new cljs.core.Keyword(null,"class","class",-2030961996),"flex-1 text-center px-6 py-3 rounded-2xl\n                    bg-ueava-brown-900 text-white hover:bg-ueava-brown-800\n                    transition font-medium"], null),((is_upcoming)?ueava.pages.conferences.tr(new cljs.core.Keyword(null,"register","register",1968522516)):ueava.pages.conferences.tr(new cljs.core.Keyword(null,"photo-album","photo-album",-1264190485)))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"a","a",-2123407586),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"href","href",-793805698),new cljs.core.Keyword(null,"pdf","pdf",1586765132).cljs$core$IFn$_invoke$arity$1(conf),new cljs.core.Keyword(null,"target","target",253001721),"_blank",new cljs.core.Keyword(null,"class","class",-2030961996),"flex-1 text-center px-6 py-3 rounded-2xl border\n                    border-ueava-brown-900 text-ueava-brown-900 hover:bg-ueava-brown-50\n                    transition font-medium"], null),((is_upcoming)?ueava.pages.conferences.tr(new cljs.core.Keyword(null,"brochure","brochure",1749142908)):ueava.pages.conferences.tr(new cljs.core.Keyword(null,"pdf-report","pdf-report",811954670)))], null)], null)], null)], null);
@@ -21,25 +21,25 @@ ueava.pages.conferences.about_text_section = (function ueava$pages$conferences$a
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"section","section",-300141526),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"py-20"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"max-w-4xl mx-auto px-8 space-y-8 text-lg leading-relaxed"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),ueava.pages.conferences.tr(new cljs.core.Keyword(null,"p1","p1",-936759954))], null)], null)], null);
 });
 ueava.pages.conferences.upcoming_section = (function ueava$pages$conferences$upcoming_section(){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"section","section",-300141526),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"py-20"], null),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"max-w-6xl mx-auto px-8"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h2","h2",-372662728),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"text-4xl font-bold text-center mb-12 text-ueava-brown"], null),ueava.pages.conferences.tr(new cljs.core.Keyword(null,"upcoming","upcoming",1873315471))], null),((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(ueava.pages.conferences.upcoming),(0)))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"max-w-md mx-auto text-center text-gray-600 text-lg"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),ueava.pages.conferences.tr(new cljs.core.Keyword(null,"no-upcoming","no-upcoming",585838423))], null)], null):new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"grid md:grid-cols-1 lg:grid-cols-2 gap-10"], null),(function (){var iter__5480__auto__ = (function ueava$pages$conferences$upcoming_section_$_iter__12834(s__12835){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"section","section",-300141526),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"py-20"], null),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"max-w-6xl mx-auto px-8"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h2","h2",-372662728),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"text-4xl font-bold text-center mb-12 text-ueava-brown"], null),ueava.pages.conferences.tr(new cljs.core.Keyword(null,"upcoming","upcoming",1873315471))], null),((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(ueava.pages.conferences.upcoming),(0)))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"max-w-md mx-auto text-center text-gray-600 text-lg"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),ueava.pages.conferences.tr(new cljs.core.Keyword(null,"no-upcoming","no-upcoming",585838423))], null)], null):new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"grid md:grid-cols-1 lg:grid-cols-2 gap-10"], null),(function (){var iter__5480__auto__ = (function ueava$pages$conferences$upcoming_section_$_iter__12923(s__12924){
 return (new cljs.core.LazySeq(null,(function (){
-var s__12835__$1 = s__12835;
+var s__12924__$1 = s__12924;
 while(true){
-var temp__5804__auto__ = cljs.core.seq(s__12835__$1);
+var temp__5804__auto__ = cljs.core.seq(s__12924__$1);
 if(temp__5804__auto__){
-var s__12835__$2 = temp__5804__auto__;
-if(cljs.core.chunked_seq_QMARK_(s__12835__$2)){
-var c__5478__auto__ = cljs.core.chunk_first(s__12835__$2);
+var s__12924__$2 = temp__5804__auto__;
+if(cljs.core.chunked_seq_QMARK_(s__12924__$2)){
+var c__5478__auto__ = cljs.core.chunk_first(s__12924__$2);
 var size__5479__auto__ = cljs.core.count(c__5478__auto__);
-var b__12837 = cljs.core.chunk_buffer(size__5479__auto__);
-if((function (){var i__12836 = (0);
+var b__12926 = cljs.core.chunk_buffer(size__5479__auto__);
+if((function (){var i__12925 = (0);
 while(true){
-if((i__12836 < size__5479__auto__)){
-var conf = cljs.core._nth(c__5478__auto__,i__12836);
-cljs.core.chunk_append(b__12837,cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.conferences.conference_card,conf], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"title","title",636505583).cljs$core$IFn$_invoke$arity$1(conf)], null)));
+if((i__12925 < size__5479__auto__)){
+var conf = cljs.core._nth(c__5478__auto__,i__12925);
+cljs.core.chunk_append(b__12926,cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.conferences.conference_card,conf], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"title","title",636505583).cljs$core$IFn$_invoke$arity$1(conf)], null)));
 
-var G__12845 = (i__12836 + (1));
-i__12836 = G__12845;
+var G__12953 = (i__12925 + (1));
+i__12925 = G__12953;
 continue;
 } else {
 return true;
@@ -47,13 +47,13 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons(cljs.core.chunk(b__12837),ueava$pages$conferences$upcoming_section_$_iter__12834(cljs.core.chunk_rest(s__12835__$2)));
+return cljs.core.chunk_cons(cljs.core.chunk(b__12926),ueava$pages$conferences$upcoming_section_$_iter__12923(cljs.core.chunk_rest(s__12924__$2)));
 } else {
-return cljs.core.chunk_cons(cljs.core.chunk(b__12837),null);
+return cljs.core.chunk_cons(cljs.core.chunk(b__12926),null);
 }
 } else {
-var conf = cljs.core.first(s__12835__$2);
-return cljs.core.cons(cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.conferences.conference_card,conf], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"title","title",636505583).cljs$core$IFn$_invoke$arity$1(conf)], null)),ueava$pages$conferences$upcoming_section_$_iter__12834(cljs.core.rest(s__12835__$2)));
+var conf = cljs.core.first(s__12924__$2);
+return cljs.core.cons(cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.conferences.conference_card,conf], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"title","title",636505583).cljs$core$IFn$_invoke$arity$1(conf)], null)),ueava$pages$conferences$upcoming_section_$_iter__12923(cljs.core.rest(s__12924__$2)));
 }
 } else {
 return null;
@@ -66,25 +66,25 @@ return iter__5480__auto__(ueava.pages.conferences.upcoming);
 })()], null))], null)], null);
 });
 ueava.pages.conferences.archive_section = (function ueava$pages$conferences$archive_section(){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"section","section",-300141526),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"py-20 bg-gray-50"], null),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"max-w-6xl mx-auto px-8"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h2","h2",-372662728),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"text-4xl font-bold text-center mb-12 text-ueava-brown"], null),ueava.pages.conferences.tr(new cljs.core.Keyword(null,"archive","archive",1466927419))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"grid md:grid-cols-1 lg:grid-cols-2 gap-10"], null),(function (){var iter__5480__auto__ = (function ueava$pages$conferences$archive_section_$_iter__12838(s__12839){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"section","section",-300141526),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"py-20 bg-gray-50"], null),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"max-w-6xl mx-auto px-8"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h2","h2",-372662728),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"text-4xl font-bold text-center mb-12 text-ueava-brown"], null),ueava.pages.conferences.tr(new cljs.core.Keyword(null,"archive","archive",1466927419))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"grid md:grid-cols-1 lg:grid-cols-2 gap-10"], null),(function (){var iter__5480__auto__ = (function ueava$pages$conferences$archive_section_$_iter__12935(s__12936){
 return (new cljs.core.LazySeq(null,(function (){
-var s__12839__$1 = s__12839;
+var s__12936__$1 = s__12936;
 while(true){
-var temp__5804__auto__ = cljs.core.seq(s__12839__$1);
+var temp__5804__auto__ = cljs.core.seq(s__12936__$1);
 if(temp__5804__auto__){
-var s__12839__$2 = temp__5804__auto__;
-if(cljs.core.chunked_seq_QMARK_(s__12839__$2)){
-var c__5478__auto__ = cljs.core.chunk_first(s__12839__$2);
+var s__12936__$2 = temp__5804__auto__;
+if(cljs.core.chunked_seq_QMARK_(s__12936__$2)){
+var c__5478__auto__ = cljs.core.chunk_first(s__12936__$2);
 var size__5479__auto__ = cljs.core.count(c__5478__auto__);
-var b__12841 = cljs.core.chunk_buffer(size__5479__auto__);
-if((function (){var i__12840 = (0);
+var b__12938 = cljs.core.chunk_buffer(size__5479__auto__);
+if((function (){var i__12937 = (0);
 while(true){
-if((i__12840 < size__5479__auto__)){
-var conf = cljs.core._nth(c__5478__auto__,i__12840);
-cljs.core.chunk_append(b__12841,cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.conferences.conference_card,conf], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"year","year",335913393).cljs$core$IFn$_invoke$arity$1(conf)], null)));
+if((i__12937 < size__5479__auto__)){
+var conf = cljs.core._nth(c__5478__auto__,i__12937);
+cljs.core.chunk_append(b__12938,cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.conferences.conference_card,conf], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"year","year",335913393).cljs$core$IFn$_invoke$arity$1(conf)], null)));
 
-var G__12846 = (i__12840 + (1));
-i__12840 = G__12846;
+var G__12957 = (i__12937 + (1));
+i__12937 = G__12957;
 continue;
 } else {
 return true;
@@ -92,13 +92,13 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons(cljs.core.chunk(b__12841),ueava$pages$conferences$archive_section_$_iter__12838(cljs.core.chunk_rest(s__12839__$2)));
+return cljs.core.chunk_cons(cljs.core.chunk(b__12938),ueava$pages$conferences$archive_section_$_iter__12935(cljs.core.chunk_rest(s__12936__$2)));
 } else {
-return cljs.core.chunk_cons(cljs.core.chunk(b__12841),null);
+return cljs.core.chunk_cons(cljs.core.chunk(b__12938),null);
 }
 } else {
-var conf = cljs.core.first(s__12839__$2);
-return cljs.core.cons(cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.conferences.conference_card,conf], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"year","year",335913393).cljs$core$IFn$_invoke$arity$1(conf)], null)),ueava$pages$conferences$archive_section_$_iter__12838(cljs.core.rest(s__12839__$2)));
+var conf = cljs.core.first(s__12936__$2);
+return cljs.core.cons(cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [ueava.pages.conferences.conference_card,conf], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"year","year",335913393).cljs$core$IFn$_invoke$arity$1(conf)], null)),ueava$pages$conferences$archive_section_$_iter__12935(cljs.core.rest(s__12936__$2)));
 }
 } else {
 return null;
