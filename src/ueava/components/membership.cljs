@@ -11,7 +11,7 @@
 (def content
   [{:title
     { :en "Professional Literature"
-      :uk "Професійна література"}
+      :uk "Фахова література"}
     :subtitle
     { :en "Access to Professional Literature and Educational Resources"
       :uk "Доступ до професійної літератури та матеріалів"}}
@@ -35,10 +35,10 @@
       :uk "Включення до переліку практикуючих екзотологів України"}}
    {:title
     { :en "Professional Community"
-      :uk "Професійна спільнота"}
+      :uk "Фахова спільнота"}
     :subtitle
     { :en "Professional Community and Peer Support"
-      :uk "Професійна спільнота та підтримка колег"}}
+      :uk "Фахова спільнота та підтримка колег"}}
    {:title
     { :en "Develop the Profession"
       :uk "Розвиток професії"}
