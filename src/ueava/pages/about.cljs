@@ -121,8 +121,19 @@
     :monobank-jar "Банка monobank"
     }})
 
-(defn tr [k]
-  (get-in about-content [@lang k]))
+(defn tr
+  ([k]
+   (if (vector? k)
+     ;; Handle inline vector like [:uk "UA text" :en "EN text"]
+     (let [m (apply hash-map k)]
+       (get m @lang (get m :en)))
+     ;; Handle regular keyword lookup from about-content
+     (get-in about-content [@lang k])))
+  ([dic k]
+   (get-in dic [@lang k])))
+
+(defn trc [dic]
+    [@lang dic])
 
 (defn hero-section []
    [:section
@@ -219,8 +230,9 @@
                 object-cover"}]
    [:h3 {:class "font-semibold text-lg"} name]])
 
+
 (def founders
-  [{:name "Константин Подольний"
+  [{:name (trc [:uk "Константин Подольний" :en "Подольний Константин"])
     :photo "img/ueava-about-podoliy.webp"}
    {:name "Олександра Ванiна"
     :photo "img/ueava-about-vanina.webp"}
