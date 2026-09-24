@@ -32498,3 +32498,182 @@ Email Forwarding— Create email aliases
 ** убрать остальрые
 оставить первую сменить текст
 оставить обешание
+
+* DONE в ресурсах
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-14 Пн 11:05
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** в библиотеке
+*** книги переименовать
+на альманах
+
+* DONE Каталог замінити на перелік
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-14 Пн 11:05
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+каталог
+поиск по проекту
+
+tg,Il,jk],"Стаючи членом асоціації, ви долучаєтесь до розвитку професійної ветеринарної спільноти, популяризації доказової медицини та формування сучасних стандартів лікування екзотичних тварин.;Подати заявку;Професійна спільнота та підтримка колег;Члени асоціації отримують доступ до навчальних матеріалів, клінічних рекомендацій, наукових публікацій та корисних ресурсів з медицини екзотичних тварин.;Доступ до професійної літератури та матеріалів;Знижки на заходи;Що отримують члени асоціації;Розвиток професії;Вебінари та навчання;Станьте частиною професійної спільноти, яка формує майбутнє ветеринарної медицини екзотичних тварин.;Приєднуйтесь до UEAVA;Каталог спеціалістів;UEAVA — це середовище однодумців, де можна обмінюватися досвідом, отримувати підтримку колег, обговорювати клінічні випадки та розвиватися разом із професійною спільнотою.;Члени громадської організації отримують спеціальні умови участі та знижки на конференції, майстер-класи та інші освітні події асоціації.;Членство в UEAVA;Знижки на конференції та заходи;Члени UEAVA можуть бути включені до загального каталогу ветеринарних лікарів, які працюють з екзотичними тваринами, що допомагає власникам тварин знаходити профільних спеціалістів.;Долучайтеся до професійної спільноти ветеринарних лікарів екзотичних тварин.;Подати заявку;UEAVA регулярно організовує вебінари, лекції та навчальні заходи за участю українських та міжнародних спеціалістів.;Станьте частиною професійної спільноти, що розвиває медицину екзотичних тварин в Україні. Членство в UEAVA — це не лише участь у професійній асоціації, а й доступ до спільноти ветеринарних лікарів, які розвивають сучасну медицину екзотичних тварин в Україні.;Розвиток ветеринарної медицини екзотичних тварин в Україні;Включення до каталогу практикуючих екзотологів України;Професійна література;Професійна спільнота;Освітні вебінари та професійний розвиток".split(";"))],
+./src/ueava/pages/membership.cljs:55:     :b4-title "Каталог спеціалістів"
+./src/ueava/pages/membership.cljs:56:     :b4-subtitle "Включення до каталогу практикуючих екзотологів України"
+./src/ueava/pages/membership.cljs:57:     :b4-text "Члени UEAVA можуть бути включені до загального каталогу ветеринарних лікарів, які працюють з екзотичними тваринами, що допомагає власникам тварин знаходити профільних спеціалістів."
+./src/ueava/components/membership.cljs:32:      :uk "Каталог спеціалістів"}
+./src/ueava/components/membership.cljs:35:      :uk "Включення до каталогу практикуючих екзотологів України"}}
+./src/ueava/components/lang.cljs:78:        :benefits/c2-title "Всеукраїнський каталог ветеринарних лікарів"
+./public/js/compiled/main.js:619:Kg,Zf([Pk,lj,Jj,hj,ng,Rk,gg,rj,bj,Cj,Hi,kj,wg,Ni,ik,Yj,Xj,dg,Wk,Xk,Zk,ij,dj,bk,Dj,lk,uk,Hk,Cg,$i,Uk,Xi,mg,Vk,Fg,Yi],"
+
+
+* DONE София, [04.08.2026 19:17]
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-14 Пн 11:05
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+Стаючи членом - оформлюючи членство🍆
+
+Оформлюючи членство
+Альманах
+
+* DONE София, [04.08.2026 19:29]
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-14 Пн 11:05
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+Перша конференція гавлета 23-24.11.2024
+
+Darina Haos, [04.08.2026 19:29]
+1 UEV Concordia
+
+София, [04.08.2026 19:31]
+Київ, 23-24.11.2024
+1 UEV Concordia
+Конференція присвячена розвитку ветеринарної медицини екзотичних тварин, безперервному професійному розвитку та співпраці фахівців
+
+Darina Haos, [04.08.2026 19:33]
+2 UEV Concordia слідкуйте за інформацією про час та місце проведення майбутньої конференції
+
+BuYn Max, [04.08.2026 19:33]
+на аглшиском и на украинском
+
+* DONE София, [04.08.2026 19:55]
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-14 Пн 11:05
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+Стаючи членом - оформлюючи членство🍆
+
+
+* DONE выеснить ли убрать отчества?
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-14 Пн 11:05
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+у всех?
+
+Вообщем внёс большинство изменений которые обсуждали.
+Уверен, что пока не всё.
+Относительно отчеств так и не понял. Вроде указания убирать не было, был вопрос.
+Мне убрать?
+
+Относительно замены Текста, мне скришоты не сильно помогают, если можно следушая методология. Идиально - скопировать текст который нужно заменить, прислать, с указание на какой текст заменить. Я просто делаю поиск по всему проекту и заменяю, не вдоваясь в детали.
+
++ обрашу внимание с изменениями по иконках контактов.
+
+* DONE София, [04.08.2026 19:54]
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-14 Пн 11:05
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+" Професійна" замінити на фахова
+Знижки на заходи замінити на знижки та унікальні пропозиції 
+Знижки на конференції та заходи ----- на знижки на конференції та події
+
+* CANCELED Darina Haos, [23.06.2026 16:15]
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-14 Пн 11:05
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: CANCELED
+:END:
+Так і конфа була 23-24 листопада 2024р
+
+Darina Haos, [23.06.2026 16:15]
+Concordia
+
+Darina Haos, [23.06.2026 16:18]
+Це та конфа з якої фотографії усі
+
+* DONE переключатель языка украинский
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-24 Чт 15:10
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+на украинском
+
+* DONE доперевести футер
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-24 Чт 15:10
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+** DONE заменить в футере на контакты
+
+ARAV
+Association of Reptile and Amphibian Veterinarians
+
+Please note that we cannot consult on veterinary medical cases or give medical advice by phone or e-mail. Please use the “Find A Vet” directory below to find a veterinarian to help your pet! Thank you!
+Contact Us
+PO Box 1868, Mt. Juliet, TN 37121
+info@arav.org
+Contact Us
+Become a Member
+Resources
+Donate
+Member Login
+Find a Vet
+** DONE добавить иконки
+сылками на 
+телеграм
+инстограм
+фейсбук
+вотсап
+
+* DONE склеилиc контактты
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-09-24 Чт 15:10
+:ARCHIVE_FILE: ~/Dev/ClojureScript/grom.org/grom.org
+:ARCHIVE_OLPATH: Kanban/done
+:ARCHIVE_CATEGORY: grom
+:ARCHIVE_TODO: DONE
+:END:
+разделить на две строки
+можно добавить сылки
