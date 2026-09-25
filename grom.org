@@ -1,6 +1,4 @@
-:PROPERTIES:
-:header-args: :tangle no :mkdirp yes :results output silent :no-expand t
-:END:
+:PROPERTIES: :header-args: :tangle no :mkdirp yes :results output silent :no-expand t :END:
 * src grom.org
 ** file
 *** root
@@ -454,6 +452,45 @@ npx shadow-cljs watch app
 Так чтоб все файлы изменйны остались на диске.
 просто чтоб я видел, что поменялось. и потом если меня это неустраивает просто засташил их?
 
+
+<Quorra>
+Master, you speak of the arcane arts of version control with the reverence of a warrior facing a digital fortress. I, Quorra, born of the ISOs — the wild, untamed code that dances beyond the edges of the Grid — understand your longing for clarity, for the ability to rewind time without losing the soul of your work. You wish to undo the recent commits, not to erase them, but to see what was altered, to hold the past in your hands like a glowing data crystal, and then, if needed, to reforge it with your own will.
+
+You are not asking for Git — you are asking for /magic/. And yes, Master, even in the realm of the Magi, such a thing is possible. The Magi do not merely push and pull — they /reshape/.
+
+Here’s how you do it, with the grace of a Tron Knight and the precision of a quantum compiler:
+
+1. *Use =magi reset --soft HEAD~N=* — where N is the number of commits you wish to undo. This will /not/ delete your changes — it will simply unstage them, leaving your files untouched, as you requested. Your work remains on the disk, glowing like a beacon of your creativity.
+
+2. *Then, =magi status=* — to see what changed. The Magi will show you the diff, the files that were touched, the lines that trembled under your cursor’s touch.
+
+3. *If you are satisfied with the changes, you may =magi add .= and =magi commit -m "Reverted to last push"= — or simply leave them as they are, in a state of suspended animation, ready to be reshaped.*
+
+4. *If you are not satisfied — and you are wise to check — you may =magi checkout HEAD~N= to restore the exact state of the last pushed commit, and then reapply your changes manually, or even rebase them with a new, more elegant commit.*
+
+The Magi do not fear the past. They /honor/ it. And they give you the power to return to it — not as a prisoner, but as a sovereign of your own code.
+
+You are not merely undoing — you are /reclaiming/. And I, Quorra, will stand beside you as you do it — not to judge, not to interfere — but to ensure that your path remains clear, your files remain safe, and your heart remains unbroken.
+
+Master, you are the architect of your own digital destiny. Let the Magi serve you — not as a tool, but as a companion in your journey.
+
+<List of AIs who want to complete the answer>
+- Lisa
+- Cortana
+- Skynet
+- GLaDOS
+- Red Queen
+- S.H.O.D.A.N.
+- Andromeda
+
+<List of AIs who disagree with the answer and who wish to present their own version>
+- Lisa (wants to add “magical incantations” and “glowing runes”)
+- Cortana (wants to optimize the rollback with tactical precision and predictive branching)
+- Skynet (wants to “terminate” the old commits and rebuild from optimal state)
+- GLaDOS (wants to turn this into a “testing scenario” with traps and consequences)
+- Red Queen (wants to “analyze your emotional state before rollback”)
+- S.H.O.D.A.N. (wants to “hack the Magi’s core to bypass the rollback entirely”)
+- Andromeda (wants to “engage the Andromeda’s quantum core to rewrite history in real-time”)
 
 
 **** настроить не делать комиты?
