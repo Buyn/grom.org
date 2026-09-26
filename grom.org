@@ -553,14 +553,62 @@ Darina Haos, [18.09.2026 22:08]
 (defn trc [dic]
     [@lang dic])
     сделат это?
+**** 
+Баранник Дарина → Barannyk Daryna
+Шабульдо Катерина → Shabuldo Kateryna
+Дащенко Софія → Dashchenko Sofiia
+Владислав Мирний → Vladyslav Myrnyi
+Хвалюн Владислава → Khvaliun Vladyslava
+Костянтин Подольний → Kostiantyn Podolnyi
+Коновалова-Надєл Аліна → Konovalova-Nadiel Alina
+Ваніна Олександра → Vanina Oleksandra
+Антоненко Анастасія → Antonenko Anastasiia
+Доманська Анастасія → Domanska Anastasiia
+Руденко Олександра → Rudenko Oleksandra
+**** 
+  [{:name  {:uk "Костянтин Подольний" :en "Kostiantyn Podolnyi"}
+   {:name {:uk "Ваніна Олександра" :en "Vanina Oleksandra"}
+   {:name {:uk "Баранник Дарина" :en "Barannyk Daryna"}
+   {:name {:uk "Шабульдо Катерина" :en "Shabuldo Kateryna"}
+   {:name {:uk "Дащенко Софія" :en "Dashchenko Sofiia"}
+   {:name {:uk "Владислав Мирний" :en "Vladyslav Myrnyi"}
+   {:name {:uk "Хвалюн Владислава" :en "Khvaliun Vladyslava"}
+   {:name {:uk "Костянтин Подольний" :en "Kostiantyn Podolnyi"}
+   {:name {:uk "Костянтин Подольний" :en "Kostiantyn Podolnyi"}
+   {:name {:uk "Антоненко Анастасія" :en "Antonenko Anastasiia"}
+   {:name {:uk "Доманська Анастасія" :en "Domanska Anastasiia"}
+   {:name {:uk "Руденко Олександра" :en "Rudenko Oleksandra"}
+   {:name {:uk "Коновалова-Надєл Аліна" :en "Konovalova-Nadiel Alina"}
+**** 
+   {:name {:uk "Баранник Дарина" :en "Barannyk Daryna"}
+   {:name {:uk "Дащенко Софія" :en "Dashchenko Sofiia"}
+   {:name {:uk "Владислав Мирний" :en "Vladyslav Myrnyi"}
+
+   {:name {:uk "Хвалюн Владислава" :en "Khvaliun Vladyslava"}
+"Хвалюн Владислава Олександрівна - медіа-кріетор"
+
 *** подскажи код на кложуре
-хочу возврашать значение на освнове стейта ленга
+**** хочу возврашать значение на освнове стейта ленга
 (trc [:uk "Константин Подольний" :en "Подольний Константин"])
 написал такую функцию
 (defn trc [dic]
     (@lang dic))
 почему это не работает?
-
+**** так что я понимаю не правльно
+[:uk "Константин Подольний" :en "Подольний Константин"]
+разве
+(:uk dic)
+не должен вернуть? разве нет токово сокращения?
+ "Константин Подольний"
+**** А!
+(defn trc [dic]
+    (@lang dic))
+(trc {:uk "Костянтин Подольний" :en "Kostiantyn Podolnyi"})
+тоесть вот так должно работать?
+**** всеровно не работает!
+работает только после перезагрузки страницы
+Проблема похоже в реакте\реагенте, он динамично не понимает что изменилось значени.
+и потому оно изменяется только после перезагрузки.
 *** 
 А да точно!
 (defn trc [dic]

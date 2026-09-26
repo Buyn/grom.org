@@ -35,11 +35,12 @@
     :president "President"
     :president-name "Daryna Barannyk"
     :vice-president "Vice President"
-    :vice-president-name "Vice President"
+    :vice-president-name "Shabuldo Kateryna"
     :secretary "Cекретар"
-    :secretary-name "сестричка Луй" ;; Dashchenko Sofiia
+    :secretary-name "Dashchenko Sofiia"
     :board-member "Board Member"
-    :board-member-name "Владислав Мирный"
+    :board-member-name1 "Vladyslav Myrnyi"
+    :board-member-name2 "Khvaliun Vladyslava"
 
     :founding-members "Founding Members"
     :support-title "Support UEAVA"
@@ -93,11 +94,13 @@
     :presidium "Президія"
     :president "Президент"
     :president-name "Баранник Дарина Олександрівна"
-    :vice-president "Віцепрезидент"
+    :vice-president "Віце-президент"
+    :vice-president-name "Шабульдо Катерина"
     :secretary "secretary"
     :secretary-name "Софія Дащенко"
     :board-member "Член президії"
-    :board-member-name "Владислав Мирний"
+    :board-member-name1 "Владислав Мирный"
+    :board-member-name2 "Хвалюн Владислава"
 
     :founding-members "Співзасновники" ;; Члены-учредители  Співзасновники
 
@@ -132,8 +135,10 @@
   ([dic k]
    (get-in dic [@lang k])))
 
-(defn trc [dic]
-    [@lang dic])
+(defn t [dic]
+  (if (map? dic)
+    (@lang dic)
+    dic))
 
 (defn hero-section []
    [:section
@@ -214,10 +219,10 @@
     [:div
       {:class "grid md:grid-cols-3 gap-12"}
       [presidium-r-card "img/ueava-about-darina.webp" (tr :president) (tr :president-name)]
-      [presidium-r-card "img/ueava-about-shabuldo.webp" "віце-президент" "Катерина Шабульдо"]
+      [presidium-r-card "img/ueava-about-shabuldo.webp" (tr :vice-president) (tr :vice-president-name)]
       [presidium-r-card "img/ueava-about-luy.webp" (tr :secretary) (tr :secretary-name)]
-      [presidium-r-card "img/ueava-about-peaceful.webp" (tr :board-member) (tr :board-member-name)]
-      [presidium-r-card "img/ueava-about-khvalyun.webp" (tr :board-member) "Хвалюн Владислава Олександрівна - медіа-кріетор"]
+      [presidium-r-card "img/ueava-about-peaceful.webp" (tr :board-member) (tr :board-member-name1)]
+      [presidium-r-card "img/ueava-about-khvalyun.webp" (tr :board-member) (tr :board-member-name2)]
      ]]])
 
 (defn founder-card [photo name]
@@ -225,28 +230,28 @@
                   hover:shadow-xl transition"}
    [:img
       { :src photo
-        :alt name
+        :alt (t name)
         :class "w-40 h-40 mx-auto mb-4
                 object-cover"}]
-   [:h3 {:class "font-semibold text-lg"} name]])
+   [:h3 {:class "font-semibold text-lg"} (t name)]])
 
 
 (def founders
-  [{:name (trc [:uk "Константин Подольний" :en "Подольний Константин"])
+  [{:name  {:uk "Костянтин Подольний" :en "Kostiantyn Podolnyi"}
     :photo "img/ueava-about-podoliy.webp"}
-   {:name "Олександра Ванiна"
+   {:name {:uk "Ваніна Олександра" :en "Vanina Oleksandra"}
     :photo "img/ueava-about-vanina.webp"}
-   {:name "Тетяна Домнiч"
+   {:name {:uk "Домнiч Тетяна" :en "Domnich Tetyana"}
     :photo "img/ueava-about-domnich.webp"}
-   {:name "Анастасiя Антоненко"
+   {:name {:uk "Антоненко Анастасія" :en "Antonenko Anastasiia"}
     :photo "img/ueava-about-antonenko.webp"}
-   {:name "Анастасiя Доманська"
+   {:name {:uk "Доманська Анастасія" :en "Domanska Anastasiia"}
     :photo "img/ueava-about-domanska.webp"}
-   {:name "Ася Черненко"
+   {:name {:uk "Черненко Ася" :en "Chernenko Asya"}
     :photo "img/ueava-about-chernenko.webp"}
-   {:name "Руденко Олександра Михайлівна"
+   {:name {:uk "Руденко Олександра" :en "Rudenko Oleksandra"}
     :photo "img/ueava-about-rudenko.webp"}
-   {:name "Коновалова-Надєл Аліна Олександрівна"
+   {:name {:uk "Коновалова-Надєл Аліна" :en "Konovalova-Nadiel Alina"}
     :photo "img/ueava-about-konoval.webp"}])
 
 (defn founders-section []
