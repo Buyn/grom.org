@@ -33,7 +33,7 @@
 
     :presidium "Presidium"
     :president "President"
-    :president-name "Daryna Barannyk"
+    :president-name "Barannyk Daryna"
     :vice-president "Vice President"
     :vice-president-name "Shabuldo Kateryna"
     :secretary "Secretary"
@@ -93,11 +93,11 @@
 
     :presidium "Президія"
     :president "Президент"
-    :president-name "Баранник Дарина Олександрівна"
+    :president-name "Баранник Дарина"
     :vice-president "Віце-президент"
     :vice-president-name "Шабульдо Катерина"
     :secretary "Cекретар"
-    :secretary-name "Софія Дащенко"
+    :secretary-name "Дащенко Софія"
     :board-member "Член президії"
     :board-member-name1 "Мирний Владислав"
     :board-member-name2 "Хвалюн Владислава"
