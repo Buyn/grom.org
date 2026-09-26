@@ -146,8 +146,6 @@
     [:div
      {:class "absolute inset-0 bg-cover bg-center "
       :style {:background-image
-              ;; "url('img/Hero_Slide_1_chameleon.jpg')"}}]
-
               "url('img/ueava-about-team.webp')"}}]
     [:div
      {:class "absolute inset-0 bg-black/60"}]
@@ -186,7 +184,6 @@
       [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-4)]
       [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-5)]
       [:div {:class "bg-white p-6 rounded-xl shadow"} (tr :mission-6)]]]])
-
 
 (defn presidium-card [photo role name]
   [:div {:class "text-center"}
@@ -235,7 +232,6 @@
                 object-cover"}]
    [:h3 {:class "font-semibold text-lg"} (t name)]])
 
-
 (def founders
   [{:name  {:uk "Костянтин Подольний" :en "Kostiantyn Podolnyi"}
     :photo "img/ueava-about-podoliy.webp"}
@@ -270,7 +266,6 @@
           [founder-card photo name])
       ]]])
 
-
 (defn contact-card [{:keys [href target title value icon icon-bg hover-color]}]
   [:a {:href href
        :target target
@@ -286,7 +281,6 @@
   [:section {:class "py-20 bg-gray-50" :id "contacts"}
    [:div {:class "max-w-4xl mx-auto px-8 text-center"}
     [:h2 {:class "text-4xl font-bold mb-6 text-ueava-brown"} (tr :contacts-title)]
-    ;; [:p {:class "text-lg text-gray-600 mb-10"} (tr :contacts-text)]
     [:div
      {:class "grid md:grid-cols-2 gap-6 max-w-2xl mx-auto"}
      ;; Email Card

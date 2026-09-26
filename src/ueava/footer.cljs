@@ -1,6 +1,8 @@
 (ns ueava.footer
   (:require
-    [ueava.components.lang :refer [t]]))
+    [ueava.components.lang :refer [t]]
+    [ueava.router :refer [navigate-to-section!]]
+    ))
 
 (defn footer []
   [:footer {:class "bg-ueava-brown-950 text-ueava-brown-100"}
@@ -61,7 +63,10 @@
                    justify-between text-sm"}
      [:span "© 2026 UEAVA"]
      [:div {:class "flex gap-6 mt-3 md:mt-0"}
-      [:a {:href "#" :class "hover:text-white"} "Privacy"]
-      [:a {:href "#" :class "hover:text-white"} "Terms"]
-      [:a {:href "#" :class "hover:text-white"} "Contact"]]]]])
+      [:a {:href "res/privat.pdf" :class "hover:text-white"} "Privacy"]
+      [:a {:href "res/statut.pdf" :class "hover:text-white"} "Terms"]
+      [:a {:href "#/about"
+           :on-click #(do (.preventDefault %)
+                          (navigate-to-section! "#/about" "contacts"))} "Contacs"]]]]])
+
 

@@ -13,6 +13,13 @@
    "#/resources"  :resources
    "#/membership" :membership})
 
+(defn navigate-to-section! [route section]
+  (set! (.-hash js/location) route)
+  (js/setTimeout
+    #(when-let [el (.getElementById js/document section)]
+      (.scrollIntoView el #js {:behavior "smooth"}))
+    100))
+
 (defn current-route []
   (get routes
        (.-hash js/location)
