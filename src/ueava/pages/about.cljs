@@ -99,7 +99,7 @@
     :secretary "Cекретар"
     :secretary-name "Софія Дащенко"
     :board-member "Член президії"
-    :board-member-name1 "Владислав Мирный"
+    :board-member-name1 "Мирний Владислав"
     :board-member-name2 "Хвалюн Владислава"
 
     :founding-members "Співзасновники" ;; Члены-учредители  Співзасновники
