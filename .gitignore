@@ -9,3 +9,4 @@ package-lock.json
 /out/
 .aider*
 /.#package.json
+/grom.org_archive
